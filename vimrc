@@ -232,3 +232,6 @@ let NERDTreeDirArrows=1
 "au BufWinEnter * silent! loadview
 let g:html_indent_inctags = "html,body,head,tbody" 
 map ,p :FufFile()<CR>
+
+hi IndentGuidesEven ctermbg=lightgrey 
+hi IndentGuidesOdd  ctermbg=white 
