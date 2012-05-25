@@ -272,8 +272,6 @@ source ~/.vim/mytabline.vim
 
 hi Error guifg=NONE guibg=NONE gui=undercurl ctermfg=white ctermbg=red cterm=NONE guisp=#FF6C60
 
-
-
 " Настраиваем NerdTree
 let NERDTreeWinSize = 30 " Размер окна NERDTree
 let NERDTreeDirArrows=1 " Показываем стрелки в директориях
