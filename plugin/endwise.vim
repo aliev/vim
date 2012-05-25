@@ -10,43 +10,43 @@ endif
 let g:loaded_endwise = 1
 
 augroup endwise " {{{1
-  autocmd!
-  autocmd FileType lua
-        \ let b:endwise_addition = '\=submatch(0)=="{" ? "}" : "end"' |
-        \ let b:endwise_words = 'function,do,then' |
-        \ let b:endwise_pattern = '^\s*\zs\%(function\|do\|then\)\>\%(.*[^.:@$]\<end\>\)\@!\|\<then\|do\ze\%(\s*|.*|\)\=\s*$' |
-        \ let b:endwise_syngroups = 'luaFunction,luaStatement,luaCond'
-  autocmd FileType ruby
-        \ let b:endwise_addition = '\=submatch(0)=="{" ? "}" : "end"' |
-        \ let b:endwise_words = 'module,class,def,if,unless,case,while,until,begin,do' |
-        \ let b:endwise_pattern = '^\s*\zs\%(module\|class\|def\|if\|unless\|case\|while\|until\|for\|\|begin\)\>\%(.*[^.:@$]\<end\>\)\@!\|\<do\ze\%(\s*|.*|\)\=\s*$' |
-          \ let b:endwise_syngroups = 'rubyModule,rubyClass,rubyDefine,rubyControl,rubyConditional,rubyRepeat'
-  autocmd FileType sh,zsh
-        \ let b:endwise_addition = '\=submatch(0)=="if" ? "fi" : submatch(0)=="case" ? "esac" : "done"' |
-        \ let b:endwise_words = 'if,until,case,do' |
-        \ let b:endwise_pattern = '\%(^\s*\zs\%(if\|case\)\>\ze\|\zs\<do\ze$\|^\s*\zsdo\s*\ze$\)' |
-        \ let b:endwise_syngroups = 'shConditional,shLoop,shIf,shFor,shRepeat,shCaseEsac,zshConditional,zshRepeat,zshDelimiter'
-  autocmd FileType vb,vbnet,aspvbs
-        \ let b:endwise_addition = 'End &' |
-        \ let b:endwise_words = 'Function,Sub,Class,Module,Enum,Namespace' |
-        \ let b:endwise_pattern = '\%(\<End\>.*\)\@<!\<&\>' |
-        \ let b:endwise_syngroups = 'vbStatement,vbnetStorage,vbnetProcedure,vbnet.*Words,AspVBSStatement'
-  autocmd FileType vim
-        \ let b:endwise_addition = 'end&' |
-        \ let b:endwise_words = 'fu\%[nction],wh\%[ile],if,for,try' |
-        \ let b:endwise_syngroups = 'vimFuncKey,vimNotFunc,vimCommand'
-augroup END " }}}1
+                     autocmd!
+                     autocmd FileType lua
+                     \ let b:endwise_addition = '\=submatch(0)=="{" ? "}" : "end"' |
+                       \ let b:endwise_words = 'function,do,then' |
+                       \ let b:endwise_pattern = '^\s*\zs\%(function\|do\|then\)\>\%(.*[^.:@$]\<end\>\)\@!\|\<then\|do\ze\%(\s*|.*|\)\=\s*$' |
+                       \ let b:endwise_syngroups = 'luaFunction,luaStatement,luaCond'
+                     autocmd FileType ruby
+                     \ let b:endwise_addition = '\=submatch(0)=="{" ? "}" : "end"' |
+                       \ let b:endwise_words = 'module,class,def,if,unless,case,while,until,begin,do' |
+                       \ let b:endwise_pattern = '^\s*\zs\%(module\|class\|def\|if\|unless\|case\|while\|until\|for\|\|begin\)\>\%(.*[^.:@$]\<end\>\)\@!\|\<do\ze\%(\s*|.*|\)\=\s*$' |
+                       \ let b:endwise_syngroups = 'rubyModule,rubyClass,rubyDefine,rubyControl,rubyConditional,rubyRepeat'
+                     autocmd FileType sh,zsh
+                     \ let b:endwise_addition = '\=submatch(0)=="if" ? "fi" : submatch(0)=="case" ? "esac" : "done"' |
+                       \ let b:endwise_words = 'if,until,case,do' |
+                       \ let b:endwise_pattern = '\%(^\s*\zs\%(if\|case\)\>\ze\|\zs\<do\ze$\|^\s*\zsdo\s*\ze$\)' |
+                       \ let b:endwise_syngroups = 'shConditional,shLoop,shIf,shFor,shRepeat,shCaseEsac,zshConditional,zshRepeat,zshDelimiter'
+                     autocmd FileType vb,vbnet,aspvbs
+                     \ let b:endwise_addition = 'End &' |
+                       \ let b:endwise_words = 'Function,Sub,Class,Module,Enum,Namespace' |
+                       \ let b:endwise_pattern = '\%(\<End\>.*\)\@<!\<&\>' |
+                       \ let b:endwise_syngroups = 'vbStatement,vbnetStorage,vbnetProcedure,vbnet.*Words,AspVBSStatement'
+                     autocmd FileType vim
+                     \ let b:endwise_addition = 'end&' |
+                       \ let b:endwise_words = 'fu\%[nction],wh\%[ile],if,for,try' |
+                       \ let b:endwise_syngroups = 'vimFuncKey,vimNotFunc,vimCommand'
+                     augroup END " }}}1
 
-" Maps {{{1
+                     " Maps {{{1
 
-if maparg("<Plug>DiscretionaryEnd") == ""
-  inoremap <silent> <SID>DiscretionaryEnd <C-R>=<SID>crend(0)<CR>
-  inoremap <silent> <SID>AlwaysEnd        <C-R>=<SID>crend(1)<CR>
-  imap    <script> <Plug>DiscretionaryEnd <SID>DiscretionaryEnd
-  imap    <script> <Plug>AlwaysEnd        <SID>AlwaysEnd
-endif
-if maparg('<CR>','i') =~# '<C-R>=.*crend(.)<CR>\|<\%(Plug\|SID\)>.*End'
-  " Already mapped
+                               if maparg("<Plug>DiscretionaryEnd") == ""
+                                 inoremap <silent> <SID>DiscretionaryEnd <C-R>=<SID>crend(0)<CR>
+                                 inoremap <silent> <SID>AlwaysEnd        <C-R>=<SID>crend(1)<CR>
+                                 imap    <script> <Plug>DiscretionaryEnd <SID>DiscretionaryEnd
+                                 imap    <script> <Plug>AlwaysEnd        <SID>AlwaysEnd
+                                 endif
+                                 if maparg('<CR>','i') =~# '<C-R>=.*crend(.)<CR>\|<\%(Plug\|SID\)>.*End'
+                                   " Already mapped
 elseif maparg('<CR>','i') =~ '<CR>'
   exe "imap <script> <C-X><CR> ".maparg('<CR>','i')."<SID>AlwaysEnd"
   exe "imap <script> <CR>      ".maparg('<CR>','i')."<SID>DiscretionaryEnd"
@@ -62,9 +62,9 @@ if maparg('<M-o>','i') == ''
   inoremap <M-o> <C-O>o
 endif
 
-" }}}1
+  " }}}1
 
-" Code {{{1
+  " Code {{{1
 
 function! s:mysearchpair(beginpat,endpat,synpat)
   let g:endwise_syntaxes = ""
