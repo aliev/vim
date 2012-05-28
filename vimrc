@@ -265,19 +265,33 @@ endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Клавиатурные комбинации
-source ~/.vim/keys.vim
+
+" Paste Ctrl+p
+map <C-p> :r !xclip -o<CR>
+
+" ZenCoding
+let g:user_zen_expandabbr_key = '<c-e>'
+let g:use_zen_complete_tag = 1
+
+" Переместить строку вверх или вниз
+map <C-S-up> ddkP
+map <C-S-down> ddp
 
 " MyTabLine
 source ~/.vim/mytabline.vim
 
+
+" Подсвечиваем ошибки под текстом волнистой чертой
 hi Error guifg=NONE guibg=NONE gui=undercurl ctermfg=white ctermbg=red cterm=NONE guisp=#FF6C60
 
 " Настраиваем NerdTree
 let NERDTreeWinSize = 30 " Размер окна NERDTree
 let NERDTreeDirArrows=1 " Показываем стрелки в директориях
 let NERDTreeMinimalUI=1 " Минимальный интерфейс
-let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
-let NERDTreeQuitOnOpen=1 " Выход после открытия файла
+let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr'] " Игнорируемые файлы
+"let NERDTreeQuitOnOpen=1 " Выход после открытия файла
+" NERDTree открываем и закрываем через CTRL+R
+map <C-r> :NERDTreeToggle %:p:h<CR> 
 
 let g:html_indent_inctags = "html,body,head,tbody" 
 
