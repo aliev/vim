@@ -1,13 +1,14 @@
-if has('gui_running') " Если gvim
+if has('gui_macvim') " Если macvim
     " Удаляем тулбар
     set guioptions-=T
     set background=light
     colors solarized
-    set guifont=Menlo\ Regular:h12
+    let g:solarized_visibility="normal"
+    set guifont=Monaco:h12
 else " Если vim
-    "let moria_style = 'ligth'
-    "let moria_monochrome = 0
-    "colors moria
+  " Включаем 256 цветов в терминале, мы ведь работаем из иксов?
+  " Нужно во многих терминалах, например в gnome-terminal
+  set t_Co=256
 endif
 
 " Autocmd
@@ -30,10 +31,6 @@ if has("autocmd")
   
   " Плагин для автозакрытия html тегов
   au FileType xhtml,xml so ~/.vim/ftplugin/html_autoclosetag.vim
-  
-  " Сохраняем расположение вкладок
-  "au BufWinLeave * silent! mkview
-  "au BufWinEnter * silent! loadview
 endif
 
 " Проверяем версию Vim, если у нас 7.3 тогда:
@@ -44,7 +41,7 @@ if v:version >= 703
 
     " Вечный undo. Теперь вся история редактирования файла хранится не только
     " в текущей сессии, но и в файле и востанавливается при перезапусках
-    set undofile
+    ""set undofile
     "set undodir=~/.vim/tmp/undo/
 
     " Подсветка столбца в буфере, отобаражет правую границу и показывает какие
@@ -68,9 +65,6 @@ set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯЖ;ABCDEFGHIJKLM
 " Включаем подсветку синтаксиса
 syntax enable
 
-" Включаем 256 цветов в терминале, мы ведь работаем из иксов?
-" Нужно во многих терминалах, например в gnome-terminal
-set t_Co=256
 
 " Включаем несовместимость настроек с vi
 set nocompatible
@@ -118,60 +112,19 @@ set autoindent
 set smartindent
 
 " Автозакрытие парных символов
-""imap [ []<LEFT>
-""imap ( ()<LEFT>
-""inoremap (<CR>  (<CR>)<Esc>O
-""inoremap {      {}<Left>
-""inoremap {<CR>  {<CR>}<Esc>O
-""inoremap {{     {
-""inoremap {}     {}
-inoremap ( ()<Esc>i
-inoremap [ []<Esc>i
-inoremap { {<CR>}<Esc>O
-autocmd Syntax vim inoremap < <lt>><Esc>i| inoremap > <c-r>=ClosePair('>')<CR>
-inoremap ) <c-r>=ClosePair(')')<CR>
-inoremap ] <c-r>=ClosePair(']')<CR>
-inoremap } <c-r>=CloseBracket()<CR>
-inoremap " <c-r>=QuoteDelim('"')<CR>
-inoremap ' <c-r>=QuoteDelim("'")<CR>
-
-function ClosePair(char)
-    if getline('.')[col('.') - 1] == a:char
-        return "\<Right>"
-    else
-        return a:char
-    endif
-endf
-
-function CloseBracket()
-    if match(getline(line('.') + 1), '\s*}') < 0
-        return "\<CR>}"
-    else
-        return "\<Esc>j0f}a"
-    endif
-endf
-
-function QuoteDelim(char)
-    let line = getline('.')
-    let col = col('.')
-    if line[col - 2] == "\\"
-        "Inserting a quoted quotation mark into the string
-        return a:char
-    elseif line[col - 1] == a:char
-        "Escaping out of the string
-        return "\<Right>"
-    else
-        "Starting a string
-        return a:char.a:char."\<Esc>i"
-    endif
-endf
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+imap [ []<LEFT>
+imap ( ()<LEFT>
+inoremap (<CR>  (<CR>)<Esc>O
+inoremap {      {}<Left>
+inoremap {<CR>  {<CR>}<Esc>O
+inoremap {{     {
+inoremap {}     {}
 
 " Отключаем перенос строк
-"set nowrap
+set nowrap
 
 " Включаем перенос строк
-set wrap
+""set wrap
 
 " Выключаем надоедливый "звонок"
 set visualbell t_vb=
@@ -193,7 +146,7 @@ set number
 set numberwidth=4 " Ширина строки
 
 " Подсветка текущей позиции курсора по горизонтали и вертикали
-set cursorline
+"set cursorline
 "set cursorcolumn
 
 " Показывать положение курсора всё время.
@@ -212,8 +165,18 @@ set mousemodel=popup
 "set completeopt+=preview " Включаем показ справки при автозавершении
 "set dictionary=/usr/share/dict/words " Словари для автодополнения
 
-" Nice statusbar
-set laststatus=2
+" Строка состояния
+if has('statusline')
+    set laststatus=2
+
+    " Broken down into easily includeable segments
+    set statusline=%<%f\    " Filename
+    set statusline+=%w%h%m%r " Options
+    set statusline+=%{fugitive#statusline()} "  Git Hotness
+    set statusline+=\ [%{&ff}/%Y]            " filetype
+    set statusline+=\ [%{getcwd()}]          " current dir
+    set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
+endif
 
 " Фолдинг
 set foldcolumn=2 " Ширина строки где располагается фолдинг
@@ -250,8 +213,8 @@ set showtabline=2
 " Символ табуляции и конца строки
 if has('multi_byte')
     if version >= 700
-        "set listchars=tab:»\ ,trail:·,eol:¶,extends:→,precedes:←,nbsp:×
-        set listchars=tab:▸\ ,eol:¬ " Раскомментируйте и закомментируйте
+        set listchars=tab:»\ ,trail:·,eol:¶,extends:→,precedes:←,nbsp:×
+        "set listchars=tab:▸\ ,eol:¬ " Раскомментируйте и закомментируйте
         "строку выше, что бы использовать символ табуляции как в textmate
     else
         set listchars=tab:»\ ,trail:·,eol:¶,extends:>,precedes:<,nbsp:_
@@ -265,9 +228,6 @@ endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Клавиатурные комбинации
-
-" Paste Ctrl+p
-map <C-p> :r !xclip -o<CR>
 
 " ZenCoding
 let g:user_zen_expandabbr_key = '<c-e>'
@@ -300,23 +260,13 @@ hi IndentGuidesOdd  ctermbg=white
 
 " autocmd CursorMoved * exe printf('match Underlined /\<%s\>/', expand('<cword>'))
 
-
-" Автозавершение кода
-" Настройки для модуля NeoCompleCache
-"let g:neocomplcache_enable_at_startup = 1 
-" Use underbar completion. 
-let g:neocomplcache_enable_underbar_completion = 1 
-" Set minimum syntax keyword length. 
-let g:neocomplcache_min_syntax_length = 3 
-let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" Настройка Powerline
+let g:Powerline_symbols = 'unicode'
 
 
-function! RubyMethodFold(line)
-  let line_is_method_or_end = synIDattr(synID(a:line,1,0), 'name') == 'rubyMethodBlock'
-  let line_is_def = getline(a:line) =~ '\s*def '
-  return line_is_method_or_end || line_is_def
-endfunction
-
-set foldexpr=RubyMethodFold(v:lnum)
-
+nnoremap <Leader>t :TagbarToggle<CR>
+let g:tagbar_autofocus=1
+let g:tagbar_expand=1
+let g:tagbar_foldlevel=2
+let g:tagbar_ironchars=['▾', '▸']
+let g:tagbar_autoshowtag=1

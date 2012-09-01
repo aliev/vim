@@ -1,0 +1,9 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =7
+let g:netrw_dirhist_1='sftp://aska/sad-ural.ru/'
+let g:netrw_dirhist_2='sftp://aska/sad-ural.ru/themes/'
+let g:netrw_dirhist_3='sftp://aska/sad-ural.ru/themes/alpine/'
+let g:netrw_dirhist_4='sftp://avenir/'
+let g:netrw_dirhist_5='sftp://avenir/sites/'
+let g:netrw_dirhist_6='sftp://avenir/'
+let g:netrw_dirhist_7='sftp://avenir/sites/'
