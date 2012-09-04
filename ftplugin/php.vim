@@ -1,0 +1,2 @@
+
+inoremap { {<CR>}<Esc>O
