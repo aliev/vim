@@ -1,8 +1,6 @@
  if has('gui_macvim') " Если macvim
     " Удаляем тулбар
     set guioptions-=T
-    set guioptions-=l
-    set guioptions-=b
     set guioptions-=r
     set background=dark
     colors solarized
