@@ -2,13 +2,16 @@
 
 Сделано уже многое, постарался перенести все по максимому что мне нравится в других редакторах (например автозакрытие html тегов, zen coding, автозакрытие парных блоков в Ruby итд). Этот конфигурационный файл НЕ является заменой IDE и я даже не пытался такого сделать. То есть все что делает данный конфигурационный файл имеет только прямое отношение для более гибкого и быстрого написания текста кода.
 
-Как установить?
+## Как установить?
+
+```
 git clone https://github.com/aliev/.vim.git
 echo "source ~/.vim/vimrc" > .vimrc # Подключаем файл конфигурации
 vim +BundleInstall +qall # Ставим плагины из репозиторий
 # Необходимо для работы command-t
 cd .vim/bundle/command-t
 rake make
+```
 
 ## Из того что сделано:
 1. Плагин Zen Coding
@@ -25,3 +28,6 @@ rake make
 12. powerline
 
 ![command-t](https://dl.dropbox.com/u/5837324/images/command-t.png)
+![fuzzy-file](https://dl.dropbox.com/u/5837324/images/fuf.png)
+![match-tag](https://dl.dropbox.com/u/5837324/images/match-tag.png)
+
