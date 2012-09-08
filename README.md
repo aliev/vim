@@ -10,7 +10,7 @@ vim +BundleInstall +qall # Ставим плагины из репозитори
 cd .vim/bundle/command-t
 rake make
 
-Из того что сделано:
+## Из того что сделано:
 1. Плагин Zen Coding
 2. Автозакрытие парных html тегов (плагин html_autoclosetag)
 3. Автоматическое закрытие парных блоков в Ruby (плагин endwise)
@@ -24,4 +24,4 @@ rake make
 11. tagbar
 12. powerline
 
-(https://dl.dropbox.com/u/5837324/images/command-t.png)
+![command-t](https://dl.dropbox.com/u/5837324/images/command-t.png)
