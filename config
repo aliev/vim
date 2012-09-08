@@ -1,6 +1,9 @@
  if has('gui_macvim') " Если macvim
     " Удаляем тулбар
     set guioptions-=T
+    set guioptions-=l
+    set guioptions-=b
+    set guioptions-=r
     set background=dark
     colors solarized
     let g:solarized_visibility="normal"
@@ -218,7 +221,7 @@ set noswapfile
 "set directory=~/.vim/tmp/swp " Директория для swp файлов
 
 " Показывать табы всегда
-set showtabline=2
+set showtabline=1
 
 """""""""""""""""Тут настройки для спец символов""""""""""""""""""""""""""""""""""""
 " Показывать неотображаемые символы
@@ -252,7 +255,7 @@ map <C-S-up> ddkP
 map <C-S-down> ddp
 
 " Настраиваем Fuzzy Finder
-map <C-F> :FufFile<CR>
+map <C-F> :FufBuffer<CR>
 
 " Подсвечиваем ошибки под текстом волнистой чертой
 hi Error guifg=NONE guibg=NONE gui=undercurl ctermfg=white ctermbg=red cterm=NONE guisp=#FF6C60
