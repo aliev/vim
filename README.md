@@ -6,6 +6,7 @@
 
 ```
 git clone https://github.com/aliev/.vim.git
+git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 echo "source ~/.vim/vimrc" > .vimrc # Подключаем файл конфигурации
 vim +BundleInstall +qall # Ставим плагины из репозиторий
 # Необходимо для работы command-t
