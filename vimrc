@@ -21,6 +21,9 @@
  Bundle 'vim-scripts/HTML-AutoCloseTag'
  Bundle 'tpope/vim-rvm'
  Bundle 'beyondwords/vim-twig'
+ Bundle 'gregsexton/MatchTag'
+ Bundle 'scrooloose/syntastic'
+ Bundle 'vim-scripts/matchit.zip'
 
  " snipmate
  Bundle "MarcWeber/vim-addon-mw-utils"
