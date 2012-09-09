@@ -268,6 +268,8 @@ let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn'
 map <C-r> :NERDTreeToggle %:p:h<CR>
 
 let g:html_indent_inctags = "html,body,head,tbody" 
+let g:html_indent_script1 = "inc"
+let g:html_indent_style1 = "inc"
 
 hi IndentGuidesEven ctermbg=lightgrey 
 hi IndentGuidesOdd  ctermbg=white 

@@ -24,7 +24,7 @@
  Bundle 'gregsexton/MatchTag'
  Bundle 'scrooloose/syntastic'
  Bundle 'vim-scripts/matchit.zip'
-
+ Bundle "pangloss/vim-javascript"
  " snipmate
  Bundle "MarcWeber/vim-addon-mw-utils"
  Bundle "tomtom/tlib_vim"
