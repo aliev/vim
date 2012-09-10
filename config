@@ -354,3 +354,10 @@ map <C-t> :CommandT<CR>
     set tabline=%!MyTabLine()
     set guitablabel=%!MyGuiTabLabel()
 " Задаем собственные функции для назначения имен заголовкам табов <--
+
+" Disable AutoComplPop.
+let g:acp_enableAtStartup = 0
+" Use neocomplcache.
+let g:neocomplcache_enable_at_startup = 1
+
+set noautochdir " For VimShell

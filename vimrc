@@ -17,6 +17,8 @@
  Bundle 'altercation/vim-colors-solarized'
  Bundle 'beyondwords/vim-twig'
  Bundle 'gregsexton/MatchTag'
+ Bundle 'Shougo/neocomplcache'
+ Bundle 'Shougo/neocomplcache-snippets-complete'
  Bundle 'scrooloose/syntastic'
  Bundle 'vim-scripts/matchit.zip'
  Bundle 'pangloss/vim-javascript'
@@ -30,7 +32,9 @@
  Bundle 'L9'
  Bundle 'FuzzyFinder'
  Bundle 'git://git.wincent.com/command-t.git'
-
+ Bundle 'vim-scripts/VimExplorer'
+ Bundle 'Shougo/vimproc'
+ Bundle 'Shougo/vimshell'
  filetype plugin indent on     " required!
 
  " Vim configuration file
