@@ -28,7 +28,8 @@
  Bundle "MarcWeber/vim-addon-mw-utils"
  Bundle "tomtom/tlib_vim"
  Bundle "honza/snipmate-snippets"
- Bundle "garbas/vim-snipmate"
+ Bundle 'garbas/vim-snipmate'
+ Bundle 'git://github.com/kana/vim-textobj-user.git'
  Bundle 'L9'
  Bundle 'FuzzyFinder'
  Bundle 'git://git.wincent.com/command-t.git'
@@ -37,5 +38,4 @@
  Bundle 'Shougo/vimshell'
  filetype plugin indent on     " required!
 
- " Vim configuration file
- source ~/.vim/config
+ source ~/.vim/config.vim
