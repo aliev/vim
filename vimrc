@@ -6,36 +6,53 @@
 
  " Bundles
  "
- Bundle 'vim-scripts/HTML-AutoCloseTag'
+ Bundle 'altercation/vim-colors-solarized'
+ 
+ " Ruby
  Bundle 'tpope/vim-rvm'
  Bundle 'tpope/vim-endwise'
  Bundle 'tpope/vim-rails.git'
+ Bundle 'nelstrom/vim-textobj-rubyblock'
+ 
+ " All Languages
+ Bundle 'pangloss/vim-javascript'
+ Bundle 'kchmck/vim-coffee-script'
+ Bundle 'b4winckler/vim-objc'
+ Bundle 'beyondwords/vim-twig'
+ Bundle 'vim-scripts/HTML-AutoCloseTag'
  Bundle 'mattn/zencoding-vim'
+ 
+ " Tools
  Bundle 'scrooloose/nerdtree'
  Bundle 'Lokaltog/vim-powerline'
  Bundle 'majutsushi/tagbar'
- Bundle 'altercation/vim-colors-solarized'
- Bundle 'beyondwords/vim-twig'
- Bundle 'gregsexton/MatchTag'
  Bundle 'Shougo/neocomplcache'
  Bundle 'Shougo/neocomplcache-snippets-complete'
+ Bundle 'gregsexton/MatchTag'
  Bundle 'scrooloose/syntastic'
  Bundle 'vim-scripts/matchit.zip'
- Bundle 'pangloss/vim-javascript'
- Bundle 'kchmck/vim-coffee-script'
- Bundle 'nelstrom/vim-textobj-rubyblock'
  Bundle 'nathanaelkane/vim-indent-guides'
  Bundle "MarcWeber/vim-addon-mw-utils"
  Bundle "tomtom/tlib_vim"
+ 
  Bundle "honza/snipmate-snippets"
  Bundle 'garbas/vim-snipmate'
+ 
  Bundle 'git://github.com/kana/vim-textobj-user.git'
+ 
  Bundle 'L9'
  Bundle 'FuzzyFinder'
+
+ " Git
+ Bundle 'tpope/vim-fugitive'
+
  Bundle 'git://git.wincent.com/command-t.git'
  Bundle 'vim-scripts/VimExplorer'
+
  Bundle 'Shougo/vimproc'
  Bundle 'Shougo/vimshell'
+
+
  filetype plugin indent on     " required!
 
  source ~/.vim/config.vim

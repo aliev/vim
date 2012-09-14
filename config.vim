@@ -43,9 +43,6 @@ if has("autocmd")
                 \ if line("'\"") > 1 && line ("'\"") <= line("$") |
                 \   exe "normal! g`\"" |
                 \ endif
-
-  " Плагин для автозакрытия html тегов
-  au FileType xhtml,xml so ~/.vim/ftplugin/html_autoclosetag.vim
 endif
 
 " Проверяем версию Vim, если у нас 7.3 тогда:
@@ -70,6 +67,7 @@ end
 
 " Автокомплит для комманд
 set wildmenu
+set wildmode=list:longest
 
 " Russian keymap
 set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯЖ;ABCDEFGHIJKLMNOPQRSTUVWXYZ:,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz
@@ -183,14 +181,6 @@ set mousemodel=popup
 " Строка состояния
 if has('statusline')
     set laststatus=2
-
-    " Broken down into easily includeable segments
-    set statusline=%<%f\    " Filename
-    set statusline+=%w%h%m%r " Options
-    set statusline+=%{fugitive#statusline()} "  Git Hotness
-    set statusline+=\ [%{&ff}/%Y]            " filetype
-    set statusline+=\ [%{getcwd()}]          " current dir
-    set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
 endif
 
 " Фолдинг
@@ -221,7 +211,6 @@ set noswapfile
 " Показывать табы всегда
 set showtabline=1
 
-"""""""""""""""""Тут настройки для спец символов""""""""""""""""""""""""""""""""""""
 " Показывать неотображаемые символы
 "set list
 
@@ -241,9 +230,6 @@ if has("linebreak")
       let &sbr = nr2char(8618).' '  " Show ↪ at the beginning of wrapped lines
 endif
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Клавиатурные комбинации
-
 " ZenCoding
 let g:user_zen_expandabbr_key = '<c-e>'
 let g:use_zen_complete_tag = 1
@@ -262,17 +248,14 @@ hi Error guifg=NONE guibg=NONE gui=undercurl ctermfg=white ctermbg=red cterm=NON
 let NERDTreeWinSize = 30 " Размер окна NERDTree
 let NERDTreeDirArrows=1 " Показываем стрелки в директориях
 let NERDTreeMinimalUI=1 " Минимальный интерфейс
-let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr'] " Игнорируемые файлы
-"let NERDTreeQuitOnOpen=1 " Выход после открытия файла
-" NERDTree открываем и закрываем через CTRL+R
-map <C-r> :NERDTreeToggle %:p:h<CR>
+let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
+"открываем и закрываем через CTRL+R
+map <C-r> :NERDTreeToggle %:p:h<CR> 
+
 
 let g:html_indent_inctags = "html,body,head,tbody" 
 let g:html_indent_script1 = "inc"
 let g:html_indent_style1 = "inc"
-
-hi IndentGuidesEven ctermbg=lightgrey 
-hi IndentGuidesOdd  ctermbg=white 
 
 " autocmd CursorMoved * exe printf('match Underlined /\<%s\>/', expand('<cword>'))
 
@@ -282,10 +265,20 @@ let g:tagbar_autofocus = 1
 " Настройка Powerline
 let g:Powerline_symbols = 'unicode'
 let g:Powerline_cache_enabled = 0
+let g:Powerline_symbols_override = {
+      \ 'BRANCH': [0x2213],
+      \ 'LINE': [0x2213],
+      \ }
 
 " Настройка Command-T
 let g:CommandTMaxFiles=1000
 map <C-t> :CommandT<CR>
+
+" For VimShell
+set noautochdir 
+
+" save as sudo
+ca w!! w !sudo tee "%"
 
 " Задаем собственные функции для назначения имен заголовкам табов -->
     function MyTabLine()
@@ -355,9 +348,47 @@ map <C-t> :CommandT<CR>
     set guitablabel=%!MyGuiTabLabel()
 " Задаем собственные функции для назначения имен заголовкам табов <--
 
-" Disable AutoComplPop.
-let g:acp_enableAtStartup = 0
-" Use neocomplcache.
-let g:neocomplcache_enable_at_startup = 1
 
-set noautochdir " For VimShell
+" Disable AutoComplPop. 
+let g:acp_enableAtStartup = 0 
+" Use neocomplcache. 
+let g:neocomplcache_enable_at_startup = 1 
+" Use smartcase. 
+let g:neocomplcache_enable_smart_case = 1 
+" Use camel case completion. 
+let g:neocomplcache_enable_camel_case_completion = 1 
+" Use underbar completion. 
+let g:neocomplcache_enable_underbar_completion = 1 
+" Set minimum syntax keyword length. 
+let g:neocomplcache_min_syntax_length = 3 
+let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*' 
+
+" Define dictionary. 
+let g:neocomplcache_dictionary_filetype_lists = { 
+    \ 'default' : '', 
+    \ 'vimshell' : $HOME.'/.vimshell_hist', 
+    \ 'scheme' : $HOME.'/.gosh_completions' 
+    \ } 
+
+" Define keyword. 
+if !exists('g:neocomplcache_keyword_patterns') 
+    let g:neocomplcache_keyword_patterns = {} 
+endif 
+let g:neocomplcache_keyword_patterns['default'] = '\h\w*' 
+
+
+" Enable omni completion. 
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS 
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags 
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS 
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete 
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags 
+
+" Enable heavy omni completion. 
+if !exists('g:neocomplcache_omni_patterns') 
+  let g:neocomplcache_omni_patterns = {} 
+endif 
+let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::' 
+"autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete 
+let g:neocomplcache_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
+
