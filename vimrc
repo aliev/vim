@@ -21,6 +21,7 @@
  Bundle 'beyondwords/vim-twig'
  Bundle 'vim-scripts/HTML-AutoCloseTag'
  Bundle 'mattn/zencoding-vim'
+ Bundle 'gregsexton/MatchTag'
  
  " Tools
  Bundle 'scrooloose/nerdtree'
@@ -28,12 +29,13 @@
  Bundle 'majutsushi/tagbar'
  Bundle 'Shougo/neocomplcache'
  Bundle 'Shougo/neocomplcache-snippets-complete'
- Bundle 'gregsexton/MatchTag'
  Bundle 'scrooloose/syntastic'
  Bundle 'vim-scripts/matchit.zip'
  Bundle 'nathanaelkane/vim-indent-guides'
  Bundle "MarcWeber/vim-addon-mw-utils"
  Bundle "tomtom/tlib_vim"
+ Bundle 'tpope/vim-surround'
+ Bundle 'tomtom/tcomment_vim'
  
  Bundle "honza/snipmate-snippets"
  Bundle 'garbas/vim-snipmate'
