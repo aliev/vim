@@ -22,7 +22,8 @@
  Bundle 'vim-scripts/HTML-AutoCloseTag'
  Bundle 'mattn/zencoding-vim'
  Bundle 'gregsexton/MatchTag'
- 
+ Bundle 'tpope/vim-markdown'
+
  " Tools
  Bundle 'scrooloose/nerdtree'
  Bundle 'Lokaltog/vim-powerline'
@@ -42,9 +43,6 @@
  
  Bundle 'git://github.com/kana/vim-textobj-user.git'
  
- Bundle 'L9'
- Bundle 'FuzzyFinder'
-
  " Git
  Bundle 'tpope/vim-fugitive'
 

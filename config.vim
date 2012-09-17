@@ -234,12 +234,11 @@ endif
 let g:user_zen_expandabbr_key = '<c-e>'
 let g:use_zen_complete_tag = 1
 
-" Переместить строку вверх или вниз
-map <C-S-up> ddkP
-map <C-S-down> ddp
+" Настраиваем CommandT для переключения между буферами
+map <C-t> :CommandTBuffer<CR>
 
-" Настраиваем Fuzzy Finder
-map <C-F> :FufBuffer<CR>
+" Настраиваем Command-T для переключения между файлами
+map <C-f> :CommandT<CR>
 
 " Подсвечиваем ошибки под текстом волнистой чертой
 hi Error guifg=NONE guibg=NONE gui=undercurl ctermfg=white ctermbg=red cterm=NONE guisp=#FF6C60
@@ -248,7 +247,7 @@ hi Error guifg=NONE guibg=NONE gui=undercurl ctermfg=white ctermbg=red cterm=NON
 let NERDTreeWinSize = 30 " Размер окна NERDTree
 let NERDTreeDirArrows=1 " Показываем стрелки в директориях
 let NERDTreeMinimalUI=1 " Минимальный интерфейс
-let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
+let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr', '\.o', '\.out']
 "открываем и закрываем через CTRL+R
 map <C-r> :NERDTreeToggle %:p:h<CR> 
 
@@ -256,8 +255,6 @@ map <C-r> :NERDTreeToggle %:p:h<CR>
 let g:html_indent_inctags = "html,body,head,tbody" 
 let g:html_indent_script1 = "inc"
 let g:html_indent_style1 = "inc"
-
-" autocmd CursorMoved * exe printf('match Underlined /\<%s\>/', expand('<cword>'))
 
 " Настройка Tagbar
 let g:tagbar_autofocus = 1
@@ -270,9 +267,6 @@ let g:Powerline_symbols_override = {
       \ 'LINE': [0x2213],
       \ }
 
-" Настройка Command-T
-let g:CommandTMaxFiles=1000
-map <C-t> :CommandT<CR>
 
 " For VimShell
 set noautochdir 
@@ -280,88 +274,19 @@ set noautochdir
 " save as sudo
 ca w!! w !sudo tee "%"
 
-" Задаем собственные функции для назначения имен заголовкам табов -->
-    function MyTabLine()
-        let tabline = ''
-
-        " Формируем tabline для каждой вкладки -->
-            for i in range(tabpagenr('$'))
-                " Подсвечиваем заголовок выбранной в данный момент вкладки.
-                if i + 1 == tabpagenr()
-                    let tabline .= '%#TabLineSel#'
-                else
-                    let tabline .= '%#TabLine#'
-                endif
-
-                " Устанавливаем номер вкладки
-                let tabline .= '%' . (i + 1) . 'T'
-
-                " Получаем имя вкладки
-                let tabline .= ' %{MyTabLabel(' . (i + 1) . ')} |'
-            endfor
-        " Формируем tabline для каждой вкладки <--
-
-        " Заполняем лишнее пространство
-        let tabline .= '%#TabLineFill#%T'
-
-        " Выровненная по правому краю кнопка закрытия вкладки
-        if tabpagenr('$') > 1
-            let tabline .= '%=%#TabLine#%999XX'
-        endif
-
-        return tabline
-    endfunction
-
-    function MyTabLabel(n)
-        let label = ''
-        let buflist = tabpagebuflist(a:n)
-
-        " Имя файла и номер вкладки -->
-            let label = substitute(bufname(buflist[tabpagewinnr(a:n) - 1]), '.*/', '', '')
-
-            if label == ''
-                let label = 'Untitled'
-            endif
-
-            "let label .= ' (' . a:n . ')'
-        " Имя файла и номер вкладки <--
-
-        " Определяем, есть ли во вкладке хотя бы один
-        " модифицированный буфер.
-        " -->
-            for i in range(len(buflist))
-                if getbufvar(buflist[i], "&modified")
-                    let label = '* ' . label
-                    break
-                endif
-            endfor
-        " <--
-
-        return label
-    endfunction
-
-    function MyGuiTabLabel()
-        return '%{MyTabLabel(' . tabpagenr() . ')}'
-    endfunction
-
-    set tabline=%!MyTabLine()
-    set guitablabel=%!MyGuiTabLabel()
-" Задаем собственные функции для назначения имен заголовкам табов <--
-
-
 " Disable AutoComplPop. 
 let g:acp_enableAtStartup = 0 
 " Use neocomplcache. 
-let g:neocomplcache_enable_at_startup = 1 
+let g:neocomplcache_enable_at_startup = 0
 " Use smartcase. 
-let g:neocomplcache_enable_smart_case = 1 
-" Use camel case completion. 
-let g:neocomplcache_enable_camel_case_completion = 1 
-" Use underbar completion. 
-let g:neocomplcache_enable_underbar_completion = 1 
-" Set minimum syntax keyword length. 
-let g:neocomplcache_min_syntax_length = 3 
-let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*' 
+let g:neocomplcache_enable_smart_case = 1
+" Use camel case completion.
+let g:neocomplcache_enable_camel_case_completion = 1
+" Use underbar completion.
+let g:neocomplcache_enable_underbar_completion = 1
+" Set minimum syntax keyword length.
+let g:neocomplcache_min_syntax_length = 3
+let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
 
 " Define dictionary. 
 let g:neocomplcache_dictionary_filetype_lists = { 
