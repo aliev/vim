@@ -2,7 +2,7 @@
     " Удаляем тулбар
     set guioptions-=T
     set guioptions-=r
-    set background=light
+    set background=dark
     colors solarized
     let g:solarized_visibility="normal"
     set guifont=Monaco:h12
@@ -247,7 +247,7 @@ hi Error guifg=NONE guibg=NONE gui=undercurl ctermfg=white ctermbg=red cterm=NON
 let NERDTreeWinSize = 30 " Размер окна NERDTree
 let NERDTreeDirArrows=1 " Показываем стрелки в директориях
 let NERDTreeMinimalUI=1 " Минимальный интерфейс
-let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr', '\.o', '\.out']
+let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr', '\.o', '\.out'] " Игнорируемые файлы в NERDTree
 "открываем и закрываем через CTRL+R
 map <C-r> :NERDTreeToggle %:p:h<CR> 
 
@@ -268,52 +268,11 @@ let g:Powerline_symbols_override = {
       \ }
 
 
-" For VimShell
+" Для VimShell выключаем автоматический переход в директорию
 set noautochdir 
 
-" save as sudo
+" Сохранить через sudo командой :w!!
 ca w!! w !sudo tee "%"
 
-" Disable AutoComplPop. 
-let g:acp_enableAtStartup = 0 
-" Use neocomplcache. 
+" Включить или выключить автозавершение кода
 let g:neocomplcache_enable_at_startup = 0
-" Use smartcase. 
-let g:neocomplcache_enable_smart_case = 1
-" Use camel case completion.
-let g:neocomplcache_enable_camel_case_completion = 1
-" Use underbar completion.
-let g:neocomplcache_enable_underbar_completion = 1
-" Set minimum syntax keyword length.
-let g:neocomplcache_min_syntax_length = 3
-let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
-
-" Define dictionary. 
-let g:neocomplcache_dictionary_filetype_lists = { 
-    \ 'default' : '', 
-    \ 'vimshell' : $HOME.'/.vimshell_hist', 
-    \ 'scheme' : $HOME.'/.gosh_completions' 
-    \ } 
-
-" Define keyword. 
-if !exists('g:neocomplcache_keyword_patterns') 
-    let g:neocomplcache_keyword_patterns = {} 
-endif 
-let g:neocomplcache_keyword_patterns['default'] = '\h\w*' 
-
-
-" Enable omni completion. 
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS 
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags 
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS 
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete 
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags 
-
-" Enable heavy omni completion. 
-if !exists('g:neocomplcache_omni_patterns') 
-  let g:neocomplcache_omni_patterns = {} 
-endif 
-let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::' 
-"autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete 
-let g:neocomplcache_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
-
