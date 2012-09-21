@@ -37,6 +37,7 @@
  Bundle "tomtom/tlib_vim"
  Bundle 'tpope/vim-surround'
  Bundle 'tomtom/tcomment_vim'
+ Bundle 'mattn/gist-vim'
  
  Bundle "honza/snipmate-snippets"
  Bundle 'garbas/vim-snipmate'
