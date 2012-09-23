@@ -53,8 +53,8 @@ if v:version >= 703
 
     " Вечный undo. Теперь вся история редактирования файла хранится не только
     " в текущей сессии, но и в файле и востанавливается при перезапусках
-    ""set undofile
-    "set undodir=~/.vim/tmp/undo/
+    set undofile
+    set undodir=~/tmp/undo/
 
     " Подсветка столбца в буфере, отобаражет правую границу и показывает какие
     " строки не влезли в 80 символов
@@ -240,9 +240,6 @@ map <C-t> :CommandTBuffer<CR>
 " Настраиваем Command-T для переключения между файлами
 map <C-f> :CommandT<CR>
 
-" Подсвечиваем ошибки под текстом волнистой чертой
-hi Error guifg=NONE guibg=NONE gui=undercurl ctermfg=white ctermbg=red cterm=NONE guisp=#FF6C60
-
 " Настраиваем NerdTree
 let NERDTreeWinSize = 30 " Размер окна NERDTree
 let NERDTreeDirArrows=1 " Показываем стрелки в директориях
@@ -274,5 +271,8 @@ set noautochdir
 " Сохранить через sudo командой :w!!
 ca w!! w !sudo tee "%"
 
+ca reload silent !node /Users/alialiev/client2.js > /dev/null
+
 " Включить или выключить автозавершение кода
 let g:neocomplcache_enable_at_startup = 0
+

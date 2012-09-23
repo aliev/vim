@@ -23,6 +23,7 @@
  Bundle 'mattn/zencoding-vim'
  Bundle 'gregsexton/MatchTag'
  Bundle 'tpope/vim-markdown'
+ Bundle 'StanAngeloff/php.vim'
 
  " Tools
  Bundle 'scrooloose/nerdtree'
