@@ -3,7 +3,7 @@
     set guioptions-=T
     set guioptions-=r
     set background=dark
-    colors solarized
+    colors two2tango
     let g:solarized_visibility="normal"
     set guifont=Monaco:h12
 else " Если vim
