@@ -1,14 +1,11 @@
  if has('gui_macvim') " Если macvim
-    " Удаляем тулбар
+    " Удаляем все ненужное
     set guioptions-=T
     set guioptions-=r
     set background=dark
-    colors two2tango
-    let g:solarized_visibility="normal"
-    set guifont=Monaco:h12
-else " Если vim
-  " Включаем 256 цветов в терминале, мы ведь работаем из иксов?
-  " Нужно во многих терминалах, например в gnome-terminal
+    colors solarized
+    set guifont=Monaco:h11
+else
   set t_Co=256
 endif
 
@@ -24,10 +21,9 @@ if has("autocmd")
         autocmd BufRead,BufNewFile *.view set filetype=php
     augroup END
 
-    " Отступы для различных языков
     au FileType ruby set shiftwidth=2
     au FileType javascript set shiftwidth=2
-    au FileType php set shiftwidth=2
+    au FileType php set shiftwidth=4
     au FileType python set shiftwidth=4
 
 
@@ -54,53 +50,44 @@ if v:version >= 703
     " Вечный undo. Теперь вся история редактирования файла хранится не только
     " в текущей сессии, но и в файле и востанавливается при перезапусках
     set undofile
-    set undodir=~/tmp/undo/
+    set undodir=~/.vim/tmp/undo/
 
     " Подсветка столбца в буфере, отобаражет правую границу и показывает какие
     " строки не влезли в 80 символов
-    "set colorcolumn=80
-
+    " set colorcolumn=80
     "для некоторых типов файлов настройки отступов были перенесены из plugin в
     "indent
-    filetype plugin indent on
 end
 
-" Автокомплит для комманд
-set wildmenu
+filetype plugin indent on " Выключаем загрузку filetype и indent плагинов
+
+set noautochdir " Выключаем автоматический переход в папку
+
+set wildmenu " Автокомплит для комманд
 set wildmode=list:longest
 
-" Russian keymap
 set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯЖ;ABCDEFGHIJKLMNOPQRSTUVWXYZ:,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz
 
-" Команда для справок
-"set keywordprg=man -s
+syntax enable " Включаем подсветку синтаксиса
 
-" Включаем подсветку синтаксиса
-syntax enable
+set nocompatible " Включаем несовместимость настроек с vi
 
+set incsearch " Поиск по набору текста
 
-" Включаем несовместимость настроек с vi
-set nocompatible
+set hlsearch " Подсветка поиска
 
-" Поиск по набору текста (очень полезная функция)
-set incsearch
+set showmatch " Подсветка парных скобок
 
-" Проверка закрытия скобок (подсвечивает парную скобку)
-set showmatch
+set title " Показ заголовка
 
-" Показ заголовка
-set title
-
-" Файловый менеджер всегда открывается в текущей директории при первом открытии файла
-set acd
+set acd " Файловый менеджер всегда открывается в текущей директории при первом открытии файла
 
 " Настройка отступов
 " Количество пробелов, которыми символ табуляции отображается в тексте
 " 4 пробела если используется expandtab см. ниже
 set tabstop=4
 
-" Использовать пробелы вместо табуляции
-set expandtab
+set expandtab " Использовать пробелы вместо табуляции
 
 " По умолчанию используется для регулирование ширины отступов в пробелах,
 " добавляемых командами >> и <<
@@ -113,8 +100,7 @@ set breakat=" ^I!@*-+;:,./?"
 " отступа, ширина которого соответствует shiftwidth)
 set smarttab
 
-" Включить автоотступы
-set autoindent
+set autoindent " Включить автоотступы
 
 " Умные отступы
 " Делает то же, что и autoindent плюс автоматически выставляет отступы в
@@ -124,97 +110,51 @@ set autoindent
 " (подробнее help 'smartindent').
 set smartindent
 
-" Автозакрытие парных символов
-imap [ []<LEFT>
-imap ( ()<LEFT>
-inoremap (<CR>  (<CR>)<Esc>O
-inoremap {      {}<Left>
-inoremap {<CR>  {<CR>}<Esc>O
-inoremap {{     {
-inoremap {}     {}
+"set nowrap " Отключаем перенос строк
 
-" Отключаем перенос строк
-"set nowrap
+set wrap " Включаем перенос строк
 
-" Включаем перенос строк
-set wrap
+set visualbell t_vb= " Выключаем надоедливый "звонок"
 
-" Выключаем надоедливый "звонок"
-set visualbell t_vb=
+set encoding=utf8 " Кодировка
 
-" Кодировка
-set encoding=utf8
+set termencoding=utf-8 " Кодировка текста по умолчанию
 
-" Кодировка текста по умолчанию должна совпадать с кодировкой терминала
-set termencoding=utf-8
+set fileencodings=utf8,cp1251 " Возможные кодировки файлов и последовательность определения
 
-" Возможные кодировки файлов и последовательность определения
-set fileencodings=utf8,cp1251
+set mousehide " Прячим курсор мыши когда печатаем
 
-" Прячим курсор мыши когда печатаем
-set mousehide
+set number " Включаем нумерацию строк
 
-" Включаем нумерацию строк
-set number
 set numberwidth=4 " Ширина строки
 
-" Подсветка текущей позиции курсора по горизонтали и вертикали
-"set cursorline
-"set cursorcolumn
+set cursorline " Подсветка текущей позиции курсора по горизонтали
 
-" Показывать положение курсора всё время.
-set ruler
+"set cursorcolumn " Подсветка текущей позиции курсора по вертикали
 
-" Поддержка мыши
-set mouse=a
+set ruler " Показывать положение курсора всё время.
+
+set mouse=a " Поддержка мыши
 set mousemodel=popup
 
-" Автозавершение. Слова откуда будем завершать
-"set complete="" " Из файла
-"set complete+=. " Из текущего буфера
-"set complete+=k " Из словаря
-"set complete+=b " Из других открытых буферов
-"set complete+=t " Из тегов
-"set completeopt+=preview " Включаем показ справки при автозавершении
-"set dictionary=/usr/share/dict/words " Словари для автодополнения
-
-" Строка состояния
-if has('statusline')
-    set laststatus=2
-endif
-
-" Фолдинг
 set foldcolumn=2 " Ширина строки где располагается фолдинг
-set foldmethod=manual " Фолдинг по отступам
+set foldmethod=indent " Фолдинг по отступам
 set foldnestmax=10      " Глубина фолдинга 10 уровней
 set nofoldenable        " Не фолдить по умолчанию
-"set foldlevel=1         " This is just what i use
+set foldlevel=1         " This is just what i use
 
-" Не выгружать буфер, когда переключаемся на другой
-" Это позволяет редактировать несколько файлов в один и тот же момент без
-" необходимости сохранения каждый раз
-" когда переключаешься между ними
-set hidden
+set hidden " Не выгружать буфер, когда переключаемся на другой
 
-" Включаем загрузку filetype плагинов
-filetype plugin on
+" set nobackup " Выключаем резервные файлы
+" set noswapfile " Выключаем своп файлы
+set backupdir=~/.vim/tmp/bac " Директория для backup файлов
+set directory=~/.vim/tmp/swp " Директория для swp файлов
 
-" Включаем загрузку indent плагинов
-filetype indent on
+set showtabline=2 " Показывать строку вкладок всегда
 
-" Выключаем резервные и swp файлы
-set nobackup
-set noswapfile
-"set backupdir=~/.vim/tmp/bac " Директория для backup файлов
-"set directory=~/.vim/tmp/swp " Директория для swp файлов
-
-" Показывать табы всегда
-set showtabline=1
-
-" Показывать неотображаемые символы
+" Неотображаемые символы
+" Выключить - раскомментировать строку ниже
 "set list
-
-" Символ табуляции и конца строки
 if has('multi_byte')
     if version >= 700
         set listchars=tab:»\ ,trail:·,eol:¶,extends:→,precedes:←,nbsp:×
@@ -234,45 +174,38 @@ endif
 let g:user_zen_expandabbr_key = '<c-e>'
 let g:use_zen_complete_tag = 1
 
-" Настраиваем CommandT для переключения между буферами
-map <C-t> :CommandTBuffer<CR>
-
-" Настраиваем Command-T для переключения между файлами
+" По Ctrl+F открывается Command-T
 map <C-f> :CommandT<CR>
 
 " Настраиваем NerdTree
 let NERDTreeWinSize = 30 " Размер окна NERDTree
 let NERDTreeDirArrows=1 " Показываем стрелки в директориях
 let NERDTreeMinimalUI=1 " Минимальный интерфейс
-let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr', '\.o', '\.out'] " Игнорируемые файлы в NERDTree
-"открываем и закрываем через CTRL+R
 map <C-r> :NERDTreeToggle %:p:h<CR> 
-
 
 let g:html_indent_inctags = "html,body,head,tbody" 
 let g:html_indent_script1 = "inc"
 let g:html_indent_style1 = "inc"
 
-" Настройка Tagbar
-let g:tagbar_autofocus = 1
+let g:tagbar_autofocus = 1 " Настройка Tagbar
+
+" Строка состояния
+if has('statusline')
+    set laststatus=2
+endif
 
 " Настройка Powerline
 let g:Powerline_symbols = 'unicode'
-let g:Powerline_cache_enabled = 0
-let g:Powerline_symbols_override = {
-      \ 'BRANCH': [0x2213],
-      \ 'LINE': [0x2213],
-      \ }
-
-
-" Для VimShell выключаем автоматический переход в директорию
-set noautochdir 
+let g:Powerline_cache_enabled = 0 " Выключаем кеш
+let g:Powerline_symbols_override = { 'LINE': [0x270F], }
 
 " Сохранить через sudo командой :w!!
 ca w!! w !sudo tee "%"
 
-ca reload silent !node /Users/alialiev/client2.js > /dev/null
+let g:neocomplcache_enable_at_startup = 1 " Включить или выключить автозавершение кода
 
-" Включить или выключить автозавершение кода
-let g:neocomplcache_enable_at_startup = 0
+" Включение и настройка syntastic
+let g:syntastic_enable_signs=1
+let g:syntastic_warning_symbol = nr2char(187) " Символ для ошибок Warning
+let g:syntastic_error_symbol = nr2char(187) " Символ для ошибок Error
 

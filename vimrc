@@ -15,17 +15,22 @@
  Bundle 'nelstrom/vim-textobj-rubyblock'
  
  " All Languages
- Bundle 'pangloss/vim-javascript'
- Bundle 'kchmck/vim-coffee-script'
  Bundle 'b4winckler/vim-objc'
- Bundle 'beyondwords/vim-twig'
+
+ " HTML/CSS
  Bundle 'vim-scripts/HTML-AutoCloseTag'
  Bundle 'mattn/zencoding-vim'
  Bundle 'gregsexton/MatchTag'
- Bundle 'tpope/vim-markdown'
- Bundle 'StanAngeloff/php.vim'
+
+ " Python
+ Bundle 'lambdalisue/vim-django-support'
+
+ " JavaScript
+ Bundle 'pangloss/vim-javascript'
+ Bundle 'kchmck/vim-coffee-script'
 
  " Tools
+ Bundle 'sjl/gundo.vim'
  Bundle 'scrooloose/nerdtree'
  Bundle 'Lokaltog/vim-powerline'
  Bundle 'majutsushi/tagbar'
@@ -39,21 +44,12 @@
  Bundle 'tpope/vim-surround'
  Bundle 'tomtom/tcomment_vim'
  Bundle 'mattn/gist-vim'
- 
  Bundle "honza/snipmate-snippets"
  Bundle 'garbas/vim-snipmate'
- 
  Bundle 'git://github.com/kana/vim-textobj-user.git'
- 
- " Git
- Bundle 'tpope/vim-fugitive'
-
  Bundle 'git://git.wincent.com/command-t.git'
- Bundle 'vim-scripts/VimExplorer'
-
- Bundle 'Shougo/vimproc'
- Bundle 'Shougo/vimshell'
-
+ Bundle 'tpope/vim-fugitive' " For Git and powerline
+ 
 
  filetype plugin indent on     " required!
 
