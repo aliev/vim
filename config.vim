@@ -1,17 +1,28 @@
- if has('gui_macvim') " Если macvim
-    " Удаляем все ненужное
-    set guioptions-=T
-    set guioptions-=r
-    set background=dark
-    colors solarized
-    set guifont=Monaco:h11
+ if has('gui_macvim')
+    set guioptions=egmrt " Убираем все ненужное (toolbar, scrollbars etc.)
+    set background=dark " Темный фон
+    colors codeschool " Цветовая схема
+    set guifont=Monaco:h12 " Шрифт по умолчанию
+elseif has('gui_gtk') || has('gui_gtk2')
+    set guifont="Ubuntu Mono":h15 " Шрифт по умолчанию
+elseif has('gui_win32')
+elseif has('gui_running')
+    set cursorline " Подсветка текущей позиции курсора по горизонтали
+    "set cursorcolumn " Подсветка текущей позиции курсора по вертикали
 else
-  set t_Co=256
+  set t_Co=256 " 256 цветов для консоли
 endif
 
-" Autocmd
+if v:version >= 7
+    "set relativenumber " Нумерование строк не относительно начала файла, а относительно текущего положения курсора
+
+    set undofile " Вечный undo
+    set undodir=~/.vim/tmp/undo/ " Куда записывать файлы для undo
+
+    " set colorcolumn=80 " Отображает правую границу
+end
+
 if has("autocmd")
-    " Для Drupal файлов *.module, *.install, *.test, *.inc, *.profile, *.view
     augroup module
         autocmd BufRead,BufNewFile *.module set filetype=php
         autocmd BufRead,BufNewFile *.install set filetype=php
@@ -41,32 +52,34 @@ if has("autocmd")
                 \ endif
 endif
 
-" Проверяем версию Vim, если у нас 7.3 тогда:
-if v:version >= 703
-    " Нумерование строк не относительно начала файла, а относительно текущего
-    " положения курсора. Я этой фичей не пользуюсь, поэтому отключил для себя
-    "set relativenumber
+"set list " Неотображаемые символы
+if has('multi_byte')
+    if version >= 700
+        set listchars=tab:»\ ,trail:·,eol:¶,extends:→,precedes:←,nbsp:×
+        "set listchars=tab:▸\ ,eol:¬ " Раскомментируйте и закомментируйте
+        "строку выше, что бы использовать символ табуляции как в textmate
+    else
+        set listchars=tab:»\ ,trail:·,eol:¶,extends:>,precedes:<,nbsp:_
+    endif
+endif
 
-    " Вечный undo. Теперь вся история редактирования файла хранится не только
-    " в текущей сессии, но и в файле и востанавливается при перезапусках
-    set undofile
-    set undodir=~/.vim/tmp/undo/
-
-    " Подсветка столбца в буфере, отобаражет правую границу и показывает какие
-    " строки не влезли в 80 символов
-    " set colorcolumn=80
-    "для некоторых типов файлов настройки отступов были перенесены из plugin в
-    "indent
-end
+if has("linebreak")
+      let &sbr = nr2char(8618).' '  " Символ который будет показан перед перенесенной строкой
+endif
 
 filetype plugin indent on " Выключаем загрузку filetype и indent плагинов
 
-set noautochdir " Выключаем автоматический переход в папку
+set noautochdir     " Выключаем автоматический переход в папку
+
+set ttimeoutlen=50  " Ускоряем работу Esc
+
+set showtabline=2 " Показывать строку вкладок всегда
+
+set laststatus=2 " Строка состояни
 
 set wildmenu " Автокомплит для комманд
-set wildmode=list:longest
 
-set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯЖ;ABCDEFGHIJKLMNOPQRSTUVWXYZ:,фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz
+set wildmode=list:longest
 
 syntax enable " Включаем подсветку синтаксиса
 
@@ -78,37 +91,27 @@ set hlsearch " Подсветка поиска
 
 set showmatch " Подсветка парных скобок
 
+set showcmd " Show incomplete cmds down the bottom
+
+set showmode " Show current mode down the bottom
+
 set title " Показ заголовка
 
 set acd " Файловый менеджер всегда открывается в текущей директории при первом открытии файла
 
-" Настройка отступов
-" Количество пробелов, которыми символ табуляции отображается в тексте
-" 4 пробела если используется expandtab см. ниже
-set tabstop=4
-
 set expandtab " Использовать пробелы вместо табуляции
 
-" По умолчанию используется для регулирование ширины отступов в пробелах,
-" добавляемых командами >> и <<
-set shiftwidth=4
+set autoread " Reload files changed outside automatically
 
-set breakat=" ^I!@*-+;:,./?"
+set tabstop=4 " Количество пробелов, которыми символ табуляции отображается в тексте
 
-" В случае включения этой опции, нажатие Tab в начале строки (если быть
-" точнее, до первого непробельного символа в строке) приведет к добавлению
-" отступа, ширина которого соответствует shiftwidth)
-set smarttab
+set shiftwidth=4 " Bспользуется для регулирование ширины отступов в пробелах добавляемых командами >> и <<
+
+set smarttab " Добавление отступа при нажатии tab в соответствии с настройками ширины отступа shiftwidth
 
 set autoindent " Включить автоотступы
 
-" Умные отступы
-" Делает то же, что и autoindent плюс автоматически выставляет отступы в
-" нужных местах. В частности, отступ ставится после строки, которая
-" заканчивается символом {, перед строкой, которая заканчивается символом },
-" удаляется перед символом #, если он следует первым в строке и т.д.
-" (подробнее help 'smartindent').
-set smartindent
+set smartindent " Умные отступы
 
 "set nowrap " Отключаем перенос строк
 
@@ -128,84 +131,20 @@ set number " Включаем нумерацию строк
 
 set numberwidth=4 " Ширина строки
 
-set cursorline " Подсветка текущей позиции курсора по горизонтали
-
-"set cursorcolumn " Подсветка текущей позиции курсора по вертикали
-
 set ruler " Показывать положение курсора всё время.
 
 set mouse=a " Поддержка мыши
-set mousemodel=popup
 
-set foldcolumn=2 " Ширина строки где располагается фолдинг
-set foldmethod=indent " Фолдинг по отступам
-set foldnestmax=10      " Глубина фолдинга 10 уровней
-set nofoldenable        " Не фолдить по умолчанию
-set foldlevel=1         " This is just what i use
+set mousemodel=popup
 
 set hidden " Не выгружать буфер, когда переключаемся на другой
 
 " set nobackup " Выключаем резервные файлы
+
 " set noswapfile " Выключаем своп файлы
+
 set backupdir=~/.vim/tmp/bac " Директория для backup файлов
+
 set directory=~/.vim/tmp/swp " Директория для swp файлов
 
-set showtabline=2 " Показывать строку вкладок всегда
-
-" Неотображаемые символы
-" Выключить - раскомментировать строку ниже
-"set list
-if has('multi_byte')
-    if version >= 700
-        set listchars=tab:»\ ,trail:·,eol:¶,extends:→,precedes:←,nbsp:×
-        "set listchars=tab:▸\ ,eol:¬ " Раскомментируйте и закомментируйте
-        "строку выше, что бы использовать символ табуляции как в textmate
-    else
-        set listchars=tab:»\ ,trail:·,eol:¶,extends:>,precedes:<,nbsp:_
-    endif
-endif
-
-" Символ, который будет показан перед перенесенной строкой
-if has("linebreak")
-      let &sbr = nr2char(8618).' '  " Show ↪ at the beginning of wrapped lines
-endif
-
-" ZenCoding
-let g:user_zen_expandabbr_key = '<c-e>'
-let g:use_zen_complete_tag = 1
-
-" По Ctrl+F открывается Command-T
-map <C-f> :CommandT<CR>
-
-" Настраиваем NerdTree
-let NERDTreeWinSize = 30 " Размер окна NERDTree
-let NERDTreeDirArrows=1 " Показываем стрелки в директориях
-let NERDTreeMinimalUI=1 " Минимальный интерфейс
-map <C-r> :NERDTreeToggle %:p:h<CR> 
-
-let g:html_indent_inctags = "html,body,head,tbody" 
-let g:html_indent_script1 = "inc"
-let g:html_indent_style1 = "inc"
-
-let g:tagbar_autofocus = 1 " Настройка Tagbar
-
-" Строка состояния
-if has('statusline')
-    set laststatus=2
-endif
-
-" Настройка Powerline
-let g:Powerline_symbols = 'unicode'
-let g:Powerline_cache_enabled = 0 " Выключаем кеш
-let g:Powerline_symbols_override = { 'LINE': [0x270F], }
-
-" Сохранить через sudo командой :w!!
-ca w!! w !sudo tee "%"
-
-let g:neocomplcache_enable_at_startup = 1 " Включить или выключить автозавершение кода
-
-" Включение и настройка syntastic
-let g:syntastic_enable_signs=1
-let g:syntastic_warning_symbol = nr2char(187) " Символ для ошибок Warning
-let g:syntastic_error_symbol = nr2char(187) " Символ для ошибок Error
-
+source ~/.vim/plugins.vim " Настройки плагинов

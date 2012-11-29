@@ -7,6 +7,8 @@
  " Bundles
  "
  Bundle 'altercation/vim-colors-solarized'
+ Bundle '29decibel/codeschool-vim-theme.git'
+ Bundle 'endel/vim-github-colorscheme.git'
  
  " Ruby
  Bundle 'tpope/vim-rvm'
@@ -48,7 +50,7 @@
  Bundle 'garbas/vim-snipmate'
  Bundle 'git://github.com/kana/vim-textobj-user.git'
  Bundle 'git://git.wincent.com/command-t.git'
- Bundle 'tpope/vim-fugitive' " For Git and powerline
+ Bundle 'tpope/vim-fugitive'
  
 
  filetype plugin indent on     " required!
