@@ -1,14 +1,22 @@
- if has('gui_macvim')
-    set guioptions=egmrt " Убираем все ненужное (toolbar, scrollbars etc.)
+if has('gui_running')
+    " set guioptions-=m " убираем меню
+    set guioptions-=T " убираем тулбар
+    set guioptions-=r " убираем полосы прокрутки справа
+    set guioptions-=L " убираем полосы прокрутки слева
+    set guioptions-=e " убираем вкладки GUI делаем их как в консоли
+    " set cursorline " Подсветка текущей позиции курсора по горизонтали
+    " set cursorcolumn " Подсветка текущей позиции курсора по вертикали
     set background=dark " Темный фон
     colors codeschool " Цветовая схема
+endif
+
+let mapleader = ","
+
+if has('gui_macvim')
     set guifont=Monaco:h12 " Шрифт по умолчанию
 elseif has('gui_gtk') || has('gui_gtk2')
     set guifont="Ubuntu Mono":h15 " Шрифт по умолчанию
 elseif has('gui_win32')
-elseif has('gui_running')
-    set cursorline " Подсветка текущей позиции курсора по горизонтали
-    "set cursorcolumn " Подсветка текущей позиции курсора по вертикали
 else
   set t_Co=256 " 256 цветов для консоли
 endif
@@ -16,7 +24,7 @@ endif
 if v:version >= 7
     "set relativenumber " Нумерование строк не относительно начала файла, а относительно текущего положения курсора
 
-    set undofile " Вечный undo
+    set undofile " Включаем вечный undo
     set undodir=~/.vim/tmp/undo/ " Куда записывать файлы для undo
 
     " set colorcolumn=80 " Отображает правую границу
@@ -69,17 +77,15 @@ endif
 
 filetype plugin indent on " Выключаем загрузку filetype и indent плагинов
 
-set noautochdir     " Выключаем автоматический переход в папку
-
 set ttimeoutlen=50  " Ускоряем работу Esc
 
 set showtabline=2 " Показывать строку вкладок всегда
 
 set laststatus=2 " Строка состояни
 
-set wildmenu " Автокомплит для комманд
+set wildmenu " Включаем wildmenu для вводимых команд
 
-set wildmode=list:longest
+set wildmode=list:longest " Настройка wildmenu
 
 syntax enable " Включаем подсветку синтаксиса
 
@@ -117,11 +123,11 @@ set smartindent " Умные отступы
 
 set wrap " Включаем перенос строк
 
-set visualbell t_vb= " Выключаем надоедливый "звонок"
+set visualbell t_vb= " Выключаем надоедливый звонок
 
-set encoding=utf8 " Кодировка
+set encoding=utf8 " Кодировка по умолчанию
 
-set termencoding=utf-8 " Кодировка текста по умолчанию
+set termencoding=utf-8 " Кодировка терминала
 
 set fileencodings=utf8,cp1251 " Возможные кодировки файлов и последовательность определения
 
@@ -132,6 +138,8 @@ set number " Включаем нумерацию строк
 set numberwidth=4 " Ширина строки
 
 set ruler " Показывать положение курсора всё время.
+
+" set scrolloff=3 " Отступ от прокрутки
 
 set mouse=a " Поддержка мыши
 
@@ -146,5 +154,7 @@ set hidden " Не выгружать буфер, когда переключае
 set backupdir=~/.vim/tmp/bac " Директория для backup файлов
 
 set directory=~/.vim/tmp/swp " Директория для swp файлов
+
+set noautochdir " Выключаем автоматический переход в папку
 
 source ~/.vim/plugins.vim " Настройки плагинов
