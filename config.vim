@@ -3,17 +3,16 @@ if has('gui_running')
     set guioptions-=T " убираем тулбар
     set guioptions-=r " убираем полосы прокрутки справа
     set guioptions-=L " убираем полосы прокрутки слева
-    set guioptions-=e " убираем вкладки GUI делаем их как в консоли
+    " set guioptions-=e " убираем вкладки GUI делаем их как в консоли
     " set cursorline " Подсветка текущей позиции курсора по горизонтали
     " set cursorcolumn " Подсветка текущей позиции курсора по вертикали
-    set background=dark " Темный фон
+    set background=light " Темный фон
     colors codeschool " Цветовая схема
 endif
 
-let mapleader = ","
-
 if has('gui_macvim')
-    set guifont=Monaco:h12 " Шрифт по умолчанию
+    " set guifont=Monaco:h12 " Шрифт по умолчанию
+    set guifont=Menlo:h12 " Шрифт по умолчанию
 elseif has('gui_gtk') || has('gui_gtk2')
     set guifont="Ubuntu Mono":h15 " Шрифт по умолчанию
 elseif has('gui_win32')
@@ -77,9 +76,11 @@ endif
 
 filetype plugin indent on " Выключаем загрузку filetype и indent плагинов
 
+let mapleader = "," " основная клавиатурная комбинация
+
 set ttimeoutlen=50  " Ускоряем работу Esc
 
-set showtabline=2 " Показывать строку вкладок всегда
+" set showtabline=2 " Показывать строку вкладок всегда
 
 set laststatus=2 " Строка состояни
 
@@ -156,5 +157,7 @@ set backupdir=~/.vim/tmp/bac " Директория для backup файлов
 set directory=~/.vim/tmp/swp " Директория для swp файлов
 
 set noautochdir " Выключаем автоматический переход в папку
+
+set wildignore+=*.o,*.pyc,*.jpg,*.png,*.gif,*.db,*.obj,.git " Игнорируемые файлы
 
 source ~/.vim/plugins.vim " Настройки плагинов

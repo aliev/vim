@@ -8,15 +8,14 @@
  "
  Bundle 'altercation/vim-colors-solarized'
  Bundle '29decibel/codeschool-vim-theme.git'
- Bundle 'endel/vim-github-colorscheme.git'
  
  " Ruby
  Bundle 'tpope/vim-rvm'
  Bundle 'tpope/vim-endwise'
  Bundle 'tpope/vim-rails.git'
  Bundle 'nelstrom/vim-textobj-rubyblock'
- 
- " All Languages
+
+ " Objective-C
  Bundle 'b4winckler/vim-objc'
 
  " HTML/CSS
@@ -26,6 +25,7 @@
 
  " Python
  Bundle 'lambdalisue/vim-django-support'
+ Bundle 'webframp/pysmell.vim.git'
 
  " JavaScript
  Bundle 'pangloss/vim-javascript'
@@ -41,16 +41,18 @@
  Bundle 'scrooloose/syntastic'
  Bundle 'vim-scripts/matchit.zip'
  Bundle 'nathanaelkane/vim-indent-guides'
- Bundle "MarcWeber/vim-addon-mw-utils"
- Bundle "tomtom/tlib_vim"
+ Bundle 'MarcWeber/vim-addon-mw-utils'
+ Bundle 'tomtom/tlib_vim'
  Bundle 'tpope/vim-surround'
  Bundle 'tomtom/tcomment_vim'
  Bundle 'mattn/gist-vim'
- Bundle "honza/snipmate-snippets"
+ Bundle 'honza/snipmate-snippets'
  Bundle 'garbas/vim-snipmate'
  Bundle 'git://github.com/kana/vim-textobj-user.git'
  Bundle 'git://git.wincent.com/command-t.git'
  Bundle 'tpope/vim-fugitive'
+ Bundle 'shemerey/vim-peepopen.git'
+ Bundle 'vim-scripts/AutoClose.git'
  
 
  filetype plugin indent on     " required!
