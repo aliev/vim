@@ -7,7 +7,7 @@ Bundle 'gmarik/vundle'
 
 " Bundles
 "
-Bundle 'flazz/vim-colorschemes' 
+Bundle 'vim-scripts/Colour-Sampler-Pack.git'
 " Ruby
 Bundle 'tpope/vim-rvm'
 Bundle 'tpope/vim-endwise'
@@ -41,6 +41,7 @@ Bundle 'git://github.com/kana/vim-textobj-user.git'
 Bundle 'git://git.wincent.com/command-t.git'
 Bundle 'tpope/vim-fugitive'
 Bundle 'shemerey/vim-peepopen'
+Bundle 'vim-scripts/sudo.vim.git'
 
 filetype plugin indent on     " required!
 
@@ -59,29 +60,29 @@ if has('gui_running') " Глобальные настройки на GUI Vim
     set background=light " Цвет фона темный или светлый
     set guioptions-=R
     set guioptions-=l
-    colors badwolf " Цветовая схема по умолчанию
-
-    highlight SpellBad term=underline gui=undercurl guisp=Orange
-
-    " Different cursors for different modes.
-    set guicursor=n-c:block-Cursor-blinkon0
-    set guicursor+=v:block-vCursor-blinkon0
-    set guicursor+=i-ci:ver20-iCursor
+    set background=light
+    colors solarized " Цветовая схема по умолчанию
+    " Настройки для Powerline
+    let g:Powerline_symbols = 'fancy'
 endif
 
 if has('gui_macvim') " Для GUI Macvim
     " set guifont=Monaco:h12 " Шрифт по умолчанию
-    set guifont=Menlo:h12 " Шрифт по умолчанию
+    set guifont=Menlo\ Regular\ for\ Powerline:h12 " Шрифт по умолчанию
+    set fuoptions=maxvert,maxhorz
+    " Save on losing focus
+    autocmd FocusLost * :wa
 elseif has('gui_gtk') || has('gui_gtk2') " Для GUI Linux
     set guifont="Ubuntu Mono":h15 " Шрифт по умолчанию
 elseif has('gui_win32') " Для GUI Windows
 else " Для консолбного вима
   set t_Co=256 " 256 цветов для консоли
+    let g:Powerline_symbols = 'unicode'
 endif
 
 if v:version >= 7 " Если у нас версия VIM 7.3
-    set undofile " Включаем вечный undo
-    set undodir=/tmp/undo/ " Куда записывать файлы для undo
+    " set undofile " Включаем вечный undo
+    " set undodir=/tmp/undo/ " Куда записывать файлы для undo
     
     " set relativenumber " Нумерование строк не относительно начала файла, а относительно текущего положения курсора
     
@@ -99,11 +100,11 @@ if has("autocmd")
     au FileType python set shiftwidth=4
 endif
 
-"set list " Неотображаемые символы
+" set list " Включить неотображаемые символы
 if has('multi_byte')
     if version >= 700
-        set listchars=tab:»\ ,trail:·,eol:¶,extends:→,precedes:←,nbsp:×
-        "set listchars=tab:▸\ ,eol:¬ " Раскомментируйте и закомментируйте
+        " set listchars=tab:»\ ,trail:·,eol:¶,extends:→,precedes:←,nbsp:×
+        set listchars=tab:▸\ ,eol:¬ " Раскомментируйте и закомментируйте
         "строку выше, что бы использовать символ табуляции как в textmate
     else
         set listchars=tab:»\ ,trail:·,eol:¶,extends:>,precedes:<,nbsp:_
@@ -142,6 +143,12 @@ set incsearch " Поиск по набору текста
 
 set hlsearch " Подсветка поиска
 
+set magic " Set magic on, for regular expressions
+
+set ignorecase " Searches are Non Case-sensitive
+
+set smartcase
+
 set showmatch " Подсветка парных скобок
 
 set showcmd " Show incomplete cmds down the bottom
@@ -170,7 +177,7 @@ set smartindent " Умные отступы
 
 set wrap " Включаем перенос строк
 
-set visualbell t_vb= " Выключаем надоедливый звонок
+set noerrorbells visualbell t_vb= " Выключаем надоедливый звонок
 
 set encoding=utf8 " Кодировка по умолчанию
 
@@ -194,13 +201,13 @@ set mousemodel=popup
 
 set hidden " Не выгружать буфер, когда переключаемся на другой
 
-" set nobackup " Выключаем резервные файлы
+set nobackup " Выключаем резервные файлы
 
-" set noswapfile " Выключаем своп файлы
+set noswapfile " Выключаем своп файлы
 
-set backupdir=/tmp/bac " Директория для backup файлов
-
-set directory=/tmp/swp " Директория для swp файлов
+" set backupdir=/tmp/bac " Директория для backup файлов
+" 
+" set directory=/tmp/swp " Директория для swp файлов
 
 set noautochdir " Выключаем автоматический переход в папку
 
@@ -213,6 +220,10 @@ set wildignore+=*.o,*.pyc,*.jpg,*.png,*.gif,*.db,*.obj,.git " Список иг�
 set clipboard+=unnamed " Глобальный буфер обмена (теперь копипаст работает между системой в вимом)
 
 set ttyfast
+
+set path=.,,**
+
+let loaded_matchparen=1 " не подсвечивать парные скобки
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 "                                                "
@@ -238,18 +249,21 @@ let CommandTMaxHeight=30 " Количество отображаемых фай�
 let NERDTreeWinSize = 30 " Размер окна NERDTree
 let NERDTreeDirArrows=1 " Показываем стрелки в директориях
 let NERDTreeMinimalUI=1 " Минимальный интерфейс
-let NERDTreeChDirMode=1
-let NERDTreeHijackNetrw = 0
+let NERDTreeChDirMode=2
+let NERDTreeHijackNetrw=0
 let NERDTreeIgnore = ['\.png$','\.pyc$', '\.db$', '\.git$', '*.\.o$', '.*\.out$', '.*\.so$', '.*\.a$', '.*\~$'] " Список игнорируемых файлов в NERDTree
 
 " Отображаем NERDTree
-map <leader>n :NERDTreeToggle<CR> 
+map <leader>n :call ToggleNERDTreeAndTagbar()<CR> 
 
 let g:tagbar_autofocus = 1 " Настройка Tagbar
+let tagbar_singleclick = 1
+let g:tagbar_sort = 0
 
-" Настройки для Powerline
-let g:Powerline_symbols = 'unicode'
-let g:Powerline_cache_enabled = 0
+" Session options
+let g:session_autoload = 1
+let g:session_autosave = 1
+
 
 let g:neocomplcache_enable_at_startup = 0 " Включить или выключить автозавершение кода
 
@@ -260,3 +274,49 @@ let g:syntastic_enable_signs=0
 let g:html_indent_inctags = "html,body,head,tbody"
 let g:html_indent_script1 = "inc"
 let g:html_indent_style1 = "inc"
+
+let g:Powerline_cache_enabled = 0 " Отключаем кеш в Powerline
+
+" Command-/ to toggle comments
+map <D-/> :TComment<CR>j
+
+" Remember last location in file
+if has("autocmd")
+  au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
+    \| exe "normal g'\"" | endif
+endif
+
+" Open NerdTree and Tagbar
+function! ToggleNERDTreeAndTagbar()
+  let w:jumpbacktohere = 1
+
+  " Detect which plugins are open
+  if exists('t:NERDTreeBufName')
+      let nerdtree_open = bufwinnr(t:NERDTreeBufName) != -1
+  else
+      let nerdtree_open = 0
+  endif
+  let tagbar_open = bufwinnr('__Tagbar__') != -1
+
+  " Perform the appropriate action
+  if nerdtree_open && tagbar_open
+      NERDTreeClose
+      TagbarClose
+  elseif nerdtree_open
+      TagbarOpen
+  elseif tagbar_open
+      NERDTree
+  else
+      NERDTree
+      TagbarOpen
+  endif
+
+  " Jump back to the original window
+  for window in range(1, winnr('$'))
+    execute window . 'wincmd w'
+    if exists('w:jumpbacktohere')
+      unlet w:jumpbacktohere
+      break
+    endif
+  endfor
+endfunction
