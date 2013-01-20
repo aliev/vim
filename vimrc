@@ -1,4 +1,3 @@
-"{ Расширения }
 set nocompatible               " be iMproved
 filetype off                   " required!
 set rtp+=~/.vim/bundle/vundle/
@@ -7,7 +6,9 @@ Bundle 'gmarik/vundle'
 
 " Bundles
 "
-Bundle 'vim-scripts/Colour-Sampler-Pack.git'
+Bundle 'flazz/vim-colorschemes.git'
+Bundle "daylerees/colour-schemes", { "rtp": "vim-themes/" }
+
 " Ruby
 Bundle 'tpope/vim-rvm'
 Bundle 'tpope/vim-endwise'
@@ -42,6 +43,7 @@ Bundle 'git://git.wincent.com/command-t.git'
 Bundle 'tpope/vim-fugitive'
 Bundle 'shemerey/vim-peepopen'
 Bundle 'vim-scripts/sudo.vim.git'
+Bundle 'Headlights' " Меню бандлов
 
 filetype plugin indent on     " required!
 
@@ -61,9 +63,7 @@ if has('gui_running') " Глобальные настройки на GUI Vim
     set guioptions-=R
     set guioptions-=l
     set background=light
-    colors solarized " Цветовая схема по умолчанию
-    " Настройки для Powerline
-    let g:Powerline_symbols = 'fancy'
+    colors Carbonight " Цветовая схема по умолчанию
 endif
 
 if has('gui_macvim') " Для GUI Macvim
@@ -76,8 +76,7 @@ elseif has('gui_gtk') || has('gui_gtk2') " Для GUI Linux
     set guifont="Ubuntu Mono":h15 " Шрифт по умолчанию
 elseif has('gui_win32') " Для GUI Windows
 else " Для консолбного вима
-  set t_Co=256 " 256 цветов для консоли
-    let g:Powerline_symbols = 'unicode'
+    set t_Co=256 " 256 цветов для консоли
 endif
 
 if v:version >= 7 " Если у нас версия VIM 7.3
@@ -118,6 +117,7 @@ endif
 filetype plugin indent on " Выключаем загрузку filetype и indent плагинов
 
 let mapleader = "," " основная клавиатурная комбинация
+let g:maplocalleader = '_'
 
 set ttimeoutlen=50  " Ускоряем работу Esc
 
@@ -223,7 +223,13 @@ set ttyfast
 
 set path=.,,**
 
-let loaded_matchparen=1 " не подсвечивать парные скобки
+" Настраиваем переключение раскладок клавиатуры по <C-^>
+set keymap=russian-jcukenwin
+
+" Раскладка по умолчанию - английская
+set iminsert=0
+
+" let loaded_matchparen=1 " не подсвечивать парные скобки
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 "                                                "
@@ -231,7 +237,7 @@ let loaded_matchparen=1 " не подсвечивать парные скобк�
 "                                                "
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
-" Use :W! to write to a file using sudo if you forgot to 'sudo vim file'
+" :W! сохраняет файл под рутом
 ca W! %!sudo tee > /dev/null % 
 
 " ZenCoding
@@ -264,7 +270,6 @@ let g:tagbar_sort = 0
 let g:session_autoload = 1
 let g:session_autosave = 1
 
-
 let g:neocomplcache_enable_at_startup = 0 " Включить или выключить автозавершение кода
 
 " Включение и настройка syntastic
@@ -275,48 +280,47 @@ let g:html_indent_inctags = "html,body,head,tbody"
 let g:html_indent_script1 = "inc"
 let g:html_indent_style1 = "inc"
 
+" Настройки для Powerline
+let g:Powerline_symbols = 'fancy'
 let g:Powerline_cache_enabled = 0 " Отключаем кеш в Powerline
 
-" Command-/ to toggle comments
-map <D-/> :TComment<CR>j
-
-" Remember last location in file
+" Запоминаем последнее расположение курсора в файле
 if has("autocmd")
   au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
     \| exe "normal g'\"" | endif
 endif
 
-" Open NerdTree and Tagbar
+" Функция открытия nerdtree и tagbar
 function! ToggleNERDTreeAndTagbar()
-  let w:jumpbacktohere = 1
+    let w:jumpbacktohere = 1
 
-  " Detect which plugins are open
-  if exists('t:NERDTreeBufName')
-      let nerdtree_open = bufwinnr(t:NERDTreeBufName) != -1
-  else
-      let nerdtree_open = 0
-  endif
-  let tagbar_open = bufwinnr('__Tagbar__') != -1
-
-  " Perform the appropriate action
-  if nerdtree_open && tagbar_open
-      NERDTreeClose
-      TagbarClose
-  elseif nerdtree_open
-      TagbarOpen
-  elseif tagbar_open
-      NERDTree
-  else
-      NERDTree
-      TagbarOpen
-  endif
-
-  " Jump back to the original window
-  for window in range(1, winnr('$'))
-    execute window . 'wincmd w'
-    if exists('w:jumpbacktohere')
-      unlet w:jumpbacktohere
-      break
+    " Detect which plugins are open
+    if exists('t:NERDTreeBufName')
+        let nerdtree_open = bufwinnr(t:NERDTreeBufName) != -1
+    else
+        let nerdtree_open = 0
     endif
-  endfor
+    let tagbar_open = bufwinnr('__Tagbar__') != -1
+
+    " Perform the appropriate action
+    if nerdtree_open && tagbar_open
+        NERDTreeClose
+        TagbarClose
+    elseif nerdtree_open
+        TagbarOpen
+    elseif tagbar_open
+        NERDTree
+    else
+        NERDTree
+        TagbarOpen
+    endif
+
+    " Jump back to the original window
+    for window in range(1, winnr('$'))
+        execute window . 'wincmd w'
+        if exists('w:jumpbacktohere')
+            unlet w:jumpbacktohere
+            break
+        endif
+    endfor
 endfunction
