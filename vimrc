@@ -52,6 +52,8 @@ filetype plugin indent on     " required!
 "                       "
 """""""""""""""""""""""""
 
+function
+
 if has('gui_running') " Глобальные настройки на GUI Vim
     set guioptions-=m " убираем меню
     " set guioptions-=e " убираем вкладки GUI делаем их как в консоли
@@ -69,8 +71,6 @@ if has('gui_macvim') " Для GUI Macvim
     " set guifont=Monaco:h12 " Шрифт по умолчанию
     set guifont=Menlo\ Regular\ for\ Powerline:h12 " Шрифт по умолчанию
     set fuoptions=maxvert,maxhorz
-    " Save on losing focus
-    autocmd FocusLost * :wa
 elseif has('gui_gtk') || has('gui_gtk2') " Для GUI Linux
     set guifont="Ubuntu Mono":h15 " Шрифт по умолчанию
 elseif has('gui_win32') " Для GUI Windows
@@ -263,7 +263,7 @@ let g:tagbar_sort = 0
 let g:session_autoload = 1
 let g:session_autosave = 1
 
-let g:neocomplcache_enable_at_startup = 0 " Включить или выключить автозавершение кода
+let g:neocomplcache_enable_at_startup = 1 " Включить или выключить автозавершение кода
 
 " Включение и настройка syntastic
 let g:syntastic_enable_signs=0
