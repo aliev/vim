@@ -52,7 +52,7 @@ filetype plugin indent on     " required!
 "                       "
 """""""""""""""""""""""""
 
-function
+
 
 if has('gui_running') " Глобальные настройки на GUI Vim
     set guioptions-=m " убираем меню
