@@ -29,7 +29,7 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'majutsushi/tagbar'
 Bundle 'Shougo/neocomplcache'
-Bundle 'Shougo/neocomplcache-snippets-complete'
+Bundle 'Shougo/neosnippet.git'
 Bundle 'scrooloose/syntastic'
 Bundle 'vim-scripts/matchit.zip'
 Bundle 'MarcWeber/vim-addon-mw-utils'
@@ -43,7 +43,6 @@ Bundle 'git://git.wincent.com/command-t.git'
 Bundle 'tpope/vim-fugitive'
 Bundle 'shemerey/vim-peepopen'
 Bundle 'vim-scripts/sudo.vim.git'
-Bundle 'Headlights' " Меню бандлов
 
 filetype plugin indent on     " required!
 
@@ -63,7 +62,7 @@ if has('gui_running') " Глобальные настройки на GUI Vim
     set guioptions-=R
     set guioptions-=l
     set background=light
-    colors Carbonight " Цветовая схема по умолчанию
+    colors Stark " Цветовая схема по умолчанию
 endif
 
 if has('gui_macvim') " Для GUI Macvim
@@ -222,12 +221,6 @@ set clipboard+=unnamed " Глобальный буфер обмена (тепе�
 set ttyfast
 
 set path=.,,**
-
-" Настраиваем переключение раскладок клавиатуры по <C-^>
-set keymap=russian-jcukenwin
-
-" Раскладка по умолчанию - английская
-set iminsert=0
 
 " let loaded_matchparen=1 " не подсвечивать парные скобки
 
