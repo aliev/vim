@@ -6,27 +6,10 @@ Bundle 'gmarik/vundle'
 
 " Bundles
 "
-Bundle 'flazz/vim-colorschemes.git'
-Bundle "daylerees/colour-schemes", { "rtp": "vim-themes/" }
-
-" Ruby
-Bundle 'tpope/vim-rvm'
-Bundle 'tpope/vim-endwise'
-Bundle 'tpope/vim-rails.git'
-Bundle 'nelstrom/vim-textobj-rubyblock'
-
-" HTML/CSS
-Bundle 'vim-scripts/HTML-AutoCloseTag'
 Bundle 'mattn/zencoding-vim'
 Bundle 'gregsexton/MatchTag'
-
-" JavaScript
-Bundle 'pangloss/vim-javascript'
-Bundle 'kchmck/vim-coffee-script'
-
-" Tools
 Bundle 'scrooloose/nerdtree'
-Bundle 'Lokaltog/vim-powerline'
+Bundle 'Lokaltog/powerline'
 Bundle 'majutsushi/tagbar'
 Bundle 'Shougo/neocomplcache'
 Bundle 'Shougo/neosnippet.git'
@@ -36,13 +19,11 @@ Bundle 'MarcWeber/vim-addon-mw-utils'
 Bundle 'tomtom/tlib_vim'
 Bundle 'tpope/vim-surround'
 Bundle 'tomtom/tcomment_vim'
-Bundle 'honza/snipmate-snippets'
 Bundle 'garbas/vim-snipmate'
 Bundle 'git://github.com/kana/vim-textobj-user.git'
 Bundle 'git://git.wincent.com/command-t.git'
 Bundle 'tpope/vim-fugitive'
 Bundle 'shemerey/vim-peepopen'
-Bundle 'vim-scripts/sudo.vim.git'
 
 filetype plugin indent on     " required!
 
@@ -51,8 +32,6 @@ filetype plugin indent on     " required!
 " Базовые настройки     "
 "                       "
 """""""""""""""""""""""""
-
-
 
 if has('gui_running') " Глобальные настройки на GUI Vim
     set guioptions-=m " убираем меню
@@ -63,14 +42,15 @@ if has('gui_running') " Глобальные настройки на GUI Vim
     set background=light " Цвет фона темный или светлый
     set guioptions-=R
     set guioptions-=l
-    set background=light
-    colors Stark " Цветовая схема по умолчанию
 endif
 
 if has('gui_macvim') " Для GUI Macvim
     " set guifont=Monaco:h12 " Шрифт по умолчанию
     set guifont=Menlo\ Regular\ for\ Powerline:h12 " Шрифт по умолчанию
     set fuoptions=maxvert,maxhorz
+    set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
+    set background=dark
+    colors badwolf
 elseif has('gui_gtk') || has('gui_gtk2') " Для GUI Linux
     set guifont="Ubuntu Mono":h15 " Шрифт по умолчанию
 elseif has('gui_win32') " Для GUI Windows
@@ -263,7 +243,7 @@ let g:tagbar_sort = 0
 let g:session_autoload = 1
 let g:session_autosave = 1
 
-let g:neocomplcache_enable_at_startup = 1 " Включить или выключить автозавершение кода
+let g:neocomplcache_enable_at_startup = 0 " Включить или выключить автозавершение кода
 
 " Включение и настройка syntastic
 let g:syntastic_enable_signs=0
@@ -272,10 +252,6 @@ let g:syntastic_enable_signs=0
 let g:html_indent_inctags = "html,body,head,tbody"
 let g:html_indent_script1 = "inc"
 let g:html_indent_style1 = "inc"
-
-" Настройки для Powerline
-let g:Powerline_symbols = 'fancy'
-let g:Powerline_cache_enabled = 0 " Отключаем кеш в Powerline
 
 " Запоминаем последнее расположение курсора в файле
 if has("autocmd")
@@ -317,3 +293,45 @@ function! ToggleNERDTreeAndTagbar()
         endif
     endfor
 endfunction
+
+set fillchars=stl:\ ,stlnc:\ ,vert:│
+
+
+
+
+
+
+
+
+if exists('s:loaded')
+	finish
+endif
+let s:loaded = 1
+
+if !exists('g:rmvim_cmd')
+	let g:rmvim_cmd = 'mvim'
+endif
+
+if !exists('g:rmvim_verbose')
+	let g:rmvim_verbose = 0
+endif
+
+let s:scriptpath = expand('<sfile>:p:h')
+
+fu! RmvimListenerStart()
+	if has("gui_running")
+		let verbosestr = ''
+		if g:rmvim_verbose == 1
+			let verbosestr = '-v'
+		endif
+		let cmd = '!'.s:scriptpath.'/Users/alialiev/rmvim_listener '.verbosestr.' -c '.g:rmvim_cmd.'&'
+		exec cmd
+	endif
+endfu
+
+com! -nargs=0 RmvimListenerStart :call RmvimListenerStart()
+
+" Autorun at startup
+redir! > /tmp/foobar
+silent RmvimListenerStart
+redir END
