@@ -19,17 +19,18 @@ rake make
 | Key        | Value
 | ---------- |:---------------------------------------------------------------
 | ,          | default leader key
+| C + _      | comment selected lines
 | leader + n | open (close) NERDTree
 | leader + l | enable (disable) displaying whitespace
 | leader + f | open Command-T files
 | leader + b | open Command-T buffers
 | leader + e | zen coding
 | :W         | save file as root
-| Ctrl+space | Rope autocomplete
+| C + space  | Rope autocomplete
 | K          | show python docs
-| Ctrl+c+g   | Rope goto definition
-| Ctrl+c+d   | Rope show documentation
-| Ctrl+c+f   | Rope find occurrences
+| C + c + g  | Rope goto definition
+| C + c + d  | Rope show documentation
+| C + c + f  | Rope find occurrences
 | Leader + b | Set (unset) breakpoint
 | [[         | Jump on previous class or function (normal, visual, operator modes)
 | ]]         | Jump on next class or function (normal, visual, operator modes)
