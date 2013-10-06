@@ -5,13 +5,14 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 Bundle 'altercation/vim-colors-solarized'
-Bundle 'mattn/zencoding-vim'
+Bundle 'mattn/emmet-vim'
 Bundle 'scrooloose/nerdtree'
 Bundle 'Lokaltog/powerline'
 Bundle 'vim-scripts/matchit.zip'
 Bundle 'tomtom/tcomment_vim'
 Bundle 'wincent/Command-T'
 Bundle 'tpope/vim-fugitive'
+Bundle 'gregsexton/MatchTag'
 
 
 " Python bundles
@@ -196,11 +197,6 @@ set path=.,,**
 " :W! сохраняет файл под рутом
 ca W! %!sudo tee > /dev/null % 
 
-" ZenCoding
-let g:use_zen_complete_tag = 1
-
-let g:user_zen_expandabbr_key = '<leader>e' " по <leader> e будет работать zen coding
-
 " По <leader>f открывается Command-T
 map <leader>f :CommandT<CR>
 
@@ -282,5 +278,4 @@ let g:pymode_syntax_space_errors = g:pymode_syntax_all
 
 " Don't autofold code
 let g:pymode_folding = 0
-
 
