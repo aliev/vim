@@ -4,34 +4,22 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 Bundle 'gmarik/vundle'
 
-" Bundles
-"
+Bundle 'altercation/vim-colors-solarized'
 Bundle 'mattn/zencoding-vim'
-Bundle 'gregsexton/MatchTag'
 Bundle 'scrooloose/nerdtree'
 Bundle 'Lokaltog/powerline'
-Bundle 'majutsushi/tagbar'
-Bundle 'Shougo/neocomplcache'
-Bundle 'Shougo/neosnippet.git'
-Bundle 'scrooloose/syntastic'
 Bundle 'vim-scripts/matchit.zip'
-Bundle 'MarcWeber/vim-addon-mw-utils'
-Bundle 'tomtom/tlib_vim'
-Bundle 'tpope/vim-surround'
 Bundle 'tomtom/tcomment_vim'
-Bundle 'garbas/vim-snipmate'
-Bundle 'git://github.com/kana/vim-textobj-user.git'
-Bundle 'git://git.wincent.com/command-t.git'
+Bundle 'wincent/Command-T'
 Bundle 'tpope/vim-fugitive'
-Bundle 'shemerey/vim-peepopen'
+
+
+" Python bundles
+Bundle 'davidhalter/jedi-vim'
+Bundle 'klen/python-mode'
+
 
 filetype plugin indent on     " required!
-
-"""""""""""""""""""""""""
-"                       "
-" Базовые настройки     "
-"                       "
-"""""""""""""""""""""""""
 
 if has('gui_running') " Глобальные настройки на GUI Vim
     set guioptions-=m " убираем меню
@@ -50,7 +38,7 @@ if has('gui_macvim') " Для GUI Macvim
     set fuoptions=maxvert,maxhorz
     set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
     set background=dark
-    colors badwolf
+    colors solarized
 elseif has('gui_gtk') || has('gui_gtk2') " Для GUI Linux
     set guifont="Ubuntu Mono":h15 " Шрифт по умолчанию
 elseif has('gui_win32') " Для GUI Windows
@@ -61,13 +49,13 @@ endif
 if v:version >= 7 " Если у нас версия VIM 7.3
     " set undofile " Включаем вечный undo
     " set undodir=/tmp/undo/ " Куда записывать файлы для undo
-    
+
     " set relativenumber " Нумерование строк не относительно начала файла, а относительно текущего положения курсора
-    
+
     set cursorline " Подсветка текущей позиции курсора по горизонтали
-    
+
     " set cursorcolumn " Подсветка текущей позиции курсора по вертикали
-    
+
     " set colorcolumn=80 " Отображает правую границу
 end
 
@@ -88,6 +76,7 @@ if has('multi_byte')
         set listchars=tab:»\ ,trail:·,eol:¶,extends:>,precedes:<,nbsp:_
     endif
 endif
+
 
 if has("linebreak")
       let &sbr = nr2char(8618).' '  " Символ который будет показан перед перенесенной строкой
@@ -204,46 +193,51 @@ set path=.,,**
 
 " let loaded_matchparen=1 " не подсвечивать парные скобки
 
-""""""""""""""""""""""""""""""""""""""""""""""""""
-"                                                "
-" Настройки для плагинов и комбинации клавиатуры "
-"                                                "
-""""""""""""""""""""""""""""""""""""""""""""""""""
-
 " :W! сохраняет файл под рутом
 ca W! %!sudo tee > /dev/null % 
 
 " ZenCoding
 let g:use_zen_complete_tag = 1
-let g:user_zen_expandabbr_key = '<leader>e' " по leader e будет работать zen coding
+
+let g:user_zen_expandabbr_key = '<leader>e' " по <leader> e будет работать zen coding
 
 " По <leader>f открывается Command-T
 map <leader>f :CommandT<CR>
+
 " Переключение буферов по <leader>b
 map <leader>b :CommandTBuffer<CR>
+
 let g:CommandTNeverShowDotFiles=1 " Не показывать файлы которые начинаются с точки
+
 let CommandTMaxHeight=30 " Количество отображаемых файлов в списке Command-T
+
+" Используем <leader>l для включения неотображаемых символов
+nmap <leader>l :set list!<CR>
 
 " Настраиваем NerdTree
 let NERDTreeWinSize = 30 " Размер окна NERDTree
+
 let NERDTreeDirArrows=1 " Показываем стрелки в директориях
+
 let NERDTreeMinimalUI=1 " Минимальный интерфейс
+
 let NERDTreeChDirMode=2
+
 let NERDTreeHijackNetrw=0
+
 let NERDTreeIgnore = ['\.png$','\.pyc$', '\.db$', '\.git$', '*.\.o$', '.*\.out$', '.*\.so$', '.*\.a$', '.*\~$'] " Список игнорируемых файлов в NERDTree
 
 " Отображаем NERDTree
-map <leader>n :call ToggleNERDTreeAndTagbar()<CR> 
+map <leader>n :NERDTreeToggle<CR> 
 
-let g:tagbar_autofocus = 1 " Настройка Tagbar
+" Настройка Tagbar
+let g:tagbar_autofocus = 1
 let tagbar_singleclick = 1
 let g:tagbar_sort = 0
 
 " Session options
 let g:session_autoload = 1
 let g:session_autosave = 1
-
-let g:neocomplcache_enable_at_startup = 0 " Включить или выключить автозавершение кода
 
 " Включение и настройка syntastic
 let g:syntastic_enable_signs=0
@@ -259,79 +253,34 @@ if has("autocmd")
     \| exe "normal g'\"" | endif
 endif
 
-" Функция открытия nerdtree и tagbar
-function! ToggleNERDTreeAndTagbar()
-    let w:jumpbacktohere = 1
-
-    " Detect which plugins are open
-    if exists('t:NERDTreeBufName')
-        let nerdtree_open = bufwinnr(t:NERDTreeBufName) != -1
-    else
-        let nerdtree_open = 0
-    endif
-    let tagbar_open = bufwinnr('__Tagbar__') != -1
-
-    " Perform the appropriate action
-    if nerdtree_open && tagbar_open
-        NERDTreeClose
-        TagbarClose
-    elseif nerdtree_open
-        TagbarOpen
-    elseif tagbar_open
-        NERDTree
-    else
-        NERDTree
-        TagbarOpen
-    endif
-
-    " Jump back to the original window
-    for window in range(1, winnr('$'))
-        execute window . 'wincmd w'
-        if exists('w:jumpbacktohere')
-            unlet w:jumpbacktohere
-            break
-        endif
-    endfor
-endfunction
-
 set fillchars=stl:\ ,stlnc:\ ,vert:│
 
+let g:pymode_rope = 1
+
+" Documentation
+let g:pymode_doc = 1
+let g:pymode_doc_key = 'K'
+
+"Linting
+let g:pymode_lint = 1
+let g:pymode_lint_checker = "pyflakes,pep8"
+" Auto check on save
+let g:pymode_lint_write = 1
+
+" Support virtualenv
+let g:pymode_virtualenv = 1
+
+" Enable breakpoints plugin
+let g:pymode_breakpoint = 1
+let g:pymode_breakpoint_key = '<leader>b'
+
+" syntax highlighting
+let g:pymode_syntax = 1
+let g:pymode_syntax_all = 1
+let g:pymode_syntax_indent_errors = g:pymode_syntax_all
+let g:pymode_syntax_space_errors = g:pymode_syntax_all
+
+" Don't autofold code
+let g:pymode_folding = 0
 
 
-
-
-
-
-
-if exists('s:loaded')
-	finish
-endif
-let s:loaded = 1
-
-if !exists('g:rmvim_cmd')
-	let g:rmvim_cmd = 'mvim'
-endif
-
-if !exists('g:rmvim_verbose')
-	let g:rmvim_verbose = 0
-endif
-
-let s:scriptpath = expand('<sfile>:p:h')
-
-fu! RmvimListenerStart()
-	if has("gui_running")
-		let verbosestr = ''
-		if g:rmvim_verbose == 1
-			let verbosestr = '-v'
-		endif
-		let cmd = '!'.s:scriptpath.'/Users/alialiev/rmvim_listener '.verbosestr.' -c '.g:rmvim_cmd.'&'
-		exec cmd
-	endif
-endfu
-
-com! -nargs=0 RmvimListenerStart :call RmvimListenerStart()
-
-" Autorun at startup
-redir! > /tmp/foobar
-silent RmvimListenerStart
-redir END
