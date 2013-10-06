@@ -14,24 +14,24 @@ cd .vim/bundle/command-t
 rake make
 ```
 
-# Key bindings
+## Key bindings
 
 | Key        | Description
 | ---------- |:---------------------------------------------------------------
-| ,          | default leader key
-| :W         | save file as superuser
-| leader + n | open (close) NERDTree
-| leader + l | enable (disable) displaying whitespace
-| leader + f | open Command-T files
-| leader + b | open Command-T buffers
-| leader + e | zen coding
+| ,          | Default leader key
+| :W         | Save file as superuser
+| leader + n | Open (close) NERDTree
+| leader + l | Enable (disable) displaying whitespace
+| leader + f | Open Command-T files
+| leader + b | Open Command-T buffers
+| leader + e | Zen coding
 | Leader + b | Set (unset) breakpoint
-| K          | show python docs
+| K          | Show python docs
 | C + space  | Rope autocomplete
 | C + c + g  | Rope goto definition
 | C + c + d  | Rope show documentation
 | C + c + f  | Rope find occurrences
-| C + _      | comment selected lines
+| C + _      | Comment selected lines
 | [[         | Jump on previous class or function (normal, visual, operator modes)
 | ]]         | Jump on next class or function (normal, visual, operator modes)
 | [M         | Jump on previous class or method (normal, visual, operator modes)
