@@ -18,6 +18,7 @@ rake make
 
 | Key        | Value
 | ---------- |:---------------------------------------------------------------
+| ,          | default leader key
 | leader + n | open (close) NERDTree
 | leader + l | enable (disable) displaying whitespace
 | leader + f | open Command-T files
