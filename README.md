@@ -1,40 +1,36 @@
-## Описание
+## Description
 
-Минимальный файл конфигурации.
-Включено только то, что необходимо разработчику.
-Не затронуты стандартные кей-биндинги. Файл конфигурации делал по принципу KISS ;)
+Minimal VIM configuration file based on KISS principle
 
-## Расширения
-
-По необходимости каждое из расширений можно выключить в файле vimrc просто закомментировав соответствующую строчку.
-Установка расширений происходит через плагин vundle.
-
-## Как установить?
+## How to install?
 
 ```
 git clone https://github.com/aliev/.vim.git
 git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
-echo "source ~/.vim/vimrc" > .vimrc # Подключаем файл конфигурации
-vim +BundleInstall +qall # Ставим плагины из репозиторий
-# Необходимо для работы command-t
+echo "source ~/.vim/vimrc" > .vimrc
+vim +BundleInstall +qall # Install all plugins
+# for command-t plugin
 cd .vim/bundle/command-t
 rake make
 ```
 
-## Из того что сделано:
-1. Плагин Zen Coding
-2. Автозакрытие парных html тегов (плагин html_autoclosetag)
-3. Автоматическое закрытие парных блоков в Ruby (плагин endwise)
-4. Подстветка парных html и xml тегов
-5. NERDTree
-6. Цветовая схема Solarized (для моих глаз одна из самых расслабляющих и приятных цветовых схем)
-7. snipmate - сниппеты
-8. Отображение специальных символов (символ переноса строки, конец строки, табуляция и т.д.)
-9. Плагин Command-t
-10. tagbar
-11. Красивый статус бар (powerline)
-12. Сохранение положения курсора после повторного открытия файла
+# Key bindings
 
-## Чего хотелось бы?
-1. Автоматическая вставка ключевого слова import в python (как в PyDev)
-2. Подсветка парных блоков (if, end, begin, do) в ruby файлах
+| Key        | Value
+| ---------- |:---------------------------------------------------------------
+| leader + n | open (close) NERDTree
+| leader + l | enable (disable) displaying whitespace
+| leader + f | open Command-T files
+| leader + b | open Command-T buffers
+| leader + e | zen coding
+| :W         | save file as root
+| Ctrl+space | Rope autocomplete
+| K          | show python docs
+| Ctrl+c+g   | Rope goto definition
+| Ctrl+c+d   | Rope show documentation
+| Ctrl+c+f   | Rope find occurrences
+| Leader + b | Set (unset) breakpoint
+| [[         | Jump on previous class or function (normal, visual, operator modes)
+| ]]         | Jump on next class or function (normal, visual, operator modes)
+| [M         | Jump on previous class or method (normal, visual, operator modes)
+| ]M         | Jump on next class or method (normal, visual, operator modes)
