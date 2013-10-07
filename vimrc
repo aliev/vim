@@ -4,7 +4,7 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 Bundle 'gmarik/vundle'
 
-Bundle 'altercation/vim-colors-solarized'
+Bundle 'sjl/badwolf'
 Bundle 'mattn/emmet-vim'
 Bundle 'scrooloose/nerdtree'
 Bundle 'Lokaltog/powerline'
@@ -13,10 +13,6 @@ Bundle 'tomtom/tcomment_vim'
 Bundle 'wincent/Command-T'
 Bundle 'tpope/vim-fugitive'
 Bundle 'gregsexton/MatchTag'
-
-
-" Python bundles
-Bundle 'davidhalter/jedi-vim'
 Bundle 'klen/python-mode'
 
 
@@ -24,7 +20,7 @@ filetype plugin indent on     " required!
 
 if has('gui_running') " Глобальные настройки на GUI Vim
     set guioptions-=m " убираем меню
-    " set guioptions-=e " убираем вкладки GUI делаем их как в консоли
+    set guioptions-=e " убираем вкладки GUI делаем их как в консоли
     set guioptions-=T " убираем тулбар
     set guioptions-=r " убираем полосы прокрутки справа
     set guioptions-=L " убираем полосы прокрутки слева
@@ -39,7 +35,7 @@ if has('gui_macvim') " Для GUI Macvim
     set fuoptions=maxvert,maxhorz
     set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
     set background=dark
-    colors solarized
+    colors badwolf
 elseif has('gui_gtk') || has('gui_gtk2') " Для GUI Linux
     set guifont="Ubuntu Mono":h15 " Шрифт по умолчанию
 elseif has('gui_win32') " Для GUI Windows
