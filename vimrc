@@ -14,19 +14,21 @@ Bundle 'wincent/Command-T'
 Bundle 'tpope/vim-fugitive'
 Bundle 'gregsexton/MatchTag'
 Bundle 'klen/python-mode'
+Bundle 'Shougo/neocomplcache.vim'
 
 
 filetype plugin indent on     " required!
 
 if has('gui_running') " Глобальные настройки на GUI Vim
     set guioptions-=m " убираем меню
-    set guioptions-=e " убираем вкладки GUI делаем их как в консоли
+    " set guioptions-=e " убираем вкладки GUI делаем их как в консоли
     set guioptions-=T " убираем тулбар
     set guioptions-=r " убираем полосы прокрутки справа
     set guioptions-=L " убираем полосы прокрутки слева
     set background=light " Цвет фона темный или светлый
     set guioptions-=R
     set guioptions-=l
+    highlight SpellBad term=underline gui=undercurl guisp=Orange
 endif
 
 if has('gui_macvim') " Для GUI Macvim
@@ -66,9 +68,8 @@ endif
 " set list " Включить неотображаемые символы
 if has('multi_byte')
     if version >= 700
-        " set listchars=tab:»\ ,trail:·,eol:¶,extends:→,precedes:←,nbsp:×
-        set listchars=tab:▸\ ,eol:¬ " Раскомментируйте и закомментируйте
-        "строку выше, что бы использовать символ табуляции как в textmate
+        set listchars=tab:»\ ,trail:·,eol:¶,extends:→,precedes:←,nbsp:×
+        " set listchars=tab:▸\ ,eol:¬ " TextMake theme
     else
         set listchars=tab:»\ ,trail:·,eol:¶,extends:>,precedes:<,nbsp:_
     endif
@@ -84,7 +85,7 @@ filetype plugin indent on " Выключаем загрузку filetype и inde
 let mapleader = "," " основная клавиатурная комбинация
 let g:maplocalleader = '_'
 
-set ttimeoutlen=50  " Ускоряем работу Esc
+" set ttimeoutlen=-1  " Ускоряем работу Esc
 
 " set showtabline=2 " Показывать строку вкладок всегда
 
@@ -239,12 +240,6 @@ let g:html_indent_inctags = "html,body,head,tbody"
 let g:html_indent_script1 = "inc"
 let g:html_indent_style1 = "inc"
 
-" Запоминаем последнее расположение курсора в файле
-if has("autocmd")
-  au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
-    \| exe "normal g'\"" | endif
-endif
-
 set fillchars=stl:\ ,stlnc:\ ,vert:│
 
 let g:pymode_rope = 1
@@ -256,15 +251,11 @@ let g:pymode_doc_key = 'K'
 "Linting
 let g:pymode_lint = 1
 let g:pymode_lint_checker = "pyflakes,pep8"
-" Auto check on save
-let g:pymode_lint_write = 1
+let g:pymode_lint_onfly = 1
+let g:pymode_lint_cwindow = 0
 
 " Support virtualenv
 let g:pymode_virtualenv = 1
-
-" Enable breakpoints plugin
-let g:pymode_breakpoint = 1
-let g:pymode_breakpoint_key = '<leader>b'
 
 " syntax highlighting
 let g:pymode_syntax = 1
@@ -274,4 +265,3 @@ let g:pymode_syntax_space_errors = g:pymode_syntax_all
 
 " Don't autofold code
 let g:pymode_folding = 0
-
