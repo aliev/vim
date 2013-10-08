@@ -5,7 +5,9 @@ Minimal VIM configuration file based on KISS principle
 ## How to install?
 
 ```
-git clone https://github.com/aliev/.vim.git
+cd ~
+git clone https://github.com/aliev/vim.git
+mv ~/vim ~/.vim
 git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 echo "source ~/.vim/vimrc" > .vimrc
 vim +BundleInstall +qall # Install all plugins
