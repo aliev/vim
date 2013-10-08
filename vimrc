@@ -14,8 +14,6 @@ Bundle 'wincent/Command-T'
 Bundle 'tpope/vim-fugitive'
 Bundle 'gregsexton/MatchTag'
 Bundle 'klen/python-mode'
-Bundle 'Shougo/neocomplcache.vim'
-
 
 filetype plugin indent on     " required!
 
@@ -251,7 +249,6 @@ let g:pymode_doc_key = 'K'
 "Linting
 let g:pymode_lint = 1
 let g:pymode_lint_checker = "pyflakes,pep8"
-let g:pymode_lint_onfly = 1
 let g:pymode_lint_cwindow = 0
 
 " Support virtualenv
@@ -265,3 +262,10 @@ let g:pymode_syntax_space_errors = g:pymode_syntax_all
 
 " Don't autofold code
 let g:pymode_folding = 0
+
+" Load breakpoints plugin
+let g:pymode_breakpoint = 1
+
+" Key for set/unset breakpoint
+let g:pymode_breakpoint_key = '<leader>e'
+imap <leader>c <C-R>=RopeCodeAssistInsertMode()<CR>
