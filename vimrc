@@ -5,7 +5,7 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 Bundle 'sjl/badwolf'
-Bundle 'mattn/emmet-vim'
+
 Bundle 'scrooloose/nerdtree'
 Bundle 'Lokaltog/powerline'
 Bundle 'vim-scripts/matchit.zip'
@@ -13,7 +13,12 @@ Bundle 'tomtom/tcomment_vim'
 Bundle 'wincent/Command-T'
 Bundle 'tpope/vim-fugitive'
 Bundle 'gregsexton/MatchTag'
+
 Bundle 'klen/python-mode'
+
+Bundle 'mattn/emmet-vim'
+Bundle 'vim-scripts/vim-coffee-script'
+Bundle 'groenewege/vim-less'
 
 filetype plugin indent on     " required!
 
