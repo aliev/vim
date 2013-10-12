@@ -15,6 +15,8 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'gregsexton/MatchTag'
 
 Bundle 'klen/python-mode'
+Bundle 'tshirtman/vim-cython'
+Bundle 'davidhalter/jedi-vim'
 
 Bundle 'mattn/emmet-vim'
 Bundle 'vim-scripts/vim-coffee-script'
@@ -273,4 +275,9 @@ let g:pymode_breakpoint = 1
 
 " Key for set/unset breakpoint
 let g:pymode_breakpoint_key = '<leader>e'
-imap <leader>c <C-R>=RopeCodeAssistInsertMode()<CR>
+
+" Enable Jedi vim
+let g:jedi#auto_initialization = 1
+
+" Disable docstring window in Jedi
+autocmd FileType python setlocal completeopt-=preview
