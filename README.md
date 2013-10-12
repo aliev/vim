@@ -26,8 +26,9 @@ rake make
 | leader + l | Enable (disable) displaying whitespace
 | leader + f | Open Command-T files
 | leader + b | Open Command-T buffers
-| leader + e | Zen coding
-| Leader + b | Set (unset) breakpoint
+| leader + e | Breakpoint key
+| leader + b | Set (unset) breakpoint
+| leader + c | Open jedi vim complete pop-up
 | K          | Show python docs
 | C + space  | Rope autocomplete
 | C + c + g  | Rope goto definition
