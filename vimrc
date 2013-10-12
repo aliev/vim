@@ -194,10 +194,7 @@ set ttyfast
 
 set path=.,,**
 
-" let loaded_matchparen=1 " не подсвечивать парные скобки
-
-" :W! сохраняет файл под рутом
-ca W! %!sudo tee > /dev/null % 
+let loaded_matchparen=1 " Подсвечивать парные скобки
 
 " По <leader>f открывается Command-T
 map <leader>f :CommandT<CR>
@@ -253,9 +250,11 @@ let g:pymode_rope = 1
 let g:pymode_doc = 1
 let g:pymode_doc_key = 'K'
 
-"Linting
+" Linting
 let g:pymode_lint = 1
+" Linting mode
 let g:pymode_lint_checker = "pyflakes,pep8"
+" Disable errors window
 let g:pymode_lint_cwindow = 0
 
 " Support virtualenv
