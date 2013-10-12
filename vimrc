@@ -281,3 +281,6 @@ let g:jedi#auto_initialization = 1
 
 " Disable docstring window in Jedi
 autocmd FileType python setlocal completeopt-=preview
+
+" leader + c initialize jedi completion
+let g:jedi#completions_command="<leader>c"
