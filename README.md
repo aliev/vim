@@ -11,9 +11,6 @@ mv ~/vim ~/.vim
 git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 echo "source ~/.vim/vimrc" > .vimrc
 vim +BundleInstall +qall # Install all plugins
-# for command-t plugin
-cd .vim/bundle/command-t
-rake make
 ```
 
 ## Key bindings
@@ -24,8 +21,8 @@ rake make
 | :W         | Save file as superuser
 | leader + n | Open (close) NERDTree
 | leader + l | Enable (disable) displaying whitespace
-| leader + f | Open Command-T files
-| leader + b | Open Command-T buffers
+| leader + f | Open CtrlP
+| leader + b | Open CtrlPBuffer
 | leader + e | Breakpoint key
 | leader + b | Set (unset) breakpoint
 | leader + c | Open jedi vim complete pop-up
