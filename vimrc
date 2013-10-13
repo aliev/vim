@@ -298,5 +298,3 @@ let g:syntastic_check_on_open=1
 let g:syntastic_python_checkers=['flake8', 'python']
 let g:syntastic_python_flake8_args='--ignore=E121,E128,E711,E301,E261,E241,E124,E126
     \ --max-line-length=84'
-
-
