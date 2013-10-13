@@ -18,16 +18,10 @@ vim +BundleInstall +qall # Install all plugins
 | Key        | Description
 | ---------- |:---------------------------------------------------------------
 | ,          | Default leader key
-| :W         | Save file as superuser
-| leader + n | Open (close) NERDTree
 | leader + l | Enable (disable) displaying whitespace
-| leader + f | Open CtrlP
+| C + p      | Open CtrlP
 | leader + b | Open CtrlPBuffer
-| leader + e | Breakpoint key
-| leader + b | Set (unset) breakpoint
 | leader + c | Open jedi vim complete pop-up
-| K          | Show python docs
-| C + space  | Rope autocomplete
 | C + c + g  | Rope goto definition
 | C + c + d  | Rope show documentation
 | C + c + f  | Rope find occurrences
