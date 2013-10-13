@@ -40,4 +40,16 @@ rake make
 | [M         | Jump on previous class or method (normal, visual, operator modes)
 | ]M         | Jump on next class or method (normal, visual, operator modes)
 
-![alt text](https://dl.dropboxusercontent.com/u/5837324/vim/vim.png "Logo Title Text 1")
+## Screenshots
+
+![alt text](https://dl.dropboxusercontent.com/u/5837324/vim/vim.png "")
+
+![alt text](https://dl.dropboxusercontent.com/u/5837324/vim/vim1.png "")
+
+![alt text](https://dl.dropboxusercontent.com/u/5837324/vim/vim2.png "")
+
+![alt text](https://dl.dropboxusercontent.com/u/5837324/vim/vim3.png "")
+
+![alt text](https://dl.dropboxusercontent.com/u/5837324/vim/vim4.png "")
+
+![alt text](https://dl.dropboxusercontent.com/u/5837324/vim/vim5.png "")
