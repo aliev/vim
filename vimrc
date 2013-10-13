@@ -174,8 +174,7 @@ let g:airline#extensions#tabline#fnamemod = ':t' " :help filename-modifiers
 let g:airline_powerline_fonts = 1 " Use airline fonts
 let g:airline_theme='wombat'
 
-map <leader>n :NERDTreeToggle<CR> 
-map <leader>f :CtrlP<CR>
+" Key bindings
 map <leader>b :CtrlPBuffer<CR>
 nmap <leader>l :set list!<CR>
 let g:jedi#completions_command="<leader>c" " leader + c jedi completion
