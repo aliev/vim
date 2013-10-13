@@ -39,3 +39,5 @@ rake make
 | ]]         | Jump on next class or function (normal, visual, operator modes)
 | [M         | Jump on previous class or method (normal, visual, operator modes)
 | ]M         | Jump on next class or method (normal, visual, operator modes)
+
+![alt text](https://dl.dropboxusercontent.com/u/5837324/vim/vim.png "Logo Title Text 1")
