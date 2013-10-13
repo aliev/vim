@@ -152,15 +152,12 @@ let g:pymode_syntax_indent_errors = g:pymode_syntax_all
 let g:pymode_syntax_space_errors = g:pymode_syntax_all
 
 let g:pymode_folding = 0 " Don't autofold code
-
-let g:pymode_breakpoint = 1 " Load breakpoint plugin
+let g:pymode_breakpoint = 0 " Disable breakpoint plugin
 
 
 let g:jedi#auto_initialization = 1 " Enable Jedi autocomplete
 
 autocmd FileType python setlocal completeopt-=preview " Disable docstring window in Jedi
-
-
 
 " Make syntastic auto update the location list and make it also check
 " when the file opens
@@ -178,4 +175,3 @@ let g:airline_theme='wombat'
 map <leader>b :CtrlPBuffer<CR>
 nmap <leader>l :set list!<CR>
 let g:jedi#completions_command="<leader>c" " leader + c jedi completion
-let g:pymode_breakpoint_key = '<leader>e' " leader + e set/unser breakpoint
