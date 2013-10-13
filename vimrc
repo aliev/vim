@@ -6,18 +6,26 @@ Bundle 'gmarik/vundle'
 
 Bundle 'sjl/badwolf'
 
+" Utilities
 Bundle 'scrooloose/nerdtree'
-Bundle 'Lokaltog/powerline'
 Bundle 'vim-scripts/matchit.zip'
 Bundle 'tomtom/tcomment_vim'
 Bundle 'wincent/Command-T'
 Bundle 'tpope/vim-fugitive'
 Bundle 'gregsexton/MatchTag'
+Bundle 'bling/vim-airline'
+" Bundle 'majutsushi/tagbar'
+Bundle 'scrooloose/syntastic'
+Bundle 'jmcantrell/vim-virtualenv'
+Bundle 'airblade/vim-gitgutter'
+Bundle 'mhinz/vim-signify'
 
+" For python supporting
 Bundle 'klen/python-mode'
 Bundle 'tshirtman/vim-cython'
 Bundle 'davidhalter/jedi-vim'
 
+" Web development
 Bundle 'mattn/emmet-vim'
 Bundle 'vim-scripts/vim-coffee-script'
 Bundle 'groenewege/vim-less'
@@ -250,12 +258,7 @@ let g:pymode_rope = 1
 let g:pymode_doc = 1
 let g:pymode_doc_key = 'K'
 
-" Linting
-let g:pymode_lint = 1
-" Linting mode
-let g:pymode_lint_checker = "pyflakes,pep8"
-" Disable errors window
-let g:pymode_lint_cwindow = 0
+let g:pymode_lint = 0 " Disable python-mode linting for enable syntastic
 
 " Support virtualenv
 let g:pymode_virtualenv = 1
@@ -283,3 +286,17 @@ autocmd FileType python setlocal completeopt-=preview
 
 " leader + c initialize jedi completion
 let g:jedi#completions_command="<leader>c"
+
+" Airline configuration
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
+
+" Make syntastic auto update the location list and make it also check
+" when the file opens
+let g:syntastic_always_populate_loc_list=1
+let g:syntastic_check_on_open=1
+let g:syntastic_python_checkers=['flake8', 'python']
+let g:syntastic_python_flake8_args='--ignore=E121,E128,E711,E301,E261,E241,E124,E126
+    \ --max-line-length=84'
+
+
