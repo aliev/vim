@@ -10,15 +10,14 @@ Bundle 'sjl/badwolf'
 Bundle 'scrooloose/nerdtree'
 Bundle 'vim-scripts/matchit.zip'
 Bundle 'tomtom/tcomment_vim'
-Bundle 'wincent/Command-T'
 Bundle 'tpope/vim-fugitive'
 Bundle 'gregsexton/MatchTag'
 Bundle 'bling/vim-airline'
-" Bundle 'majutsushi/tagbar'
 Bundle 'scrooloose/syntastic'
 Bundle 'jmcantrell/vim-virtualenv'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'mhinz/vim-signify'
+Bundle 'kien/ctrlp.vim'
 
 " For python supporting
 Bundle 'klen/python-mode'
@@ -204,25 +203,20 @@ set path=.,,**
 
 let loaded_matchparen=1 " Подсвечивать парные скобки
 
-" По <leader>f открывается Command-T
-map <leader>f :CommandT<CR>
+" По <leader>f открывается CtrlP
+map <leader>f :CtrlP<CR>
 
 " Переключение буферов по <leader>b
-map <leader>b :CommandTBuffer<CR>
-
-let g:CommandTNeverShowDotFiles=1 " Не показывать файлы которые начинаются с точки
-
-let CommandTMaxHeight=30 " Количество отображаемых файлов в списке Command-T
+map <leader>b :CtrlPBuffer<CR>
 
 " Используем <leader>l для включения неотображаемых символов
 nmap <leader>l :set list!<CR>
 
-" Настраиваем NerdTree
 let NERDTreeWinSize = 30 " Размер окна NERDTree
 
 let NERDTreeDirArrows=1 " Показываем стрелки в директориях
 
-let NERDTreeMinimalUI=1 " Минимальный интерфейс
+let NERDTreeMinimalUI=1 " Minimal NERDTree interface
 
 let NERDTreeChDirMode=2
 
@@ -233,35 +227,15 @@ let NERDTreeIgnore = ['\.png$','\.pyc$', '\.db$', '\.git$', '*.\.o$', '.*\.out$'
 " Отображаем NERDTree
 map <leader>n :NERDTreeToggle<CR> 
 
-" Настройка Tagbar
-let g:tagbar_autofocus = 1
-let tagbar_singleclick = 1
-let g:tagbar_sort = 0
-
-" Session options
-let g:session_autoload = 1
-let g:session_autosave = 1
-
-" Включение и настройка syntastic
-let g:syntastic_enable_signs=0
-
-" Настройка vim JavaScript
-let g:html_indent_inctags = "html,body,head,tbody"
-let g:html_indent_script1 = "inc"
-let g:html_indent_style1 = "inc"
-
 set fillchars=stl:\ ,stlnc:\ ,vert:│
 
-let g:pymode_rope = 1
-
-" Documentation
-let g:pymode_doc = 1
-let g:pymode_doc_key = 'K'
+let g:pymode_rope = 1 " Enable pymode rope
+let g:pymode_doc = 1 " Enable pymode documentation plugin
+let g:pymode_doc_key = 'K' " pymode documentation plugin key
 
 let g:pymode_lint = 0 " Disable python-mode linting for enable syntastic
 
-" Support virtualenv
-let g:pymode_virtualenv = 1
+let g:pymode_virtualenv = 1 " Python-mode support virtualenv
 
 " syntax highlighting
 let g:pymode_syntax = 1
@@ -269,28 +243,23 @@ let g:pymode_syntax_all = 1
 let g:pymode_syntax_indent_errors = g:pymode_syntax_all
 let g:pymode_syntax_space_errors = g:pymode_syntax_all
 
-" Don't autofold code
-let g:pymode_folding = 0
+let g:pymode_folding = 0 " Don't autofold code
 
-" Load breakpoints plugin
-let g:pymode_breakpoint = 1
+let g:pymode_breakpoint = 1 " Load breakpoint plugin
 
-" Key for set/unset breakpoint
-let g:pymode_breakpoint_key = '<leader>e'
+let g:pymode_breakpoint_key = '<leader>e' " leader + e set/unser breakpoint
 
-" Enable Jedi vim
-let g:jedi#auto_initialization = 1
+let g:jedi#auto_initialization = 1 " Enable Jedi autocomplete
 
-" Disable docstring window in Jedi
-autocmd FileType python setlocal completeopt-=preview
+autocmd FileType python setlocal completeopt-=preview " Disable docstring window in Jedi
 
-" leader + c initialize jedi completion
-let g:jedi#completions_command="<leader>c"
+let g:jedi#completions_command="<leader>c" " leader + c jedi completion
 
-" Airline configuration
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#fnamemod = ':t'
-let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1 " Enable airline tabs
+
+let g:airline#extensions#tabline#fnamemod = ':t' " :help filename-modifiers
+
+let g:airline_powerline_fonts = 1 " Use airline fonts
 
 " Make syntastic auto update the location list and make it also check
 " when the file opens
