@@ -100,7 +100,7 @@ let g:maplocalleader = '_'
 
 " set ttimeoutlen=-1  " Ускоряем работу Esc
 
-" set showtabline=2 " Показывать строку вкладок всегда
+" set showtabline=2 " Показывать табы всегда
 
 " set foldenable " Включаем фолдинг
 " 
@@ -289,6 +289,7 @@ let g:jedi#completions_command="<leader>c"
 
 " Airline configuration
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline_powerline_fonts = 1
 
 " Make syntastic auto update the location list and make it also check
@@ -296,5 +297,4 @@ let g:airline_powerline_fonts = 1
 let g:syntastic_always_populate_loc_list=1
 let g:syntastic_check_on_open=1
 let g:syntastic_python_checkers=['flake8', 'python']
-let g:syntastic_python_flake8_args='--ignore=E121,E128,E711,E301,E261,E241,E124,E126
-    \ --max-line-length=84'
+let g:syntastic_python_flake8_args='--ignore=E121,E128,E711,E301,E261,E241,E124,E126 --max-line-length=84'
