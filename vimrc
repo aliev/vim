@@ -17,12 +17,13 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'klen/python-mode'
 Bundle 'davidhalter/jedi-vim'
 Bundle 'mattn/emmet-vim'
+Bundle 'mhinz/vim-startify'
 filetype plugin indent on     " required!
 
 if has('gui_running')
-    set guioptions=g
+    set guioptions=g " disable all GUI elements
 
-    colors badwolf
+    colors badwolf " default color scheme
 
     if has('mac')
         set guifont=Menlo\ Regular\ for\ Powerline:h12
@@ -128,9 +129,10 @@ set ttyfast
 
 set path=.,,**
 
-let NERDTreeWinSize = 30 " Размер окна NERDTree
-let NERDTreeDirArrows=1 " Показываем стрелки в директориях
-let NERDTreeMinimalUI=1 " Minimal NERDTree interface
+" NERDTree configuration
+let NERDTreeWinSize = 30
+let NERDTreeDirArrows=1
+let NERDTreeMinimalUI=1
 let NERDTreeChDirMode=2
 let NERDTreeHijackNetrw=0
 let NERDTreeIgnore = ['\.png$','\.pyc$', '\.db$', '\.git$', '*.\.o$', '.*\.out$', '.*\.so$', '.*\.a$', '.*\~$'] " Список игнорируемых файлов в NERDTree
@@ -173,5 +175,7 @@ let g:airline_theme='wombat'
 
 " Key bindings
 map <leader>b :CtrlPBuffer<CR>
+map <leader>f :CtrlP<CR>
+map <leader>e :NERDTreeToggle<CR>
 nmap <leader>l :set list!<CR>
 let g:jedi#completions_command="<leader>c" " leader + c jedi completion
