@@ -1,7 +1,8 @@
-set nocompatible               " be iMproved
-filetype off                   " required!
+set nocompatible
+filetype off
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
+
 Bundle 'gmarik/vundle'
 Bundle 'sjl/badwolf'
 Bundle 'scrooloose/nerdtree'
@@ -18,7 +19,8 @@ Bundle 'klen/python-mode'
 Bundle 'davidhalter/jedi-vim'
 Bundle 'mattn/emmet-vim'
 Bundle 'mhinz/vim-startify'
-filetype plugin indent on     " required!
+
+filetype plugin indent on
 
 if has('gui_running')
     set guioptions=g " disable all GUI elements
@@ -41,8 +43,6 @@ endif
 if has("linebreak")
       let &sbr = nr2char(8618).' '  " Символ который будет показан перед перенесенной строкой
 endif
-
-filetype plugin indent on " Выключаем загрузку filetype и indent плагинов
 
 let mapleader = "," " map leader
 
@@ -84,7 +84,7 @@ set tabstop=4 " number of spaces per tab
 
 set shiftwidth=4 " Bспользуется для регулирование ширины отступов в пробелах добавляемых командами >> и <<
 
-set smarttab " Добавление отступа при нажатии tab в соответствии с настройками ширины отступа shiftwidth
+set smarttab
 
 set autoindent " Enable auto indent
 
@@ -135,27 +135,22 @@ let NERDTreeDirArrows=1
 let NERDTreeMinimalUI=1
 let NERDTreeChDirMode=2
 let NERDTreeHijackNetrw=0
-let NERDTreeIgnore = ['\.png$','\.pyc$', '\.db$', '\.git$', '*.\.o$', '.*\.out$', '.*\.so$', '.*\.a$', '.*\~$'] " Список игнорируемых файлов в NERDTree
-
+let NERDTreeIgnore = ['\.png$','\.pyc$', '\.db$', '\.git$', '*.\.o$', '.*\.out$', '.*\.so$', '.*\.a$', '.*\~$']
 
 set fillchars=stl:\ ,stlnc:\ ,vert:│
 
 let g:pymode_rope = 1 " Enable pymode rope
 let g:pymode_doc = 0 " Enable pymode documentation plugin
-
 let g:pymode_lint = 0 " Disable python-mode linting for enable syntastic
-
 let g:pymode_virtualenv = 1 " Python-mode support virtualenv
+let g:pymode_folding = 0 " Don't autofold code
+let g:pymode_breakpoint = 0 " Disable breakpoint plugin
 
 " syntax highlighting
 let g:pymode_syntax = 1
 let g:pymode_syntax_all = 1
 let g:pymode_syntax_indent_errors = g:pymode_syntax_all
 let g:pymode_syntax_space_errors = g:pymode_syntax_all
-
-let g:pymode_folding = 0 " Don't autofold code
-let g:pymode_breakpoint = 0 " Disable breakpoint plugin
-
 
 let g:jedi#auto_initialization = 1 " Enable Jedi autocomplete
 
