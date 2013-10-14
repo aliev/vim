@@ -31,27 +31,17 @@ vim +BundleInstall +qall # Install all plugins
 
 ## Installed plugins
 
-NerdTree
-
-MatchIt
-
-T-Comment
-
-Fugutive
-
-Airline
-
-Syntastic
-
-Virtualenv
-
-CtrlP
-
-Signify
-
-Emmet
-
-Jedi
+| NerdTree   |
+| MatchIt    |
+| T-Comment  |
+| Fugutive   |
+| Airline    |
+| Syntastic  |
+| Virtualenv |
+| CtrlP      |
+| Signify    |
+| Emmet      |
+| Jedi       |
 
 ## Screenshots
 
