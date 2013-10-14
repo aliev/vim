@@ -15,10 +15,8 @@ Bundle 'jmcantrell/vim-virtualenv'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'mhinz/vim-signify'
 Bundle 'kien/ctrlp.vim'
-Bundle 'klen/python-mode'
 Bundle 'davidhalter/jedi-vim'
 Bundle 'mattn/emmet-vim'
-Bundle 'mhinz/vim-startify'
 
 filetype plugin indent on
 
@@ -138,19 +136,6 @@ let NERDTreeHijackNetrw=0
 let NERDTreeIgnore = ['\.png$','\.pyc$', '\.db$', '\.git$', '*.\.o$', '.*\.out$', '.*\.so$', '.*\.a$', '.*\~$']
 
 set fillchars=stl:\ ,stlnc:\ ,vert:│
-
-let g:pymode_rope = 1 " Enable pymode rope
-let g:pymode_doc = 0 " Enable pymode documentation plugin
-let g:pymode_lint = 0 " Disable python-mode linting for enable syntastic
-let g:pymode_virtualenv = 1 " Python-mode support virtualenv
-let g:pymode_folding = 0 " Don't autofold code
-let g:pymode_breakpoint = 0 " Disable breakpoint plugin
-
-" syntax highlighting
-let g:pymode_syntax = 1
-let g:pymode_syntax_all = 1
-let g:pymode_syntax_indent_errors = g:pymode_syntax_all
-let g:pymode_syntax_space_errors = g:pymode_syntax_all
 
 let g:jedi#auto_initialization = 1 " Enable Jedi autocomplete
 
