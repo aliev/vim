@@ -31,6 +31,8 @@ vim +BundleInstall +qall # Install all plugins
 
 ## Installed plugins
 
+| Plugin     | Description
+| ---------- |:--------------------
 | NerdTree   |
 | MatchIt    |
 | T-Comment  |
