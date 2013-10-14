@@ -31,8 +31,6 @@ vim +BundleInstall +qall # Install all plugins
 
 ## Installed plugins
 
-Jedi vim
-
 NerdTree
 
 MatchIt
