@@ -12,7 +12,6 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'bling/vim-airline'
 Bundle 'scrooloose/syntastic'
 Bundle 'jmcantrell/vim-virtualenv'
-Bundle 'airblade/vim-gitgutter'
 Bundle 'mhinz/vim-signify'
 Bundle 'kien/ctrlp.vim'
 Bundle 'davidhalter/jedi-vim'
@@ -141,8 +140,6 @@ let g:jedi#auto_initialization = 1 " Enable Jedi autocomplete
 
 autocmd FileType python setlocal completeopt-=preview " Disable docstring window in Jedi
 
-" Make syntastic auto update the location list and make it also check
-" when the file opens
 let g:syntastic_always_populate_loc_list=1
 let g:syntastic_check_on_open=1
 let g:syntastic_enable_signs=1
