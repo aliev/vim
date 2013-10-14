@@ -29,6 +29,32 @@ vim +BundleInstall +qall # Install all plugins
 | [M         | Jump on previous class or method (normal, visual, operator modes)
 | ]M         | Jump on next class or method (normal, visual, operator modes)
 
+## Installed plugins
+
+Jedi vim
+
+NerdTree
+
+MatchIt
+
+T-Comment
+
+Fugutive
+
+Airline
+
+Syntastic
+
+Virtualenv
+
+CtrlP
+
+Signify
+
+Emmet
+
+Jedi
+
 ## Screenshots
 
 ![alt text](https://dl.dropboxusercontent.com/u/5837324/vim/vim.png "")
