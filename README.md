@@ -22,9 +22,7 @@ vim +BundleInstall +qall # Install all plugins
 | C + p      | Open CtrlP
 | leader + b | Open CtrlPBuffer
 | leader + c | Open jedi vim complete pop-up
-| C + c + g  | Rope goto definition
-| C + c + d  | Rope show documentation
-| C + c + f  | Rope find occurrences
+| leade + ,  | goto definition
 | C + _      | Comment selected lines
 | [[         | Jump on previous class or function (normal, visual, operator modes)
 | ]]         | Jump on next class or function (normal, visual, operator modes)
