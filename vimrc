@@ -37,6 +37,8 @@ if has('multi_byte')
     set listchars=tab:»\ ,trail:·,eol:¶,extends:→,precedes:←,nbsp:×
 endif
 
+set fillchars=stl:\ ,stlnc:\ ,vert:│
+
 if has("linebreak")
       let &sbr = nr2char(8618).' '  " Символ который будет показан перед перенесенной строкой
 endif
@@ -87,7 +89,7 @@ set autoindent " Enable auto indent
 
 set smartindent
 
-set wrap
+set wrap " enable word wrap
 
 set noerrorbells visualbell t_vb= " Disable visual bell
 
@@ -115,9 +117,10 @@ set noswapfile " Disable swap files
 
 set noautochdir " change the current working directory whenever you open a file
 
-" customize the wildmenu
-set wildmenu
+set wildmenu " enable wildmenu
+
 set wildmode=list:longest,list:full
+
 set wildignore+=*.o,*.pyc,*.jpg,*.png,*.gif,*.db,*.obj,.git
 
 set clipboard+=unnamed " Global clipboard between the system and the editor
@@ -134,21 +137,13 @@ let NERDTreeChDirMode=2
 let NERDTreeHijackNetrw=0
 let NERDTreeIgnore = ['\.png$','\.pyc$', '\.db$', '\.git$', '*.\.o$', '.*\.out$', '.*\.so$', '.*\.a$', '.*\~$']
 
-set fillchars=stl:\ ,stlnc:\ ,vert:│
-
 let g:jedi#auto_initialization = 1 " Enable Jedi autocomplete
 
-autocmd FileType python setlocal completeopt-=preview " Disable docstring window in Jedi
-
-let g:syntastic_always_populate_loc_list=1
-let g:syntastic_check_on_open=1
-let g:syntastic_enable_signs=1
-let g:syntastic_python_checkers=['pylint']
+let g:syntastic_python_checkers=['pylint', 'python']
 
 let g:airline#extensions#tabline#enabled = 1 " Enable airline tabs
 let g:airline#extensions#tabline#fnamemod = ':t' " :help filename-modifiers
 let g:airline_powerline_fonts = 1 " Use airline fonts
-let g:airline_theme='wombat'
 
 " Key bindings
 map <leader>b :CtrlPBuffer<CR>
