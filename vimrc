@@ -12,10 +12,12 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'bling/vim-airline'
 Bundle 'scrooloose/syntastic'
 Bundle 'jmcantrell/vim-virtualenv'
-Bundle 'mhinz/vim-signify'
 Bundle 'kien/ctrlp.vim'
 Bundle 'davidhalter/jedi-vim'
 Bundle 'mattn/emmet-vim'
+
+
+Bundle 'nanotech/jellybeans.vim'
 
 filetype plugin indent on
 
@@ -141,8 +143,15 @@ map <leader>e :NERDTreeToggle<CR>
 
 let g:jedi#auto_initialization = 1 " Enable Jedi autocomplete
 let g:jedi#completions_command="<leader>c" " leader + c jedi completion
+autocmd FileType python setlocal completeopt-=preview
 
 let g:syntastic_python_checkers=['pylint', 'python']
+let g:syntastic_javascript_checkers = ['jslint']
+let g:syntastic_error_symbol = nr2char(33)
+let g:syntastic_style_error_symbol = nr2char(33)
+let g:syntastic_warning_symbol = nr2char(9888)
+let g:syntastic_style_warning_symbol = nr2char(9888)
+au InsertLeave <buffer> :SyntasticCheck
 
 let g:airline#extensions#tabline#enabled = 1 " Enable airline tabs
 let g:airline#extensions#tabline#fnamemod = ':t' " :help filename-modifiers
@@ -153,3 +162,6 @@ map <leader>b :CtrlPBuffer<CR>
 map <leader>f :CtrlP<CR>
 
 nmap <leader>l :set list!<CR>
+
+let g:airline#extensions#syntastic#enabled = 1
+
