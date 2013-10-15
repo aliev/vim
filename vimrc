@@ -16,9 +16,6 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'davidhalter/jedi-vim'
 Bundle 'mattn/emmet-vim'
 
-
-Bundle 'nanotech/jellybeans.vim'
-
 filetype plugin indent on
 
 if has('gui_running')
