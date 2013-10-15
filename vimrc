@@ -21,8 +21,8 @@ filetype plugin indent on
 
 if has('gui_running')
     set guioptions=g " disable all GUI elements
-
-    colors badwolf " default color scheme
+    set background=dark
+    colors badwolf
 
     if has('mac')
         set guifont=Menlo\ Regular\ for\ Powerline:h12
@@ -36,6 +36,7 @@ endif
 if has('multi_byte')
     set listchars=tab:»\ ,trail:·,eol:¶,extends:→,precedes:←,nbsp:×
 endif
+
 
 set fillchars=stl:\ ,stlnc:\ ,vert:│
 
@@ -136,8 +137,10 @@ let NERDTreeMinimalUI=1
 let NERDTreeChDirMode=2
 let NERDTreeHijackNetrw=0
 let NERDTreeIgnore = ['\.png$','\.pyc$', '\.db$', '\.git$', '*.\.o$', '.*\.out$', '.*\.so$', '.*\.a$', '.*\~$']
+map <leader>e :NERDTreeToggle<CR>
 
 let g:jedi#auto_initialization = 1 " Enable Jedi autocomplete
+let g:jedi#completions_command="<leader>c" " leader + c jedi completion
 
 let g:syntastic_python_checkers=['pylint', 'python']
 
@@ -145,9 +148,8 @@ let g:airline#extensions#tabline#enabled = 1 " Enable airline tabs
 let g:airline#extensions#tabline#fnamemod = ':t' " :help filename-modifiers
 let g:airline_powerline_fonts = 1 " Use airline fonts
 
-" Key bindings
+let g:ctrlp_match_window = 'bottom,order:top,min:1,max:20'
 map <leader>b :CtrlPBuffer<CR>
 map <leader>f :CtrlP<CR>
-map <leader>e :NERDTreeToggle<CR>
+
 nmap <leader>l :set list!<CR>
-let g:jedi#completions_command="<leader>c" " leader + c jedi completion
