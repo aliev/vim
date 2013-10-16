@@ -31,19 +31,18 @@ vim +BundleInstall +qall # Install all plugins
 
 ## Installed plugins
 
-| Plugin     | Description
+| Plugin     | Plugin URL
 | ---------- |:--------------------
-| NerdTree   |
-| MatchIt    |
-| T-Comment  |
-| Fugutive   |
-| Airline    |
-| Syntastic  |
-| Virtualenv |
-| CtrlP      |
-| Signify    |
-| Emmet      |
-| Jedi       |
+| NerdTree   | https://github.com/davidhalter/jedi-vim
+| MatchIt    | http://www.vim.org/scripts/script.php?script_id=39
+| T-Comment  | https://github.com/vim-scripts/tComment
+| Fugutive   | https://github.com/tpope/vim-fugitive
+| Airline    | https://github.com/bling/vim-airline
+| Syntastic  | https://github.com/scrooloose/syntastic
+| Virtualenv | https://github.com/jmcantrell/vim-virtualenv
+| CtrlP      | https://github.com/kien/ctrlp.vim
+| Emmet      | https://github.com/mattn/emmet-vim
+| Jedi       | https://github.com/davidhalter/jedi-vim
 
 ## Screenshots
 
