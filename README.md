@@ -19,10 +19,13 @@ vim +BundleInstall +qall # Install all plugins
 | ---------- |:---------------------------------------------------------------
 | ,          | Default leader key
 | leader + l | Enable (disable) displaying whitespace
-| C + p      | Open CtrlP
+| leader + f | Open CtrlP
 | leader + b | Open CtrlPBuffer
 | leader + c | Open jedi vim complete pop-up
-| leade + ,  | goto definition
+| leader + g | goto definition
+| leader + r | rename
+| leader + n | usage
+| leader + d | goto assignments
 | C + _      | Comment selected lines
 | [[         | Jump on previous class or function (normal, visual, operator modes)
 | ]]         | Jump on next class or function (normal, visual, operator modes)
