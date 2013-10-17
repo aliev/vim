@@ -17,12 +17,11 @@ Bundle 'davidhalter/jedi-vim'
 Bundle 'mattn/emmet-vim'
 
 filetype plugin indent on
-
+syntax enable " enable syntax highlighting
 if has('gui_running')
     set guioptions=g " disable all GUI elements
     set background=dark
     colors badwolf
-
     if has('mac')
         set guifont=Menlo\ Regular\ for\ Powerline:h12
     else
@@ -36,7 +35,6 @@ if has('multi_byte')
     set listchars=tab:»\ ,trail:·,eol:¶,extends:→,precedes:←,nbsp:×
 endif
 
-
 set fillchars=stl:\ ,stlnc:\ ,vert:│
 
 if has("linebreak")
@@ -47,17 +45,15 @@ let mapleader = "," " map leader
 
 let maplocalleader = "_" " local leader
 
-set lazyredraw " don't update the display while executing macros
+set lazyredraw " Don't redraw while executing macros (good performance config)
 
 set laststatus=2 " enable statusline
-
-syntax enable " enable syntax highlighting
 
 set incsearch " Search by typing
 
 set hlsearch " highlight search result
 
-set magic " Set magic on, for regular expressions
+set magic " For regular expressions turn magic on
 
 set ignorecase " Searches are Non Case-sensitive
 
@@ -65,7 +61,7 @@ set cursorline " Highlight current cursor position
 
 set smartcase
 
-set showmatch " highlight parent brackets
+set showmatch " Show matching brackets when text indicator is over them
 
 set showcmd " Show incomplete cmds down the bottom
 
@@ -79,19 +75,19 @@ set expandtab " use space instead of tab
 
 set autoread " Reload files changed outside automatically
 
-set tabstop=4 " number of spaces per tab
+set tabstop=4 " 1 tab == 4 spaces
 
-set shiftwidth=4 " Bспользуется для регулирование ширины отступов в пробелах добавляемых командами >> и <<
+set shiftwidth=4 
 
-set smarttab
+set smarttab " Be smart when using tabs
 
 set autoindent " Enable auto indent
 
-set smartindent
+set smartindent " Smart indent
 
 set wrap " enable word wrap
 
-set noerrorbells visualbell t_vb= " Disable visual bell
+set noerrorbells visualbell t_vb= " No annoying sound on errors
 
 set encoding=utf8 " Default encoding
 
@@ -109,7 +105,7 @@ set mouse=a " Mouse support
 
 set mousemodel=popup
 
-set hidden
+set hidden " A buffer becomes hidden when it is abandoned
 
 set nobackup " Disable backup files
 
@@ -117,11 +113,11 @@ set noswapfile " Disable swap files
 
 set noautochdir " change the current working directory whenever you open a file
 
-set wildmenu " enable wildmenu
+set wildmenu " Turn on the WiLd menu
 
 set wildmode=list:longest,list:full
 
-set wildignore+=*.o,*.pyc,*.jpg,*.png,*.gif,*.db,*.obj,.git
+set wildignore+=*.o,*.pyc,*.jpg,*.png,*.gif,*.db,*.obj,.git " Ignore compiled files
 
 set clipboard+=unnamed " Global clipboard between the system and the editor
 
@@ -140,7 +136,7 @@ map <leader>e :NERDTreeToggle<CR>
 
 let g:jedi#auto_initialization = 1 " Enable Jedi autocomplete
 let g:jedi#completions_command="<leader>c" " leader + c jedi completion
-autocmd FileType python setlocal completeopt-=preview
+autocmd FileType python setlocal completeopt-=preview " Disable jedi-vim documentation
 
 let g:syntastic_python_checkers=['pylint', 'python']
 let g:syntastic_javascript_checkers = ['jslint']
