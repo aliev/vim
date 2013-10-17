@@ -28,7 +28,7 @@ vim +BundleInstall +qall # Install all plugins
 | leader + d | goto assignments
 | C + _      | Comment selected lines
 
-## Installed plugins
+## Used plugins
 
 | Plugin     | Plugin URL
 | ---------- |:--------------------
@@ -42,17 +42,3 @@ vim +BundleInstall +qall # Install all plugins
 | CtrlP      | https://github.com/kien/ctrlp.vim
 | Emmet      | https://github.com/mattn/emmet-vim
 | Jedi       | https://github.com/davidhalter/jedi-vim
-
-## Screenshots
-
-![alt text](https://dl.dropboxusercontent.com/u/5837324/vim/vim.png "")
-
-![alt text](https://dl.dropboxusercontent.com/u/5837324/vim/vim1.png "")
-
-![alt text](https://dl.dropboxusercontent.com/u/5837324/vim/vim2.png "")
-
-![alt text](https://dl.dropboxusercontent.com/u/5837324/vim/vim3.png "")
-
-![alt text](https://dl.dropboxusercontent.com/u/5837324/vim/vim4.png "")
-
-![alt text](https://dl.dropboxusercontent.com/u/5837324/vim/vim5.png "")
