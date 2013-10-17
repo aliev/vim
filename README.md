@@ -27,10 +27,6 @@ vim +BundleInstall +qall # Install all plugins
 | leader + n | usage
 | leader + d | goto assignments
 | C + _      | Comment selected lines
-| [[         | Jump on previous class or function (normal, visual, operator modes)
-| ]]         | Jump on next class or function (normal, visual, operator modes)
-| [M         | Jump on previous class or method (normal, visual, operator modes)
-| ]M         | Jump on next class or method (normal, visual, operator modes)
 
 ## Installed plugins
 
