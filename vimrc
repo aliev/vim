@@ -6,7 +6,6 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 Bundle 'sjl/badwolf'
 Bundle 'scrooloose/nerdtree'
-Bundle 'vim-scripts/matchit.zip'
 Bundle 'tomtom/tcomment_vim'
 Bundle 'tpope/vim-fugitive'
 Bundle 'bling/vim-airline'
@@ -60,6 +59,8 @@ set ignorecase " Searches are Non Case-sensitive
 set cursorline " Highlight current cursor position
 
 set smartcase
+
+set cc=80
 
 set showmatch " Show matching brackets when text indicator is over them
 
@@ -134,27 +135,48 @@ let NERDTreeHijackNetrw=0
 let NERDTreeIgnore = ['\.png$','\.pyc$', '\.db$', '\.git$', '*.\.o$', '.*\.out$', '.*\.so$', '.*\.a$', '.*\~$']
 map <leader>e :NERDTreeToggle<CR>
 
-let g:jedi#auto_initialization = 1 " Enable Jedi autocomplete
-let g:jedi#completions_command="<leader>c" " leader + c jedi completion
-autocmd FileType python setlocal completeopt-=preview " Disable jedi-vim documentation
+" Enable Jedi autocomplete
+let g:jedi#auto_initialization = 1 
 
+" leader + c jedi completion
+let g:jedi#completions_command="<leader>c" 
+
+" Disable jedi-vim documentation
+autocmd FileType python setlocal completeopt-=preview 
+
+
+" Syntax check mode for python
 let g:syntastic_python_checkers=['pylint', 'python']
+
+" Syntax check mode for javascript
 let g:syntastic_javascript_checkers = ['jslint']
+
+" Warning and Error symbols
 let g:syntastic_error_symbol = nr2char(33)
 let g:syntastic_style_error_symbol = nr2char(33)
 let g:syntastic_warning_symbol = nr2char(9888)
 let g:syntastic_style_warning_symbol = nr2char(9888)
-au InsertLeave <buffer> :SyntasticCheck
 
 let g:airline#extensions#tabline#enabled = 1 " Enable airline tabs
+
 let g:airline#extensions#tabline#fnamemod = ':t' " :help filename-modifiers
+
 let g:airline_powerline_fonts = 1 " Use airline fonts
 
 let g:ctrlp_match_window = 'bottom,order:top,min:1,max:20'
+
+" Open buffers
 map <leader>b :CtrlPBuffer<CR>
+
+" Open files
 map <leader>f :CtrlP<CR>
 
+" Show/hide trail characters
 nmap <leader>l :set list!<CR>
 
-let g:airline#extensions#syntastic#enabled = 1
+" Create new tab
+nmap <leader>t :tabnew<CR>
+
+" Close buffer without save
+nmap <leader>w :bd!<CR>
 
