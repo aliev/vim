@@ -26,6 +26,8 @@ vim +BundleInstall +qall # Install all plugins
 | leader + r | rename
 | leader + n | usage
 | leader + d | goto assignments
+| leader + t | create new tab
+| leader + w | close buffer (tabe) without saving
 | C + _      | Comment selected lines
 
 ## Used plugins
