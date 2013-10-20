@@ -14,12 +14,14 @@ Bundle 'jmcantrell/vim-virtualenv'
 Bundle 'kien/ctrlp.vim'
 Bundle 'davidhalter/jedi-vim'
 Bundle 'mattn/emmet-vim'
+Bundle 'nanotech/jellybeans.vim'
 
 filetype plugin indent on
 syntax enable " enable syntax highlighting
 if has('gui_running')
     set guioptions=g " disable all GUI elements
     set background=dark
+    execute "set colorcolumn=" . join(range(81,335), ',')
     colors badwolf
     if has('mac')
         set guifont=Menlo\ Regular\ for\ Powerline:h12
@@ -57,11 +59,9 @@ set magic " For regular expressions turn magic on
 
 set ignorecase " Searches are Non Case-sensitive
 
-set cursorline " Highlight current cursor position
+" set cursorline " Highlight current cursor position
 
 set smartcase
-
-set cc=80
 
 set showmatch " Show matching brackets when text indicator is over them
 
@@ -144,7 +144,6 @@ let g:jedi#completions_command="<leader>c"
 
 " Disable jedi-vim documentation
 autocmd FileType python setlocal completeopt-=preview 
-
 
 " Syntax check mode for python
 let g:syntastic_python_checkers=['pylint', 'python']
