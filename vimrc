@@ -23,6 +23,7 @@ if has('gui_running')
     colors badwolf
     if has('mac')
         set guifont=Menlo\ Regular\ for\ Powerline:h12
+        set guioptions+=c
     else
         set guifont=DejaVu\ Sans\ Mono\ 10
     endif
@@ -163,6 +164,7 @@ let g:airline#extensions#tabline#fnamemod = ':t' " :help filename-modifiers
 
 let g:airline_powerline_fonts = 1 " Use airline fonts
 
+" CtrlP Configuration
 let g:ctrlp_match_window = 'bottom,order:top,min:1,max:20'
 
 " Open buffers
@@ -174,9 +176,6 @@ map <leader>f :CtrlP<CR>
 " Show/hide trail characters
 nmap <leader>l :set list!<CR>
 
-" Create new tab
-nmap <leader>t :tabnew<CR>
-
-" Close buffer without save
-nmap <leader>w :bd!<CR>
+" Close buffer with ask save it
+nmap <leader>w :confirm :bd<CR>
 
