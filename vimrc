@@ -15,6 +15,7 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'davidhalter/jedi-vim'
 Bundle 'mattn/emmet-vim'
 Bundle 'nanotech/jellybeans.vim'
+Bundle 'SirVer/ultisnips'
 
 filetype plugin indent on
 syntax enable " enable syntax highlighting
@@ -22,7 +23,7 @@ if has('gui_running')
     set guioptions=g " disable all GUI elements
     set background=dark
     execute "set colorcolumn=" . join(range(81,335), ',')
-    colors badwolf
+    colors jellybeans
     if has('mac')
         set guifont=Menlo\ Regular\ for\ Powerline:h12
         set guioptions+=c
@@ -40,7 +41,7 @@ endif
 set fillchars=stl:\ ,stlnc:\ ,vert:│
 
 if has("linebreak")
-      let &sbr = nr2char(8618).' '  " Символ который будет показан перед перенесенной строкой
+      let &sbr = nr2char(8618).' ' " Show ↪ at the beginning of wrapped lines
 endif
 
 let mapleader = "," " map leader
@@ -79,7 +80,7 @@ set autoread " Reload files changed outside automatically
 
 set tabstop=4 " 1 tab == 4 spaces
 
-set shiftwidth=4 
+set shiftwidth=4
 
 set smarttab " Be smart when using tabs
 
@@ -137,13 +138,13 @@ let NERDTreeIgnore = ['\.png$','\.pyc$', '\.db$', '\.git$', '*.\.o$', '.*\.out$'
 map <leader>e :NERDTreeToggle<CR>
 
 " Enable Jedi autocomplete
-let g:jedi#auto_initialization = 1 
+let g:jedi#auto_initialization = 1
 
 " leader + c jedi completion
-let g:jedi#completions_command="<leader>c" 
+let g:jedi#completions_command="<leader>c"
 
 " Disable jedi-vim documentation
-autocmd FileType python setlocal completeopt-=preview 
+autocmd FileType python setlocal completeopt-=preview
 
 " Syntax check mode for python
 let g:syntastic_python_checkers=['pylint', 'python']
