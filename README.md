@@ -1,8 +1,8 @@
 ## Screenshots
 
 ![vim](https://dl.dropboxusercontent.com/u/5837324/vim/vim.png "Vim")
-![python support](https://dl.dropboxusercontent.com/u/5837324/vim/vim-python.png "Python support")
 
+![python support](https://dl.dropboxusercontent.com/u/5837324/vim/vim-python.png "Python support")
 
 ## Description
 
