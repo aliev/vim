@@ -98,15 +98,16 @@ set termencoding=utf-8 " terminal encoding
 
 set fileencodings=utf8,cp1251
 
-set mousehide " Hide cursor when typing
 
 set number " enable line numbers
 
 set ruler " always display cursor position
 
-set mouse=a " Mouse support
-
-set mousemodel=popup
+if has('mouse')
+    set mouse=a " Mouse support
+    set mousemodel=popup
+    set mousehide " Hide cursor when typing
+endif
 
 set hidden " A buffer becomes hidden when it is abandoned
 
@@ -179,3 +180,6 @@ nmap <leader>l :set list!<CR>
 " Close buffer with ask save it
 nmap <leader>w :confirm :bd<CR>
 
+command! W exec 'w !sudo tee % > /dev/null' | e! " Save file with root permissions
+
+match Error /\s\+$/ " Hilight trailing spaces
