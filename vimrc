@@ -22,7 +22,7 @@ syntax enable " enable syntax highlighting
 if has('gui_running')
     set guioptions=g " Disable all GUI elements
     set background=dark " Dark backgroud
-    execute "set colorcolumn=" . join(range(81,335), ',') " Show color column
+    execute "set colorcolumn=" . join(range(81,335), ',')
     colors jellybeans " Color scheme
     if has('mac')
         set guifont=Menlo\ Regular\ for\ Powerline:h12
@@ -173,6 +173,8 @@ map <leader>b :CtrlPBuffer<CR>
 
 " Open files
 map <leader>f :CtrlP<CR>
+
+map <leader>c :TComment<CR>
 
 " Show/hide trail characters
 nmap <leader>l :set list!<CR>
