@@ -33,7 +33,7 @@ vim +BundleInstall +qall # Install all plugins
 | leader + n | usage
 | leader + d | goto assignments
 | leader + t | create new tab
-| leader + w | close buffer (tabe) without saving
+| leader + w | close buffer (tabe) with asking save
 | C + _      | Comment selected lines
 
 ## Used plugins
