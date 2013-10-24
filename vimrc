@@ -20,10 +20,10 @@ Bundle 'SirVer/ultisnips'
 filetype plugin indent on
 syntax enable " enable syntax highlighting
 if has('gui_running')
-    set guioptions=g " disable all GUI elements
-    set background=dark
-    execute "set colorcolumn=" . join(range(81,335), ',')
-    colors jellybeans
+    set guioptions=g " Disable all GUI elements
+    set background=dark " Dark backgroud
+    execute "set colorcolumn=" . join(range(81,335), ',') " Show color column
+    colors jellybeans " Color scheme
     if has('mac')
         set guifont=Menlo\ Regular\ for\ Powerline:h12
         set guioptions+=c
@@ -182,4 +182,4 @@ nmap <leader>w :confirm :bd<CR>
 
 command! W exec 'w !sudo tee % > /dev/null' | e! " Save file with root permissions
 
-match Error /\s\+$/ " Hilight trailing spaces
+match Error /\s\+$/ "Hilight trailing spaces
