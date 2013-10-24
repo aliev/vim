@@ -1,12 +1,12 @@
+## Description
+
+Minimal VIM configuration file based on KISS principle
+
 ## Screenshots
 
 ![vim](https://dl.dropboxusercontent.com/u/5837324/vim/vim.png "Vim")
 
 ![python support](https://dl.dropboxusercontent.com/u/5837324/vim/vim-python.png "Python support")
-
-## Description
-
-Minimal VIM configuration file based on KISS principle
 
 ## How to install?
 
@@ -27,7 +27,7 @@ vim +BundleInstall +qall # Install all plugins
 | leader + l | Enable (disable) displaying whitespace
 | leader + f | Open CtrlP
 | leader + b | Open CtrlPBuffer
-| leader + c | Open jedi vim complete pop-up
+| leader + c | Open jedi vim complete pop-up (insert mode), Comment selected line (visual mode)
 | leader + g | goto definition
 | leader + r | rename
 | leader + n | usage
