@@ -40,6 +40,8 @@ endif
 
 set fillchars=stl:\ ,stlnc:\ ,vert:│
 
+hi clear VertSplit
+
 if has("linebreak")
       let &sbr = nr2char(8618).' ' " Show ↪ at the beginning of wrapped lines
 endif
@@ -195,3 +197,4 @@ nmap <leader>w :confirm :bd<CR>
 command! W exec 'w !sudo tee % > /dev/null' | e! " Save file with root permissions
 
 let g:indentLine_char = '│'
+
