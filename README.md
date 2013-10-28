@@ -36,19 +36,4 @@ vim +BundleInstall +qall # Install all plugins
 | leader + d | goto assignments
 | leader + t | create new tab
 | leader + w | close buffer (tabe) with asking save
-| C + _      | Comment selected lines
-
-## Used plugins
-
-| Plugin     | Plugin URL
-| ---------- |:--------------------
-| NerdTree   | https://github.com/davidhalter/jedi-vim
-| MatchIt    | http://www.vim.org/scripts/script.php?script_id=39
-| T-Comment  | https://github.com/vim-scripts/tComment
-| Fugutive   | https://github.com/tpope/vim-fugitive
-| Airline    | https://github.com/bling/vim-airline
-| Syntastic  | https://github.com/scrooloose/syntastic
-| Virtualenv | https://github.com/jmcantrell/vim-virtualenv
-| CtrlP      | https://github.com/kien/ctrlp.vim
-| Emmet      | https://github.com/mattn/emmet-vim
-| Jedi       | https://github.com/davidhalter/jedi-vim
+| C + _      | Comment selected line
