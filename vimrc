@@ -22,7 +22,6 @@ syntax enable " enable syntax highlighting
 if has('gui_running')
     set guioptions=g " Disable all GUI elements
     set background=dark " Dark backgroud
-    hi clear VertSplit
     execute "set colorcolumn=" . join(range(81,335), ',')
     colors jellybeans " Color scheme
     if has('mac')
@@ -198,3 +197,4 @@ command! W exec 'w !sudo tee % > /dev/null' | e! " Save file with root permissio
 " Indent guide symbol
 let g:indentLine_char = '│'
 
+hi clear VertSplit
