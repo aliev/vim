@@ -22,6 +22,7 @@ syntax enable " enable syntax highlighting
 if has('gui_running')
     set guioptions=g " Disable all GUI elements
     set background=dark " Dark backgroud
+    hi clear VertSplit
     execute "set colorcolumn=" . join(range(81,335), ',')
     colors jellybeans " Color scheme
     if has('mac')
@@ -39,8 +40,6 @@ if has('multi_byte')
 endif
 
 set fillchars=stl:\ ,stlnc:\ ,vert:│
-
-hi clear VertSplit
 
 if has("linebreak")
       let &sbr = nr2char(8618).' ' " Show ↪ at the beginning of wrapped lines
@@ -196,5 +195,6 @@ nmap <leader>w :confirm :bd<CR>
 
 command! W exec 'w !sudo tee % > /dev/null' | e! " Save file with root permissions
 
+" Indent guide symbol
 let g:indentLine_char = '│'
 
