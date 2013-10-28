@@ -22,12 +22,13 @@ filetype plugin indent on
 syntax enable " enable syntax highlighting
 if has('gui_running')
     set guioptions=g " Disable all GUI elements
+    set guioptions+=c " Console-based dialogs for simple queries
     set background=dark " Dark backgroud
     execute "set colorcolumn=" . join(range(81,335), ',')
     colors jellybeans " Color scheme
+    hi clear VertSplit " Clear vertical split background
     if has('mac')
         set guifont=Menlo\ Regular\ for\ Powerline:h12
-        set guioptions+=c
     else
         set guifont=DejaVu\ Sans\ Mono\ 10
     endif
@@ -185,6 +186,7 @@ map <leader>b :CtrlPBuffer<CR>
 " Open files
 map <leader>f :CtrlP<CR>
 
+" Comment selected line
 map <leader>c :TComment<CR>
 
 " Show/hide trail characters
@@ -197,5 +199,3 @@ command! W exec 'w !sudo tee % > /dev/null' | e! " Save file with root permissio
 
 " Indent guide symbol
 let g:indentLine_char = '│'
-
-hi clear VertSplit
