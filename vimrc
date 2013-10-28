@@ -25,9 +25,12 @@ if has('gui_running')
     set guioptions=g " Disable all GUI elements
     set guioptions+=c " Console-based dialogs for simple queries
     set background=dark " Dark backgroud
-    execute "set colorcolumn=" . join(range(81,335), ',')
+    if exists('+colorcolumn')
+      execute "set colorcolumn=" . join(range(81,335), ',')
+    endif
     colors jellybeans " Color scheme
     hi clear VertSplit " Clear vertical split background
+    highlight Pmenu guibg=#272727 gui=bold
     if has('mac')
         set guifont=Menlo\ Regular\ for\ Powerline:h12
     else
@@ -134,11 +137,11 @@ set path=.,,**
 " set nofoldenable " don't fold by default
 
 " set foldlevel=0 " folding level
-" 
+
 " set foldnestmax=0 " deepest fold is 10 levels
-" 
+
 " set foldmethod=indent " fold based on indent
-" 
+
 " set foldcolumn=2 " foldcolumn width
 
 " NERDTree configuration
