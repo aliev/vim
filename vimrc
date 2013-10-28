@@ -199,3 +199,4 @@ command! W exec 'w !sudo tee % > /dev/null' | e! " Save file with root permissio
 
 " Indent guide symbol
 let g:indentLine_char = '│'
+let g:indentLine_color_gui = '#1D1D1D'
