@@ -16,6 +16,7 @@ Bundle 'davidhalter/jedi-vim'
 Bundle 'mattn/emmet-vim'
 Bundle 'nanotech/jellybeans.vim'
 Bundle 'SirVer/ultisnips'
+Bundle 'Yggdroot/indentLine'
 
 filetype plugin indent on
 syntax enable " enable syntax highlighting
@@ -60,7 +61,7 @@ set magic " For regular expressions turn magic on
 
 set ignorecase " Searches are Non Case-sensitive
 
-" set cursorline " Highlight current cursor position
+set cursorline " Highlight current cursor position
 
 set smartcase
 
@@ -98,7 +99,6 @@ set termencoding=utf-8 " terminal encoding
 
 set fileencodings=utf8,cp1251
 
-
 set number " enable line numbers
 
 set ruler " always display cursor position
@@ -128,6 +128,16 @@ set clipboard+=unnamed " Global clipboard between the system and the editor
 set ttyfast
 
 set path=.,,**
+
+" set nofoldenable " don't fold by default
+
+" set foldlevel=1 " folding level
+
+" set foldnestmax=10 " deepest fold is 10 levels
+
+" set foldmethod=indent " fold based on indent
+
+" set foldcolumn=5 " foldcolumn width
 
 " NERDTree configuration
 let NERDTreeWinSize = 30
@@ -184,4 +194,4 @@ nmap <leader>w :confirm :bd<CR>
 
 command! W exec 'w !sudo tee % > /dev/null' | e! " Save file with root permissions
 
-match Error /\s\+$/ "Hilight trailing spaces
+let g:indentLine_char = '│'
