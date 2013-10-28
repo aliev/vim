@@ -17,6 +17,7 @@ Bundle 'nanotech/jellybeans.vim'
 Bundle 'SirVer/ultisnips'
 Bundle 'Yggdroot/indentLine'
 Bundle 'gregsexton/MatchTag'
+Bundle 'majutsushi/tagbar'
 
 filetype plugin indent on
 syntax enable " enable syntax highlighting
@@ -132,13 +133,13 @@ set path=.,,**
 
 " set nofoldenable " don't fold by default
 
-" set foldlevel=1 " folding level
-
-" set foldnestmax=10 " deepest fold is 10 levels
-
+" set foldlevel=0 " folding level
+" 
+" set foldnestmax=0 " deepest fold is 10 levels
+" 
 " set foldmethod=indent " fold based on indent
-
-" set foldcolumn=5 " foldcolumn width
+" 
+" set foldcolumn=2 " foldcolumn width
 
 " NERDTree configuration
 let NERDTreeWinSize = 30
@@ -147,7 +148,6 @@ let NERDTreeMinimalUI=0
 let NERDTreeChDirMode=2
 let NERDTreeHijackNetrw=0
 let NERDTreeIgnore = ['\.png$','\.pyc$', '\.db$', '\.git$', '*.\.o$', '.*\.out$', '.*\.so$', '.*\.a$', '.*\~$', '\.jpg$', '\.jpeg$', '\.gif$']
-map <leader>e :NERDTreeToggle<CR>
 
 " Enable Jedi autocomplete
 let g:jedi#auto_initialization = 1
@@ -200,3 +200,38 @@ command! W exec 'w !sudo tee % > /dev/null' | e! " Save file with root permissio
 " Indent guide symbol
 let g:indentLine_char = '│'
 let g:indentLine_color_gui = '#1D1D1D'
+
+function! ToggleNERDTreeAndTagbar()
+    let w:jumpbacktohere = 1
+
+    " Detect which plugins are open
+    if exists('t:NERDTreeBufName')
+        let nerdtree_open = bufwinnr(t:NERDTreeBufName) != -1
+    else
+        let nerdtree_open = 0
+    endif
+    let tagbar_open = bufwinnr('__Tagbar__') != -1
+
+    " Perform the appropriate action
+    if nerdtree_open && tagbar_open
+        NERDTreeClose
+        TagbarClose
+    elseif nerdtree_open
+        TagbarOpen
+    elseif tagbar_open
+        NERDTree
+    else
+        NERDTree
+        TagbarOpen
+    endif
+
+    " Jump back to the original window
+    for window in range(1, winnr('$'))
+        execute window . 'wincmd w'
+        if exists('w:jumpbacktohere')
+            unlet w:jumpbacktohere
+            break
+        endif
+    endfor
+endfunction
+nnoremap <leader>e :call ToggleNERDTreeAndTagbar()<CR>
