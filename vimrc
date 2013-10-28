@@ -4,7 +4,6 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 Bundle 'gmarik/vundle'
-Bundle 'sjl/badwolf'
 Bundle 'scrooloose/nerdtree'
 Bundle 'tomtom/tcomment_vim'
 Bundle 'tpope/vim-fugitive'
@@ -168,6 +167,7 @@ let g:syntastic_error_symbol = nr2char(33)
 let g:syntastic_style_error_symbol = nr2char(33)
 let g:syntastic_warning_symbol = nr2char(9888)
 let g:syntastic_style_warning_symbol = nr2char(9888)
+let g:syntastic_always_populate_loc_list=1
 
 let g:airline#extensions#tabline#enabled = 1 " Enable airline tabs
 
