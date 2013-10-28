@@ -16,6 +16,7 @@ Bundle 'mattn/emmet-vim'
 Bundle 'nanotech/jellybeans.vim'
 Bundle 'SirVer/ultisnips'
 Bundle 'Yggdroot/indentLine'
+Bundle 'gregsexton/MatchTag'
 
 filetype plugin indent on
 syntax enable " enable syntax highlighting
@@ -141,10 +142,10 @@ set path=.,,**
 " NERDTree configuration
 let NERDTreeWinSize = 30
 let NERDTreeDirArrows=1
-let NERDTreeMinimalUI=1
+let NERDTreeMinimalUI=0
 let NERDTreeChDirMode=2
 let NERDTreeHijackNetrw=0
-let NERDTreeIgnore = ['\.png$','\.pyc$', '\.db$', '\.git$', '*.\.o$', '.*\.out$', '.*\.so$', '.*\.a$', '.*\~$']
+let NERDTreeIgnore = ['\.png$','\.pyc$', '\.db$', '\.git$', '*.\.o$', '.*\.out$', '.*\.so$', '.*\.a$', '.*\~$', '\.jpg$', '\.jpeg$', '\.gif$']
 map <leader>e :NERDTreeToggle<CR>
 
 " Enable Jedi autocomplete
