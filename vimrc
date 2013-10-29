@@ -10,21 +10,22 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'scrooloose/syntastic'
 Bundle 'kien/ctrlp.vim'
 Bundle 'davidhalter/jedi-vim'
-Bundle 'nanotech/jellybeans.vim'
 Bundle 'SirVer/ultisnips'
 Bundle 'Yggdroot/indentLine'
 Bundle 'bling/vim-airline'
 Bundle 'bling/vim-bufferline'
+Bundle 'chriskempson/base16-vim'
 
 filetype plugin indent on
-syntax enable " enable syntax highlighting
-if has('gui_running')
+if &t_Co > 2 || has("gui_running")
+    syntax on           " syntax-highlighting
+    colors base16-default " Color scheme
+    hi clear VertSplit " Clear vertical split background
     set guioptions=g " Disable all GUI elements
     set guioptions+=c " Console-based dialogs for simple queries
     set background=dark " Dark backgroud
-    execute "set colorcolumn=" . join(range(81,335), ',')
-    colors jellybeans " Color scheme
-    hi clear VertSplit " Clear vertical split background
+    set hlsearch        " Highlight search terms (very useful!)
+    set incsearch       " Show search matches while typing
     if has('mac')
         set guifont=Menlo\ Regular\ for\ Powerline:h12
     else
@@ -44,6 +45,8 @@ if has("linebreak")
       let &sbr = nr2char(8618).' ' " Show ↪ at the beginning of wrapped lines
 endif
 
+set confirm " get a dialog when :q, :w, or :wq fails
+
 let mapleader = "," " map leader
 
 let maplocalleader = "_" " local leader
@@ -52,9 +55,12 @@ set lazyredraw " Don't redraw while executing macros (good performance config)
 
 set laststatus=2 " enable statusline
 
-set incsearch " Search by typing
-
-set hlsearch " highlight search result
+" make a ruler at line 80
+if exists('+colorcolumn')
+    execute "set colorcolumn=" . join(range(81,335), ',')
+else
+    au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
+endif
 
 set magic " For regular expressions turn magic on
 
@@ -185,3 +191,5 @@ let g:airline_exclude_preview = 1
 let g:airline_powerline_fonts = 1 " Use airline fonts
 
 let g:airline#extensions#tabline#enabled = 0 " If you want to auto-completion to work stable, disable this option
+
+let g:airline#extensions#tabline#fnamemod = ':t'
