@@ -16,13 +16,15 @@ Bundle 'bling/vim-airline'
 Bundle 'bling/vim-bufferline'
 Bundle 'chriskempson/base16-vim'
 
+
 filetype plugin indent on
 if &t_Co > 2 || has("gui_running")
     syntax on           " syntax-highlighting
     colors base16-default " Color scheme
     hi clear VertSplit " Clear vertical split background
     set guioptions=g " Disable all GUI elements
-    set guioptions+=c " Console-based dialogs for simple queries
+    set guioptions+=c " Enable Console-based dialogs for simple queries
+    set guioptions+=e " Enable GUI tabs
     set background=dark " Dark backgroud
     set hlsearch        " Highlight search terms (very useful!)
     set incsearch       " Show search matches while typing
