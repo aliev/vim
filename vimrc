@@ -7,17 +7,14 @@ Bundle 'gmarik/vundle'
 Bundle 'scrooloose/nerdtree'
 Bundle 'tomtom/tcomment_vim'
 Bundle 'tpope/vim-fugitive'
-Bundle 'bling/vim-airline'
 Bundle 'scrooloose/syntastic'
-Bundle 'jmcantrell/vim-virtualenv'
 Bundle 'kien/ctrlp.vim'
 Bundle 'davidhalter/jedi-vim'
-Bundle 'mattn/emmet-vim'
 Bundle 'nanotech/jellybeans.vim'
 Bundle 'SirVer/ultisnips'
 Bundle 'Yggdroot/indentLine'
-Bundle 'gregsexton/MatchTag'
-Bundle 'majutsushi/tagbar'
+Bundle 'bling/vim-airline'
+Bundle 'bling/vim-bufferline'
 
 filetype plugin indent on
 syntax enable " enable syntax highlighting
@@ -25,12 +22,9 @@ if has('gui_running')
     set guioptions=g " Disable all GUI elements
     set guioptions+=c " Console-based dialogs for simple queries
     set background=dark " Dark backgroud
-    if exists('+colorcolumn')
-      execute "set colorcolumn=" . join(range(81,335), ',')
-    endif
+    execute "set colorcolumn=" . join(range(81,335), ',')
     colors jellybeans " Color scheme
     hi clear VertSplit " Clear vertical split background
-    highlight Pmenu guibg=#272727 gui=bold
     if has('mac')
         set guifont=Menlo\ Regular\ for\ Powerline:h12
     else
@@ -134,16 +128,6 @@ set ttyfast
 
 set path=.,,**
 
-" set nofoldenable " don't fold by default
-
-" set foldlevel=0 " folding level
-
-" set foldnestmax=0 " deepest fold is 10 levels
-
-" set foldmethod=indent " fold based on indent
-
-" set foldcolumn=2 " foldcolumn width
-
 " NERDTree configuration
 let NERDTreeWinSize = 30
 let NERDTreeDirArrows=1
@@ -162,7 +146,7 @@ let g:jedi#completions_command="<leader>c"
 autocmd FileType python setlocal completeopt-=preview
 
 " Syntax check mode for python
-let g:syntastic_python_checkers=['pylint', 'python']
+let g:syntastic_python_checkers=[]
 
 " Syntax check mode for javascript
 let g:syntastic_javascript_checkers = ['jslint']
@@ -174,12 +158,6 @@ let g:syntastic_warning_symbol = nr2char(9888)
 let g:syntastic_style_warning_symbol = nr2char(9888)
 let g:syntastic_always_populate_loc_list=1
 
-let g:airline#extensions#tabline#enabled = 1 " Enable airline tabs
-
-let g:airline#extensions#tabline#fnamemod = ':t' " :help filename-modifiers
-
-let g:airline_powerline_fonts = 1 " Use airline fonts
-
 " CtrlP Configuration
 let g:ctrlp_match_window = 'bottom,order:top,min:1,max:20'
 
@@ -190,7 +168,7 @@ map <leader>b :CtrlPBuffer<CR>
 map <leader>f :CtrlP<CR>
 
 " Comment selected line
-map <leader>c :TComment<CR>
+map <leader>/ :TComment<CR>
 
 " Show/hide trail characters
 nmap <leader>l :set list!<CR>
@@ -198,43 +176,12 @@ nmap <leader>l :set list!<CR>
 " Close buffer with ask save it
 nmap <leader>w :confirm :bd<CR>
 
-command! W exec 'w !sudo tee % > /dev/null' | e! " Save file with root permissions
+let g:indentLine_char = '│' " Indent guide symbol
 
-" Indent guide symbol
-let g:indentLine_char = '│'
-let g:indentLine_color_gui = '#1D1D1D'
+let g:indentLine_color_gui = '#1D1D1D' " Indent guide symbol color
 
-function! ToggleNERDTreeAndTagbar()
-    let w:jumpbacktohere = 1
+let g:airline_exclude_preview = 1
 
-    " Detect which plugins are open
-    if exists('t:NERDTreeBufName')
-        let nerdtree_open = bufwinnr(t:NERDTreeBufName) != -1
-    else
-        let nerdtree_open = 0
-    endif
-    let tagbar_open = bufwinnr('__Tagbar__') != -1
+let g:airline_powerline_fonts = 1 " Use airline fonts
 
-    " Perform the appropriate action
-    if nerdtree_open && tagbar_open
-        NERDTreeClose
-        TagbarClose
-    elseif nerdtree_open
-        TagbarOpen
-    elseif tagbar_open
-        NERDTree
-    else
-        NERDTree
-        TagbarOpen
-    endif
-
-    " Jump back to the original window
-    for window in range(1, winnr('$'))
-        execute window . 'wincmd w'
-        if exists('w:jumpbacktohere')
-            unlet w:jumpbacktohere
-            break
-        endif
-    endfor
-endfunction
-nnoremap <leader>e :call ToggleNERDTreeAndTagbar()<CR>
+let g:airline#extensions#tabline#enabled = 0 " If you want to auto-completion to work stable, disable this option
