@@ -185,12 +185,8 @@ let g:indentLine_char = '│' " Indent guide symbol
 
 let g:indentLine_color_gui = '#1D1D1D' " Indent guide symbol color
 
-let g:airline_exclude_preview = 1
-
 let g:airline_powerline_fonts = 1 " Use airline fonts
 
-let g:airline#extensions#tabline#enabled = 0 " If you want to auto-completion to work stable, disable this option
+let g:airline#extensions#tabline#enabled = 1 " If you want to auto-completion to work stable in older vim, disable this option
 
 let g:airline#extensions#tabline#fnamemod = ':t'
-
-let g:jedi#use_tabs_not_buffers = 0
