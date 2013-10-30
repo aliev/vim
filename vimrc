@@ -15,19 +15,19 @@ Bundle 'Yggdroot/indentLine'
 Bundle 'bling/vim-airline'
 Bundle 'bling/vim-bufferline'
 Bundle 'chriskempson/base16-vim'
-
+Bundle 'mattn/emmet-vim'
 
 filetype plugin indent on
 if &t_Co > 2 || has("gui_running")
     syntax on           " syntax-highlighting
     colors base16-default " Color scheme
-    hi clear VertSplit " Clear vertical split background
     set guioptions=g " Disable all GUI elements
     set guioptions+=c " Enable Console-based dialogs for simple queries
     set guioptions+=e " Enable GUI tabs
     set background=dark " Dark backgroud
     set hlsearch        " Highlight search terms (very useful!)
     set incsearch       " Show search matches while typing
+    hi clear VertSplit " Clear vertical split background
     if has('mac')
         set guifont=Menlo\ Regular\ for\ Powerline:h12
     else
@@ -168,12 +168,9 @@ let g:syntastic_always_populate_loc_list=1
 
 " CtrlP Configuration
 let g:ctrlp_match_window = 'bottom,order:top,min:1,max:20'
-
-" Open buffers
 map <leader>b :CtrlPBuffer<CR>
-
-" Open files
 map <leader>f :CtrlP<CR>
+map <leader>t :CtrlPBufTag<CR>
 
 " Comment selected line
 map <leader>/ :TComment<CR>
@@ -195,3 +192,5 @@ let g:airline_powerline_fonts = 1 " Use airline fonts
 let g:airline#extensions#tabline#enabled = 0 " If you want to auto-completion to work stable, disable this option
 
 let g:airline#extensions#tabline#fnamemod = ':t'
+
+let g:jedi#use_tabs_not_buffers = 0
