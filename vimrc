@@ -23,7 +23,7 @@ if &t_Co > 2 || has("gui_running")
     colors base16-default " Color scheme
     set guioptions=g " Disable all GUI elements
     set guioptions+=c " Enable Console-based dialogs for simple queries
-    set guioptions+=e " Enable GUI tabs
+    " set guioptions+=e " Enable GUI tabs
     set background=dark " Dark backgroud
     set hlsearch        " Highlight search terms (very useful!)
     set incsearch       " Show search matches while typing
