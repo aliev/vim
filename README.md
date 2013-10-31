@@ -20,6 +20,9 @@ git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 echo "source ~/.vim/vimrc" > .vimrc
 vim +BundleInstall +qall # Install all plugins
 ```
+## Important
+
+If jedi-vim autocomplete doesn't work correctly, you can upgrade you vim to latest version (currently 7.4), or disable let g:airline#extensions#tabline#enabled option 
 
 ## Key bindings
 
