@@ -142,7 +142,9 @@ let NERDTreeDirArrows=1
 let NERDTreeMinimalUI=0
 let NERDTreeChDirMode=2
 let NERDTreeHijackNetrw=0
-let NERDTreeIgnore = ['\.png$','\.pyc$', '\.db$', '\.git$', '*.\.o$', '.*\.out$', '.*\.so$', '.*\.a$', '.*\~$', '\.jpg$', '\.jpeg$', '\.gif$']
+let NERDTreeIgnore = ['\.png$','\.pyc$', '\.db$', '\.git$', '*.\.o$', 
+                     \'.*\.out$', '.*\.so$', '.*\.a$', '.*\~$', '\.jpg$',
+                     \'\.jpeg$', '\.gif$']
 
 " Enable Jedi autocomplete
 let g:jedi#auto_initialization = 1
@@ -154,17 +156,31 @@ let g:jedi#completions_command="<leader>c"
 autocmd FileType python setlocal completeopt-=preview
 
 " Syntax check mode for python
-let g:syntastic_python_checkers=['pylint']
+let g:syntastic_python_checkers = ['pylint', 'python']
 
 " Syntax check mode for javascript
 let g:syntastic_javascript_checkers = ['jslint']
+
+let g:syntastic_always_populate_loc_list = 1
 
 " Warning and Error symbols
 let g:syntastic_error_symbol = 'e'
 let g:syntastic_style_error_symbol = 'e'
 let g:syntastic_warning_symbol = 'w'
 let g:syntastic_style_warning_symbol = 'w'
-let g:syntastic_always_populate_loc_list=1
+
+" Don't warn on
+"   E121 continuation line indentation is not a multiple of four
+"   E128 continuation line under-indented for visual indent
+"   E711 comparison to None should be 'if cond is not None:'
+"   E301 expected 1 blank line, found 0
+"   E261 at least two spaces before inline comment
+"   E241 multiple spaces after ':'
+"   E124 closing bracket does not match visual indentation
+"   E126 continuation line over-indented for hanging indent
+let g:syntastic_python_flake8_args='--ignore=E121,E128,
+            \E711,E301,E261,E241,E124,E126
+    \ --max-line-length=84'
 
 " CtrlP Configuration
 let g:ctrlp_match_window = 'bottom,order:top,min:1,max:20'
@@ -178,6 +194,9 @@ map <leader>/ :TComment<CR>
 " Show/hide trail characters
 nmap <leader>l :set list!<CR>
 
+" leader-c check syntax
+map <leader>c :SyntasticToggleMode<CR>
+
 " Close buffer with ask save it
 nmap <leader>w :confirm :bd<CR>
 
@@ -187,6 +206,23 @@ let g:indentLine_color_gui = '#1D1D1D' " Indent guide symbol color
 
 let g:airline_powerline_fonts = 1 " Use airline fonts
 
-let g:airline#extensions#tabline#enabled = 1 " If you want to auto-completion to work stable in older vim, disable this option
+" If you want to auto-completion to work stable in older vim, disable this option
+let g:airline#extensions#tabline#enabled = 1
 
 let g:airline#extensions#tabline#fnamemod = ':t'
+
+let python_highlight_all=1
+let python_highlight_exceptions=0
+let python_highlight_builtins=0
+let python_slow_sync=1
+
+function! ToggleErrors()
+    if empty(filter(tabpagebuflist(), 'getbufvar(v:val, "&buftype") is# "quickfix"'))
+         " No location/quickfix list shown, open syntastic error location panel
+         Errors
+    else
+        lclose
+    endif
+endfunction
+
+map <leader>ee :call ToggleErrors()<CR>
