@@ -32,11 +32,11 @@ If jedi-vim autocomplete doesn't work correctly, you can upgrade you vim to late
 | leader + l | Enable (disable) displaying whitespace
 | leader + f | Open CtrlP
 | leader + b | Open CtrlPBuffer
-| leader + c | Open jedi vim complete pop-up (insert mode), Comment selected line (visual mode)
+| leader + c | Open jedi vim complete pop-up (insert mode), Syntastic (visual mode)
 | leader + g | goto definition
 | leader + r | rename
 | leader + n | usage
 | leader + d | goto assignments
 | leader + t | create new tab
 | leader + w | close buffer (tabe) with asking save
-| C + _      | Comment selected line
+| leader + / | Comment selected line
