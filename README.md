@@ -22,7 +22,7 @@ vim +BundleInstall +qall # Install all plugins
 ```
 ## Important
 
-If jedi-vim autocomplete doesn't work correctly, you can upgrade you vim to latest version (currently 7.4), or disable let ```g:airline#extensions#tabline#enabled``` option 
+If jedi-vim autocomplete doesn't work correctly, you can upgrade you vim to latest version (currently 7.4), or disable ```g:airline#extensions#tabline#enabled``` option in your vimrc file 
 
 ## Key bindings
 
