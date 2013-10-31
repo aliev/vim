@@ -154,16 +154,16 @@ let g:jedi#completions_command="<leader>c"
 autocmd FileType python setlocal completeopt-=preview
 
 " Syntax check mode for python
-let g:syntastic_python_checkers=[]
+let g:syntastic_python_checkers=['pylint']
 
 " Syntax check mode for javascript
 let g:syntastic_javascript_checkers = ['jslint']
 
 " Warning and Error symbols
-let g:syntastic_error_symbol = nr2char(33)
-let g:syntastic_style_error_symbol = nr2char(33)
-let g:syntastic_warning_symbol = nr2char(9888)
-let g:syntastic_style_warning_symbol = nr2char(9888)
+let g:syntastic_error_symbol = 'e'
+let g:syntastic_style_error_symbol = 'e'
+let g:syntastic_warning_symbol = 'w'
+let g:syntastic_style_warning_symbol = 'w'
 let g:syntastic_always_populate_loc_list=1
 
 " CtrlP Configuration
