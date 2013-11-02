@@ -1,40 +1,44 @@
-## Описание
+## Description
 
-Минимальный файл конфигурации.
-Включено только то, что необходимо разработчику.
-Не затронуты стандартные кей-биндинги. Файл конфигурации делал по принципу KISS ;)
+Minimal VIM configuration file based on KISS principle
 
-## Расширения
+## Screenshots
 
-По необходимости каждое из расширений можно выключить в файле vimrc просто закомментировав соответствующую строчку.
-Установка расширений происходит через плагин vundle.
+![vim indent guides](https://dl.dropboxusercontent.com/u/5837324/vim/vim-indent-guides.png "Vim with indent guides and trailing characters")
 
-## Как установить?
+![vim](https://dl.dropboxusercontent.com/u/5837324/vim/vim.png "Vim")
+
+![python support](https://dl.dropboxusercontent.com/u/5837324/vim/vim-python.png "Python support")
+
+## How to install?
 
 ```
-git clone https://github.com/aliev/.vim.git
+cd ~
+git clone https://github.com/aliev/vim.git
+mv ~/vim ~/.vim
 git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
-echo "source ~/.vim/vimrc" > .vimrc # Подключаем файл конфигурации
-vim +BundleInstall +qall # Ставим плагины из репозиторий
-# Необходимо для работы command-t
-cd .vim/bundle/command-t
-rake make
+echo "source ~/.vim/vimrc" > .vimrc
+vim +BundleInstall +qall # Install all plugins
 ```
+## Important
 
-## Из того что сделано:
-1. Плагин Zen Coding
-2. Автозакрытие парных html тегов (плагин html_autoclosetag)
-3. Автоматическое закрытие парных блоков в Ruby (плагин endwise)
-4. Подстветка парных html и xml тегов
-5. NERDTree
-6. Цветовая схема Solarized (для моих глаз одна из самых расслабляющих и приятных цветовых схем)
-7. snipmate - сниппеты
-8. Отображение специальных символов (символ переноса строки, конец строки, табуляция и т.д.)
-9. Плагин Command-t
-10. tagbar
-11. Красивый статус бар (powerline)
-12. Сохранение положения курсора после повторного открытия файла
+If jedi-vim autocomplete doesn't work correctly, you can upgrade you vim to latest version (currently 7.4), or disable ```g:airline#extensions#tabline#enabled``` option in your vimrc file 
 
-## Чего хотелось бы?
-1. Автоматическая вставка ключевого слова import в python (как в PyDev)
-2. Подсветка парных блоков (if, end, begin, do) в ruby файлах
+## Key bindings
+
+| Key        | Description
+| ---------- |:---------------------------------------------------------------
+| ,          | Default leader key
+| leader + l | Enable (disable) displaying whitespace
+| leader + f | Open CtrlP
+| leader + b | Open CtrlPBuffer
+| leader + t | Open CtrlPBufTag
+| leader + c | Open jedi vim complete pop-up (insert mode), Syntastic (visual mode)
+| leader + g | goto definition
+| leader + r | rename
+| leader + n | usage
+| leader + d | goto assignments
+| leader + t | create new tab
+| leader + w | close buffer (tabe) with asking save
+| leader + / | Comment selected line
+
