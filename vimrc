@@ -4,18 +4,25 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 Bundle 'gmarik/vundle'
+
+Bundle 'chriskempson/base16-vim'
+
 Bundle 'scrooloose/nerdtree'
 Bundle 'tomtom/tcomment_vim'
 Bundle 'tpope/vim-fugitive'
 Bundle 'scrooloose/syntastic'
 Bundle 'kien/ctrlp.vim'
 Bundle 'davidhalter/jedi-vim'
-Bundle 'SirVer/ultisnips'
 Bundle 'Yggdroot/indentLine'
 Bundle 'bling/vim-airline'
 Bundle 'bling/vim-bufferline'
-Bundle 'chriskempson/base16-vim'
+Bundle 'SirVer/ultisnips'
 Bundle 'mattn/emmet-vim'
+Bundle 'ervandew/supertab'
+
+Bundle 'Valloric/MatchTagAlways'
+
+Bundle 'Blackrush/vim-gocode'
 
 filetype plugin indent on
 if &t_Co > 2 || has("gui_running")
@@ -27,7 +34,7 @@ if &t_Co > 2 || has("gui_running")
     set background=dark " Dark backgroud
     set hlsearch        " Highlight search terms (very useful!)
     set incsearch       " Show search matches while typing
-    hi clear VertSplit " Clear vertical split background
+    " hi clear VertSplit " Clear vertical split background
     if has('mac')
         set guifont=Menlo\ Regular\ for\ Powerline:h12
     else
@@ -142,15 +149,20 @@ let NERDTreeDirArrows=1
 let NERDTreeMinimalUI=0
 let NERDTreeChDirMode=2
 let NERDTreeHijackNetrw=0
-let NERDTreeIgnore = ['\.png$','\.pyc$', '\.db$', '\.git$', '*.\.o$', 
+let NERDTreeIgnore = ['\.png$','\.pyc$', '\.db$', '\.git$', '*.\.o$',
                      \'.*\.out$', '.*\.so$', '.*\.a$', '.*\~$', '\.jpg$',
                      \'\.jpeg$', '\.gif$']
 
 " Enable Jedi autocomplete
 let g:jedi#auto_initialization = 1
 
-" leader + c jedi completion
-let g:jedi#completions_command="<leader>c"
+let g:jedi#show_call_signatures = 0 " Disable or enable call signature
+
+" Disable autocomplete when i type dot
+let g:jedi#popup_on_dot = 0
+
+" Enable jedi completion for omnifunc
+autocmd FileType python set omnifunc=jedi#completions
 
 " Disable jedi-vim documentation
 autocmd FileType python setlocal completeopt-=preview
@@ -179,8 +191,8 @@ let g:syntastic_style_warning_symbol = 'w'
 "   E124 closing bracket does not match visual indentation
 "   E126 continuation line over-indented for hanging indent
 let g:syntastic_python_flake8_args='--ignore=E121,E128,
-            \E711,E301,E261,E241,E124,E126
-    \ --max-line-length=84'
+            \ E711,E301,E261,E241,E124,E126
+            \ --max-line-length=84'
 
 " CtrlP Configuration
 let g:ctrlp_match_window = 'bottom,order:top,min:1,max:20'
@@ -190,6 +202,8 @@ map <leader>t :CtrlPBufTag<CR>
 
 " Comment selected line
 map <leader>/ :TComment<CR>
+
+let g:tcommentMapLeader2 = '<leader>/'
 
 " Show/hide trail characters
 nmap <leader>l :set list!<CR>
@@ -226,3 +240,23 @@ function! ToggleErrors()
 endfunction
 
 map <leader>ee :call ToggleErrors()<CR>
+
+let g:UltiSnipsJumpForwardTrigger='<tab>'
+
+let g:mta_use_matchparen_group = 1
+
+
+let g:mta_filetypes = {
+    \ 'html' : 1,
+    \ 'xhtml' : 1,
+    \ 'xml' : 1,
+    \ 'jinja' : 1,
+    \ 'htmldjango' : 1,
+    \}
+
+let g:SuperTabDefaultCompletionType = "context"
+
+" When i press <tab> by default enabled omni completion
+let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
+let g:SuperTabLongestEnhanced = 1
+
