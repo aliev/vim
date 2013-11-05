@@ -19,10 +19,8 @@ Bundle 'bling/vim-bufferline'
 Bundle 'SirVer/ultisnips'
 Bundle 'mattn/emmet-vim'
 Bundle 'ervandew/supertab'
-
 Bundle 'Valloric/MatchTagAlways'
-
-Bundle 'Blackrush/vim-gocode'
+Bundle 'airblade/vim-gitgutter'
 
 filetype plugin indent on
 if &t_Co > 2 || has("gui_running")
@@ -34,7 +32,7 @@ if &t_Co > 2 || has("gui_running")
     set background=dark " Dark backgroud
     set hlsearch        " Highlight search terms (very useful!)
     set incsearch       " Show search matches while typing
-    " hi clear VertSplit " Clear vertical split background
+    hi clear VertSplit " Clear vertical split background
     if has('mac')
         set guifont=Menlo\ Regular\ for\ Powerline:h12
     else
@@ -168,31 +166,14 @@ autocmd FileType python set omnifunc=jedi#completions
 autocmd FileType python setlocal completeopt-=preview
 
 " Syntax check mode for python
-let g:syntastic_python_checkers = ['pylint', 'python']
+let g:syntastic_python_checkers = ['pylama']
 
 " Syntax check mode for javascript
 let g:syntastic_javascript_checkers = ['jslint']
 
-let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_quiet_warnings = 0
 
-" Warning and Error symbols
-let g:syntastic_error_symbol = 'e'
-let g:syntastic_style_error_symbol = 'e'
-let g:syntastic_warning_symbol = 'w'
-let g:syntastic_style_warning_symbol = 'w'
-
-" Don't warn on
-"   E121 continuation line indentation is not a multiple of four
-"   E128 continuation line under-indented for visual indent
-"   E711 comparison to None should be 'if cond is not None:'
-"   E301 expected 1 blank line, found 0
-"   E261 at least two spaces before inline comment
-"   E241 multiple spaces after ':'
-"   E124 closing bracket does not match visual indentation
-"   E126 continuation line over-indented for hanging indent
-let g:syntastic_python_flake8_args='--ignore=E121,E128,
-            \ E711,E301,E261,E241,E124,E126
-            \ --max-line-length=84'
+let g:syntastic_enable_signs=0
 
 " CtrlP Configuration
 let g:ctrlp_match_window = 'bottom,order:top,min:1,max:20'
@@ -245,7 +226,6 @@ let g:UltiSnipsJumpForwardTrigger='<tab>'
 
 let g:mta_use_matchparen_group = 1
 
-
 let g:mta_filetypes = {
     \ 'html' : 1,
     \ 'xhtml' : 1,
@@ -259,4 +239,3 @@ let g:SuperTabDefaultCompletionType = "context"
 " When i press <tab> by default enabled omni completion
 let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
 let g:SuperTabLongestEnhanced = 1
-
