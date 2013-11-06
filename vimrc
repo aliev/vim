@@ -16,11 +16,14 @@ Bundle 'davidhalter/jedi-vim'
 Bundle 'Yggdroot/indentLine'
 Bundle 'bling/vim-airline'
 Bundle 'bling/vim-bufferline'
+
 Bundle 'SirVer/ultisnips'
+
 Bundle 'mattn/emmet-vim'
 Bundle 'ervandew/supertab'
 Bundle 'Valloric/MatchTagAlways'
 Bundle 'airblade/vim-gitgutter'
+Bundle 'Blackrush/vim-gocode'
 
 filetype plugin indent on
 if &t_Co > 2 || has("gui_running")
@@ -75,7 +78,7 @@ set ignorecase " Searches are Non Case-sensitive
 
 set cursorline " Highlight current cursor position
 
-set smartcase
+set smartcase " Do smart case matching when searching
 
 set showmatch " Show matching brackets when text indicator is over them
 
@@ -109,7 +112,7 @@ set encoding=utf8 " Default encoding
 
 set termencoding=utf-8 " terminal encoding
 
-set fileencodings=utf8,cp1251
+set fileencodings=utf8,cp1251 " supported file encodings
 
 set number " enable line numbers
 
@@ -129,15 +132,15 @@ set noswapfile " Disable swap files
 
 set noautochdir " change the current working directory whenever you open a file
 
-set wildmenu " Turn on the WiLd menu
+set wildmenu " Turn on the Wild menu
 
-set wildmode=list:longest,list:full
+set wildmode=list:longest,list:full " Wildmenu configuration
 
 set wildignore+=*.o,*.pyc,*.jpg,*.png,*.gif,*.db,*.obj,.git " Ignore compiled files
 
 set clipboard+=unnamed " Global clipboard between the system and the editor
 
-set ttyfast
+set ttyfast " Optimize for fast terminal connections
 
 set path=.,,**
 
@@ -165,14 +168,13 @@ autocmd FileType python set omnifunc=jedi#completions
 " Disable jedi-vim documentation
 autocmd FileType python setlocal completeopt-=preview
 
-" Syntax check mode for python
+" Syntax check mode for python (pip install pylama)
 let g:syntastic_python_checkers = ['pylama']
 
-" Syntax check mode for javascript
+" Syntax check mode for javascript (npm install jslint)
 let g:syntastic_javascript_checkers = ['jslint']
 
-let g:syntastic_quiet_warnings = 0
-
+" Syntastic disable signs
 let g:syntastic_enable_signs=0
 
 " CtrlP Configuration
@@ -184,6 +186,7 @@ map <leader>t :CtrlPBufTag<CR>
 " Comment selected line
 map <leader>/ :TComment<CR>
 
+" T-Comment keymap
 let g:tcommentMapLeader2 = '<leader>/'
 
 " Show/hide trail characters
