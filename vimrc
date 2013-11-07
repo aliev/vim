@@ -20,8 +20,6 @@ Bundle 'bling/vim-bufferline'
 Bundle 'SirVer/ultisnips'
 
 Bundle 'mattn/emmet-vim'
-Bundle 'ervandew/supertab'
-Bundle 'Valloric/MatchTagAlways'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'Blackrush/vim-gocode'
 
@@ -157,16 +155,24 @@ let NERDTreeIgnore = ['\.png$','\.pyc$', '\.db$', '\.git$', '*.\.o$',
 " Enable Jedi autocomplete
 let g:jedi#auto_initialization = 1
 
-let g:jedi#show_call_signatures = 0 " Disable or enable call signature
+let g:jedi#show_call_signatures = 1 " Disable or enable function call signature
 
 " Disable autocomplete when i type dot
 let g:jedi#popup_on_dot = 0
 
-" Enable jedi completion for omnifunc
-autocmd FileType python set omnifunc=jedi#completions
+if has("autocmd")
+    " Enable jedi completion for omnifunc
+    autocmd FileType python set omnifunc=jedi#completions
 
-" Disable jedi-vim documentation
-autocmd FileType python setlocal completeopt-=preview
+    " Disable jedi-vim documentation
+    autocmd FileType python setlocal completeopt-=preview
+
+    " Enable autocompletion for Golang
+    autocmd FileType go set omnifunc=gocomplete#Complete
+
+    " Disable gocode documentation
+    autocmd FileType go setlocal completeopt-=preview
+endif
 
 " Syntax check mode for python (pip install pylama)
 let g:syntastic_python_checkers = ['pylama']
@@ -185,6 +191,11 @@ map <leader>t :CtrlPBufTag<CR>
 
 " Comment selected line
 map <leader>/ :TComment<CR>
+
+" File autocomplte
+imap <leader>f <c-x><c-f>
+" Default autocomplete
+imap <leader>c <c-x><c-o>
 
 " T-Comment keymap
 let g:tcommentMapLeader2 = '<leader>/'
@@ -207,6 +218,7 @@ let g:airline_powerline_fonts = 1 " Use airline fonts
 " If you want to auto-completion to work stable in older vim, disable this option
 let g:airline#extensions#tabline#enabled = 1
 
+" Airline tabs settings
 let g:airline#extensions#tabline#fnamemod = ':t'
 
 let python_highlight_all=1
@@ -226,19 +238,3 @@ endfunction
 map <leader>ee :call ToggleErrors()<CR>
 
 let g:UltiSnipsJumpForwardTrigger='<tab>'
-
-let g:mta_use_matchparen_group = 1
-
-let g:mta_filetypes = {
-    \ 'html' : 1,
-    \ 'xhtml' : 1,
-    \ 'xml' : 1,
-    \ 'jinja' : 1,
-    \ 'htmldjango' : 1,
-    \}
-
-let g:SuperTabDefaultCompletionType = "context"
-
-" When i press <tab> by default enabled omni completion
-let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
-let g:SuperTabLongestEnhanced = 1
