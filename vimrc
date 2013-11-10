@@ -23,6 +23,7 @@ Bundle 'mattn/emmet-vim'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'Blackrush/vim-gocode'
 
+
 filetype plugin indent on
 if &t_Co > 2 || has("gui_running")
     syntax on           " syntax-highlighting
@@ -152,13 +153,9 @@ let NERDTreeIgnore = ['\.png$','\.pyc$', '\.db$', '\.git$', '*.\.o$',
                      \'.*\.out$', '.*\.so$', '.*\.a$', '.*\~$', '\.jpg$',
                      \'\.jpeg$', '\.gif$']
 
-" Enable Jedi autocomplete
-let g:jedi#auto_initialization = 1
-
+let g:jedi#auto_initialization = 1 " Enable Jedi autocomplete
 let g:jedi#show_call_signatures = 1 " Disable or enable function call signature
-
-" Disable autocomplete when i type dot
-let g:jedi#popup_on_dot = 0
+let g:jedi#popup_on_dot = 0 " Disable autocomplete when i type dot
 
 if has("autocmd")
     " Enable jedi completion for omnifunc
@@ -194,6 +191,7 @@ map <leader>/ :TComment<CR>
 
 " File autocomplte
 imap <leader>f <c-x><c-f>
+
 " Default autocomplete
 imap <leader>c <c-x><c-o>
 
