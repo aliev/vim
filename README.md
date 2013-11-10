@@ -20,6 +20,15 @@ git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 echo "source ~/.vim/vimrc" > .vimrc
 vim +BundleInstall +qall # Install all plugins
 ```
+
+## Compiling vimproc for fully using Unite plugin
+
+```
+cd ~ && cd .vim/bundle/vimproc.vim
+make -f make_mac.mak # for Mac OS
+make -f make_unix.mak # for Linux/Unix
+```
+
 ## Important
 
 If jedi-vim autocomplete doesn't work correctly, you can upgrade you vim to latest version (currently 7.4), or disable ```g:airline#extensions#tabline#enabled``` option in your vimrc file 
