@@ -6,8 +6,6 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 Bundle 'chriskempson/base16-vim'
-
-Bundle 'scrooloose/nerdtree'
 Bundle 'tomtom/tcomment_vim'
 Bundle 'tpope/vim-fugitive'
 Bundle 'scrooloose/syntastic'
@@ -15,16 +13,12 @@ Bundle 'davidhalter/jedi-vim'
 Bundle 'Yggdroot/indentLine'
 Bundle 'bling/vim-airline'
 Bundle 'bling/vim-bufferline'
-
 Bundle 'SirVer/ultisnips'
-
 Bundle 'mattn/emmet-vim'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'Blackrush/vim-gocode'
 
 Bundle 'Shougo/unite.vim'
-
-
 Bundle 'Shougo/vimproc.vim'
 
 
@@ -148,16 +142,6 @@ set ttyfast " Optimize for fast terminal connections
 
 set path=.,,**
 
-" NERDTree configuration
-let NERDTreeWinSize = 30
-let NERDTreeDirArrows=1
-let NERDTreeMinimalUI=0
-let NERDTreeChDirMode=2
-let NERDTreeHijackNetrw=0
-let NERDTreeIgnore = ['\.png$','\.pyc$', '\.db$', '\.git$', '*.\.o$',
-                     \'.*\.out$', '.*\.so$', '.*\.a$', '.*\~$', '\.jpg$',
-                     \'\.jpeg$', '\.gif$']
-
 let g:jedi#auto_initialization = 1 " Enable Jedi autocomplete
 let g:jedi#show_call_signatures = 1 " Disable or enable function call signature
 let g:jedi#popup_on_dot = 0 " Disable autocomplete when i type dot
@@ -236,11 +220,6 @@ map <leader>ee :call ToggleErrors()<CR>
 
 let g:UltiSnipsJumpForwardTrigger='<tab>'
 
-
-" nnoremap <leader>b :Unite -quick-match buffer<cr>
-" 
-" nnoremap <leader>f :Unite -buffer-name=files -start-insert file file_rec/async:!<cr>
-
 let g:unite_enable_start_insert = 1
 let g:unite_split_rule = "botright"
 let g:unite_force_overwrite_statusline = 0
@@ -249,22 +228,9 @@ let g:unite_winheight = 10
 call unite#custom_source('file_rec,file_rec/async,file_mru,file,buffer,grep',
       \ 'ignore_pattern', join([
       \ '\.git/',
+      \ '\.pyc/',
       \ ], '\|'))
 
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
 call unite#filters#sorter_default#use(['sorter_rank'])
 nnoremap <leader>f :<C-u>Unite -buffer-name=files -start-insert buffer file_rec/async:!<cr>
-
-autocmd FileType unite call s:unite_settings()
-
-function! s:unite_settings()
-  let b:SuperTabDisabled=1
-  imap <buffer> <C-j>   <Plug>(unite_select_next_line)
-  imap <buffer> <C-k>   <Plug>(unite_select_previous_line)
-  imap <silent><buffer><expr> <C-x> unite#do_action('split')
-  imap <silent><buffer><expr> <C-v> unite#do_action('vsplit')
-  imap <silent><buffer><expr> <C-t> unite#do_action('tabopen')
-
-  nmap <buffer> <ESC> <Plug>(unite_exit)
-endfunction
-
