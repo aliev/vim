@@ -16,9 +16,10 @@ Minimal VIM configuration file based on KISS principle
 cd ~
 git clone https://github.com/aliev/vim.git
 mv ~/vim ~/.vim
-git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+mkdir -p ~/.vim/bundle
+git clone git://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
 echo "source ~/.vim/vimrc" > .vimrc
-vim +BundleInstall +qall # Install all plugins
+vim +NeoBundleInstall +qall # Install all plugins
 ```
 
 ## Compiling vimproc for fully using Unite plugin
