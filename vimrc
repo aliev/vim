@@ -193,6 +193,10 @@ map <leader>c :SyntasticToggleMode<CR>
 " Close buffer with ask save it
 nmap <leader>w :confirm :bd<CR>
 
+map <leader>e :call ToggleErrors()<CR>
+
+map <leader>f :CtrlP<cr>
+
 let g:indentLine_char = '│' " Indent guide symbol
 
 let g:indentLine_color_gui = '#1D1D1D' " Indent guide symbol color
@@ -219,8 +223,6 @@ function! ToggleErrors()
     endif
 endfunction
 
-map <leader>ee :call ToggleErrors()<CR>
-map <leader>f :CtrlP<cr>
 
 let g:UltiSnipsJumpForwardTrigger='<tab>'
 
