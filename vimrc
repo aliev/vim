@@ -16,7 +16,7 @@ Bundle 'bling/vim-airline'
 Bundle 'bling/vim-bufferline'
 Bundle 'SirVer/ultisnips'
 Bundle 'mattn/emmet-vim'
-Bundle 'airblade/vim-gitgutter'
+Bundle 'mhinz/vim-signify'
 Bundle 'Blackrush/vim-gocode'
 Bundle 'kien/ctrlp.vim'
 
@@ -199,7 +199,7 @@ map <leader>f :CtrlP<cr>
 
 let g:indentLine_char = '│' " Indent guide symbol
 
-let g:indentLine_color_gui = '#1D1D1D' " Indent guide symbol color
+let g:indentLine_color_gui = '#1D1D1D' " Indent guide color
 
 let g:airline_powerline_fonts = 1 " Use airline fonts
 
@@ -223,6 +223,4 @@ function! ToggleErrors()
     endif
 endfunction
 
-
 let g:UltiSnipsJumpForwardTrigger='<tab>'
-
