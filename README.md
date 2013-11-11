@@ -13,21 +13,9 @@ Minimal VIM configuration file based on KISS principle
 ## How to install?
 
 ```
-cd ~
-git clone https://github.com/aliev/vim.git
-mv ~/vim ~/.vim
-mkdir -p ~/.vim/bundle
-git clone git://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
+cd ~ && mv ~/vim ~/.vim
 echo "source ~/.vim/vimrc" > .vimrc
-vim +NeoBundleInstall +qall # Install all plugins
-```
-
-## Compiling vimproc for fully using Unite plugin
-
-```
-cd ~ && cd .vim/bundle/vimproc.vim
-make -f make_mac.mak # for Mac OS
-make -f make_unix.mak # for Linux/Unix
+git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle && vim +BundleInstall +qall
 ```
 
 ## Important
