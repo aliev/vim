@@ -29,6 +29,7 @@ If jedi-vim autocomplete doesn't work correctly, you can upgrade you vim to late
 | ,          | Default leader key
 | leader + l | Enable (disable) displaying whitespace
 | leader + f | Open CtrlP
+| leader + e | Show Syntastic errors
 | leader + c | Open jedi vim complete pop-up (insert mode)
 | leader + g | goto definition
 | leader + r | rename
