@@ -1,30 +1,26 @@
-if has('vim_starting')
-    set nocompatible
-    set runtimepath+=~/.vim/bundle/neobundle.vim/
-endif
+set nocompatible              " be iMproved
+filetype off                  " required!
 
-call neobundle#rc(expand('~/.vim/bundle/'))
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
 
+Bundle 'gmarik/vundle'
 
-NeoBundle 'chriskempson/base16-vim'
-NeoBundle 'tomtom/tcomment_vim'
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'scrooloose/syntastic'
-NeoBundle 'davidhalter/jedi-vim'
-NeoBundle 'Yggdroot/indentLine'
-NeoBundle 'bling/vim-airline'
-NeoBundle 'bling/vim-bufferline'
-NeoBundle 'SirVer/ultisnips'
-NeoBundle 'mattn/emmet-vim'
-NeoBundle 'airblade/vim-gitgutter'
-NeoBundle 'Blackrush/vim-gocode'
-NeoBundle 'Shougo/unite.vim'
-" Required for unite!
-NeoBundle 'Shougo/vimproc.vim'
+Bundle 'chriskempson/base16-vim'
+Bundle 'tomtom/tcomment_vim'
+Bundle 'tpope/vim-fugitive'
+Bundle 'scrooloose/syntastic'
+Bundle 'davidhalter/jedi-vim'
+Bundle 'Yggdroot/indentLine'
+Bundle 'bling/vim-airline'
+Bundle 'bling/vim-bufferline'
+Bundle 'SirVer/ultisnips'
+Bundle 'mattn/emmet-vim'
+Bundle 'airblade/vim-gitgutter'
+Bundle 'Blackrush/vim-gocode'
+Bundle 'kien/ctrlp.vim'
 
-
-filetype plugin indent on
-NeoBundleCheck
+filetype plugin indent on     " required!
 
 if &t_Co > 2 || has("gui_running")
     syntax on           " syntax-highlighting
@@ -214,8 +210,6 @@ let python_highlight_exceptions=0
 let python_highlight_builtins=0
 let python_slow_sync=1
 
-let g:unite_split_rule = "botright"
-
 function! ToggleErrors()
     if empty(filter(tabpagebuflist(), 'getbufvar(v:val, "&buftype") is# "quickfix"'))
          " No location/quickfix list shown, open syntastic error location panel
@@ -227,6 +221,6 @@ endfunction
 
 map <leader>ee :call ToggleErrors()<CR>
 map <leader>f :CtrlP<cr>
-nnoremap <leader>f :<C-u>Unite -buffer-name=files -start-insert buffer file_rec/async:!<cr>
 
 let g:UltiSnipsJumpForwardTrigger='<tab>'
+
