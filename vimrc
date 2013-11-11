@@ -1,29 +1,31 @@
-set nocompatible
-filetype off
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+if has('vim_starting')
+    set nocompatible
+    set runtimepath+=~/.vim/bundle/neobundle.vim/
+endif
 
-Bundle 'gmarik/vundle'
+call neobundle#rc(expand('~/.vim/bundle/'))
 
-Bundle 'chriskempson/base16-vim'
-Bundle 'tomtom/tcomment_vim'
-Bundle 'tpope/vim-fugitive'
-Bundle 'scrooloose/syntastic'
-Bundle 'davidhalter/jedi-vim'
-Bundle 'Yggdroot/indentLine'
-Bundle 'bling/vim-airline'
-Bundle 'bling/vim-bufferline'
-Bundle 'SirVer/ultisnips'
-Bundle 'mattn/emmet-vim'
-Bundle 'airblade/vim-gitgutter'
-Bundle 'Blackrush/vim-gocode'
 
-Bundle 'Shougo/unite.vim'
-Bundle 'Shougo/vimproc.vim'
-
+NeoBundle 'chriskempson/base16-vim'
+NeoBundle 'tomtom/tcomment_vim'
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'scrooloose/syntastic'
+NeoBundle 'davidhalter/jedi-vim'
+NeoBundle 'Yggdroot/indentLine'
+NeoBundle 'bling/vim-airline'
+NeoBundle 'bling/vim-bufferline'
+NeoBundle 'SirVer/ultisnips'
+NeoBundle 'mattn/emmet-vim'
+NeoBundle 'airblade/vim-gitgutter'
+NeoBundle 'Blackrush/vim-gocode'
+NeoBundle 'Shougo/unite.vim'
+" Required for unite!
+NeoBundle 'Shougo/vimproc.vim'
 
 
 filetype plugin indent on
+NeoBundleCheck
+
 if &t_Co > 2 || has("gui_running")
     syntax on           " syntax-highlighting
     colors base16-default " Color scheme
@@ -33,7 +35,6 @@ if &t_Co > 2 || has("gui_running")
     set background=dark " Dark backgroud
     set hlsearch        " Highlight search terms (very useful!)
     set incsearch       " Show search matches while typing
-    hi clear VertSplit " Clear vertical split background
     if has('mac')
         set guifont=Menlo\ Regular\ for\ Powerline:h12
     else
@@ -169,6 +170,12 @@ let g:syntastic_javascript_checkers = ['jslint']
 " Syntastic disable signs
 let g:syntastic_enable_signs=0
 
+" If signs enabled
+let g:syntastic_error_symbol='✗'
+let g:syntastic_warning_symbol='⚠'
+let g:syntastic_style_error_symbol  = 'ϟ'
+let g:syntastic_style_warning_symbol  = '≈'
+
 " Comment selected line
 map <leader>/ :TComment<CR>
 
@@ -207,6 +214,8 @@ let python_highlight_exceptions=0
 let python_highlight_builtins=0
 let python_slow_sync=1
 
+let g:unite_split_rule = "botright"
+
 function! ToggleErrors()
     if empty(filter(tabpagebuflist(), 'getbufvar(v:val, "&buftype") is# "quickfix"'))
          " No location/quickfix list shown, open syntastic error location panel
@@ -217,20 +226,7 @@ function! ToggleErrors()
 endfunction
 
 map <leader>ee :call ToggleErrors()<CR>
+map <leader>f :CtrlP<cr>
+nnoremap <leader>f :<C-u>Unite -buffer-name=files -start-insert buffer file_rec/async:!<cr>
 
 let g:UltiSnipsJumpForwardTrigger='<tab>'
-
-let g:unite_enable_start_insert = 1
-let g:unite_split_rule = "botright"
-let g:unite_force_overwrite_statusline = 0
-let g:unite_winheight = 10
-
-call unite#custom_source('file_rec,file_rec/async,file_mru,file,buffer,grep',
-      \ 'ignore_pattern', join([
-      \ '\.git/',
-      \ '\.pyc/',
-      \ ], '\|'))
-
-call unite#filters#matcher_default#use(['matcher_fuzzy'])
-call unite#filters#sorter_default#use(['sorter_rank'])
-nnoremap <leader>f :<C-u>Unite -buffer-name=files -start-insert buffer file_rec/async:!<cr>
