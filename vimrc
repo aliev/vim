@@ -21,12 +21,12 @@ Bundle 'bling/vim-bufferline'
 Bundle 'Shougo/unite.vim'
 Bundle 'Shougo/vimproc.vim'
 " Bundle 'Yggdroot/indentLine'
+Bundle 'xoria256.vim'
 
 filetype plugin indent on     " required!
 
-if &t_Co > 2 || has("gui_running")
+if has("gui_running")
     syntax on           " syntax-highlighting
-    set t_Co=256
     colors base16-default " Color scheme
     set guioptions=g " Disable all GUI elements
     set guioptions+=c " Enable Console-based dialogs for simple queries
@@ -34,11 +34,23 @@ if &t_Co > 2 || has("gui_running")
     set background=dark " Dark backgroud
     set hlsearch        " Highlight search terms (very useful!)
     set incsearch       " Show search matches while typing
+
+    " make a ruler at line 80
+    if exists('+colorcolumn')
+        execute "set colorcolumn=" . join(range(81,335), ',')
+    else
+        au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
+    endif
+
     if has('mac')
         set guifont=Menlo\ Regular\ for\ Powerline:h12
     else
         set guifont=DejaVu\ Sans\ Mono\ 10
     endif
+else
+    syntax on
+    colors xoria256
+    set t_Co=256
 endif
 
 if has('multi_byte')
@@ -60,13 +72,6 @@ let maplocalleader = "_" " local leader
 set lazyredraw " Don't redraw while executing macros (good performance config)
 
 set laststatus=2 " enable statusline
-
-" make a ruler at line 80
-if exists('+colorcolumn')
-    execute "set colorcolumn=" . join(range(81,335), ',')
-else
-    au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
-endif
 
 set magic " For regular expressions turn magic on
 
@@ -190,7 +195,7 @@ nmap <leader>l :set list!<CR>
 nmap <leader>w :confirm :bd<CR>
 
 map <leader>e :NERDTreeToggle<CR>
-nnoremap <leader>f :<C-u>Unite -buffer-name=files buffer file_rec/async:!<cr>
+nnoremap <leader>f :<C-u>Unite buffer file<cr>
 
 let g:indentLine_char = '│' " Indent guide symbol
 
@@ -207,9 +212,3 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 let g:UltiSnipsJumpForwardTrigger='<tab>'
 
 let g:NERDTreeMinimalUI=1
-
-let g:unite_enable_start_insert = 1
-let g:unite_split_rule = "botright"
-let g:unite_force_overwrite_statusline = 0
-let g:unite_winheight = 10
-let g:unite_candidate_icon="▷"
