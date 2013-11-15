@@ -11,19 +11,21 @@ Bundle 'tomtom/tcomment_vim'
 Bundle 'tpope/vim-fugitive'
 Bundle 'scrooloose/syntastic'
 Bundle 'davidhalter/jedi-vim'
-Bundle 'Yggdroot/indentLine'
 Bundle 'bling/vim-airline'
-Bundle 'bling/vim-bufferline'
 Bundle 'SirVer/ultisnips'
 Bundle 'mattn/emmet-vim'
 Bundle 'mhinz/vim-signify'
 Bundle 'Blackrush/vim-gocode'
+Bundle 'scrooloose/nerdtree'
+Bundle 'bling/vim-bufferline'
 Bundle 'kien/ctrlp.vim'
+" Bundle 'Yggdroot/indentLine'
 
 filetype plugin indent on     " required!
 
 if &t_Co > 2 || has("gui_running")
     syntax on           " syntax-highlighting
+    set t_Co=256
     colors base16-default " Color scheme
     set guioptions=g " Disable all GUI elements
     set guioptions+=c " Enable Console-based dialogs for simple queries
@@ -36,8 +38,6 @@ if &t_Co > 2 || has("gui_running")
     else
         set guifont=DejaVu\ Sans\ Mono\ 10
     endif
-else
-    set t_Co=256
 endif
 
 if has('multi_byte')
@@ -71,7 +71,7 @@ set magic " For regular expressions turn magic on
 
 set ignorecase " Searches are Non Case-sensitive
 
-set cursorline " Highlight current cursor position
+" set cursorline " Highlight current cursor position
 
 set smartcase " Do smart case matching when searching
 
@@ -140,8 +140,9 @@ set ttyfast " Optimize for fast terminal connections
 set path=.,,**
 
 let g:jedi#auto_initialization = 1 " Enable Jedi autocomplete
-let g:jedi#show_call_signatures = 1 " Disable or enable function call signature
+let g:jedi#show_call_signatures = 0 " Disable or enable function call signature
 let g:jedi#popup_on_dot = 0 " Disable autocomplete when i type dot
+let g:jedi#use_tabs_not_buffers = 0
 
 if has("autocmd")
     " Enable jedi completion for omnifunc
@@ -155,6 +156,9 @@ if has("autocmd")
 
     " Disable gocode documentation
     autocmd FileType go setlocal completeopt-=preview
+
+    autocmd FileType python setlocal expandtab shiftwidth=4 tabstop=8
+    autocmd FileType javascript setlocal expandtab shiftwidth=2 tabstop=8
 endif
 
 " Syntax check mode for python (pip install pylama)
@@ -166,11 +170,6 @@ let g:syntastic_javascript_checkers = ['jslint']
 " Syntastic disable signs
 let g:syntastic_enable_signs=0
 
-" If signs enabled
-let g:syntastic_error_symbol='✗'
-let g:syntastic_warning_symbol='⚠'
-let g:syntastic_style_error_symbol  = 'ϟ'
-let g:syntastic_style_warning_symbol  = '≈'
 
 " Comment selected line
 map <leader>/ :TComment<CR>
@@ -187,15 +186,12 @@ let g:tcommentMapLeader2 = '<leader>/'
 " Show/hide trail characters
 nmap <leader>l :set list!<CR>
 
-" leader-c check syntax
-map <leader>c :SyntasticToggleMode<CR>
-
 " Close buffer with ask save it
-nmap <leader>w :confirm :bd<CR>
+nmap <leader>w :confirm :Bclose<CR>
 
-map <leader>e :call ToggleErrors()<CR>
-
-map <leader>f :CtrlP<cr>
+map <leader>e :NERDTreeToggle<CR>
+map <leader>b :CtrlPBuffer<CR>
+map <leader>f :CtrlP<CR>
 
 let g:indentLine_char = '│' " Indent guide symbol
 
@@ -209,18 +205,79 @@ let g:airline#extensions#tabline#enabled = 1
 " Airline tabs settings
 let g:airline#extensions#tabline#fnamemod = ':t'
 
-let python_highlight_all=1
-let python_highlight_exceptions=0
-let python_highlight_builtins=0
-let python_slow_sync=1
+let g:UltiSnipsJumpForwardTrigger='<tab>'
 
-function! ToggleErrors()
-    if empty(filter(tabpagebuflist(), 'getbufvar(v:val, "&buftype") is# "quickfix"'))
-         " No location/quickfix list shown, open syntastic error location panel
-         Errors
-    else
-        lclose
-    endif
+let g:NERDTreeMinimalUI=1
+
+
+" Delete buffer while keeping window layout (don't close buffer's windows).
+" Version 2008-11-18 from http://vim.wikia.com/wiki/VimTip165
+if v:version < 700 || exists('loaded_bclose') || &cp
+  finish
+endif
+let loaded_bclose = 1
+if !exists('bclose_multiple')
+  let bclose_multiple = 1
+endif
+
+" Display an error message.
+function! s:Warn(msg)
+  echohl ErrorMsg
+  echomsg a:msg
+  echohl NONE
 endfunction
 
-let g:UltiSnipsJumpForwardTrigger='<tab>'
+" Command ':Bclose' executes ':bd' to delete buffer in current window.
+" The window will show the alternate buffer (Ctrl-^) if it exists,
+" or the previous buffer (:bp), or a blank buffer if no previous.
+" Command ':Bclose!' is the same, but executes ':bd!' (discard changes).
+" An optional argument can specify which buffer to close (name or number).
+function! s:Bclose(bang, buffer)
+  if empty(a:buffer)
+    let btarget = bufnr('%')
+  elseif a:buffer =~ '^\d\+$'
+    let btarget = bufnr(str2nr(a:buffer))
+  else
+    let btarget = bufnr(a:buffer)
+  endif
+  if btarget < 0
+    call s:Warn('No matching buffer for '.a:buffer)
+    return
+  endif
+  if empty(a:bang) && getbufvar(btarget, '&modified')
+    call s:Warn('No write since last change for buffer '.btarget.' (use :Bclose!)')
+    "return
+  endif
+  " Numbers of windows that view target buffer which we will delete.
+  let wnums = filter(range(1, winnr('$')), 'winbufnr(v:val) == btarget')
+  if !g:bclose_multiple && len(wnums) > 1
+    call s:Warn('Buffer is in multiple windows (use ":let bclose_multiple=1")')
+    return
+  endif
+  let wcurrent = winnr()
+  for w in wnums
+    execute w.'wincmd w'
+    let prevbuf = bufnr('#')
+    if prevbuf > 0 && buflisted(prevbuf) && prevbuf != w
+      buffer #
+    else
+      bprevious
+    endif
+    if btarget == bufnr('%')
+      " Numbers of listed buffers which are not the target to be deleted.
+      let blisted = filter(range(1, bufnr('$')), 'buflisted(v:val) && v:val != btarget')
+      " Listed, not target, and not displayed.
+      let bhidden = filter(copy(blisted), 'bufwinnr(v:val) < 0')
+      " Take the first buffer, if any (could be more intelligent).
+      let bjump = (bhidden + blisted + [-1])[0]
+      if bjump > 0
+        execute 'buffer '.bjump
+      else
+        execute 'enew'.a:bang
+      endif
+    endif
+  endfor
+  execute ':confirm :bdelete '.btarget
+  execute wcurrent.'wincmd w'
+endfunction
+command! -bang -complete=buffer -nargs=? Bclose call s:Bclose('<bang>', '<args>')
