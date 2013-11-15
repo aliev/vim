@@ -171,7 +171,6 @@ let g:syntastic_javascript_checkers = ['jslint']
 " Syntastic disable signs
 let g:syntastic_enable_signs=0
 
-
 " Comment selected line
 map <leader>/ :TComment<CR>
 
