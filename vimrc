@@ -22,6 +22,9 @@ Bundle 'Shougo/unite.vim'
 Bundle 'Shougo/vimproc.vim'
 " Bundle 'Yggdroot/indentLine'
 Bundle 'xoria256.vim'
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'vim-ruby/vim-ruby'
+Bundle 'kchmck/vim-coffee-script'
 
 filetype plugin indent on     " required!
 
@@ -163,8 +166,10 @@ if has("autocmd")
     " Disable gocode documentation
     autocmd FileType go setlocal completeopt-=preview
 
+    " Indentation
     autocmd FileType python setlocal expandtab shiftwidth=4 tabstop=8
     autocmd FileType javascript setlocal expandtab shiftwidth=2 tabstop=8
+    autocmd BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
 endif
 
 " Syntax check mode for python (pip install pylama)
@@ -212,3 +217,9 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 let g:UltiSnipsJumpForwardTrigger='<tab>'
 
 let g:NERDTreeMinimalUI=1
+
+let g:unite_enable_start_insert = 1
+let g:unite_split_rule = "botright"
+let g:unite_force_overwrite_statusline = 0
+let g:unite_winheight = 10
+let g:unite_candidate_icon="▷"
