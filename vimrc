@@ -21,7 +21,7 @@ Bundle 'bling/vim-bufferline'
 Bundle 'xoria256.vim'
 Bundle 'kien/ctrlp.vim'
 Bundle 'altercation/vim-colors-solarized'
-Bundle 'moll/vim-bbye'
+Bundle 'aliev/bclose'
 
 filetype plugin indent on     " required!
 
@@ -192,7 +192,7 @@ imap <leader>c <c-x><c-o>
 nmap <leader>l :set list!<CR>
 
 " Close buffer with ask save it
-nmap <leader>w :confirm :Bdelete<CR>
+nnoremap <leader>w :confirm :Bclose<CR>
 
 map <leader>e :NERDTreeToggle<CR>
 nnoremap <leader>f :CtrlP<cr>
