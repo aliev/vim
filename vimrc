@@ -50,8 +50,8 @@ if has("gui_running")
     endif
 else
     syntax on
-    colors xoria256
     set t_Co=256
+    colors xoria256
 endif
 
 if has('multi_byte')
@@ -199,6 +199,43 @@ nnoremap <leader>f :CtrlP<cr>
 nnoremap <leader>b :CtrlPBuffer<cr>
 nnoremap <leader>p :CtrlPBufTag<cr>
 
+" File autocomplte
+imap <leader>f <c-x><c-f>
+
+" Default autocomplete
+imap <leader>c <c-x><c-o>
+
+" Show/hide trail characters
+nmap <leader>l :set list!<CR>
+
+" Close buffer with ask save it
+nnoremap <leader>w :confirm :Bclose<CR>
+
+map <leader>e :NERDTreeToggle<CR>
+nnoremap <leader>f :CtrlP<cr>
+nnoremap <leader>b :CtrlPBuffer<cr>
+nnoremap <leader>p :CtrlPBufTag<cr>
+
+" T-Comment keymap
+let g:tcommentMapLeader2 = '<leader>/'
+
+let g:indentLine_char = '│' " Indent guide symbol
+
+let g:indentLine_color_gui = '#1D1D1D' " Indent guide color
+
+let g:airline_powerline_fonts = 1 " Use airline fonts
+
+" If you want to auto-completion to work stable in older vim, disable this option
+let g:airline#extensions#tabline#enabled = 1
+
+" Airline tabs settings
+let g:airline#extensions#tabline#fnamemod = ':t'
+
+let g:UltiSnipsJumpForwardTrigger='<tab>'
+
+let g:NERDTreeMinimalUI=1
+
+let g:airline#extensions#tmuxline#enabled = 1
 
 " T-Comment keymap
 let g:tcommentMapLeader2 = '<leader>/'
