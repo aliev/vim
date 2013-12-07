@@ -6,7 +6,6 @@ call vundle#rc()
 
 Bundle 'gmarik/vundle'
 
-Bundle 'chriskempson/base16-vim'
 Bundle 'tomtom/tcomment_vim'
 Bundle 'tpope/vim-fugitive'
 Bundle 'scrooloose/syntastic'
@@ -18,19 +17,17 @@ Bundle 'mhinz/vim-signify'
 Bundle 'Blackrush/vim-gocode'
 Bundle 'scrooloose/nerdtree'
 Bundle 'bling/vim-bufferline'
-Bundle 'Shougo/unite.vim'
-Bundle 'Shougo/vimproc.vim'
 " Bundle 'Yggdroot/indentLine'
 Bundle 'xoria256.vim'
+Bundle 'kien/ctrlp.vim'
 Bundle 'altercation/vim-colors-solarized'
-Bundle 'vim-ruby/vim-ruby'
-Bundle 'kchmck/vim-coffee-script'
+Bundle 'moll/vim-bbye'
 
 filetype plugin indent on     " required!
 
 if has("gui_running")
     syntax on           " syntax-highlighting
-    colors base16-default " Color scheme
+    colors solarized " Color scheme
     set guioptions=g " Disable all GUI elements
     set guioptions+=c " Enable Console-based dialogs for simple queries
     " set guioptions+=e " Enable GUI tabs
@@ -44,6 +41,7 @@ if has("gui_running")
     else
         au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
     endif
+    highlight VertSplit gui=NONE guifg=NONE guibg=NONE
 
     if has('mac')
         set guifont=Menlo\ Regular\ for\ Powerline:h12
@@ -190,17 +188,20 @@ imap <leader>f <c-x><c-f>
 " Default autocomplete
 imap <leader>c <c-x><c-o>
 
-" T-Comment keymap
-let g:tcommentMapLeader2 = '<leader>/'
-
 " Show/hide trail characters
 nmap <leader>l :set list!<CR>
 
 " Close buffer with ask save it
-nmap <leader>w :confirm :bd<CR>
+nmap <leader>w :confirm :Bdelete<CR>
 
 map <leader>e :NERDTreeToggle<CR>
-nnoremap <leader>f :<C-u>Unite buffer file<cr>
+nnoremap <leader>f :CtrlP<cr>
+nnoremap <leader>b :CtrlPBuffer<cr>
+nnoremap <leader>p :CtrlPBufTag<cr>
+
+
+" T-Comment keymap
+let g:tcommentMapLeader2 = '<leader>/'
 
 let g:indentLine_char = '│' " Indent guide symbol
 
@@ -218,8 +219,4 @@ let g:UltiSnipsJumpForwardTrigger='<tab>'
 
 let g:NERDTreeMinimalUI=1
 
-let g:unite_enable_start_insert = 1
-let g:unite_split_rule = "botright"
-let g:unite_force_overwrite_statusline = 0
-let g:unite_winheight = 10
-let g:unite_candidate_icon="▷"
+let g:airline#extensions#tmuxline#enabled = 1
