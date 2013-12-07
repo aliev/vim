@@ -1,45 +1,56 @@
-set nocompatible
-filetype off
+set nocompatible              " be iMproved
+filetype off                  " required!
+
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 Bundle 'gmarik/vundle'
 
-Bundle 'chriskempson/base16-vim'
-
-Bundle 'scrooloose/nerdtree'
 Bundle 'tomtom/tcomment_vim'
 Bundle 'tpope/vim-fugitive'
 Bundle 'scrooloose/syntastic'
-Bundle 'kien/ctrlp.vim'
 Bundle 'davidhalter/jedi-vim'
-Bundle 'Yggdroot/indentLine'
 Bundle 'bling/vim-airline'
-Bundle 'bling/vim-bufferline'
-
-
-Bundle 'airblade/vim-gitgutter'
-
 Bundle 'SirVer/ultisnips'
 Bundle 'mattn/emmet-vim'
+Bundle 'mhinz/vim-signify'
+Bundle 'Blackrush/vim-gocode'
+Bundle 'scrooloose/nerdtree'
+Bundle 'bling/vim-bufferline'
+" Bundle 'Yggdroot/indentLine'
+Bundle 'xoria256.vim'
+Bundle 'kien/ctrlp.vim'
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'aliev/bclose'
 
-filetype plugin indent on
-if &t_Co > 2 || has("gui_running")
+filetype plugin indent on     " required!
+
+if has("gui_running")
     syntax on           " syntax-highlighting
-    colors base16-default " Color scheme
+    colors solarized " Color scheme
     set guioptions=g " Disable all GUI elements
     set guioptions+=c " Enable Console-based dialogs for simple queries
     " set guioptions+=e " Enable GUI tabs
     set background=dark " Dark backgroud
     set hlsearch        " Highlight search terms (very useful!)
     set incsearch       " Show search matches while typing
-    " hi clear VertSplit " Clear vertical split background
+
+    " make a ruler at line 80
+    if exists('+colorcolumn')
+        execute "set colorcolumn=" . join(range(81,335), ',')
+    else
+        au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
+    endif
+    highlight VertSplit gui=NONE guifg=NONE guibg=NONE
+
     if has('mac')
         set guifont=Menlo\ Regular\ for\ Powerline:h12
     else
         set guifont=DejaVu\ Sans\ Mono\ 10
     endif
 else
+    syntax on
+    colors xoria256
     set t_Co=256
 endif
 
@@ -63,20 +74,13 @@ set lazyredraw " Don't redraw while executing macros (good performance config)
 
 set laststatus=2 " enable statusline
 
-" make a ruler at line 80
-if exists('+colorcolumn')
-    execute "set colorcolumn=" . join(range(81,335), ',')
-else
-    au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
-endif
-
 set magic " For regular expressions turn magic on
 
 set ignorecase " Searches are Non Case-sensitive
 
-set cursorline " Highlight current cursor position
+" set cursorline " Highlight current cursor position
 
-set smartcase
+set smartcase " Do smart case matching when searching
 
 set showmatch " Show matching brackets when text indicator is over them
 
@@ -110,7 +114,7 @@ set encoding=utf8 " Default encoding
 
 set termencoding=utf-8 " terminal encoding
 
-set fileencodings=utf8,cp1251
+set fileencodings=utf8,cp1251 " supported file encodings
 
 set number " enable line numbers
 
@@ -130,111 +134,91 @@ set noswapfile " Disable swap files
 
 set noautochdir " change the current working directory whenever you open a file
 
-set wildmenu " Turn on the WiLd menu
+set wildmenu " Turn on the Wild menu
 
-set wildmode=list:longest,list:full
+set wildmode=list:longest,list:full " Wildmenu configuration
 
 set wildignore+=*.o,*.pyc,*.jpg,*.png,*.gif,*.db,*.obj,.git " Ignore compiled files
 
 set clipboard+=unnamed " Global clipboard between the system and the editor
 
-set ttyfast
+set ttyfast " Optimize for fast terminal connections
 
 set path=.,,**
 
-" NERDTree configuration
-let NERDTreeWinSize = 30
-let NERDTreeDirArrows=1
-let NERDTreeMinimalUI=0
-let NERDTreeChDirMode=2
-let NERDTreeHijackNetrw=0
-let NERDTreeIgnore = ['\.png$','\.pyc$', '\.db$', '\.git$', '*.\.o$',
-                     \'.*\.out$', '.*\.so$', '.*\.a$', '.*\~$', '\.jpg$',
-                     \'\.jpeg$', '\.gif$']
+let g:jedi#auto_initialization = 1 " Enable Jedi autocomplete
+let g:jedi#show_call_signatures = 0 " Disable or enable function call signature
+let g:jedi#popup_on_dot = 0 " Disable autocomplete when i type dot
+let g:jedi#use_tabs_not_buffers = 0
 
-" Enable Jedi autocomplete
-let g:jedi#auto_initialization = 1
+if has("autocmd")
+    " Enable jedi completion for omnifunc
+    autocmd FileType python set omnifunc=jedi#completions
 
-" leader + c jedi completion
-let g:jedi#completions_command="<leader>c"
+    " Disable jedi-vim documentation
+    autocmd FileType python setlocal completeopt-=preview
 
-let g:jedi#show_call_signatures = 0 " Disable or enable call signature
+    " Enable autocompletion for Golang
+    autocmd FileType go set omnifunc=gocomplete#Complete
 
-" Disable jedi-vim documentation
-autocmd FileType python setlocal completeopt-=preview
+    " Disable gocode documentation
+    autocmd FileType go setlocal completeopt-=preview
 
-" Syntax check mode for python
-let g:syntastic_python_checkers = ['pylint', 'python']
+    " Indentation
+    autocmd FileType python setlocal expandtab shiftwidth=4 tabstop=8
+    autocmd FileType javascript setlocal expandtab shiftwidth=2 tabstop=8
+    autocmd BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
+endif
 
-" Syntax check mode for javascript
+" Syntax check mode for python (pip install pylama)
+let g:syntastic_python_checkers = ['pylama']
+
+" Syntax check mode for javascript (npm install jslint)
 let g:syntastic_javascript_checkers = ['jslint']
 
-let g:syntastic_always_populate_loc_list = 1
-
-" Warning and Error symbols
-let g:syntastic_error_symbol = 'e'
-let g:syntastic_style_error_symbol = 'e'
-let g:syntastic_warning_symbol = 'w'
-let g:syntastic_style_warning_symbol = 'w'
-
-" Don't warn on
-"   E121 continuation line indentation is not a multiple of four
-"   E128 continuation line under-indented for visual indent
-"   E711 comparison to None should be 'if cond is not None:'
-"   E301 expected 1 blank line, found 0
-"   E261 at least two spaces before inline comment
-"   E241 multiple spaces after ':'
-"   E124 closing bracket does not match visual indentation
-"   E126 continuation line over-indented for hanging indent
-let g:syntastic_python_flake8_args='--ignore=E121,E128,
-            \E711,E301,E261,E241,E124,E126
-    \ --max-line-length=84'
-
-" CtrlP Configuration
-let g:ctrlp_match_window = 'bottom,order:top,min:1,max:20'
-map <leader>b :CtrlPBuffer<CR>
-map <leader>f :CtrlP<CR>
-map <leader>t :CtrlPBufTag<CR>
+" Syntastic disable signs
+let g:syntastic_enable_signs=0
 
 " Comment selected line
 map <leader>/ :TComment<CR>
 
-let g:tcommentMapLeader2 = '<leader>/'
+" File autocomplte
+imap <leader>f <c-x><c-f>
+
+" Default autocomplete
+imap <leader>c <c-x><c-o>
 
 " Show/hide trail characters
 nmap <leader>l :set list!<CR>
 
-" leader-c check syntax
-map <leader>c :SyntasticToggleMode<CR>
-
 " Close buffer with ask save it
-nmap <leader>w :confirm :bd<CR>
+nnoremap <leader>w :confirm :Bclose<CR>
+
+map <leader>e :NERDTreeToggle<CR>
+nnoremap <leader>f :CtrlP<cr>
+nnoremap <leader>b :CtrlPBuffer<cr>
+nnoremap <leader>p :CtrlPBufTag<cr>
+
+
+" T-Comment keymap
+let g:tcommentMapLeader2 = '<leader>/'
 
 let g:indentLine_char = '│' " Indent guide symbol
 
-let g:indentLine_color_gui = '#1D1D1D' " Indent guide symbol color
+let g:indentLine_color_gui = '#1D1D1D' " Indent guide color
 
 let g:airline_powerline_fonts = 1 " Use airline fonts
 
 " If you want to auto-completion to work stable in older vim, disable this option
 let g:airline#extensions#tabline#enabled = 1
 
+" Airline tabs settings
 let g:airline#extensions#tabline#fnamemod = ':t'
 
-let python_highlight_all=1
-let python_highlight_exceptions=0
-let python_highlight_builtins=0
-let python_slow_sync=1
-
-function! ToggleErrors()
-    if empty(filter(tabpagebuflist(), 'getbufvar(v:val, "&buftype") is# "quickfix"'))
-         " No location/quickfix list shown, open syntastic error location panel
-         Errors
-    else
-        lclose
-    endif
-endfunction
-
-map <leader>ee :call ToggleErrors()<CR>
-
 let g:UltiSnipsJumpForwardTrigger='<tab>'
+
+let g:NERDTreeMinimalUI=1
+
+let g:airline#extensions#tmuxline#enabled = 1
+
+
