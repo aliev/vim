@@ -6,22 +6,33 @@ call vundle#rc()
 
 Bundle 'gmarik/vundle'
 
-Bundle 'tomtom/tcomment_vim'
-Bundle 'tpope/vim-fugitive'
-Bundle 'scrooloose/syntastic'
-Bundle 'davidhalter/jedi-vim'
-Bundle 'bling/vim-airline'
+
+" Work with code
 Bundle 'SirVer/ultisnips'
 Bundle 'mattn/emmet-vim'
+
+" Git
 Bundle 'mhinz/vim-signify'
+Bundle 'tpope/vim-fugitive'
+
+" Golang
 Bundle 'Blackrush/vim-gocode'
-Bundle 'scrooloose/nerdtree'
-Bundle 'bling/vim-bufferline'
-" Bundle 'Yggdroot/indentLine'
-Bundle 'xoria256.vim'
+" Python
+Bundle 'davidhalter/jedi-vim'
+" JavaScript
+Bundle 'marijnh/tern_for_vim'
+
+" Utils
 Bundle 'kien/ctrlp.vim'
-Bundle 'altercation/vim-colors-solarized'
 Bundle 'aliev/bclose'
+Bundle 'flazz/vim-colorschemes'
+Bundle 'scrooloose/nerdtree'
+Bundle 'tomtom/tcomment_vim'
+Bundle 'scrooloose/syntastic'
+Bundle 'bling/vim-airline'
+Bundle 'vim-scripts/VisIncr'
+" Bundle 'bling/vim-bufferline'
+" Bundle 'Yggdroot/indentLine'
 
 filetype plugin indent on     " required!
 
@@ -31,7 +42,7 @@ if has("gui_running")
     set guioptions=g " Disable all GUI elements
     set guioptions+=c " Enable Console-based dialogs for simple queries
     " set guioptions+=e " Enable GUI tabs
-    set background=dark " Dark backgroud
+    set background=dark " Backgroud
     set hlsearch        " Highlight search terms (very useful!)
     set incsearch       " Show search matches while typing
 
@@ -41,6 +52,8 @@ if has("gui_running")
     else
         au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
     endif
+
+    " Disable vertical split background
     highlight VertSplit gui=NONE guifg=NONE guibg=NONE
 
     if has('mac')
@@ -79,6 +92,8 @@ set magic " For regular expressions turn magic on
 set ignorecase " Searches are Non Case-sensitive
 
 " set cursorline " Highlight current cursor position
+
+" set cursorcolumn " Highlight cursor column
 
 set smartcase " Do smart case matching when searching
 
@@ -163,6 +178,7 @@ if has("autocmd")
 
     " Disable gocode documentation
     autocmd FileType go setlocal completeopt-=preview
+    autocmd FileType javascript setlocal completeopt-=preview
 
     " Indentation
     autocmd FileType python setlocal expandtab shiftwidth=4 tabstop=8
@@ -234,26 +250,3 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 let g:UltiSnipsJumpForwardTrigger='<tab>'
 
 let g:NERDTreeMinimalUI=1
-
-let g:airline#extensions#tmuxline#enabled = 1
-
-" T-Comment keymap
-let g:tcommentMapLeader2 = '<leader>/'
-
-let g:indentLine_char = '│' " Indent guide symbol
-
-let g:indentLine_color_gui = '#1D1D1D' " Indent guide color
-
-let g:airline_powerline_fonts = 1 " Use airline fonts
-
-" If you want to auto-completion to work stable in older vim, disable this option
-let g:airline#extensions#tabline#enabled = 1
-
-" Airline tabs settings
-let g:airline#extensions#tabline#fnamemod = ':t'
-
-let g:UltiSnipsJumpForwardTrigger='<tab>'
-
-let g:NERDTreeMinimalUI=1
-
-let g:airline#extensions#tmuxline#enabled = 1
