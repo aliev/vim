@@ -20,7 +20,11 @@ git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle && vim +Bund
 
 ## Important
 
-If jedi-vim autocomplete doesn't work correctly, you can upgrade you vim to latest version (currently 7.4), or disable ```g:airline#extensions#tabline#enabled``` option in your vimrc file 
+If jedi-vim autocomplete doesn't work correctly, you can upgrade you vim to latest version (currently 7.4), or disable ```g:airline#extensions#tabline#enabled``` option in your vimrc file.
+
+For supperting Python autocomplete, refactoring, go to definition, etc. https://github.com/davidhalter/jedi
+For javascript https://github.com/marijnh/tern_for_vim
+For golang https://github.com/Blackrush/vim-gocode
 
 ## Key bindings
 
