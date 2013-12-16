@@ -5,23 +5,18 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 Bundle 'gmarik/vundle'
-
-
 " Work with code
 Bundle 'SirVer/ultisnips'
 Bundle 'mattn/emmet-vim'
-
 " Git
 Bundle 'mhinz/vim-signify'
 Bundle 'tpope/vim-fugitive'
-
 " Golang
 Bundle 'Blackrush/vim-gocode'
 " Python
 Bundle 'davidhalter/jedi-vim'
 " JavaScript
 Bundle 'marijnh/tern_for_vim'
-
 " Utils
 Bundle 'kien/ctrlp.vim'
 Bundle 'aliev/bclose'
@@ -30,21 +25,21 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'tomtom/tcomment_vim'
 Bundle 'scrooloose/syntastic'
 Bundle 'bling/vim-airline'
-Bundle 'vim-scripts/VisIncr'
-" Bundle 'bling/vim-bufferline'
-" Bundle 'Yggdroot/indentLine'
 
 filetype plugin indent on     " required!
 
 if has("gui_running")
     syntax on           " syntax-highlighting
-    colors solarized " Color scheme
+    colors google " Color scheme
     set guioptions=g " Disable all GUI elements
     set guioptions+=c " Enable Console-based dialogs for simple queries
     " set guioptions+=e " Enable GUI tabs
     set background=dark " Backgroud
     set hlsearch        " Highlight search terms (very useful!)
     set incsearch       " Show search matches while typing
+
+    " Vim airline color scheme
+    let g:airline_theme = 'murmur'
 
     " make a ruler at line 80
     if exists('+colorcolumn')
@@ -55,6 +50,9 @@ if has("gui_running")
 
     " Disable vertical split background
     highlight VertSplit gui=NONE guifg=NONE guibg=NONE
+    highlight ColorColumn guibg=#fafafa
+    hi LineNr guifg=Black guibg=#fafafa
+    hi Pmenu guifg=#bd9700 guibg=Black
 
     if has('mac')
         set guifont=Menlo\ Regular\ for\ Powerline:h12
@@ -161,7 +159,6 @@ set ttyfast " Optimize for fast terminal connections
 
 set path=.,,**
 
-let g:jedi#auto_initialization = 1 " Enable Jedi autocomplete
 let g:jedi#show_call_signatures = 0 " Disable or enable function call signature
 let g:jedi#popup_on_dot = 0 " Disable autocomplete when i type dot
 let g:jedi#use_tabs_not_buffers = 0
@@ -183,7 +180,9 @@ if has("autocmd")
     " Indentation
     autocmd FileType python setlocal expandtab shiftwidth=4 tabstop=8
     autocmd FileType javascript setlocal expandtab shiftwidth=2 tabstop=8
-    autocmd BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
+
+    " JavaScript goto definiction
+    autocmd FileType javascript nnoremap <leader>g :TernDef<CR>
 endif
 
 " Syntax check mode for python (pip install pylama)
@@ -215,29 +214,8 @@ nnoremap <leader>f :CtrlP<cr>
 nnoremap <leader>b :CtrlPBuffer<cr>
 nnoremap <leader>p :CtrlPBufTag<cr>
 
-" File autocomplte
-imap <leader>f <c-x><c-f>
-
-" Default autocomplete
-imap <leader>c <c-x><c-o>
-
-" Show/hide trail characters
-nmap <leader>l :set list!<CR>
-
-" Close buffer with ask save it
-nnoremap <leader>w :confirm :Bclose<CR>
-
-map <leader>e :NERDTreeToggle<CR>
-nnoremap <leader>f :CtrlP<cr>
-nnoremap <leader>b :CtrlPBuffer<cr>
-nnoremap <leader>p :CtrlPBufTag<cr>
-
 " T-Comment keymap
 let g:tcommentMapLeader2 = '<leader>/'
-
-let g:indentLine_char = '│' " Indent guide symbol
-
-let g:indentLine_color_gui = '#1D1D1D' " Indent guide color
 
 let g:airline_powerline_fonts = 1 " Use airline fonts
 
