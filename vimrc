@@ -20,12 +20,11 @@ Bundle 'marijnh/tern_for_vim'
 " Utils
 Bundle 'kien/ctrlp.vim'
 Bundle 'aliev/bclose'
-Bundle 'flazz/vim-colorschemes'
 Bundle 'scrooloose/nerdtree'
 Bundle 'tomtom/tcomment_vim'
 Bundle 'scrooloose/syntastic'
 Bundle 'bling/vim-airline'
-
+Bundle 'aliev/google-color-vim'
 filetype plugin indent on     " required!
 
 if has("gui_running")
@@ -48,12 +47,6 @@ if has("gui_running")
         au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
     endif
 
-    " Disable vertical split background
-    highlight VertSplit gui=NONE guifg=NONE guibg=NONE
-    highlight ColorColumn guibg=#fafafa
-    hi LineNr guifg=Black guibg=#fafafa
-    hi Pmenu guifg=#bd9700 guibg=Black
-
     if has('mac')
         set guifont=Menlo\ Regular\ for\ Powerline:h12
     else
@@ -62,7 +55,6 @@ if has("gui_running")
 else
     syntax on
     set t_Co=256
-    colors xoria256
 endif
 
 if has('multi_byte')
