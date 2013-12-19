@@ -24,6 +24,8 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'tomtom/tcomment_vim'
 Bundle 'scrooloose/syntastic'
 Bundle 'bling/vim-airline'
+" Color schemes
+Bundle 'vim-scripts/xoria256.vim'
 Bundle 'aliev/google-color-vim'
 filetype plugin indent on     " required!
 
@@ -38,7 +40,7 @@ if has("gui_running")
     set incsearch       " Show search matches while typing
 
     " Vim airline color scheme
-    let g:airline_theme = 'murmur'
+    let g:airline_theme = 'solarized'
 
     " make a ruler at line 80
     if exists('+colorcolumn')
@@ -55,6 +57,7 @@ if has("gui_running")
 else
     syntax on
     set t_Co=256
+    colors xoria256
 endif
 
 if has('multi_byte')
@@ -81,9 +84,9 @@ set magic " For regular expressions turn magic on
 
 set ignorecase " Searches are Non Case-sensitive
 
-set cursorline " Highlight current cursor position
+" set cursorline " Highlight current cursor position
 
-" set cursorcolumn " Highlight cursor column
+set cursorcolumn " Highlight cursor column
 
 set smartcase " Do smart case matching when searching
 
@@ -221,5 +224,3 @@ let g:UltiSnipsJumpForwardTrigger='<tab>'
 
 let g:NERDTreeMinimalUI=1
 let NERDTreeIgnore = ['\.pyc$']
-
-hi Directory guifg=#FF0000
