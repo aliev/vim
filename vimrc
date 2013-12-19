@@ -81,7 +81,7 @@ set magic " For regular expressions turn magic on
 
 set ignorecase " Searches are Non Case-sensitive
 
-" set cursorline " Highlight current cursor position
+set cursorline " Highlight current cursor position
 
 " set cursorcolumn " Highlight cursor column
 
@@ -220,3 +220,6 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 let g:UltiSnipsJumpForwardTrigger='<tab>'
 
 let g:NERDTreeMinimalUI=1
+let NERDTreeIgnore = ['\.pyc$']
+
+hi Directory guifg=#FF0000
