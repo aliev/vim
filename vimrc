@@ -18,20 +18,21 @@ Bundle 'davidhalter/jedi-vim'
 " JavaScript
 Bundle 'marijnh/tern_for_vim'
 " Utils
-Bundle 'kien/ctrlp.vim'
+Bundle 'Shougo/unite.vim'
+Bundle 'Shougo/vimproc.vim'
 Bundle 'aliev/bclose'
 Bundle 'scrooloose/nerdtree'
 Bundle 'tomtom/tcomment_vim'
 Bundle 'scrooloose/syntastic'
 Bundle 'bling/vim-airline'
 " Color schemes
-Bundle 'vim-scripts/xoria256.vim'
-Bundle 'aliev/google-color-vim'
+Bundle 'flazz/vim-colorschemes'
 filetype plugin indent on     " required!
 
 if has("gui_running")
     syntax on           " syntax-highlighting
-    colors google " Color scheme
+    colors codeschool " Color scheme
+    hi Pmenu guibg=black
     set guioptions=g " Disable all GUI elements
     set guioptions+=c " Enable Console-based dialogs for simple queries
     " set guioptions+=e " Enable GUI tabs
@@ -86,7 +87,7 @@ set ignorecase " Searches are Non Case-sensitive
 
 " set cursorline " Highlight current cursor position
 
-set cursorcolumn " Highlight cursor column
+" set cursorcolumn " Highlight cursor column
 
 set smartcase " Do smart case matching when searching
 
@@ -205,9 +206,6 @@ nmap <leader>l :set list!<CR>
 nnoremap <leader>w :confirm :Bclose<CR>
 
 map <leader>e :NERDTreeToggle<CR>
-nnoremap <leader>f :CtrlP<cr>
-nnoremap <leader>b :CtrlPBuffer<cr>
-nnoremap <leader>p :CtrlPBufTag<cr>
 
 " T-Comment keymap
 let g:tcommentMapLeader2 = '<leader>/'
@@ -224,3 +222,20 @@ let g:UltiSnipsJumpForwardTrigger='<tab>'
 
 let g:NERDTreeMinimalUI=1
 let NERDTreeIgnore = ['\.pyc$']
+
+" Автоматический insert mode
+let g:unite_enable_start_insert = 1
+
+" Отображаем Unite в нижней части экрана
+let g:unite_split_rule = "botright"
+
+" Отключаем замену статус строки
+let g:unite_force_overwrite_statusline = 0
+
+" Размер окна Unite
+let g:unite_winheight = 10
+
+" Красивые стрелочки
+let g:unite_candidate_icon="▷"
+
+nnoremap <leader>f :<C-u>Unite -buffer-name=files -start-insert buffer file_rec/async:!<cr>
