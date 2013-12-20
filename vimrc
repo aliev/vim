@@ -33,6 +33,8 @@ if has("gui_running")
     syntax on           " syntax-highlighting
     colors codeschool " Color scheme
     hi Pmenu guibg=black
+    hi SignColumn guibg=#252c31
+    hi VertSplit guifg=#1c3657 guibg=NONE
     set guioptions=g " Disable all GUI elements
     set guioptions+=c " Enable Console-based dialogs for simple queries
     " set guioptions+=e " Enable GUI tabs
@@ -179,6 +181,7 @@ if has("autocmd")
 
     " JavaScript goto definiction
     autocmd FileType javascript nnoremap <leader>g :TernDef<CR>
+
 endif
 
 " Syntax check mode for python (pip install pylama)
@@ -187,8 +190,19 @@ let g:syntastic_python_checkers = ['pylama']
 " Syntax check mode for javascript (npm install jslint)
 let g:syntastic_javascript_checkers = ['jslint']
 
-" Syntastic disable signs
+" Make syntastic auto update the location list and make it also check
+" when the file opens
+let g:syntastic_always_populate_loc_list=1
+let g:syntastic_check_on_open=1
+
+" Syntastic signs (disables by default)
 let g:syntastic_enable_signs=0
+
+" Syntastic (if g:syntastic_enable_signs option enabled)
+let g:syntastic_error_symbol = '✗✗'
+let g:syntastic_style_error_symbol = '✠✠'
+let g:syntastic_warning_symbol = '∆∆'
+let g:syntastic_style_warning_symbol = '≈≈'
 
 " Comment selected line
 map <leader>/ :TComment<CR>
