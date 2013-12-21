@@ -11,8 +11,6 @@ Bundle 'mattn/emmet-vim'
 " Git
 Bundle 'mhinz/vim-signify'
 Bundle 'tpope/vim-fugitive'
-" Golang
-Bundle 'Blackrush/vim-gocode'
 " Python
 Bundle 'davidhalter/jedi-vim'
 " JavaScript
