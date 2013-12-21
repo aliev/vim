@@ -43,13 +43,6 @@ if has("gui_running")
     " Vim airline color scheme
     let g:airline_theme = 'solarized'
 
-    " make a ruler at line 80
-    if exists('+colorcolumn')
-        execute "set colorcolumn=" . join(range(81,335), ',')
-    else
-        au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
-    endif
-
     if has('mac')
         set guifont=Menlo\ Regular\ for\ Powerline:h12
     else
@@ -266,6 +259,7 @@ function! s:DimInactiveWindows()
       let l:range = join(range(1, l:width), ',')
     endif
     call setwinvar(i, '&colorcolumn', l:range)
+    execute "set colorcolumn=" . join(range(81,335), ',')
   endfor
 endfunction
 augroup DimInactiveWindows
