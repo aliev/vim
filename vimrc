@@ -8,6 +8,7 @@ Bundle 'gmarik/vundle'
 " Work with code
 Bundle 'SirVer/ultisnips'
 Bundle 'mattn/emmet-vim'
+Bundle 'gregsexton/MatchTag'
 " Git
 Bundle 'mhinz/vim-signify'
 Bundle 'tpope/vim-fugitive'
@@ -23,6 +24,7 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'tomtom/tcomment_vim'
 Bundle 'scrooloose/syntastic'
 Bundle 'bling/vim-airline'
+Bundle 'Yggdroot/indentLine'
 " Color schemes
 Bundle 'flazz/vim-colorschemes'
 filetype plugin indent on     " required!
@@ -42,6 +44,8 @@ if has("gui_running")
 
     " Vim airline color scheme
     let g:airline_theme = 'solarized'
+
+    execute "set colorcolumn=" . join(range(81,335), ',')
 
     if has('mac')
         set guifont=Menlo\ Regular\ for\ Powerline:h12
@@ -237,34 +241,23 @@ let g:unite_winheight = 10
 " Красивые стрелочки
 let g:unite_candidate_icon="▷"
 
-nnoremap <leader>f :<C-u>Unite -buffer-name=files -start-insert buffer file_rec/async:!<cr>
+nnoremap <leader>f :<C-u>Unite -buffer-name=files -start-insert buffer menu file_rec/async:!<cr>
 
-" Dim inactive windows using 'colorcolumn' setting
-" This tends to slow down redrawing, but is very useful.
-" Based on https://groups.google.com/d/msg/vim_use/IJU-Vk-QLJE/xz4hjPjCRBUJ
-" XXX: this will only work with lines containing text (i.e. not '~')
-function! s:DimInactiveWindows()
-  for i in range(1, tabpagewinnr(tabpagenr(), '$'))
-    let l:range = ""
-    if i != winnr()
-      if &wrap
-        " HACK: when wrapping lines is enabled, we use the maximum number
-        " of columns getting highlighted. This might get calculated by
-        " looking for the longest visible line and using a multiple of
-        " winwidth().
-        let l:width=256 " max
-      else
-        let l:width=winwidth(i)
-      endif
-      let l:range = join(range(1, l:width), ',')
-    endif
-    call setwinvar(i, '&colorcolumn', l:range)
-    execute "set colorcolumn=" . join(range(81,335), ',')
-  endfor
+let g:unite_source_menu_menus = {}
+let g:unite_source_menu_menus.git = {
+            \     'description' : 'Git menu',
+            \ }
+let g:unite_source_menu_menus.git.candidates = {
+            \   'show all repos' : 'Git branch -a',
+            \   'gdiff' : 'Gdiff',
+            \ }
+function g:unite_source_menu_menus.git.map(key, value)
+    return {
+            \       'word' : a:key, 'kind' : 'command',
+            \       'action__command' : a:value,
+            \ }
 endfunction
-augroup DimInactiveWindows
-  au!
-  au WinEnter * call s:DimInactiveWindows()
-  au WinEnter * set cursorline
-  au WinLeave * set nocursorline
-augroup END
+
+let g:indentLine_faster=1
+let g:indentLine_char = '│'
+let g:indentLine_color_gui='#293136'
