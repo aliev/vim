@@ -5,26 +5,34 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 Bundle 'gmarik/vundle'
+
 " Work with code
 Bundle 'SirVer/ultisnips'
+Bundle 'tomtom/tcomment_vim'
+
+" HTML/CSS
 Bundle 'mattn/emmet-vim'
 Bundle 'gregsexton/MatchTag'
+
 " Git
 Bundle 'mhinz/vim-signify'
 Bundle 'tpope/vim-fugitive'
+
 " Python
 Bundle 'davidhalter/jedi-vim'
+
 " JavaScript
 Bundle 'marijnh/tern_for_vim'
+
 " Utils
 Bundle 'Shougo/unite.vim'
 Bundle 'Shougo/vimproc.vim'
 Bundle 'aliev/bclose'
 Bundle 'scrooloose/nerdtree'
-Bundle 'tomtom/tcomment_vim'
 Bundle 'scrooloose/syntastic'
-Bundle 'bling/vim-airline'
 Bundle 'Yggdroot/indentLine'
+Bundle 'bling/vim-airline'
+
 " Color schemes
 Bundle 'flazz/vim-colorschemes'
 filetype plugin indent on     " required!
