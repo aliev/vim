@@ -6,42 +6,54 @@ call vundle#rc()
 
 Bundle 'gmarik/vundle'
 
-Bundle 'tomtom/tcomment_vim'
-Bundle 'tpope/vim-fugitive'
-Bundle 'scrooloose/syntastic'
-Bundle 'davidhalter/jedi-vim'
-Bundle 'bling/vim-airline'
+" Work with code
 Bundle 'SirVer/ultisnips'
-Bundle 'mattn/emmet-vim'
-Bundle 'mhinz/vim-signify'
-Bundle 'Blackrush/vim-gocode'
-Bundle 'scrooloose/nerdtree'
-Bundle 'bling/vim-bufferline'
-" Bundle 'Yggdroot/indentLine'
-Bundle 'xoria256.vim'
-Bundle 'kien/ctrlp.vim'
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'aliev/bclose'
+Bundle 'tomtom/tcomment_vim'
 
+" HTML/CSS
+Bundle 'mattn/emmet-vim'
+Bundle 'gregsexton/MatchTag'
+
+" Git
+Bundle 'mhinz/vim-signify'
+Bundle 'tpope/vim-fugitive'
+
+" Python
+Bundle 'davidhalter/jedi-vim'
+
+" JavaScript
+Bundle 'marijnh/tern_for_vim'
+
+" Utils
+Bundle 'Shougo/unite.vim'
+Bundle 'Shougo/vimproc.vim'
+Bundle 'aliev/bclose'
+Bundle 'scrooloose/nerdtree'
+Bundle 'scrooloose/syntastic'
+Bundle 'Yggdroot/indentLine'
+Bundle 'bling/vim-airline'
+
+" Color schemes
+Bundle 'flazz/vim-colorschemes'
 filetype plugin indent on     " required!
 
 if has("gui_running")
     syntax on           " syntax-highlighting
-    colors solarized " Color scheme
+    colors codeschool " Color scheme
+    hi Pmenu guibg=black
+    hi SignColumn guibg=#252c31
+    hi VertSplit guifg=#1c3657 guibg=NONE
     set guioptions=g " Disable all GUI elements
     set guioptions+=c " Enable Console-based dialogs for simple queries
     " set guioptions+=e " Enable GUI tabs
-    set background=dark " Dark backgroud
+    set background=dark " Backgroud
     set hlsearch        " Highlight search terms (very useful!)
     set incsearch       " Show search matches while typing
 
-    " make a ruler at line 80
-    if exists('+colorcolumn')
-        execute "set colorcolumn=" . join(range(81,335), ',')
-    else
-        au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
-    endif
-    highlight VertSplit gui=NONE guifg=NONE guibg=NONE
+    " Vim airline color scheme
+    let g:airline_theme = 'solarized'
+
+    execute "set colorcolumn=" . join(range(81,335), ',')
 
     if has('mac')
         set guifont=Menlo\ Regular\ for\ Powerline:h12
@@ -50,8 +62,8 @@ if has("gui_running")
     endif
 else
     syntax on
-    colors xoria256
     set t_Co=256
+    colors xoria256
 endif
 
 if has('multi_byte')
@@ -80,6 +92,8 @@ set ignorecase " Searches are Non Case-sensitive
 
 " set cursorline " Highlight current cursor position
 
+" set cursorcolumn " Highlight cursor column
+
 set smartcase " Do smart case matching when searching
 
 set showmatch " Show matching brackets when text indicator is over them
@@ -107,6 +121,8 @@ set autoindent " Enable auto indent
 set smartindent " Smart indent
 
 set wrap " enable word wrap
+
+" set nowrap " disable word wrap
 
 set noerrorbells visualbell t_vb= " No annoying sound on errors
 
@@ -146,7 +162,6 @@ set ttyfast " Optimize for fast terminal connections
 
 set path=.,,**
 
-let g:jedi#auto_initialization = 1 " Enable Jedi autocomplete
 let g:jedi#show_call_signatures = 0 " Disable or enable function call signature
 let g:jedi#popup_on_dot = 0 " Disable autocomplete when i type dot
 let g:jedi#use_tabs_not_buffers = 0
@@ -163,11 +178,15 @@ if has("autocmd")
 
     " Disable gocode documentation
     autocmd FileType go setlocal completeopt-=preview
+    autocmd FileType javascript setlocal completeopt-=preview
 
     " Indentation
     autocmd FileType python setlocal expandtab shiftwidth=4 tabstop=8
     autocmd FileType javascript setlocal expandtab shiftwidth=2 tabstop=8
-    autocmd BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
+
+    " JavaScript goto definiction
+    autocmd FileType javascript nnoremap <leader>g :TernDef<CR>
+
 endif
 
 " Syntax check mode for python (pip install pylama)
@@ -176,7 +195,12 @@ let g:syntastic_python_checkers = ['pylama']
 " Syntax check mode for javascript (npm install jslint)
 let g:syntastic_javascript_checkers = ['jslint']
 
-" Syntastic disable signs
+" Make syntastic auto update the location list and make it also check
+" when the file opens
+let g:syntastic_always_populate_loc_list=1
+let g:syntastic_check_on_open=1
+
+" Syntastic signs (disables by default)
 let g:syntastic_enable_signs=0
 
 " Comment selected line
@@ -195,17 +219,9 @@ nmap <leader>l :set list!<CR>
 nnoremap <leader>w :confirm :Bclose<CR>
 
 map <leader>e :NERDTreeToggle<CR>
-nnoremap <leader>f :CtrlP<cr>
-nnoremap <leader>b :CtrlPBuffer<cr>
-nnoremap <leader>p :CtrlPBufTag<cr>
-
 
 " T-Comment keymap
 let g:tcommentMapLeader2 = '<leader>/'
-
-let g:indentLine_char = '│' " Indent guide symbol
-
-let g:indentLine_color_gui = '#1D1D1D' " Indent guide color
 
 let g:airline_powerline_fonts = 1 " Use airline fonts
 
@@ -218,7 +234,45 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 let g:UltiSnipsJumpForwardTrigger='<tab>'
 
 let g:NERDTreeMinimalUI=1
+let NERDTreeIgnore = ['\.pyc$']
 
-let g:airline#extensions#tmuxline#enabled = 1
+" Unite settings
+let g:unite_enable_start_insert = 1
+let g:unite_split_rule = "botright"
+let g:unite_force_overwrite_statusline = 0
+let g:unite_winheight = 10
+let g:unite_candidate_icon="▷"
 
+nnoremap <leader>f :<C-u>Unite -buffer-name=files -start-insert buffer menu file_rec/async:!<cr>
 
+let g:unite_source_menu_menus = {}
+let g:unite_source_menu_menus.git = {
+            \     'description' : 'Git menu',
+            \ }
+let g:unite_source_menu_menus.git.candidates = {
+            \   'show all repos' : 'Git branch -a',
+            \   'gdiff' : 'Gdiff',
+            \ }
+function g:unite_source_menu_menus.git.map(key, value)
+    return {
+            \       'word' : a:key, 'kind' : 'command',
+            \       'action__command' : a:value,
+            \ }
+endfunction
+
+let g:indentLine_faster=1
+let g:indentLine_char = '│'
+let g:indentLine_color_gui='#293136'
+
+noremap <leader>v :exe AddColumn()<CR>
+function! AddColumn()
+  exe "norm \<C-u>"
+  let @z=&so
+  set noscb so=0
+  bo vs
+  exe "norm \<PageDown>"
+  setl scrollbind
+  wincmd p
+  setl scrollbind
+  let &so=@z
+endfunction
