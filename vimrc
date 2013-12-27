@@ -122,6 +122,8 @@ set smartindent " Smart indent
 
 set wrap " enable word wrap
 
+" set nowrap " disable word wrap
+
 set noerrorbells visualbell t_vb= " No annoying sound on errors
 
 set encoding=utf8 " Default encoding
@@ -269,3 +271,16 @@ endfunction
 let g:indentLine_faster=1
 let g:indentLine_char = '│'
 let g:indentLine_color_gui='#293136'
+
+noremap <leader>v :exe AddColumn()<CR>
+function! AddColumn()
+  exe "norm \<C-u>"
+  let @z=&so
+  set noscb so=0
+  bo vs
+  exe "norm \<PageDown>"
+  setl scrollbind
+  wincmd p
+  setl scrollbind
+  let &so=@z
+endfunction
