@@ -4,11 +4,7 @@ Minimal VIM configuration file based on KISS principle
 
 ## Screenshots
 
-![vim indent guides](https://dl.dropboxusercontent.com/u/5837324/vim/vim-indent-guides.png "Vim with indent guides and trailing characters")
-
-![vim](https://dl.dropboxusercontent.com/u/5837324/vim/vim.png "Vim")
-
-![python support](https://dl.dropboxusercontent.com/u/5837324/vim/vim-python.png "Python support")
+![vim indent guides](https://raw.github.com/aliev/vim/master/vim.png "Vim with indent guides and trailing characters")
 
 ## How to install?
 
