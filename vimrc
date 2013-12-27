@@ -236,19 +236,11 @@ let g:UltiSnipsJumpForwardTrigger='<tab>'
 let g:NERDTreeMinimalUI=1
 let NERDTreeIgnore = ['\.pyc$']
 
-" Автоматический insert mode
+" Unite settings
 let g:unite_enable_start_insert = 1
-
-" Отображаем Unite в нижней части экрана
 let g:unite_split_rule = "botright"
-
-" Отключаем замену статус строки
 let g:unite_force_overwrite_statusline = 0
-
-" Размер окна Unite
 let g:unite_winheight = 10
-
-" Красивые стрелочки
 let g:unite_candidate_icon="▷"
 
 nnoremap <leader>f :<C-u>Unite -buffer-name=files -start-insert buffer menu file_rec/async:!<cr>
