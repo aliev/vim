@@ -11,9 +11,6 @@ mv ~/vim ~/.vim
 git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 echo "source ~/.vim/vimrc" > .vimrc
 vim +BundleInstall +qall # Install all plugins
-cd ~ && mv ~/vim ~/.vim
-echo "source ~/.vim/vimrc" > .vimrc
-git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle && vim +BundleInstall +qall
 ```
 
 ## Screenshots
