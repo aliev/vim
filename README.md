@@ -33,7 +33,7 @@ If jedi-vim autocomplete doesn't work correctly, you can upgrade you vim to late
 | leader + c | Open jedi vim complete pop-up (insert mode), Syntastic (visual mode)
 | leader + g | goto definition
 | leader + r | rename
-| leader + n | usage
+| leader + n | find usage
 | leader + d | goto assignments
 | leader + t | create new tab
 | leader + w | close buffer (tabe) with asking save
