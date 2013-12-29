@@ -25,13 +25,12 @@ Bundle 'davidhalter/jedi-vim'
 Bundle 'marijnh/tern_for_vim'
 
 " Utils
-Bundle 'Shougo/unite.vim'
-Bundle 'Shougo/vimproc.vim'
 Bundle 'aliev/bclose'
 Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/syntastic'
 Bundle 'Yggdroot/indentLine'
 Bundle 'bling/vim-airline'
+Bundle 'kien/ctrlp.vim'
 
 " Color schemes
 Bundle 'flazz/vim-colorschemes'
@@ -243,7 +242,8 @@ let g:unite_force_overwrite_statusline = 0
 let g:unite_winheight = 10
 let g:unite_candidate_icon="▷"
 
-nnoremap <leader>f :<C-u>Unite -buffer-name=files -start-insert buffer menu file_rec/async:!<cr>
+nnoremap <leader>f :CtrlP<cr>
+nnoremap <leader>b :CtrlPBuffer<cr>
 
 let g:unite_source_menu_menus = {}
 let g:unite_source_menu_menus.git = {
