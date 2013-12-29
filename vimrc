@@ -235,30 +235,8 @@ let g:UltiSnipsJumpForwardTrigger='<tab>'
 let g:NERDTreeMinimalUI=1
 let NERDTreeIgnore = ['\.pyc$']
 
-" Unite settings
-let g:unite_enable_start_insert = 1
-let g:unite_split_rule = "botright"
-let g:unite_force_overwrite_statusline = 0
-let g:unite_winheight = 10
-let g:unite_candidate_icon="▷"
-
 nnoremap <leader>f :CtrlP<cr>
 nnoremap <leader>b :CtrlPBuffer<cr>
-
-let g:unite_source_menu_menus = {}
-let g:unite_source_menu_menus.git = {
-            \     'description' : 'Git menu',
-            \ }
-let g:unite_source_menu_menus.git.candidates = {
-            \   'show all repos' : 'Git branch -a',
-            \   'gdiff' : 'Gdiff',
-            \ }
-function g:unite_source_menu_menus.git.map(key, value)
-    return {
-            \       'word' : a:key, 'kind' : 'command',
-            \       'action__command' : a:value,
-            \ }
-endfunction
 
 let g:indentLine_faster=1
 let g:indentLine_char = '│'
