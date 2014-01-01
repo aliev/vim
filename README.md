@@ -11,6 +11,9 @@ mv ~/vim ~/.vim
 git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 echo "source ~/.vim/vimrc" > .vimrc
 vim +BundleInstall +qall # Install all plugins
+# installation YouCompleteMe plugin
+cd ~/.vim/bundle/YouCompleteMe
+./install.sh
 ```
 
 ## Screenshots
