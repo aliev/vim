@@ -19,7 +19,10 @@ vim +BundleInstall +qall # Install all plugins
 
 ## Important
 
-If jedi-vim autocomplete doesn't work correctly, you can upgrade you vim to latest version (currently 7.4), or disable ```g:airline#extensions#tabline#enabled``` option in your vimrc file 
+If jedi-vim autocomplete doesn't work correctly, you can upgrade you vim to latest version (currently 7.4), or disable ```g:airline#extensions#tabline#enabled``` option in your vimrc file
+
+## For MacVim users
+Plaease read: https://github.com/Valloric/YouCompleteMe#i-have-a-homebrew-python-andor-macvim-cant-compilesigabrt-when-starting
 
 ## Key bindings
 
