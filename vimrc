@@ -9,10 +9,7 @@ Bundle 'gmarik/vundle'
 " Work with code
 Bundle 'SirVer/ultisnips'
 Bundle 'tomtom/tcomment_vim'
-
-" HTML/CSS
 Bundle 'mattn/emmet-vim'
-Bundle 'gregsexton/MatchTag'
 
 " Git
 Bundle 'mhinz/vim-signify'
@@ -31,17 +28,14 @@ Bundle 'scrooloose/syntastic'
 Bundle 'Yggdroot/indentLine'
 Bundle 'bling/vim-airline'
 Bundle 'kien/ctrlp.vim'
+Bundle 'aliev/google-color-vim'
+Bundle 'Valloric/YouCompleteMe'
 
-" Color schemes
-Bundle 'flazz/vim-colorschemes'
 filetype plugin indent on     " required!
 
 if has("gui_running")
     syntax on           " syntax-highlighting
-    colors codeschool " Color scheme
-    hi Pmenu guibg=black
-    hi SignColumn guibg=#252c31
-    hi VertSplit guifg=#1c3657 guibg=NONE
+    colors google " Color scheme
     set guioptions=g " Disable all GUI elements
     set guioptions+=c " Enable Console-based dialogs for simple queries
     " set guioptions+=e " Enable GUI tabs
@@ -161,9 +155,10 @@ set ttyfast " Optimize for fast terminal connections
 
 set path=.,,**
 
-let g:jedi#show_call_signatures = 0 " Disable or enable function call signature
+let g:jedi#show_call_signatures = 1 " Disable or enable function call signature
 let g:jedi#popup_on_dot = 0 " Disable autocomplete when i type dot
 let g:jedi#use_tabs_not_buffers = 0
+let g:jedi#use_splits_not_buffers = "left"
 
 if has("autocmd")
     " Enable jedi completion for omnifunc
@@ -240,7 +235,7 @@ nnoremap <leader>b :CtrlPBuffer<cr>
 
 let g:indentLine_faster=1
 let g:indentLine_char = '│'
-let g:indentLine_color_gui='#293136'
+let g:indentLine_color_gui='#f2f2f2'
 
 noremap <leader>v :exe AddColumn()<CR>
 function! AddColumn()
