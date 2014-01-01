@@ -35,8 +35,8 @@ Plaease read: https://github.com/Valloric/YouCompleteMe#i-have-a-homebrew-python
 | leader + l | Enable (disable) displaying whitespace
 | leader + f | Open CtrlP
 | leader + b | Open CtrlPBuffer
-| leader + t | Open CtrlPBufTag
-| leader + c | Open jedi vim complete pop-up (insert mode), Syntastic (visual mode)
+| leader + e | NERDTree Toggle
+| leader + c | Open jedi vim complete pop-up (insert mode)
 | leader + g | goto definition
 | leader + r | rename
 | leader + n | find usage
@@ -44,4 +44,3 @@ Plaease read: https://github.com/Valloric/YouCompleteMe#i-have-a-homebrew-python
 | leader + t | create new tab
 | leader + w | close buffer (tabe) with asking save
 | leader + / | Comment selected line
-
