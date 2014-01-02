@@ -30,6 +30,7 @@ Bundle 'bling/vim-airline'
 Bundle 'kien/ctrlp.vim'
 Bundle 'junegunn/seoul256.vim'
 Bundle 'vim-scripts/AutoComplPop'
+Bundle 'terryma/vim-multiple-cursors'
 
 filetype plugin indent on     " required!
 
