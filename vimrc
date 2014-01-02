@@ -18,6 +18,9 @@ Bundle 'tpope/vim-fugitive'
 " Python
 Bundle 'davidhalter/jedi-vim'
 
+" Golang
+Bundle 'Blackrush/vim-gocode'
+
 " JavaScript
 Bundle 'marijnh/tern_for_vim'
 
@@ -181,6 +184,11 @@ if has("autocmd")
     " JavaScript goto definiction
     autocmd FileType javascript nnoremap <leader>g :TernDef<CR>
 
+    " Enable autocompletion for Golang
+    autocmd FileType go set omnifunc=gocomplete#Complete
+
+    " Disable gocode documentation
+    autocmd FileType go setlocal completeopt-=preview
 endif
 
 " Syntax check mode for python (pip install pylama)
