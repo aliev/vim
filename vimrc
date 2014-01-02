@@ -28,14 +28,14 @@ Bundle 'scrooloose/syntastic'
 Bundle 'Yggdroot/indentLine'
 Bundle 'bling/vim-airline'
 Bundle 'kien/ctrlp.vim'
-Bundle 'aliev/google-color-vim'
-Bundle 'Valloric/YouCompleteMe'
+Bundle 'junegunn/seoul256.vim'
+Bundle 'vim-scripts/AutoComplPop'
 
 filetype plugin indent on     " required!
 
 if has("gui_running")
     syntax on           " syntax-highlighting
-    colors google " Color scheme
+    colors seoul256 " Color scheme
     set guioptions=g " Disable all GUI elements
     set guioptions+=c " Enable Console-based dialogs for simple queries
     " set guioptions+=e " Enable GUI tabs
@@ -56,7 +56,6 @@ if has("gui_running")
 else
     syntax on
     set t_Co=256
-    colors xoria256
 endif
 
 if has('multi_byte')
@@ -234,18 +233,4 @@ nnoremap <leader>f :CtrlP<cr>
 nnoremap <leader>b :CtrlPBuffer<cr>
 
 let g:indentLine_faster=1
-let g:indentLine_char = '│'
-let g:indentLine_color_gui='#f2f2f2'
-
-noremap <leader>v :exe AddColumn()<CR>
-function! AddColumn()
-  exe "norm \<C-u>"
-  let @z=&so
-  set noscb so=0
-  bo vs
-  exe "norm \<PageDown>"
-  setl scrollbind
-  wincmd p
-  setl scrollbind
-  let &so=@z
-endfunction
+let g:indentLine_char = '|'
