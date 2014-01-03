@@ -47,7 +47,7 @@ if has("gui_running")
     set incsearch       " Show search matches while typing
 
     " Vim airline color scheme
-    let g:airline_theme = 'bubblegum'
+    let g:airline_theme = 'solarized'
 
     execute "set colorcolumn=" . join(range(81,335), ',')
 
