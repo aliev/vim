@@ -33,18 +33,16 @@ Bundle 'bling/vim-airline'
 Bundle 'kien/ctrlp.vim'
 Bundle 'vim-scripts/AutoComplPop'
 Bundle 'terryma/vim-multiple-cursors'
-Bundle 'junegunn/seoul256.vim'
+Bundle 'aliev/google-color-vim'
 
 filetype plugin indent on     " required!
 
 if has("gui_running")
     syntax on           " syntax-highlighting
-    let g:seoul256_background = 236
-    colors seoul256 " Color scheme
+    colors google " Color scheme
     set guioptions=g " Disable all GUI elements
     set guioptions+=c " Enable Console-based dialogs for simple queries
-    " set guioptions+=e " Enable GUI tabs
-    set background=light " Backgroud
+    set background=dark " Backgroud
     set hlsearch        " Highlight search terms (very useful!)
     set incsearch       " Show search matches while typing
 
@@ -87,7 +85,7 @@ set magic " For regular expressions turn magic on
 
 set ignorecase " Searches are Non Case-sensitive
 
-set cursorline " Highlight current cursor position
+" set cursorline " Highlight current cursor position
 
 " set cursorcolumn " Highlight cursor column
 
