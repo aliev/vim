@@ -10,6 +10,7 @@ Bundle 'gmarik/vundle'
 Bundle 'SirVer/ultisnips'
 Bundle 'tomtom/tcomment_vim'
 Bundle 'mattn/emmet-vim'
+Bundle 'terryma/vim-multiple-cursors'
 
 " Git
 Bundle 'mhinz/vim-signify'
@@ -32,24 +33,25 @@ Bundle 'Yggdroot/indentLine'
 Bundle 'bling/vim-airline'
 Bundle 'kien/ctrlp.vim'
 Bundle 'vim-scripts/AutoComplPop'
-Bundle 'terryma/vim-multiple-cursors'
-Bundle 'aliev/google-color-vim'
+Bundle 'jmcantrell/vim-virtualenv'
+
+" Color scheme pack
+Bundle 'flazz/vim-colorschemes'
 
 filetype plugin indent on     " required!
 
 if has("gui_running")
     syntax on           " syntax-highlighting
-    colors google " Color scheme
+    set background=light " Backgroud
+    colors solarized " Color scheme
     set guioptions=g " Disable all GUI elements
     set guioptions+=c " Enable Console-based dialogs for simple queries
-    set background=dark " Backgroud
     set hlsearch        " Highlight search terms (very useful!)
     set incsearch       " Show search matches while typing
 
-    " Vim airline color scheme
-    let g:airline_theme = 'solarized'
-
     execute "set colorcolumn=" . join(range(81,335), ',')
+
+    let g:airline_theme = 'solarized'
 
     if has('mac')
         set guifont=Menlo\ Regular\ for\ Powerline:h12
@@ -157,10 +159,9 @@ set ttyfast " Optimize for fast terminal connections
 
 set path=.,,**
 
-let g:jedi#show_call_signatures = 1 " Disable or enable function call signature
+let g:jedi#show_call_signatures = 0 " Disable or enable function call signature
 let g:jedi#popup_on_dot = 0 " Disable autocomplete when i type dot
 let g:jedi#use_tabs_not_buffers = 0
-let g:jedi#use_splits_not_buffers = "left"
 
 if has("autocmd")
     " Enable jedi completion for omnifunc
@@ -216,10 +217,10 @@ imap <leader>c <c-x><c-o>
 " Show/hide trail characters
 nmap <leader>l :set list!<CR>
 
+nnoremap <leader>e :NERDTreeToggle<CR>
+
 " Close buffer with ask save it
 nnoremap <leader>w :confirm :Bclose<CR>
-
-map <leader>e :NERDTreeToggle<CR>
 
 " T-Comment keymap
 let g:tcommentMapLeader2 = '<leader>/'
@@ -241,4 +242,4 @@ nnoremap <leader>f :CtrlP<cr>
 nnoremap <leader>b :CtrlPBuffer<cr>
 
 let g:indentLine_faster=1
-let g:indentLine_char = '│'
+let g:indentLine_char = nr2char(6145)
