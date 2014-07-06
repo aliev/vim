@@ -52,14 +52,14 @@ If jedi-vim autocomplete doesn't work correctly, you must upgrade you vim to lat
 
 ## More goodies for console users
 
-# Powerline for tmux
+### Powerline for tmux
 
 https://github.com/erikw/tmux-powerline
 
-# Patched Menlo fonts for powerline you can get here
+### Patched Menlo fonts for powerline you can get here
 
 https://github.com/abertsch/Menlo-for-Powerline
 
-# Prezto (awesome zsh configuration)
+### Prezto (awesome zsh configuration)
 
 https://github.com/sorin-ionescu/prezto
