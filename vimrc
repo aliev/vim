@@ -33,7 +33,7 @@ filetype plugin indent on     " required!
 
 if has("gui_running")
     syntax on           " syntax-highlighting
-    set background=light " Backgroud
+    set background=dark " Backgroud
     colors solarized " Color scheme
     set guioptions=g " Disable all GUI elements
     set guioptions+=c " Enable Console-based dialogs for simple queries
@@ -54,6 +54,9 @@ endif
 
 " don't blink the cursor
 set guicursor+=i:blinkwait0
+
+" Timeout for esc
+set timeout timeoutlen=1000 ttimeoutlen=10
 
 " Ebable colorcolumn
 execute "set colorcolumn=" . join(range(81,335), ',')
@@ -164,7 +167,7 @@ set ttyfast " Optimize for fast terminal connections
 
 set path=.,,**
 
-let g:jedi#show_call_signatures = 1 " Disable or enable function call signature
+let g:jedi#show_call_signatures = 0 " Disable or enable function call signature
 let g:jedi#popup_on_dot = 0 " Disable autocomplete when i type dot
 let g:jedi#use_tabs_not_buffers = 0
 

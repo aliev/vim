@@ -13,28 +13,53 @@ echo "source ~/.vim/vimrc" > .vimrc
 vim +BundleInstall +qall # Install all plugins
 ```
 
+## For Mac users
+
+You must install newtest macvim using brew (please, install XCode first):
+
+```
+brew install macvim --override-system-vim
+```
+
+This command will replace old system vim
+
 ## Screenshots
 
 ![vim indent guides](https://raw.github.com/aliev/vim/master/vim.png "Vim with indent guides and trailing characters")
 
 ## Important
 
-If jedi-vim autocomplete doesn't work correctly, you can upgrade you vim to latest version (currently 7.4), or disable ```g:airline#extensions#tabline#enabled``` option in your vimrc file
+If jedi-vim autocomplete doesn't work correctly, you must upgrade you vim to latest version (currently 7.4), or disable ```g:airline#extensions#tabline#enabled``` option
 
 ## Key bindings
 
 | Key        | Description
 | ---------- |:---------------------------------------------------------------
-| ,          | Default leader key
-| leader + l | Enable (disable) displaying whitespace
-| leader + f | Open CtrlP
-| leader + b | Open CtrlPBuffer
-| leader + e | NERDTree Toggle
-| leader + c | Open jedi vim complete pop-up (insert mode)
-| leader + g | goto definition
-| leader + r | rename
-| leader + n | find usage
+| ,          | default leader key
+| tab key    | ultisnips plugin
+| leader + b | open CtrlPBuffer
+| leader + c | autocomplete
 | leader + d | goto assignments
+| leader + e | NERDTree Toggle
+| leader + f | open CtrlP (Visual mode), Open file autocomplete (Insert mode)
+| leader + g | goto definition
+| leader + l | enable (disable) displaying whitespace
+| leader + n | find usage
+| leader + r | rename
 | leader + t | create new tab
 | leader + w | close buffer (tabe) with asking save
-| leader + / | Comment selected line
+| leader + / | comment selected line (T-Comment plugin)
+
+## More goodies for console users
+
+# Powerline for tmux
+
+https://github.com/erikw/tmux-powerline
+
+# Patched Menlo fonts for powerline you can get here
+
+https://github.com/abertsch/Menlo-for-Powerline
+
+# Prezto (awesome zsh configuration)
+
+https://github.com/sorin-ionescu/prezto
