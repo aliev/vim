@@ -8,6 +8,7 @@ Bundle 'gmarik/vundle'
 
 " Work with code
 Bundle 'SirVer/ultisnips'
+Bundle 'honza/vim-snippets'
 Bundle 'tomtom/tcomment_vim'
 Bundle 'mattn/emmet-vim'
 Bundle 'terryma/vim-multiple-cursors'
@@ -19,24 +20,14 @@ Bundle 'tpope/vim-fugitive'
 " Python
 Bundle 'davidhalter/jedi-vim'
 
-" Golang
-Bundle 'Blackrush/vim-gocode'
-
-" JavaScript
-Bundle 'marijnh/tern_for_vim'
-
 " Utils
 Bundle 'aliev/bclose'
 Bundle 'scrooloose/nerdtree'
-Bundle 'scrooloose/syntastic'
-Bundle 'Yggdroot/indentLine'
 Bundle 'bling/vim-airline'
 Bundle 'kien/ctrlp.vim'
-Bundle 'vim-scripts/AutoComplPop'
-Bundle 'jmcantrell/vim-virtualenv'
 
-" Color scheme pack
-Bundle 'flazz/vim-colorschemes'
+" Color scheme
+Bundle 'altercation/vim-colors-solarized'
 
 filetype plugin indent on     " required!
 
@@ -49,10 +40,6 @@ if has("gui_running")
     set hlsearch        " Highlight search terms (very useful!)
     set incsearch       " Show search matches while typing
 
-    execute "set colorcolumn=" . join(range(81,335), ',')
-
-    let g:airline_theme = 'solarized'
-
     if has('mac')
         set guifont=Menlo\ Regular\ for\ Powerline:h12
     else
@@ -61,7 +48,15 @@ if has("gui_running")
 else
     syntax on
     set t_Co=256
+    set background=dark
+    colorscheme solarized
 endif
+
+" don't blink the cursor
+set guicursor+=i:blinkwait0
+
+" Ebable colorcolumn
+execute "set colorcolumn=" . join(range(81,335), ',')
 
 if has('multi_byte')
     set listchars=tab:»\ ,trail:·,eol:¶,extends:→,precedes:←,nbsp:×
@@ -153,13 +148,23 @@ set wildmode=list:longest,list:full " Wildmenu configuration
 
 set wildignore+=*.o,*.pyc,*.jpg,*.png,*.gif,*.db,*.obj,.git " Ignore compiled files
 
-set clipboard+=unnamed " Global clipboard between the system and the editor
+if $TMUX == ''
+    set clipboard+=unnamed
+    " set the cursor to a vertical line in insert mode and a
+    " solid block in command mode
+    let &t_SI = "\<Esc>P\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+    let &t_EI = "\<Esc>P\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+else
+    " for tmux
+    let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+    let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+endif
 
 set ttyfast " Optimize for fast terminal connections
 
 set path=.,,**
 
-let g:jedi#show_call_signatures = 0 " Disable or enable function call signature
+let g:jedi#show_call_signatures = 1 " Disable or enable function call signature
 let g:jedi#popup_on_dot = 0 " Disable autocomplete when i type dot
 let g:jedi#use_tabs_not_buffers = 0
 
@@ -170,40 +175,10 @@ if has("autocmd")
     " Disable jedi-vim documentation
     autocmd FileType python setlocal completeopt-=preview
 
-    " Enable autocompletion for Golang
-    autocmd FileType go set omnifunc=gocomplete#Complete
-
-    " Disable gocode documentation
-    autocmd FileType go setlocal completeopt-=preview
-    autocmd FileType javascript setlocal completeopt-=preview
-
     " Indentation
     autocmd FileType python setlocal expandtab shiftwidth=4 tabstop=8
     autocmd FileType javascript setlocal expandtab shiftwidth=2 tabstop=8
-
-    " JavaScript goto definiction
-    autocmd FileType javascript nnoremap <leader>g :TernDef<CR>
-
-    " Enable autocompletion for Golang
-    autocmd FileType go set omnifunc=gocomplete#Complete
-
-    " Disable gocode documentation
-    autocmd FileType go setlocal completeopt-=preview
 endif
-
-" Syntax check mode for python (pip install pylama)
-let g:syntastic_python_checkers = ['pylama']
-
-" Syntax check mode for javascript (npm install jslint)
-let g:syntastic_javascript_checkers = ['jslint']
-
-" Make syntastic auto update the location list and make it also check
-" when the file opens
-let g:syntastic_always_populate_loc_list=1
-let g:syntastic_check_on_open=1
-
-" Syntastic signs (disables by default)
-let g:syntastic_enable_signs=0
 
 " Comment selected line
 map <leader>/ :TComment<CR>
@@ -241,5 +216,3 @@ let NERDTreeIgnore = ['\.pyc$']
 nnoremap <leader>f :CtrlP<cr>
 nnoremap <leader>b :CtrlPBuffer<cr>
 
-let g:indentLine_faster=1
-let g:indentLine_char = nr2char(6145)
