@@ -63,3 +63,27 @@ https://github.com/abertsch/Menlo-for-Powerline
 ### Prezto (awesome zsh configuration)
 
 https://github.com/sorin-ionescu/prezto
+
+### Vim indent line (not included in this configuration file)
+
+https://github.com/Yggdroot/indentLine
+
+Note:
+
+```
+let g:indentLine_faster=1
+```
+
+speed up the editor
+
+### Vim GoCode (like jedi-vim for golang)
+
+https://github.com/Blackrush/vim-gocode
+
+### Tern based JavaScript editing
+
+https://github.com/marijnh/tern_for_vim
+
+### Multilanguage syntax checking
+
+https://github.com/scrooloose/syntastic
