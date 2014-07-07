@@ -56,6 +56,26 @@ If jedi-vim autocomplete doesn't work correctly, you must upgrade you vim to lat
 
 https://github.com/erikw/tmux-powerline
 
+if you use tmux, possible for you will use the following configuration
+
+```
+# don't wait for an escape sequence after hitting
+# Esc. fixes insert mode exit lag in vim
+set -sg escape-time 0
+set -g terminal-overrides 'xterm*:smcup@:rmcup@'
+```
+
+It seems all is well until it comes to using iTerm2 on OSX. Suddenly scrolling
+back in the outer terminal shows history from prior to the start of tmux. There
+are no end of suggestions about how to fix this, including "disable the status bar"
+and "it should just work". Actually it’s fairly simple.
+
+Enable the option under "Preferences -> Profiles -> Terminal" called
+``` Save lines to scrollback when an app status bar is present ```
+
+taken from here http://dan.carley.co/blog/2013/01/11/tmux-scrollback-with-iterm2/
+
+
 ### Patched Menlo fonts for powerline you can get here
 
 https://github.com/abertsch/Menlo-for-Powerline
