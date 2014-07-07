@@ -76,6 +76,10 @@ Enable the option under "Preferences -> Profiles -> Terminal" called
 taken from here http://dan.carley.co/blog/2013/01/11/tmux-scrollback-with-iterm2/
 
 
+For enable support clipboard between the Mac OS and tmux
+
+https://github.com/ChrisJohnsen/tmux-MacOSX-pasteboard
+
 ### Patched Menlo fonts for powerline you can get here
 
 https://github.com/abertsch/Menlo-for-Powerline
@@ -88,13 +92,13 @@ https://github.com/sorin-ionescu/prezto
 
 https://github.com/Yggdroot/indentLine
 
-Note:
+Note, option:
 
 ```
 let g:indentLine_faster=1
 ```
 
-speed up the editor
+will speed up the indentLine
 
 ### Vim GoCode (like jedi-vim for golang)
 
@@ -107,3 +111,4 @@ https://github.com/marijnh/tern_for_vim
 ### Multilanguage syntax checking
 
 https://github.com/scrooloose/syntastic
+
