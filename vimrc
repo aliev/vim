@@ -50,13 +50,24 @@ else
     set t_Co=256
     set background=dark
     colorscheme solarized
+    if $TMUX == ''
+        set clipboard+=unnamed
+        " set the cursor to a vertical line in insert mode and a
+        " solid block in command mode
+        let &t_SI = "\<Esc>P\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+        let &t_EI = "\<Esc>P\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+    else
+        " for tmux
+        let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+        let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+    endif
+    " don't blink the cursor
+    set guicursor+=i:blinkwait0
+
+    " Timeout for esc
+    set timeout timeoutlen=1000 ttimeoutlen=10
 endif
 
-" don't blink the cursor
-set guicursor+=i:blinkwait0
-
-" Timeout for esc
-set timeout timeoutlen=1000 ttimeoutlen=10
 
 " Ebable colorcolumn
 execute "set colorcolumn=" . join(range(81,335), ',')
@@ -151,17 +162,6 @@ set wildmode=list:longest,list:full " Wildmenu configuration
 
 set wildignore+=*.o,*.pyc,*.jpg,*.png,*.gif,*.db,*.obj,.git " Ignore compiled files
 
-if $TMUX == ''
-    set clipboard+=unnamed
-    " set the cursor to a vertical line in insert mode and a
-    " solid block in command mode
-    let &t_SI = "\<Esc>P\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
-    let &t_EI = "\<Esc>P\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
-else
-    " for tmux
-    let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
-    let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
-endif
 
 set ttyfast " Optimize for fast terminal connections
 
