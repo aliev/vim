@@ -168,9 +168,7 @@ set ttyfast " Optimize for fast terminal connections
 
 set path=.,,**
 
-let g:jedi#show_call_signatures = 0 " Disable or enable function call signature
-let g:jedi#popup_on_dot = 0 " Disable autocomplete when i type dot
-let g:jedi#use_tabs_not_buffers = 0
+set iskeyword+=:
 
 if has("autocmd")
     " Enable jedi completion for omnifunc
@@ -184,8 +182,9 @@ if has("autocmd")
     au FileType javascript setlocal expandtab shiftwidth=2 tabstop=8
 
     " Drawing λ for lambda
-    au Syntax * syn keyword Operator lambda conceal cchar=λ
-    hi! link Conceal Operator
+    " au Syntax * syn keyword Operator lambda conceal cchar=λ
+    " au Syntax * syn keyword Operator def conceal cchar=𝑓
+    " hi! link Conceal Operator
 endif
 
 " Comment selected line
@@ -217,6 +216,10 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 
 let g:UltiSnipsJumpForwardTrigger='<tab>'
+
+let g:jedi#show_call_signatures = 0 " Disable or enable function call signature
+let g:jedi#popup_on_dot = 0 " Disable autocomplete when i type dot
+let g:jedi#use_tabs_not_buffers = 0
 
 let g:NERDTreeMinimalUI=1
 let NERDTreeIgnore = ['\.pyc$']
