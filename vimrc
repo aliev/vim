@@ -162,6 +162,7 @@ set wildmode=list:longest,list:full " Wildmenu configuration
 
 set wildignore+=*.o,*.pyc,*.jpg,*.png,*.gif,*.db,*.obj,.git " Ignore compiled files
 
+set conceallevel=2 " Conceal level
 
 set ttyfast " Optimize for fast terminal connections
 
@@ -173,14 +174,18 @@ let g:jedi#use_tabs_not_buffers = 0
 
 if has("autocmd")
     " Enable jedi completion for omnifunc
-    autocmd FileType python set omnifunc=jedi#completions
+    au FileType python set omnifunc=jedi#completions
 
     " Disable jedi-vim documentation
-    autocmd FileType python setlocal completeopt-=preview
+    au FileType python setlocal completeopt-=preview
 
     " Indentation
-    autocmd FileType python setlocal expandtab shiftwidth=4 tabstop=8
-    autocmd FileType javascript setlocal expandtab shiftwidth=2 tabstop=8
+    au FileType python setlocal expandtab shiftwidth=4 tabstop=8
+    au FileType javascript setlocal expandtab shiftwidth=2 tabstop=8
+
+    " Drawing λ for lambda
+    au Syntax * syn keyword Operator lambda conceal cchar=λ
+    hi! link Conceal Operator
 endif
 
 " Comment selected line
@@ -218,4 +223,5 @@ let NERDTreeIgnore = ['\.pyc$']
 
 nnoremap <leader>f :CtrlP<cr>
 nnoremap <leader>b :CtrlPBuffer<cr>
+
 
