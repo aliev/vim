@@ -52,15 +52,22 @@ else
     colorscheme solarized
     if $TMUX == ''
         set clipboard+=unnamed
+
         " set the cursor to a vertical line in insert mode and a
         " solid block in command mode
         let &t_SI = "\<Esc>P\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
         let &t_EI = "\<Esc>P\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
-    else
-        " for tmux
+    else " if tmux
+
+        " enable resize vim splits inside tmux
+        set ttymouse=xterm2
+
+        " set the cursor to a vertical line in insert mode and a
+        " solid block in command mode
         let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
         let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
     endif
+
     " don't blink the cursor
     set guicursor+=i:blinkwait0
 
@@ -168,7 +175,7 @@ set ttyfast " Optimize for fast terminal connections
 
 set path=.,,**
 
-set iskeyword+=:
+" set iskeyword+=:
 
 if has("autocmd")
     " Enable jedi completion for omnifunc
@@ -182,9 +189,10 @@ if has("autocmd")
     au FileType javascript setlocal expandtab shiftwidth=2 tabstop=8
 
     " Drawing λ for lambda
-    " au Syntax * syn keyword Operator lambda conceal cchar=λ
+    au Syntax * syn keyword Operator lambda conceal cchar=λ
     " au Syntax * syn keyword Operator def conceal cchar=𝑓
-    " hi! link Conceal Operator
+    " au Syntax * syn keyword Operator : conceal cchar=→
+    hi! link Conceal Operator
 endif
 
 " Comment selected line
@@ -226,5 +234,4 @@ let NERDTreeIgnore = ['\.pyc$']
 
 nnoremap <leader>f :CtrlP<cr>
 nnoremap <leader>b :CtrlPBuffer<cr>
-
 
