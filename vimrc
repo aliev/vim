@@ -12,7 +12,6 @@ Bundle 'honza/vim-snippets'
 Bundle 'tomtom/tcomment_vim'
 Bundle 'mattn/emmet-vim'
 Bundle 'terryma/vim-multiple-cursors'
-Bundle 'Yggdroot/indentLine'
 
 " Git
 Bundle 'mhinz/vim-signify'
@@ -20,7 +19,6 @@ Bundle 'tpope/vim-fugitive'
 
 " Python
 Bundle 'davidhalter/jedi-vim'
-Bundle 'scrooloose/syntastic.git'
 
 " Utils
 Bundle 'aliev/bclose'
@@ -29,14 +27,14 @@ Bundle 'bling/vim-airline'
 Bundle 'kien/ctrlp.vim'
 
 " Color scheme
-Bundle 'altercation/vim-colors-solarized'
+Bundle 'reedes/vim-colors-pencil'
 
 filetype plugin indent on     " required!
 
 if has("gui_running")
     syntax on           " syntax-highlighting
     set background=dark " Backgroud
-    colors solarized " Color scheme
+    colors pencil " Color scheme
     set guioptions=g " Disable all GUI elements
     set guioptions+=c " Enable Console-based dialogs for simple queries
     set hlsearch        " Highlight search terms (very useful!)
@@ -51,16 +49,14 @@ else
     syntax on
     set t_Co=256
     set background=dark
-    colorscheme solarized
+    colors pencil
     if $TMUX == ''
         set clipboard+=unnamed
-
         " set the cursor to a vertical line in insert mode and a
         " solid block in command mode
         let &t_SI = "\<Esc>P\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
         let &t_EI = "\<Esc>P\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
     else " if tmux
-
         " enable resize vim splits inside tmux
         set ttymouse=xterm2
 
@@ -177,7 +173,7 @@ set ttyfast " Optimize for fast terminal connections
 
 set path=.,,**
 
-" set iskeyword+=:
+set iskeyword+=:
 
 if has("autocmd")
     " Enable jedi completion for omnifunc
@@ -241,9 +237,3 @@ nnoremap <leader>s :CtrlPBufTag<cr>
 " Use system clipboard
 vnoremap <leader>c "*y
 vnoremap <leader>v "*p
-
-let g:indentLine_faster=1
-let g:indentLine_char = '┆'
-let g:indentLine_color_term = 0
-
-let g:syntastic_python_checkers = ['pylint']
