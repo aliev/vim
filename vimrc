@@ -12,6 +12,7 @@ Bundle 'honza/vim-snippets'
 Bundle 'tomtom/tcomment_vim'
 Bundle 'mattn/emmet-vim'
 Bundle 'terryma/vim-multiple-cursors'
+Bundle 'Yggdroot/indentLine'
 
 " Git
 Bundle 'mhinz/vim-signify'
@@ -19,6 +20,7 @@ Bundle 'tpope/vim-fugitive'
 
 " Python
 Bundle 'davidhalter/jedi-vim'
+Bundle 'scrooloose/syntastic.git'
 
 " Utils
 Bundle 'aliev/bclose'
@@ -103,7 +105,7 @@ set magic " For regular expressions turn magic on
 
 set ignorecase " Searches are Non Case-sensitive
 
-" set cursorline " Highlight current cursor position
+set cursorline " Highlight current cursor position
 
 " set cursorcolumn " Highlight cursor column
 
@@ -189,10 +191,10 @@ if has("autocmd")
     au FileType javascript setlocal expandtab shiftwidth=2 tabstop=8
 
     " Drawing λ for lambda
-    au Syntax * syn keyword Operator lambda conceal cchar=λ
+    " au Syntax * syn keyword Operator lambda conceal cchar=λ
     " au Syntax * syn keyword Operator def conceal cchar=𝑓
     " au Syntax * syn keyword Operator : conceal cchar=→
-    hi! link Conceal Operator
+    " hi! link Conceal Operator
 endif
 
 " Comment selected line
@@ -234,4 +236,14 @@ let NERDTreeIgnore = ['\.pyc$']
 
 nnoremap <leader>f :CtrlP<cr>
 nnoremap <leader>b :CtrlPBuffer<cr>
+nnoremap <leader>s :CtrlPBufTag<cr>
 
+" Use system clipboard
+vnoremap <leader>c "*y
+vnoremap <leader>v "*p
+
+let g:indentLine_faster=1
+let g:indentLine_char = '┆'
+let g:indentLine_color_term = 0
+
+let g:syntastic_python_checkers = ['pylint']

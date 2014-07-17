@@ -23,10 +23,6 @@ brew install macvim --override-system-vim
 
 This command will replace old system vim
 
-## Screenshots
-
-![vim indent guides](https://raw.github.com/aliev/vim/master/vim.png "Vim with indent guides and trailing characters")
-
 ## Important
 
 If jedi-vim autocomplete doesn't work correctly, you must upgrade you vim to latest version (currently 7.4), or disable ```g:airline#extensions#tabline#enabled``` option
@@ -80,6 +76,22 @@ For enable support clipboard between the Mac OS and tmux
 
 https://github.com/ChrisJohnsen/tmux-MacOSX-pasteboard
 
+### CtrlP Note
+
+To work correctly CtrlPBufTag you must install exuberant ctags.
+
+For MacOS X Users:
+
+```
+brew install ctags
+```
+
+For Ubuntu Users:
+
+```
+sudo apt-get install exuberant-ctags
+```
+
 ### Patched Menlo fonts for powerline you can get here
 
 https://github.com/abertsch/Menlo-for-Powerline
@@ -88,7 +100,7 @@ https://github.com/abertsch/Menlo-for-Powerline
 
 https://github.com/sorin-ionescu/prezto
 
-### Vim indent line (not included in this configuration file)
+### Vim indent line
 
 https://github.com/Yggdroot/indentLine
 
@@ -112,3 +124,6 @@ https://github.com/marijnh/tern_for_vim
 
 https://github.com/scrooloose/syntastic
 
+## Screenshots
+
+![vim indent guides](https://raw.github.com/aliev/vim/master/vim.png "Vim with indent guides and trailing characters")
