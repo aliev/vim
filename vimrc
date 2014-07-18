@@ -4,39 +4,38 @@ filetype off                  " required!
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
-Bundle 'gmarik/vundle'
+Plugin 'gmarik/vundle'
 
 " Work with code
-Bundle 'SirVer/ultisnips'
-Bundle 'honza/vim-snippets'
-Bundle 'tomtom/tcomment_vim'
-Bundle 'mattn/emmet-vim'
-Bundle 'terryma/vim-multiple-cursors'
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
+Plugin 'tomtom/tcomment_vim'
+Plugin 'mattn/emmet-vim'
 
 " Git
-Bundle 'mhinz/vim-signify'
-Bundle 'tpope/vim-fugitive'
+Plugin 'mhinz/vim-signify'
+Plugin 'tpope/vim-fugitive'
 
 " Python
-Bundle 'davidhalter/jedi-vim'
+Plugin 'davidhalter/jedi-vim'
 
 " Utils
-Bundle 'aliev/bclose'
-Bundle 'scrooloose/nerdtree'
-Bundle 'bling/vim-airline'
-Bundle 'kien/ctrlp.vim'
+Plugin 'aliev/bclose'
+Plugin 'scrooloose/nerdtree'
+Plugin 'bling/vim-airline'
+Plugin 'kien/ctrlp.vim'
 
 " Color scheme
-Bundle 'reedes/vim-colors-pencil'
+Plugin 'reedes/vim-colors-pencil'
 
 filetype plugin indent on     " required!
 
 if has("gui_running")
     syntax on           " syntax-highlighting
     set background=dark " Backgroud
-    colors pencil " Color scheme
-    set guioptions=g " Disable all GUI elements
-    set guioptions+=c " Enable Console-based dialogs for simple queries
+    colors pencil       " Color scheme
+    set guioptions=g    " Disable all GUI elements
+    set guioptions+=c   " Enable Console-based dialogs for simple queries
     set hlsearch        " Highlight search terms (very useful!)
     set incsearch       " Show search matches while typing
 
@@ -50,13 +49,13 @@ else
     set t_Co=256
     set background=dark
     colors pencil
+
     if $TMUX == ''
-        set clipboard+=unnamed
-        " set the cursor to a vertical line in insert mode and a
+        " Set the cursor to a vertical line in insert mode and a
         " solid block in command mode
         let &t_SI = "\<Esc>P\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
         let &t_EI = "\<Esc>P\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
-    else " if tmux
+    else
         " enable resize vim splits inside tmux
         set ttymouse=xterm2
 
@@ -66,13 +65,9 @@ else
         let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
     endif
 
-    " don't blink the cursor
-    set guicursor+=i:blinkwait0
-
     " Timeout for esc
     set timeout timeoutlen=1000 ttimeoutlen=10
 endif
-
 
 " Ebable colorcolumn
 execute "set colorcolumn=" . join(range(81,335), ',')
@@ -103,8 +98,6 @@ set ignorecase " Searches are Non Case-sensitive
 
 set cursorline " Highlight current cursor position
 
-" set cursorcolumn " Highlight cursor column
-
 set smartcase " Do smart case matching when searching
 
 set showmatch " Show matching brackets when text indicator is over them
@@ -131,9 +124,7 @@ set autoindent " Enable auto indent
 
 set smartindent " Smart indent
 
-set wrap " enable word wrap
-
-" set nowrap " disable word wrap
+set wrap " enable/didable word wrap
 
 set noerrorbells visualbell t_vb= " No annoying sound on errors
 
@@ -185,13 +176,9 @@ if has("autocmd")
     " Indentation
     au FileType python setlocal expandtab shiftwidth=4 tabstop=8
     au FileType javascript setlocal expandtab shiftwidth=2 tabstop=8
-
-    " Drawing λ for lambda
-    " au Syntax * syn keyword Operator lambda conceal cchar=λ
-    " au Syntax * syn keyword Operator def conceal cchar=𝑓
-    " au Syntax * syn keyword Operator : conceal cchar=→
-    " hi! link Conceal Operator
 endif
+
+" ################### Keymaps and plugins configuration ########################
 
 " Comment selected line
 map <leader>/ :TComment<CR>
@@ -233,7 +220,3 @@ let NERDTreeIgnore = ['\.pyc$']
 nnoremap <leader>f :CtrlP<cr>
 nnoremap <leader>b :CtrlPBuffer<cr>
 nnoremap <leader>s :CtrlPBufTag<cr>
-
-" Use system clipboard
-vnoremap <leader>c "*y
-vnoremap <leader>v "*p
