@@ -90,7 +90,6 @@ Enable the option under "Preferences -> Profiles -> Terminal" called
 
 taken from here http://dan.carley.co/blog/2013/01/11/tmux-scrollback-with-iterm2/
 
-
 Enable clipboard between the Mac OS and tmux: https://github.com/ChrisJohnsen/tmux-MacOSX-pasteboard
 
 ### CtrlP Note
@@ -127,6 +126,39 @@ Note: If tmux will not recognize the fonts, uncomment the following line to the 
 export LANG=en_EN.UTF-8
 ```
 
+To console has become even more beautiful, you can use the following extensions
+
+Zsh substring search
+https://github.com/zsh-users/zsh-history-substring-search
+
+Zsh asutosuggestions
+https://github.com/tarruda/zsh-autosuggestions
+
+Zsh syntax highlighting
+https://github.com/zsh-users/zsh-syntax-highlighting
+
+An example of how I connected the extensions
+
+```
+# Must be enabled before zsh-autosuggestions!
+source ~/zsh-history-substring-search/zsh-history-substring-search.zsh
+
+# Setup zsh-autosuggestions
+source ~/.zsh-autosuggestions/autosuggestions.zsh
+
+# Enable autosuggestions automatically
+zle-line-init() {
+    zle autosuggest-start
+}
+zle -N zle-line-init
+
+source ~/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+```
+
+And that's what I came
+
+![zsh autosuggestions highlighting](https://raw.github.com/aliev/vim/master/zsh.png "Oh my zsh with autosuggestions and syntax highlighting")
+
 ### Vim indent line
 
 https://github.com/Yggdroot/indentLine
@@ -154,3 +186,6 @@ https://github.com/scrooloose/syntastic
 ## Screenshots
 
 ![vim indent guides](https://raw.github.com/aliev/vim/master/vim.png "Vim with indent guides and trailing characters")
+![zsh django](https://raw.github.com/aliev/vim/master/zsh-django-autocomplete.png "Zsh with django autocomplete")
+![zsh vim](https://raw.github.com/aliev/vim/master/zsh-vim.png "Zsh with vim")
+![zsh search](https://raw.github.com/aliev/vim/master/zsh-search.png "Zsh search")
