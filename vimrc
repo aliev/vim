@@ -18,6 +18,9 @@ Plugin 'tpope/vim-fugitive'
 
 " Python
 Plugin 'davidhalter/jedi-vim'
+Plugin 'scrooloose/syntastic'
+Plugin 'marijnh/tern_for_vim'
+Plugin 'nsf/gocode', {'rtp': 'vim/'}
 
 " Utils
 Plugin 'aliev/bclose'
@@ -49,6 +52,9 @@ else
     set t_Co=256
     set background=light
     colors pencil
+    hi clear SpellBad
+    hi SpellBad cterm=underline,bold ctermfg=red
+    hi SpellCap cterm=underline,bold ctermfg=red
 
     if $TMUX == ''
         " Set the cursor to a vertical line in insert mode and a
@@ -79,15 +85,15 @@ if has("linebreak")
       let &sbr = nr2char(8618).' ' " Show ↪ at the beginning of wrapped lines
 endif
 
-set confirm " get a dialog when :q, :w, or :wq fails
+set confirm " Get a dialog when :q, :w, or :wq fails
 
-let mapleader = "," " map leader
+let mapleader = "," " Map leader
 
-let maplocalleader = "_" " local leader
+let maplocalleader = "_" " Local leader
 
 set lazyredraw " Don't redraw while executing macros (good performance config)
 
-set laststatus=2 " enable statusline
+set laststatus=2 " Enable statusline
 
 set magic " For regular expressions turn magic on
 
@@ -103,11 +109,11 @@ set showcmd " Show incomplete cmds down the bottom
 
 set showmode " Show current mode down the bottom
 
-set title " show title
+set title " Show title
 
 set acd " Vim will change the current working directory whenever you open a file
 
-set expandtab " use space instead of tab
+set expandtab " Use space instead of tab
 
 set autoread " Reload files changed outside automatically
 
@@ -121,19 +127,19 @@ set autoindent " Enable auto indent
 
 set smartindent " Smart indent
 
-set wrap " enable/didable word wrap
+set wrap " Enable word wrap
 
 set noerrorbells visualbell t_vb= " No annoying sound on errors
 
 set encoding=utf8 " Default encoding
 
-set termencoding=utf-8 " terminal encoding
+set termencoding=utf-8 " Terminal encoding
 
-set fileencodings=utf8,cp1251 " supported file encodings
+set fileencodings=utf8,cp1251 " Supported file encodings
 
-set number " enable line numbers
+set number " Enable line numbers
 
-set ruler " always display cursor position
+set ruler " Always display cursor position
 
 if has('mouse')
     set mouse=a " Mouse support
@@ -143,11 +149,16 @@ endif
 
 set hidden " A buffer becomes hidden when it is abandoned
 
-set nobackup " Disable backup files
-
 set noswapfile " Disable swap files
 
-set noautochdir " change the current working directory whenever you open a file
+set nobackup " Disable backup files
+
+if v:version >= 703
+    set undodir=$TEMP/undo " Undo files directory
+    set undofile " Enable undofile
+endif
+
+set noautochdir " Change the current working directory whenever you open a file
 
 set wildmenu " Turn on the Wild menu
 
@@ -162,10 +173,21 @@ set ttyfast " Optimize for fast terminal connections
 set path=.,,**
 
 if has("autocmd")
-    " Enable jedi completion for omnifunc
+    " Enable autocomplete
+    " Python: jedi-vim
     au FileType python set omnifunc=jedi#completions
+    " GoLang: gocode
+    au FileType go set omnifunc=gocomplete#Complete
 
-    " Disable jedi-vim documentation
+    " JavaScript: leader+g for goto definition
+    au FileType javascript nnoremap <leader>g :TernDef<CR>
+
+    " Disable auto documentation preview
+    " JavaScript: tern
+    au FileType javascript setlocal completeopt-=preview
+    " GoLang: gocode
+    au FileType go setlocal completeopt-=preview
+    " Python: jedi-vim
     au FileType python setlocal completeopt-=preview
 
     " Indentation
@@ -215,3 +237,18 @@ let NERDTreeIgnore = ['\.pyc$']
 nnoremap <leader>f :CtrlP<cr>
 nnoremap <leader>b :CtrlPBuffer<cr>
 nnoremap <leader>s :CtrlPBufTag<cr>
+
+" Syntax check mode for python (pip install pylama)
+let g:syntastic_python_checkers = ['pylama']
+
+" Syntax check mode for javascript (npm install jslint)
+let g:syntastic_javascript_checkers = ['jslint']
+
+" Make syntastic auto update the location list and make it also check
+" when the file opens
+let g:syntastic_always_populate_loc_list=1
+let g:syntastic_check_on_open=1
+
+" Syntastic signs (disables by default)
+let g:syntastic_enable_signs=0
+

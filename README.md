@@ -11,6 +11,18 @@ mv ~/vim ~/.vim
 git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 echo "source ~/.vim/vimrc" > .vimrc
 vim +BundleInstall +qall # Install all plugins
+
+# Syntax check for python users
+sudo pip install pylama
+
+# Syntax check for javascript users
+sudo npm install -g jslint
+
+# Tern library for javascript
+sudo npm install -g tern
+
+# Gocode
+go get -u github.com/nsf/gocode
 ```
 
 ## For Mac users
