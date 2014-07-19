@@ -34,10 +34,11 @@ If jedi-vim autocomplete doesn't work correctly, you must upgrade you vim to lat
 | ,          | default leader key
 | tab key    | ultisnips plugin
 | leader + b | open CtrlPBuffer
+| leader + s | CtrlPBufTag
 | leader + c | autocomplete
 | leader + d | goto assignments
 | leader + e | NERDTree Toggle
-| leader + f | open CtrlP (Visual mode), Open file autocomplete (Insert mode)
+| leader + f | CtrlP (Visual mode), File autocomplete (Insert mode)
 | leader + g | goto definition
 | leader + l | enable (disable) displaying whitespace
 | leader + n | find usage
@@ -59,6 +60,12 @@ if you use tmux, possible for you will use the following configuration
 # Esc. fixes insert mode exit lag in vim
 set -sg escape-time 0
 set -g terminal-overrides 'xterm*:smcup@:rmcup@'
+
+# Enable mouse
+set -g mode-mouse on
+set -g mouse-resize-pane on
+set -g mouse-select-pane on
+set -g mouse-select-window on
 ```
 
 It seems all is well until it comes to using iTerm2 on OSX. Suddenly scrolling
@@ -72,9 +79,7 @@ Enable the option under "Preferences -> Profiles -> Terminal" called
 taken from here http://dan.carley.co/blog/2013/01/11/tmux-scrollback-with-iterm2/
 
 
-For enable support clipboard between the Mac OS and tmux
-
-https://github.com/ChrisJohnsen/tmux-MacOSX-pasteboard
+Enable clipboard between the Mac OS and tmux: https://github.com/ChrisJohnsen/tmux-MacOSX-pasteboard
 
 ### CtrlP Note
 
@@ -99,6 +104,16 @@ https://github.com/abertsch/Menlo-for-Powerline
 ### Prezto (awesome zsh configuration)
 
 https://github.com/sorin-ionescu/prezto
+
+
+### Oh-my-zsh (my favorite configuration)
+
+Note: If tmux will not recognize the fonts, uncomment the following line to the file. zshrc
+
+```
+# You may need to manually set your language environment
+export LANG=en_EN.UTF-8
+```
 
 ### Vim indent line
 

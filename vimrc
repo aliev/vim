@@ -47,7 +47,7 @@ if has("gui_running")
 else
     syntax on
     set t_Co=256
-    set background=dark
+    set background=light
     colors pencil
 
     if $TMUX == ''
@@ -58,9 +58,6 @@ else
     else
         " enable resize vim splits inside tmux
         set ttymouse=xterm2
-
-        " set the cursor to a vertical line in insert mode and a
-        " solid block in command mode
         let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
         let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
     endif
@@ -163,8 +160,6 @@ set conceallevel=2 " Conceal level
 set ttyfast " Optimize for fast terminal connections
 
 set path=.,,**
-
-set iskeyword+=:
 
 if has("autocmd")
     " Enable jedi completion for omnifunc
