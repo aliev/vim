@@ -11,16 +11,16 @@ Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'mattn/emmet-vim'
+Plugin 'Valloric/YouCompleteMe'
 
 " Git
 Plugin 'mhinz/vim-signify'
 Plugin 'tpope/vim-fugitive'
 
-" Python
+" Languages suppoer
 Plugin 'davidhalter/jedi-vim'
 Plugin 'scrooloose/syntastic'
 Plugin 'marijnh/tern_for_vim'
-Plugin 'nsf/gocode', {'rtp': 'vim/'}
 
 " Utils
 Plugin 'aliev/bclose'
@@ -176,8 +176,6 @@ if has("autocmd")
     " Enable autocomplete
     " Python: jedi-vim
     au FileType python set omnifunc=jedi#completions
-    " GoLang: gocode
-    au FileType go set omnifunc=gocomplete#Complete
 
     " JavaScript: leader+g for goto definition
     au FileType javascript nnoremap <leader>g :TernDef<CR>
@@ -185,8 +183,6 @@ if has("autocmd")
     " Disable auto documentation preview
     " JavaScript: tern
     au FileType javascript setlocal completeopt-=preview
-    " GoLang: gocode
-    au FileType go setlocal completeopt-=preview
     " Python: jedi-vim
     au FileType python setlocal completeopt-=preview
 
@@ -252,3 +248,4 @@ let g:syntastic_check_on_open=1
 " Syntastic signs (disables by default)
 let g:syntastic_enable_signs=0
 
+let g:ycm_key_list_select_completion = []

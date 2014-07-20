@@ -19,10 +19,15 @@ sudo pip install pylama
 sudo npm install -g jslint
 
 # Tern library for javascript
-sudo npm install -g tern
+cd ~/.vim/bundle/tern_for_vim/
+sudo npm install tern
+```
 
-# Gocode
-go get -u github.com/nsf/gocode
+# Installing YouCompleteMe
+
+```
+cd ~/.vim/bundle/YouCompleteMe/
+./install.sh
 ```
 
 ## For Mac users
