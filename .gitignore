@@ -3,3 +3,4 @@ tmp/
 bundle/
 UltiSnips/
 .netrwhist
+undodir/*

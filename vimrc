@@ -1,42 +1,58 @@
 set nocompatible              " be iMproved
 filetype off                  " required!
 
+
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 Plugin 'gmarik/vundle'
 
-" Work with code
+" Snippets
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
+
+" Comment selected line
 Plugin 'tomtom/tcomment_vim'
+
+" Zen coding
 Plugin 'mattn/emmet-vim'
+
+" For python developers
+Plugin 'davidhalter/jedi-vim'
+
+" Best autocomplete plugin
 Plugin 'Valloric/YouCompleteMe'
+
+" Syntax checker
+Plugin 'scrooloose/syntastic'
+
+" Match parent html tags
+Plugin 'Valloric/MatchTagAlways'
 
 " Git
 Plugin 'mhinz/vim-signify'
 Plugin 'tpope/vim-fugitive'
 
-" Languages suppoer
-Plugin 'davidhalter/jedi-vim'
-Plugin 'scrooloose/syntastic'
-Plugin 'marijnh/tern_for_vim'
-
-" Utils
+" Close buffer without close last window
 Plugin 'aliev/bclose'
+
+" File tree
 Plugin 'scrooloose/nerdtree'
+
+" Best statusline and buffers list
 Plugin 'bling/vim-airline'
+
 Plugin 'kien/ctrlp.vim'
 
 " Color scheme
-Plugin 'reedes/vim-colors-pencil'
+Plugin 'baskerville/bubblegum'
 
 filetype plugin indent on     " required!
 
 if has("gui_running")
     syntax on           " syntax-highlighting
-    set background=dark " Backgroud
-    colors pencil       " Color scheme
+    set background=light " Backgroud
+    colors bubblegum       " Color scheme
     set guioptions=g    " Disable all GUI elements
     set guioptions+=c   " Enable Console-based dialogs for simple queries
     set hlsearch        " Highlight search terms (very useful!)
@@ -51,10 +67,14 @@ else
     syntax on
     set t_Co=256
     set background=light
-    colors pencil
+    colors bubblegum
+
     hi clear SpellBad
     hi SpellBad cterm=underline,bold ctermfg=red
     hi SpellCap cterm=underline,bold ctermfg=red
+
+    " vertical split disable background and foreground
+    hi vertsplit ctermfg=NONE ctermbg=NONE
 
     if $TMUX == ''
         " Set the cursor to a vertical line in insert mode and a
@@ -79,7 +99,8 @@ if has('multi_byte')
     set listchars=tab:»\ ,trail:·,eol:¶,extends:→,precedes:←,nbsp:×
 endif
 
-set fillchars=stl:\ ,stlnc:\ ,vert:│
+" set fillchars=stl:\ ,stlnc:\ ,vert:│
+set fillchars=stl:\ ,stlnc:\ ,vert:┃
 
 if has("linebreak")
       let &sbr = nr2char(8618).' ' " Show ↪ at the beginning of wrapped lines
@@ -127,7 +148,9 @@ set autoindent " Enable auto indent
 
 set smartindent " Smart indent
 
-set wrap " Enable word wrap
+" set wrap " Enable word wrap
+
+set nowrap " Disable word wrap
 
 set noerrorbells visualbell t_vb= " No annoying sound on errors
 
@@ -151,12 +174,9 @@ set hidden " A buffer becomes hidden when it is abandoned
 
 set noswapfile " Disable swap files
 
-set nobackup " Disable backup files
+set undofile " Enable undofile
 
-if v:version >= 703
-    set undodir=$TEMP/undo " Undo files directory
-    set undofile " Enable undofile
-endif
+set undodir=~/.vim/tmp/undo " Undo files directory
 
 set noautochdir " Change the current working directory whenever you open a file
 
@@ -175,14 +195,14 @@ set path=.,,**
 if has("autocmd")
     " Enable autocomplete
     " Python: jedi-vim
-    au FileType python set omnifunc=jedi#completions
+    " au FileType python set omnifunc=jedi#completions
 
     " JavaScript: leader+g for goto definition
-    au FileType javascript nnoremap <leader>g :TernDef<CR>
+    " au FileType javascript nnoremap <leader>g :TernDef<CR>
 
     " Disable auto documentation preview
     " JavaScript: tern
-    au FileType javascript setlocal completeopt-=preview
+    " au FileType javascript setlocal completeopt-=preview
     " Python: jedi-vim
     au FileType python setlocal completeopt-=preview
 
