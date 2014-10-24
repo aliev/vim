@@ -44,26 +44,6 @@ This command will replace old system vim
 
 If jedi-vim autocomplete doesn't work correctly, you must upgrade you vim to latest version (currently 7.4), or disable ```g:airline#extensions#tabline#enabled``` option
 
-## Key bindings
-
-| Key        | Description
-| ---------- |:---------------------------------------------------------------
-| ,          | default leader key
-| tab key    | ultisnips plugin
-| leader + b | open CtrlPBuffer
-| leader + s | CtrlPBufTag
-| leader + c | autocomplete
-| leader + d | goto assignments
-| leader + e | NERDTree Toggle
-| leader + f | CtrlP (Visual mode), File autocomplete (Insert mode)
-| leader + g | goto definition
-| leader + l | enable (disable) displaying whitespace
-| leader + n | find usage
-| leader + r | rename
-| leader + t | create new tab
-| leader + w | close buffer (tabe) with asking save
-| leader + / | comment selected line (T-Comment plugin)
-
 ## More goodies for console users
 
 ### My .psqlrc config file
@@ -82,11 +62,35 @@ if you use tmux, possible for you will use the following configuration
 set -sg escape-time 0
 set -g terminal-overrides 'xterm*:smcup@:rmcup@'
 
+set-option -g default-terminal "screen-256color"
+# ---------------------
 # Enable mouse
+# ---------------------
 set -g mode-mouse on
 set -g mouse-resize-pane on
 set -g mouse-select-pane on
 set -g mouse-select-window on
+
+# No delay for escape key press
+set -sg escape-time 0
+
+set-window-option -g mode-keys vi
+bind-key -t vi-copy 'v' begin-selection
+bind-key -t vi-copy 'y' copy-selection
+```
+
+If you want to enable powerline for your tmux, you can use [this installation instruction](http://powerline.readthedocs.org/en/latest/installation.html)
+
+For example, i've installed my powerline by using command like this:
+
+```
+sudo pip install powerline
+```
+
+After installation i've added similar lines in my .tmux.conf (for os x only):
+
+```
+source /Library/Python/2.7/site-packages/Powerline-beta-py2.7.egg/powerline/bindings/tmux/powerline.conf
 ```
 
 It seems all is well until it comes to using iTerm2 on OSX. Suddenly scrolling
