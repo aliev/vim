@@ -66,7 +66,7 @@ if has("gui_running")
 else
     syntax on
     set t_Co=256
-    set background=light
+    set background=dark
     colors bubblegum
 
     hi clear SpellBad
