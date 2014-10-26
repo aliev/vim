@@ -42,10 +42,14 @@ Plugin 'scrooloose/nerdtree'
 " Best statusline and buffers list
 Plugin 'bling/vim-airline'
 
+" CtrlP
 Plugin 'kien/ctrlp.vim'
 
 " Color scheme
 Plugin 'baskerville/bubblegum'
+
+" Indent lines
+Plugin 'Yggdroot/indentLine'
 
 filetype plugin indent on     " required!
 
@@ -73,9 +77,6 @@ else
     hi SpellBad cterm=underline,bold ctermfg=red
     hi SpellCap cterm=underline,bold ctermfg=red
 
-    " vertical split disable background and foreground
-    hi vertsplit ctermfg=NONE ctermbg=NONE
-
     if $TMUX == ''
         " Set the cursor to a vertical line in insert mode and a
         " solid block in command mode
@@ -99,8 +100,11 @@ if has('multi_byte')
     set listchars=tab:»\ ,trail:·,eol:¶,extends:→,precedes:←,nbsp:×
 endif
 
-" set fillchars=stl:\ ,stlnc:\ ,vert:│
-set fillchars=stl:\ ,stlnc:\ ,vert:┃
+" Disable background and foreground for vertical split
+hi vertsplit ctermfg=NONE ctermbg=NONE
+
+" Vertical split chars
+set fillchars=stl:\ ,stlnc:\ ,vert:│
 
 if has("linebreak")
       let &sbr = nr2char(8618).' ' " Show ↪ at the beginning of wrapped lines
@@ -269,3 +273,10 @@ let g:syntastic_check_on_open=1
 let g:syntastic_enable_signs=0
 
 let g:ycm_key_list_select_completion = []
+
+" Make indent line faster
+let g:indentLine_faster=1
+
+" IndentLine character
+" For use this feature please install patched font from repository root
+let g:indentLine_char=nr2char(0xE0A3)
