@@ -7,27 +7,16 @@ call vundle#rc()
 
 Plugin 'gmarik/vundle'
 
-" Snippets
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
-
-" Comment selected line
 Plugin 'tomtom/tcomment_vim'
-
-" Zen coding
 Plugin 'mattn/emmet-vim'
-
-" For python developers
 Plugin 'davidhalter/jedi-vim'
-
-" Best autocomplete plugin
 Plugin 'Valloric/YouCompleteMe'
-
-" Syntax checker
 Plugin 'scrooloose/syntastic'
 
 " Match parent html tags
-Plugin 'Valloric/MatchTagAlways'
+" Plugin 'Valloric/MatchTagAlways'
 
 " Git
 Plugin 'mhinz/vim-signify'
@@ -35,43 +24,34 @@ Plugin 'tpope/vim-fugitive'
 
 " Close buffer without close last window
 Plugin 'aliev/bclose'
-
-" File tree
 Plugin 'scrooloose/nerdtree'
 
 " Best statusline and buffers list
 Plugin 'bling/vim-airline'
 
-" CtrlP
 Plugin 'kien/ctrlp.vim'
-
-" Color scheme
-Plugin 'baskerville/bubblegum'
-
-" Indent lines
 Plugin 'Yggdroot/indentLine'
+
+" Solarized
+Plugin 'altercation/vim-colors-solarized'
 
 filetype plugin indent on     " required!
 
 if has("gui_running")
     syntax on           " syntax-highlighting
     set background=light " Backgroud
-    colors bubblegum       " Color scheme
+    colors solarized       " Color scheme
     set guioptions=g    " Disable all GUI elements
     set guioptions+=c   " Enable Console-based dialogs for simple queries
     set hlsearch        " Highlight search terms (very useful!)
     set incsearch       " Show search matches while typing
 
-    if has('mac')
-        set guifont=Menlo\ Regular\ for\ Powerline:h12
-    else
-        set guifont=DejaVu\ Sans\ Mono\ 10
-    endif
+    set guifont=Menlo\ Regular\ for\ Powerline:h12
 else
     syntax on
-    set t_Co=256
-    set background=dark
-    colors bubblegum
+    " set t_Co=256
+    set background=light
+    colors solarized
 
     hi clear SpellBad
     hi SpellBad cterm=underline,bold ctermfg=red
@@ -110,6 +90,9 @@ if has("linebreak")
       let &sbr = nr2char(8618).' ' " Show ↪ at the beginning of wrapped lines
 endif
 
+" Cursor position free mode
+"set ve=all nosol
+
 set confirm " Get a dialog when :q, :w, or :wq fails
 
 let mapleader = "," " Map leader
@@ -124,7 +107,7 @@ set magic " For regular expressions turn magic on
 
 set ignorecase " Searches are Non Case-sensitive
 
-set cursorline " Highlight current cursor position
+" set cursorline " Highlight current cursor position
 
 set smartcase " Do smart case matching when searching
 
@@ -280,3 +263,4 @@ let g:indentLine_faster=1
 " IndentLine character
 " For use this feature please install patched font from repository root
 let g:indentLine_char=nr2char(0xE0A3)
+
