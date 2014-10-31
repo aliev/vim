@@ -7,13 +7,21 @@ call vundle#rc()
 
 Plugin 'gmarik/vundle'
 
+" Utils
+Plugin 'bling/vim-airline'
+Plugin 'kien/ctrlp.vim'
+Plugin 'Yggdroot/indentLine'
+Plugin 'aliev/nerdtree'
+Plugin 'kshenoy/vim-signature'
+" Close buffer without close last window
+Plugin 'aliev/bclose'
+Plugin 'tomtom/tcomment_vim'
+Plugin 'scrooloose/syntastic'
+
+" Snippets
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
-Plugin 'tomtom/tcomment_vim'
-Plugin 'mattn/emmet-vim'
-Plugin 'davidhalter/jedi-vim'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'scrooloose/syntastic'
+
 
 " Match parent html tags
 " Plugin 'Valloric/MatchTagAlways'
@@ -22,25 +30,19 @@ Plugin 'scrooloose/syntastic'
 Plugin 'mhinz/vim-signify'
 Plugin 'tpope/vim-fugitive'
 
-" Close buffer without close last window
-Plugin 'aliev/bclose'
-Plugin 'scrooloose/nerdtree'
+" Language specific
+Plugin 'mattn/emmet-vim'
+Plugin 'davidhalter/jedi-vim'
 
-" Best statusline and buffers list
-Plugin 'bling/vim-airline'
-
-Plugin 'kien/ctrlp.vim'
-Plugin 'Yggdroot/indentLine'
-
-" Solarized
-Plugin 'altercation/vim-colors-solarized'
+" Color scheme
+Plugin 'jonathanfilip/vim-lucius'
 
 filetype plugin indent on     " required!
 
 if has("gui_running")
     syntax on           " syntax-highlighting
-    set background=light " Backgroud
-    colors solarized       " Color scheme
+    set background=dark " Backgroud
+    colors lucius       " Color scheme
     set guioptions=g    " Disable all GUI elements
     set guioptions+=c   " Enable Console-based dialogs for simple queries
     set hlsearch        " Highlight search terms (very useful!)
@@ -50,8 +52,8 @@ if has("gui_running")
 else
     syntax on
     " set t_Co=256
-    set background=light
-    colors solarized
+    set background=dark
+    colors lucius
 
     hi clear SpellBad
     hi SpellBad cterm=underline,bold ctermfg=red
@@ -81,7 +83,7 @@ if has('multi_byte')
 endif
 
 " Disable background and foreground for vertical split
-hi vertsplit ctermfg=NONE ctermbg=NONE
+hi vertsplit ctermbg=NONE
 
 " Vertical split chars
 set fillchars=stl:\ ,stlnc:\ ,vert:│
@@ -180,21 +182,16 @@ set ttyfast " Optimize for fast terminal connections
 set path=.,,**
 
 if has("autocmd")
-    " Enable autocomplete
-    " Python: jedi-vim
-    " au FileType python set omnifunc=jedi#completions
+    " Python: jedi-vim autocomplete options
+    au FileType python set omnifunc=jedi#completions
 
-    " JavaScript: leader+g for goto definition
-    " au FileType javascript nnoremap <leader>g :TernDef<CR>
-
-    " Disable auto documentation preview
-    " JavaScript: tern
-    " au FileType javascript setlocal completeopt-=preview
-    " Python: jedi-vim
+    " Python: jedi-vim disable auto preview docs
     au FileType python setlocal completeopt-=preview
 
-    " Indentation
+    " Python indentation
     au FileType python setlocal expandtab shiftwidth=4 tabstop=8
+
+    " JavaScript indentation
     au FileType javascript setlocal expandtab shiftwidth=2 tabstop=8
 endif
 
@@ -263,4 +260,12 @@ let g:indentLine_faster=1
 " IndentLine character
 " For use this feature please install patched font from repository root
 let g:indentLine_char=nr2char(0xE0A3)
+
+" Signify characters
+let g:signify_sign_add=nr2char(0xE0B9)
+let g:signify_sign_delete=nr2char(0xE0BA)
+let g:signify_sign_delete_first_line=nr2char(0xE0BB)
+let g:signify_sign_change=nr2char(0xE0BD)
+
+let g:airline_symbols={'linenr': '', 'paste': 'PASTE', 'readonly': '', 'modified': nr2char(0xE0B4), 'space': ' ', 'whitespace': '✹', 'branch': ''}
 
