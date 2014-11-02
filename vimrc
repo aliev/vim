@@ -95,6 +95,10 @@ endif
 " Cursor position free mode
 "set ve=all nosol
 
+set foldmethod=manual " Folding method
+
+set foldcolumn=1 " Folding column size
+
 set confirm " Get a dialog when :q, :w, or :wq fails
 
 let mapleader = "," " Map leader
