@@ -22,10 +22,6 @@ Plugin 'scrooloose/syntastic'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 
-
-" Match parent html tags
-" Plugin 'Valloric/MatchTagAlways'
-
 " Git
 Plugin 'mhinz/vim-signify'
 Plugin 'tpope/vim-fugitive'
@@ -81,9 +77,6 @@ execute "set colorcolumn=" . join(range(81,335), ',')
 if has('multi_byte')
     set listchars=tab:»\ ,trail:·,eol:¶,extends:→,precedes:←,nbsp:×
 endif
-
-" Disable background and foreground for vertical split
-hi vertsplit ctermbg=NONE
 
 " Vertical split chars
 set fillchars=stl:\ ,stlnc:\ ,vert:│
@@ -273,3 +266,12 @@ let g:signify_sign_change=nr2char(0xE0BD)
 
 let g:airline_symbols={'linenr': '', 'paste': 'PASTE', 'readonly': '', 'modified': nr2char(0xE0B4), 'space': ' ', 'whitespace': '✹', 'branch': ''}
 
+
+" Disable background and foreground for vertical split
+hi vertsplit ctermbg=NONE guibg=NONE
+
+" Signify colors
+hi SignifySignAdd guibg=#4e4e4e ctermbg=239
+hi SignifySignChange guibg=#4e4e4e ctermbg=239
+hi SignifySignDelete guibg=#4e4e4e ctermbg=239
+hi SignifySignChangeDelete guibg=#4e4e4e ctermbg=239
