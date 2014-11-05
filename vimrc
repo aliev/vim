@@ -33,6 +33,9 @@ Plugin 'davidhalter/jedi-vim'
 " Color scheme
 Plugin 'jonathanfilip/vim-lucius'
 
+" Python indent for vim
+Plugin 'hynek/vim-python-pep8-indent'
+
 filetype plugin indent on     " required!
 
 if has("gui_running")
@@ -134,9 +137,9 @@ set autoindent " Enable auto indent
 
 set smartindent " Smart indent
 
-" set wrap " Enable word wrap
+set wrap " Enable word wrap
 
-set nowrap " Disable word wrap
+" set nowrap " Disable word wrap
 
 set noerrorbells visualbell t_vb= " No annoying sound on errors
 
@@ -193,6 +196,9 @@ if has("autocmd")
 endif
 
 " ################### Keymaps and plugins configuration ########################
+
+" Disable pymode indent for user vim-python-pep8-indent plugin
+let g:pymode_indent = 0
 
 " Comment selected line
 map <leader>/ :TComment<CR>
@@ -275,3 +281,4 @@ hi SignifySignAdd guibg=#4e4e4e ctermbg=239
 hi SignifySignChange guibg=#4e4e4e ctermbg=239
 hi SignifySignDelete guibg=#4e4e4e ctermbg=239
 hi SignifySignChangeDelete guibg=#4e4e4e ctermbg=239
+
