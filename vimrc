@@ -1,40 +1,11 @@
 set nocompatible              " be iMproved
 filetype off                  " required!
 
-
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
-Plugin 'gmarik/vundle'
-
-" Utils
-Plugin 'bling/vim-airline'
-Plugin 'kien/ctrlp.vim'
-Plugin 'Yggdroot/indentLine'
-Plugin 'aliev/nerdtree'
-Plugin 'kshenoy/vim-signature'
-" Close buffer without close last window
-Plugin 'aliev/bclose'
-Plugin 'tomtom/tcomment_vim'
-Plugin 'scrooloose/syntastic'
-
-" Snippets
-Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
-
-" Git
-Plugin 'mhinz/vim-signify'
-Plugin 'tpope/vim-fugitive'
-
-" Language specific
-Plugin 'mattn/emmet-vim'
-Plugin 'davidhalter/jedi-vim'
-
-" Color scheme
-Plugin 'jonathanfilip/vim-lucius'
-
-" Python indent for vim
-Plugin 'hynek/vim-python-pep8-indent'
+" Include connected plugins
+source ~/.vim/plugins.vim
 
 filetype plugin indent on     " required!
 
@@ -50,7 +21,7 @@ if has("gui_running")
     set guifont=Menlo\ Regular\ for\ Powerline:h12
 else
     syntax on
-    " set t_Co=256
+    set t_Co=256
     set background=dark
     colors lucius
 
@@ -70,8 +41,7 @@ else
         let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
     endif
 
-    " Timeout for esc
-    set timeout timeoutlen=1000 ttimeoutlen=10
+    set timeout timeoutlen=1000 ttimeoutlen=10 " Speed up esc button
 endif
 
 " Ebable colorcolumn
@@ -94,6 +64,9 @@ endif
 set foldmethod=manual " Folding method
 
 set foldcolumn=1 " Folding column size
+
+" Autocomplete option: do not select the first candidate automatically
+set completeopt=menuone,longest
 
 set confirm " Get a dialog when :q, :w, or :wq fails
 
@@ -193,92 +166,10 @@ if has("autocmd")
 
     " JavaScript indentation
     au FileType javascript setlocal expandtab shiftwidth=2 tabstop=8
+
+    " JavaScript autocomplete
+    au FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 endif
 
-" ################### Keymaps and plugins configuration ########################
-
-" Disable pymode indent for user vim-python-pep8-indent plugin
-let g:pymode_indent = 0
-
-" Comment selected line
-map <leader>/ :TComment<CR>
-
-" File autocomplte
-imap <leader>f <c-x><c-f>
-
-" Default autocomplete
-imap <leader>c <c-x><c-o>
-
-" Show/hide trail characters
-nmap <leader>l :set list!<CR>
-
-nnoremap <leader>e :NERDTreeToggle<CR>
-
-" Close buffer with ask save it
-nnoremap <leader>w :confirm :Bclose<CR>
-
-" T-Comment keymap
-let g:tcommentMapLeader2 = '<leader>/'
-
-let g:airline_powerline_fonts = 1 " Use airline fonts
-
-" If you want to auto-completion to work stable in older vim, disable this option
-let g:airline#extensions#tabline#enabled = 1
-
-" Airline tabs settings
-let g:airline#extensions#tabline#fnamemod = ':t'
-
-let g:UltiSnipsJumpForwardTrigger='<tab>'
-
-let g:jedi#show_call_signatures = 0 " Disable or enable function call signature
-let g:jedi#popup_on_dot = 0 " Disable autocomplete when i type dot
-let g:jedi#use_tabs_not_buffers = 0
-
-let g:NERDTreeMinimalUI=1
-let NERDTreeIgnore = ['\.pyc$']
-
-nnoremap <leader>f :CtrlP<cr>
-nnoremap <leader>b :CtrlPBuffer<cr>
-nnoremap <leader>s :CtrlPBufTag<cr>
-
-" Syntax check mode for python (pip install pylama)
-let g:syntastic_python_checkers = ['pylama']
-
-" Syntax check mode for javascript (npm install jslint)
-let g:syntastic_javascript_checkers = ['jslint']
-
-" Make syntastic auto update the location list and make it also check
-" when the file opens
-let g:syntastic_always_populate_loc_list=1
-let g:syntastic_check_on_open=1
-
-" Syntastic signs (disables by default)
-let g:syntastic_enable_signs=0
-
-let g:ycm_key_list_select_completion = []
-
-" Make indent line faster
-let g:indentLine_faster=1
-
-" IndentLine character
-" For use this feature please install patched font from repository root
-let g:indentLine_char=nr2char(0xE0A3)
-
-" Signify characters
-let g:signify_sign_add=nr2char(0xE0B9)
-let g:signify_sign_delete=nr2char(0xE0BA)
-let g:signify_sign_delete_first_line=nr2char(0xE0BB)
-let g:signify_sign_change=nr2char(0xE0BD)
-
-let g:airline_symbols={'linenr': '', 'paste': 'PASTE', 'readonly': '', 'modified': nr2char(0xE0B4), 'space': ' ', 'whitespace': '✹', 'branch': ''}
-
-
-" Disable background and foreground for vertical split
-hi vertsplit ctermbg=NONE guibg=NONE
-
-" Signify colors
-hi SignifySignAdd guibg=#4e4e4e ctermbg=239
-hi SignifySignChange guibg=#4e4e4e ctermbg=239
-hi SignifySignDelete guibg=#4e4e4e ctermbg=239
-hi SignifySignChangeDelete guibg=#4e4e4e ctermbg=239
-
+" Another stuff (plugins configurations, keymaps and colors)
+source ~/.vim/stuff.vim
