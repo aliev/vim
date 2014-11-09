@@ -18,10 +18,6 @@ let g:jedi#use_tabs_not_buffers = 0
 let g:NERDTreeMinimalUI=1
 let NERDTreeIgnore = ['\.pyc$']
 
-" DelimitMate options
-let delimitMate_expand_cr = 1
-let delimitMate_expand_space = 1
-
 " Make indent line faster
 let g:indentLine_faster=1
 

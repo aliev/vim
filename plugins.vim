@@ -30,7 +30,7 @@ Plugin 'jonathanfilip/vim-lucius'
 " Python indent for vim
 Plugin 'hynek/vim-python-pep8-indent'
 
-" Auto close parentness
-" Plugin 'Raimondi/delimitMate'
-
 Plugin 'pangloss/vim-javascript'
+
+" SQL
+Plugin 'vim-scripts/dbext.vim'
