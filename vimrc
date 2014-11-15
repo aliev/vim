@@ -169,6 +169,8 @@ if has("autocmd")
 
     " JavaScript autocomplete
     au FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+    au FileType javascript map <leader>d :TernDef<cr>
+    au FileType javascript map <leader>r :TernRename<cr>
 endif
 
 " Another stuff (plugins configurations, keymaps and colors)

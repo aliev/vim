@@ -34,3 +34,9 @@ Plugin 'pangloss/vim-javascript'
 
 " SQL
 Plugin 'vim-scripts/dbext.vim'
+
+Plugin 'Shougo/neocomplcache.vim'
+
+Plugin 'marijnh/tern_for_vim'
+
+Plugin 'majutsushi/tagbar'
