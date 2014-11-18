@@ -32,11 +32,12 @@ let g:signify_sign_delete_first_line=nr2char(0xE0BB)
 let g:signify_sign_change=nr2char(0xE0BD)
 
 " Signify colors
-hi SignifySignAdd guibg=#4e4e4e ctermbg=239
-" Signify colors
-hi SignifySignChange guibg=#4e4e4e ctermbg=239
-hi SignifySignDelete guibg=#4e4e4e ctermbg=239
-hi SignifySignChangeDelete guibg=#4e4e4e ctermbg=239
+hi SignifySignAdd guibg=#4e4e4e ctermbg=NONE
+hi SignifySignChange guibg=#4e4e4e ctermbg=NONE
+hi SignifySignDelete guibg=#4e4e4e ctermbg=NONE
+hi SignifySignChangeDelete guibg=#4e4e4e ctermbg=NONE
+hi SignColumn ctermbg=NONE
+hi FoldColumn ctermbg=NONE
 
 " Required for vim-python-pep8-indent
 let g:pymode_indent = 0

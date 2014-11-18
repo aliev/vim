@@ -22,7 +22,7 @@ if has("gui_running")
 else
     syntax on
     set t_Co=256
-    set background=dark
+    set background=light
     colors lucius
 
     hi clear SpellBad
