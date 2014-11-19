@@ -38,6 +38,9 @@ hi SignifySignDelete guibg=#4e4e4e ctermbg=NONE
 hi SignifySignChangeDelete guibg=#4e4e4e ctermbg=NONE
 hi SignColumn ctermbg=NONE
 hi FoldColumn ctermbg=NONE
+hi SyntasticError ctermbg=NONE ctermfg=NONE
+hi SyntasticErrorSign ctermbg=NONE ctermfg=red
+hi SyntasticWarningSign ctermbg=NONE ctermfg=red
 
 " Required for vim-python-pep8-indent
 let g:pymode_indent = 0
@@ -59,10 +62,12 @@ let g:syntastic_javascript_checkers = ['jslint']
 let g:syntastic_always_populate_loc_list=1
 let g:syntastic_check_on_open=1
 
-" Syntastic signs (disables by default)
+" Syntastic signs (disabled by default)
 let g:syntastic_enable_signs=1
-let g:syntastic_error_symbol = "✗"
-let g:syntastic_warning_symbol = "⚠"
+
+" Syntastic signs icons
+let g:syntastic_error_symbol = nr2char(0xE0BB)
+let g:syntastic_warning_symbol = nr2char(0xE0BE)
 
 nnoremap <leader>f :CtrlP<cr>
 nnoremap <leader>b :CtrlPBuffer<cr>

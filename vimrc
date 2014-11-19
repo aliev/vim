@@ -173,5 +173,9 @@ if has("autocmd")
     au FileType javascript map <leader>r :TernRename<cr>
 endif
 
+let g:html_indent_inctags = "html,body,head,tbody"
+
 " Another stuff (plugins configurations, keymaps and colors)
 source ~/.vim/stuff.vim
+
+
