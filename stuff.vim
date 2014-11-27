@@ -36,11 +36,11 @@ hi SignifySignAdd guibg=#4e4e4e ctermbg=NONE
 hi SignifySignChange guibg=#4e4e4e ctermbg=NONE
 hi SignifySignDelete guibg=#4e4e4e ctermbg=NONE
 hi SignifySignChangeDelete guibg=#4e4e4e ctermbg=NONE
-hi SignColumn ctermbg=NONE
-hi FoldColumn ctermbg=NONE
-hi SyntasticError ctermbg=NONE ctermfg=NONE
-hi SyntasticErrorSign ctermbg=NONE ctermfg=red
-hi SyntasticWarningSign ctermbg=NONE ctermfg=red
+hi SignColumn ctermbg=NONE guibg=NONE
+hi FoldColumn ctermbg=NONE guibg=NONE
+hi SyntasticError ctermbg=NONE ctermfg=NONE guibg=NONE guifg=NONE
+hi SyntasticErrorSign ctermbg=NONE ctermfg=red guibg=NONE guifg=red
+hi SyntasticWarningSign ctermbg=NONE ctermfg=red guibg=NONE guifg=green
 
 " Required for vim-python-pep8-indent
 let g:pymode_indent = 0

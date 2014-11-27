@@ -11,13 +11,10 @@ filetype plugin indent on     " required!
 
 if has("gui_running")
     syntax on           " syntax-highlighting
-    set background=dark " Backgroud
+    set background=light " Backgroud
     colors lucius       " Color scheme
     set guioptions=g    " Disable all GUI elements
     set guioptions+=c   " Enable Console-based dialogs for simple queries
-    set hlsearch        " Highlight search terms (very useful!)
-    set incsearch       " Show search matches while typing
-
     set guifont=Menlo\ Regular\ for\ Powerline:h12
 else
     syntax on
@@ -73,6 +70,10 @@ set confirm " Get a dialog when :q, :w, or :wq fails
 let mapleader = "," " Map leader
 
 let maplocalleader = "_" " Local leader
+
+set hlsearch        " Highlight search terms (very useful!)
+
+set incsearch       " Show search matches while typing
 
 set lazyredraw " Don't redraw while executing macros (good performance config)
 
@@ -177,5 +178,3 @@ let g:html_indent_inctags = "html,body,head,tbody"
 
 " Another stuff (plugins configurations, keymaps and colors)
 source ~/.vim/stuff.vim
-
-

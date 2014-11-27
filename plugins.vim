@@ -38,3 +38,7 @@ Plugin 'vim-scripts/dbext.vim'
 Plugin 'marijnh/tern_for_vim'
 
 Plugin 'majutsushi/tagbar'
+
+Plugin 'mattn/gist-vim'
+
+Plugin 'mattn/webapi-vim'
