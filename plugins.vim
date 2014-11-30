@@ -42,3 +42,5 @@ Plugin 'majutsushi/tagbar'
 Plugin 'mattn/gist-vim'
 
 Plugin 'mattn/webapi-vim'
+
+Plugin 'tmhedberg/matchit'
