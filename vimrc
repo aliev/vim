@@ -139,7 +139,8 @@ set noswapfile " Disable swap files
 
 set undofile " Enable undofile
 
-set undodir=~/.vim/tmp/undo " Undo files directory
+" Store swap files in fixed location, not current directory.
+set dir=~/.vimswap//,/var/tmp//,/tmp//,.
 
 set noautochdir " Change the current working directory whenever you open a file
 
@@ -175,6 +176,7 @@ if has("autocmd")
 endif
 
 let g:html_indent_inctags = "html,body,head,tbody"
+
 
 " Another stuff (plugins configurations, keymaps and colors)
 source ~/.vim/stuff.vim
