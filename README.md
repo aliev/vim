@@ -165,7 +165,7 @@ zle-line-init() {
 }
 zle -N zle-line-init
 
-source ~/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 ```
 
 And that's what I came
@@ -195,10 +195,3 @@ https://github.com/marijnh/tern_for_vim
 ### Multilanguage syntax checking
 
 https://github.com/scrooloose/syntastic
-
-## Screenshots
-
-![vim indent guides](https://raw.github.com/aliev/vim/master/vim.png "Vim with indent guides and trailing characters")
-![zsh django](https://raw.github.com/aliev/vim/master/zsh-django-autocomplete.png "Zsh with django autocomplete")
-![zsh vim](https://raw.github.com/aliev/vim/master/zsh-vim.png "Zsh with vim")
-![zsh search](https://raw.github.com/aliev/vim/master/zsh-search.png "Zsh search")
