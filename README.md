@@ -1,6 +1,8 @@
 ## Description
 
-Minimal VIM configuration file based on KISS principle
+## Minimal VIM configuration file based on KISS principle
+
+![vim screen](https://raw.github.com/aliev/vim/master/screen.png "Vim screen")
 
 ## How to install?
 
@@ -167,10 +169,6 @@ zle -N zle-line-init
 
 source ~/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 ```
-
-And that's what I came
-
-![zsh autosuggestions highlighting](https://raw.github.com/aliev/vim/master/zsh.png "Oh my zsh with autosuggestions and syntax highlighting")
 
 ### Vim indent line
 
