@@ -2,14 +2,26 @@ Plugin 'gmarik/vundle'
 
 " Utils
 Plugin 'bling/vim-airline'
+
+" CtrlP
 Plugin 'kien/ctrlp.vim'
+
+" Indentation lines
 Plugin 'Yggdroot/indentLine'
+
+" Patched nerdtree with my fonts
 Plugin 'aliev/nerdtree'
+
+" Toggle and display marks
 Plugin 'kshenoy/vim-signature'
 
 " Close buffer without close last window
 Plugin 'aliev/bclose'
+
+" Comment selected lines
 Plugin 'tomtom/tcomment_vim'
+
+" Syntax checker
 Plugin 'scrooloose/syntastic'
 
 " Snippets
@@ -20,8 +32,10 @@ Plugin 'honza/vim-snippets'
 Plugin 'mhinz/vim-signify'
 Plugin 'tpope/vim-fugitive'
 
-" Language specific
+" Emmet
 Plugin 'mattn/emmet-vim'
+
+" Jedi for comfortable development with python
 Plugin 'davidhalter/jedi-vim'
 
 " Color scheme
@@ -30,17 +44,13 @@ Plugin 'jonathanfilip/vim-lucius'
 " Python indent for vim
 Plugin 'hynek/vim-python-pep8-indent'
 
+" JavaScript support
 Plugin 'pangloss/vim-javascript'
-
-" SQL
-Plugin 'vim-scripts/dbext.vim'
-
 Plugin 'marijnh/tern_for_vim'
 
+" Tagbar
 Plugin 'majutsushi/tagbar'
 
-Plugin 'mattn/gist-vim'
-
-Plugin 'mattn/webapi-vim'
-
 Plugin 'tmhedberg/matchit'
+
+Plugin 'terryma/vim-multiple-cursors'
