@@ -16,6 +16,7 @@ if has("gui_running")
     set guioptions=g    " Disable all GUI elements
     set guioptions+=c   " Enable Console-based dialogs for simple queries
     set guifont=Menlo\ Regular\ for\ Powerline:h12
+    set lines=999 columns=999
 else
     syntax on
     set t_Co=256
@@ -167,6 +168,7 @@ if has("autocmd")
     " About nosmartindent please look this link
     " http://stackoverflow.com/questions/2063175/vim-insert-mode-comments-go-to-start-of-line
     au FileType python setlocal expandtab shiftwidth=4 tabstop=8 nosmartindent
+    au FileType htmldjango set omnifunc=htmldjangocomplete#CompleteDjango
 
     " JavaScript indentation
     au FileType javascript setlocal expandtab shiftwidth=2 tabstop=8

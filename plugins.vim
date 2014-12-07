@@ -56,5 +56,3 @@ Plugin 'tmhedberg/matchit'
 Plugin 'terryma/vim-multiple-cursors'
 
 Plugin 'mbbill/undotree'
-
-Plugin 'dbsr/vimpy'
