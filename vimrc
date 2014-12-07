@@ -11,7 +11,7 @@ filetype plugin indent on     " required!
 
 if has("gui_running")
     syntax on           " syntax-highlighting
-    set background=light " Backgroud
+    set background=dark " Backgroud
     colors lucius       " Color scheme
     set guioptions=g    " Disable all GUI elements
     set guioptions+=c   " Enable Console-based dialogs for simple queries
