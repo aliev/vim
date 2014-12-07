@@ -19,7 +19,7 @@ if has("gui_running")
 else
     syntax on
     set t_Co=256
-    set background=light
+    set background=dark
     colors lucius
 
     hi clear SpellBad
@@ -137,7 +137,7 @@ set hidden " A buffer becomes hidden when it is abandoned
 
 set noswapfile " Disable swap files
 
-set undofile " Enable undofile
+set undofile " Persistent undo
 
 " Store swap files in fixed location, not current directory.
 set dir=~/.vimswap//,/var/tmp//,/tmp//,.
@@ -164,7 +164,9 @@ if has("autocmd")
     au FileType python setlocal completeopt-=preview
 
     " Python indentation
-    au FileType python setlocal expandtab shiftwidth=4 tabstop=8
+    " About nosmartindent please look this link
+    " http://stackoverflow.com/questions/2063175/vim-insert-mode-comments-go-to-start-of-line
+    au FileType python setlocal expandtab shiftwidth=4 tabstop=8 nosmartindent
 
     " JavaScript indentation
     au FileType javascript setlocal expandtab shiftwidth=2 tabstop=8
@@ -177,6 +179,6 @@ endif
 
 let g:html_indent_inctags = "html,body,head,tbody"
 
-
 " Another stuff (plugins configurations, keymaps and colors)
 source ~/.vim/stuff.vim
+
