@@ -15,6 +15,20 @@ let g:UltiSnipsJumpForwardTrigger='<tab>'
 let g:jedi#show_call_signatures = 0
 let g:jedi#use_tabs_not_buffers = 0
 
+" let's this deals vim-python-ftplugin module
+let g:jedi#popup_on_dot = 0
+
+" vim-python-ftplugin configuration
+let g:python_docstring_in_foldtext = 1
+
+" disable syntax checking
+" because we use syntastic
+let g:python_check_syntax=0
+
+let g:python_syntax_fold=1
+let g:python_fold_strings=1
+let g:python_decorators_in_foldtext=1
+
 let g:NERDTreeMinimalUI=1
 let NERDTreeIgnore = ['\.pyc$']
 

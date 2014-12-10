@@ -6,7 +6,7 @@ Plugin 'bling/vim-airline'
 " CtrlP
 Plugin 'kien/ctrlp.vim'
 
-" Indentation lines
+" Display indentation lines
 Plugin 'Yggdroot/indentLine'
 
 " Patched nerdtree with my fonts
@@ -32,9 +32,6 @@ Plugin 'honza/vim-snippets'
 Plugin 'mhinz/vim-signify'
 Plugin 'tpope/vim-fugitive'
 
-" Emmet
-Plugin 'mattn/emmet-vim'
-
 " Jedi for comfortable development with python
 Plugin 'davidhalter/jedi-vim'
 
@@ -46,13 +43,8 @@ Plugin 'hynek/vim-python-pep8-indent'
 
 " JavaScript support
 Plugin 'pangloss/vim-javascript'
-Plugin 'marijnh/tern_for_vim'
 
-" Tagbar
-Plugin 'majutsushi/tagbar'
+" Plugin 'vim-scripts/Efficient-python-folding'
 
-Plugin 'tmhedberg/matchit'
-
-Plugin 'terryma/vim-multiple-cursors'
-
-Plugin 'mbbill/undotree'
+" Wonderful plugin for python support
+Plugin 'tarmack/vim-python-ftplugin'

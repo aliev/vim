@@ -59,9 +59,11 @@ endif
 " Cursor position free mode
 "set ve=all nosol
 
-set foldmethod=manual " Folding method
+" set foldmethod=indent " Folding method
 
 set foldcolumn=1 " Folding column size
+
+" set foldlevelstart=1 " Folding level
 
 " Autocomplete option: do not select the first candidate automatically
 set completeopt=menuone,longest
@@ -112,9 +114,9 @@ set autoindent " Enable auto indent
 
 set smartindent " Smart indent
 
-set wrap " Enable word wrap
+" set wrap " Enable word wrap
 
-" set nowrap " Disable word wrap
+set nowrap " Disable word wrap
 
 set noerrorbells visualbell t_vb= " No annoying sound on errors
 
