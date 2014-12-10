@@ -50,11 +50,16 @@ hi SignifySignAdd guibg=#4e4e4e ctermbg=NONE
 hi SignifySignChange guibg=#4e4e4e ctermbg=NONE
 hi SignifySignDelete guibg=#4e4e4e ctermbg=NONE
 hi SignifySignChangeDelete guibg=#4e4e4e ctermbg=NONE
+
 hi SignColumn ctermbg=NONE guibg=NONE
 hi FoldColumn ctermbg=NONE guibg=NONE
+
+highlight SpellBad cterm=NONE ctermfg=NONE ctermbg=NONE
+highlight SpellCap cterm=NONE ctermfg=NONE ctermbg=NONE
+
 hi SyntasticError ctermbg=NONE ctermfg=NONE guibg=NONE guifg=NONE
-hi SyntasticErrorSign ctermbg=NONE ctermfg=red guibg=NONE guifg=red
-hi SyntasticWarningSign ctermbg=NONE ctermfg=red guibg=NONE guifg=green
+hi SyntasticErrorSign ctermbg=NONE ctermfg=181 guibg=NONE guifg=red
+hi SyntasticWarningSign ctermbg=NONE ctermfg=214 guibg=NONE
 
 " Required for vim-python-pep8-indent
 let g:pymode_indent = 0
@@ -102,41 +107,7 @@ nmap <leader>l :set list!<CR>
 " Close buffer with ask save it
 nnoremap <leader>w :confirm :Bclose<CR>
 
-
-function! ToggleNERDTreeAndTagbar()
-    let w:jumpbacktohere = 1
-
-    " Detect which plugins are open
-    if exists('t:NERDTreeBufName')
-        let nerdtree_open = bufwinnr(t:NERDTreeBufName) != -1
-    else
-        let nerdtree_open = 0
-    endif
-    let tagbar_open = bufwinnr('__Tagbar__') != -1
-
-    " Perform the appropriate action
-    if nerdtree_open && tagbar_open
-        NERDTreeClose
-        TagbarClose
-    elseif nerdtree_open
-        TagbarOpen
-    elseif tagbar_open
-        NERDTree
-    else
-        NERDTree
-        TagbarOpen
-    endif
-
-    " Jump back to the original window
-    for window in range(1, winnr('$'))
-        execute window . 'wincmd w'
-        if exists('w:jumpbacktohere')
-            unlet w:jumpbacktohere
-            break
-        endif
-    endfor
-endfunction
-nnoremap <leader>e :call ToggleNERDTreeAndTagbar()<CR>
+nnoremap <leader>e :NERDTreeToggle<CR>
 
 " The trailing '" {{{' is just to force folding on this function,
 " since I `set foldmethod=marker` on `vim` file type.

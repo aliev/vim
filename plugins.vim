@@ -48,3 +48,5 @@ Plugin 'pangloss/vim-javascript'
 
 " Wonderful plugin for python support
 Plugin 'tarmack/vim-python-ftplugin'
+
+Plugin 'tmhedberg/SimpylFold'

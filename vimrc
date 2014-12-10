@@ -20,7 +20,7 @@ if has("gui_running")
 else
     syntax on
     set t_Co=256
-    set background=dark
+    set background=light
     colors lucius
 
     hi clear SpellBad
@@ -61,7 +61,7 @@ endif
 
 " set foldmethod=indent " Folding method
 
-set foldcolumn=1 " Folding column size
+" set foldcolumn=1 " Folding column size
 
 " set foldlevelstart=1 " Folding level
 
