@@ -42,4 +42,4 @@ Plugin 'jonathanfilip/vim-lucius'
 Plugin 'hynek/vim-python-pep8-indent'
 
 " Wonderful plugin for python support
-Plugin 'aliev/vim-python-ftplugin'
+Plugin 'tarmack/vim-python-ftplugin'

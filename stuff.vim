@@ -19,6 +19,12 @@ let g:jedi#popup_on_dot = 0
 
 "{{{ vim-python-mode 
 
+syn match   pythonDefStatement  /^\s*\%(def\|import\)/
+       \ nextgroup=pythonFunction skipwhite
+syn region  pythonFunctionFold  start="^\z(\s*\)\%(def\|import\)\>"
+       \ end="\ze\%(\s*\n\)\+\%(\z1\s\)\@!." fold transparent
+
+hi link pythonDefStatement Statement
 " disable syntax checking
 " because we use syntastic
 let g:python_check_syntax=0
@@ -27,6 +33,12 @@ let g:python_check_syntax=0
 let g:python_auto_complete_modules=0
 " Enable autocomplete after pressing dot or import
 let g:python_auto_complete_variables=1
+
+let g:python_syntax_fold=1
+let g:python_fold_strings=0
+let g:python_docstring_in_foldtext=0
+let g:python_decorators_in_foldtext=0
+let g:python_decorator_labels=0
 
 "}}}
 

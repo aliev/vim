@@ -21,7 +21,7 @@ if has("gui_running")
 else
     syntax on
     set t_Co=256
-    set background=light
+    set background=dark
     colors lucius
 
     hi clear SpellBad
@@ -66,10 +66,6 @@ execute "set colorcolumn=" . join(range(81,335), ',')
 
 " Cursor position free mode
 "set ve=all nosol
-
-" set foldmethod=syntax " Folding method
-"
-" set foldlevelstart=0
 
 " Autocomplete option: do not select the first candidate automatically
 set completeopt=menuone,longest
@@ -172,6 +168,7 @@ if has("autocmd")
     " About nosmartindent please look this link
     " http://stackoverflow.com/questions/2063175/vim-insert-mode-comments-go-to-start-of-line
     au FileType python setlocal expandtab shiftwidth=4 tabstop=8 nosmartindent
+    au FileType htmldjango set omnifunc=htmldjangocomplete#CompleteDjango
 
     " Folding by marker for vim files
     au FileType vim setlocal foldmethod=marker foldlevel=0
