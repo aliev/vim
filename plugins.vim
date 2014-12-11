@@ -41,12 +41,5 @@ Plugin 'jonathanfilip/vim-lucius'
 " Python indent for vim
 Plugin 'hynek/vim-python-pep8-indent'
 
-" JavaScript support
-Plugin 'pangloss/vim-javascript'
-
-" Plugin 'vim-scripts/Efficient-python-folding'
-
 " Wonderful plugin for python support
-Plugin 'tarmack/vim-python-ftplugin'
-
-Plugin 'tmhedberg/SimpylFold'
+Plugin 'aliev/vim-python-ftplugin'

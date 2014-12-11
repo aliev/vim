@@ -4,11 +4,12 @@ filetype off                  " required!
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
-" Include connected plugins
+" Include installed plugins
 source ~/.vim/plugins.vim
 
 filetype plugin indent on     " required!
 
+" {{{ Gui and console vim options
 if has("gui_running")
     syntax on           " syntax-highlighting
     set background=dark " Backgroud
@@ -41,29 +42,34 @@ else
 
     set timeout timeoutlen=1000 ttimeoutlen=10 " Speed up esc button
 endif
+" }}}
 
-" Ebable colorcolumn
-execute "set colorcolumn=" . join(range(81,335), ',')
+if has('mouse')
+    set mouse=a " Mouse support
+    set mousemodel=popup
+    set mousehide " Hide cursor when typing
+endif
 
 if has('multi_byte')
     set listchars=tab:»\ ,trail:·,eol:¶,extends:→,precedes:←,nbsp:×
 endif
 
-" Vertical split chars
-set fillchars=stl:\ ,stlnc:\ ,vert:│
-
 if has("linebreak")
       let &sbr = nr2char(8618).' ' " Show ↪ at the beginning of wrapped lines
 endif
 
+" Vertical split chars
+set fillchars=stl:\ ,stlnc:\ ,vert:│
+
+" Enable colorcolumn
+execute "set colorcolumn=" . join(range(81,335), ',')
+
 " Cursor position free mode
 "set ve=all nosol
 
-" set foldmethod=indent " Folding method
-
-" set foldcolumn=1 " Folding column size
-
-" set foldlevelstart=1 " Folding level
+" set foldmethod=syntax " Folding method
+"
+" set foldlevelstart=0
 
 " Autocomplete option: do not select the first candidate automatically
 set completeopt=menuone,longest
@@ -74,9 +80,9 @@ let mapleader = "," " Map leader
 
 let maplocalleader = "_" " Local leader
 
-set hlsearch        " Highlight search terms (very useful!)
+set hlsearch " Highlight search terms (very useful!)
 
-set incsearch       " Show search matches while typing
+set incsearch " Show search matches while typing
 
 set lazyredraw " Don't redraw while executing macros (good performance config)
 
@@ -130,11 +136,6 @@ set number " Enable line numbers
 
 set ruler " Always display cursor position
 
-if has('mouse')
-    set mouse=a " Mouse support
-    set mousemodel=popup
-    set mousehide " Hide cursor when typing
-endif
 
 set hidden " A buffer becomes hidden when it is abandoned
 
@@ -159,8 +160,9 @@ set ttyfast " Optimize for fast terminal connections
 
 set path=.,,**
 
+" {{{ Autocmd
 if has("autocmd")
-    " Python: jedi-vim autocomplete options
+    " Auto complete options for Python (we use jedi by default)
     au FileType python set omnifunc=jedi#completions
 
     " Python: jedi-vim disable auto preview docs
@@ -170,18 +172,14 @@ if has("autocmd")
     " About nosmartindent please look this link
     " http://stackoverflow.com/questions/2063175/vim-insert-mode-comments-go-to-start-of-line
     au FileType python setlocal expandtab shiftwidth=4 tabstop=8 nosmartindent
-    au FileType htmldjango set omnifunc=htmldjangocomplete#CompleteDjango
+
+    " Folding by marker for vim files
+    au FileType vim setlocal foldmethod=marker foldlevel=0
 
     " JavaScript indentation
     au FileType javascript setlocal expandtab shiftwidth=2 tabstop=8
-
-    " JavaScript autocomplete
-    au FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-    au FileType javascript map <leader>d :TernDef<cr>
-    au FileType javascript map <leader>r :TernRename<cr>
 endif
-
-let g:html_indent_inctags = "html,body,head,tbody"
+" }}}
 
 " Another stuff (plugins configurations, keymaps and colors)
 source ~/.vim/stuff.vim
