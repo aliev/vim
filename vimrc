@@ -50,16 +50,16 @@ if has('mouse')
     set mousehide " Hide cursor when typing
 endif
 
+" {{{ Multibyte
 if has('multi_byte')
-    set listchars=tab:»\ ,trail:·,eol:¶,extends:→,precedes:←,nbsp:×
+    set listchars=tab:\ ,trail:·,eol:¶,extends:→,precedes:←,nbsp:×
+    " Vertical split chars
+    set fillchars=stl:\ ,stlnc:\ ,vert:│
+    if has("linebreak")
+          let &sbr = nr2char(8618).' ' " Show ↪ at the beginning of wrapped lines
+    endif
 endif
-
-if has("linebreak")
-      let &sbr = nr2char(8618).' ' " Show ↪ at the beginning of wrapped lines
-endif
-
-" Vertical split chars
-set fillchars=stl:\ ,stlnc:\ ,vert:│
+" }}}
 
 " Enable colorcolumn
 execute "set colorcolumn=" . join(range(81,335), ',')
@@ -132,7 +132,6 @@ set number " Enable line numbers
 
 set ruler " Always display cursor position
 
-
 set hidden " A buffer becomes hidden when it is abandoned
 
 set noswapfile " Disable swap files
@@ -171,6 +170,8 @@ if has("autocmd")
 
     " Django autocomplete options
     au FileType htmldjango set omnifunc=htmldjangocomplete#CompleteDjango
+    au FileType htmldjango inoremap {% {% %}<left><left><left>
+    au FileType htmldjango inoremap {{ {{ }}<left><left><left>
 
     " Folding by marker for vim files
     au FileType vim setlocal foldmethod=marker foldlevel=0

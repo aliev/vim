@@ -45,4 +45,4 @@ Plugin 'hynek/vim-python-pep8-indent'
 Plugin 'tarmack/vim-python-ftplugin'
 
 " Django autocomplete support
-Plugin 'mjbrownie/vim-htmldjango_omnicomplete'
+Plugin 'aliev/vim-htmldjango_omnicomplete'

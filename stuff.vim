@@ -150,18 +150,6 @@ if 'VIRTUAL_ENV' in os.environ:
     activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
     execfile(activate_this, dict(__file__=activate_this))
 
-if os.path.exists('settings'):
-    os.environ['DJANGO_SETTINGS_MODULE'] = 'settings.local'
-else:
-    #look for django 1.4 style settings eg /<project>/<project>/settings.py
-    #created by a django_admin.py startproject
-    cur_dir = os.path.join(os.getcwd().split('/').pop())
-    if os.path.exists(os.path.join(cur_dir,'settings.py')):
-        os.environ['DJANGO_SETTINGS_MODULE'] = '%s.settings' % cur_dir
-    else:
-        #Your on your own. Set to fail loudly
-        os.environ['DJANGO_SETTINGS_MODULE'] = ''
-
 #add the pwd to sys path as it is not appearing in
 sys.path.insert(0,os.getcwd())
 EOF
