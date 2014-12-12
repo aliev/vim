@@ -228,8 +228,10 @@ set ttyfast " Optimize for fast terminal connections
 
 set path=.,,**
 
-" Store swap files in fixed location, not current directory.
-set dir=~/.vimswap//,/var/tmp//,/tmp//,.
+" Store swap, backup and undo files in fixed location, not current directory.
+set dir=/var/tmp//,/tmp//,.
+set backupdir=/var/tmp//,/tmp//,.
+set undodir=/var/tmp//,/tmp//,.
 
 " Another stuff (plugins configurations, keymaps and colors)
 source ~/.vim/stuff.vim
