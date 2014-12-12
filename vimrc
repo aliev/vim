@@ -1,13 +1,62 @@
+" {{{ Plugins list and options
 set nocompatible              " be iMproved
 filetype off                  " required!
 
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
-" Include installed plugins
-source ~/.vim/plugins.vim
+Plugin 'gmarik/vundle'
+
+" Utils
+Plugin 'bling/vim-airline'
+
+" CtrlP
+Plugin 'kien/ctrlp.vim'
+
+" Display indentation lines
+Plugin 'Yggdroot/indentLine'
+
+" Patched nerdtree with my fonts
+Plugin 'aliev/nerdtree'
+
+" Toggle and display marks
+Plugin 'kshenoy/vim-signature'
+
+" Close buffer without close last window
+Plugin 'aliev/bclose'
+
+" Comment selected lines
+Plugin 'tomtom/tcomment_vim'
+
+" Syntax checker
+Plugin 'scrooloose/syntastic'
+
+" Snippets
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
+
+" Git
+Plugin 'mhinz/vim-signify'
+Plugin 'tpope/vim-fugitive'
+
+" Jedi for comfortable development with python
+Plugin 'davidhalter/jedi-vim'
+
+" Color scheme
+Plugin 'jonathanfilip/vim-lucius'
+
+" Python indent for vim
+Plugin 'hynek/vim-python-pep8-indent'
+
+" Wonderful plugin for python support
+Plugin 'aliev/vim-python-ftplugin'
+
+" Django autocomplete support
+Plugin 'aliev/vim-htmldjango_omnicomplete'
 
 filetype plugin indent on     " required!
+
+" }}}
 
 " {{{ Gui and console vim options
 if has("gui_running")
@@ -17,7 +66,6 @@ if has("gui_running")
     set guioptions=g    " Disable all GUI elements
     set guioptions+=c   " Enable Console-based dialogs for simple queries
     set guifont=Menlo\ Regular\ for\ Powerline:h12
-    set lines=999 columns=999
 else
     syntax on
     set t_Co=256
@@ -44,11 +92,13 @@ else
 endif
 " }}}
 
+" {{{ Mouse options
 if has('mouse')
     set mouse=a " Mouse support
     set mousemodel=popup
     set mousehide " Hide cursor when typing
 endif
+" }}}
 
 " {{{ Multibyte
 if has('multi_byte')
@@ -58,6 +108,32 @@ if has('multi_byte')
     if has("linebreak")
           let &sbr = nr2char(8618).' ' " Show ↪ at the beginning of wrapped lines
     endif
+endif
+" }}}
+
+" {{{ Autocmd
+if has("autocmd")
+    " Auto complete options for Python (we use jedi by default)
+    au FileType python set omnifunc=jedi#completions
+
+    " Python: jedi-vim disable auto preview docs
+    au FileType python setlocal completeopt-=preview
+
+    " Python indentation
+    " About nosmartindent please look this link
+    " http://stackoverflow.com/questions/2063175/vim-insert-mode-comments-go-to-start-of-line
+    au FileType python setlocal expandtab shiftwidth=4 tabstop=8 nosmartindent
+
+    " Django autocomplete options
+    au FileType htmldjango set omnifunc=htmldjangocomplete#CompleteDjango
+    au FileType htmldjango inoremap {% {% %}<left><left><left>
+    au FileType htmldjango inoremap {{ {{ }}<left><left><left>
+
+    " Folding by marker for vim files
+    au FileType vim setlocal foldmethod=marker foldlevel=0
+
+    " JavaScript indentation
+    au FileType javascript setlocal expandtab shiftwidth=2 tabstop=8
 endif
 " }}}
 
@@ -138,9 +214,6 @@ set noswapfile " Disable swap files
 
 set undofile " Persistent undo
 
-" Store swap files in fixed location, not current directory.
-set dir=~/.vimswap//,/var/tmp//,/tmp//,.
-
 set noautochdir " Change the current working directory whenever you open a file
 
 set wildmenu " Turn on the Wild menu
@@ -155,32 +228,8 @@ set ttyfast " Optimize for fast terminal connections
 
 set path=.,,**
 
-" {{{ Autocmd
-if has("autocmd")
-    " Auto complete options for Python (we use jedi by default)
-    au FileType python set omnifunc=jedi#completions
-
-    " Python: jedi-vim disable auto preview docs
-    au FileType python setlocal completeopt-=preview
-
-    " Python indentation
-    " About nosmartindent please look this link
-    " http://stackoverflow.com/questions/2063175/vim-insert-mode-comments-go-to-start-of-line
-    au FileType python setlocal expandtab shiftwidth=4 tabstop=8 nosmartindent
-
-    " Django autocomplete options
-    au FileType htmldjango set omnifunc=htmldjangocomplete#CompleteDjango
-    au FileType htmldjango inoremap {% {% %}<left><left><left>
-    au FileType htmldjango inoremap {{ {{ }}<left><left><left>
-
-    " Folding by marker for vim files
-    au FileType vim setlocal foldmethod=marker foldlevel=0
-
-    " JavaScript indentation
-    au FileType javascript setlocal expandtab shiftwidth=2 tabstop=8
-endif
-" }}}
+" Store swap files in fixed location, not current directory.
+set dir=~/.vimswap//,/var/tmp//,/tmp//,.
 
 " Another stuff (plugins configurations, keymaps and colors)
 source ~/.vim/stuff.vim
-
