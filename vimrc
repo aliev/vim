@@ -168,6 +168,8 @@ if has("autocmd")
     " About nosmartindent please look this link
     " http://stackoverflow.com/questions/2063175/vim-insert-mode-comments-go-to-start-of-line
     au FileType python setlocal expandtab shiftwidth=4 tabstop=8 nosmartindent
+
+    " Django autocomplete options
     au FileType htmldjango set omnifunc=htmldjangocomplete#CompleteDjango
 
     " Folding by marker for vim files
