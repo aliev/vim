@@ -43,3 +43,6 @@ Plugin 'hynek/vim-python-pep8-indent'
 
 " Wonderful plugin for python support
 Plugin 'tarmack/vim-python-ftplugin'
+
+" Django autocomplete support
+Plugin 'mjbrownie/vim-htmldjango_omnicomplete'
