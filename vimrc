@@ -12,7 +12,7 @@ if has("gui_running")
 else
     syntax on
     set t_Co=256
-    set background=light
+    set background=dark
     colors lucius
 
     hi clear SpellBad
@@ -168,6 +168,10 @@ set wildignore+=*.o,*.pyc,*.jpg,*.png,*.gif,*.db,*.obj,.git " Ignore compiled fi
 set conceallevel=2 " Conceal level
 
 set ttyfast " Optimize for fast terminal connections
+
+set foldmethod=indent " Folding method by default
+
+set foldlevel=3 " Folding level
 
 set path=.,,**
 

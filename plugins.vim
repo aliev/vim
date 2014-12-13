@@ -53,4 +53,6 @@ Plugin 'aliev/vim-python-autoimport'
 " Django autocomplete support
 Plugin 'aliev/vim-htmldjango_omnicomplete'
 
+Plugin 'hdima/python-syntax'
+
 filetype plugin indent on     " required!

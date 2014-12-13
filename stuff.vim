@@ -56,6 +56,8 @@ hi SyntasticWarningSign ctermbg=NONE ctermfg=214 guibg=NONE
 " Disable background and foreground for vertical split
 hi vertsplit ctermbg=NONE guibg=NONE
 
+hi Folded ctermbg=237
+
 " }}}
 
 " {{{ Syntastic
@@ -129,6 +131,25 @@ if filereadable($VIRTUAL_ENV . '/.vimrc')
     source $VIRTUAL_ENV/.vimrc
 endif
 endif
+" }}}
+
+" Clean fold text without trailing dashes {{{
+function! FoldText()
+    let line = getline(v:foldstart)
+
+    let nucolwidth = &fdc + &number * &numberwidth
+    let windowwidth = winwidth(0) - nucolwidth - 3
+
+    " expand tabs into spaces
+    let onetab = strpart('          ', 0, &tabstop)
+    let line = '⇲ ' . substitute(line, '\t', onetab, 'g')
+
+    let line = strpart(line, 0, windowwidth - 2)
+    let fillcharcount = windowwidth - len(line)
+
+    return line . repeat(" ", fillcharcount)
+endfunction
+set foldtext=FoldText()
 " }}}
 
 " Required for vim-python-pep8-indent
