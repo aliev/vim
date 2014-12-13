@@ -5,28 +5,15 @@ let g:airline#extensions#tabline#enabled = 1
 " Airline tabs settings
 let g:airline#extensions#tabline#fnamemod = ':t'
 " Airline symbol for modified buffers
-let g:airline_symbols={'modified': nr2char(0xE0B7)}
+" let g:airline_symbols={'modified': nr2char(0xE0B7)}
 " }}}
 
 " {{{ Jedi-vim
 " Disabple showing function call signature
 let g:jedi#show_call_signatures = 0
 let g:jedi#use_tabs_not_buffers = 0
-
-" let's this deals vim-python-ftplugin module
-let g:jedi#popup_on_dot = 0
+let g:jedi#popup_on_dot = 1
 " }}}
-
-"{{{ vim-python-mode 
-
-" disable syntax checking
-" because we use syntastic
-let g:python_check_syntax=0
-" Do not autocomplete after from statement
-let g:python_auto_complete_modules=0
-" Enable autocomplete after pressing dot or import
-let g:python_auto_complete_variables=1
-"}}}
 
 " {{{ NERDTree
 let g:NERDTreeMinimalUI=1
@@ -120,9 +107,6 @@ nnoremap <leader>e :NERDTreeToggle<CR>
 let g:tcommentMapLeader2 = '<leader>/'
 " }}}
 
-" Required for vim-python-pep8-indent
-let g:pymode_indent = 0
-
 " Add the virtualenv's site-packages to vim path {{{
 if has("python")
 py << EOF
@@ -146,3 +130,6 @@ if filereadable($VIRTUAL_ENV . '/.vimrc')
 endif
 endif
 " }}}
+
+" Required for vim-python-pep8-indent
+let g:pymode_indent = 0
