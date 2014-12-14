@@ -39,10 +39,10 @@ let g:signify_sign_change=nr2char(0xE0BD)
 
 " {{{ Color options
 " Signify colors
-hi! SignifySignAdd guibg=NONE guifg=NONE ctermbg=NONE
-hi! SignifySignChange guibg=NONE ctermbg=NONE
-hi! SignifySignDelete guibg=NONE ctermbg=NONE
-hi! SignifySignChangeDelete guibg=NONE ctermbg=NONE
+hi SignifySignAdd guibg=NONE ctermbg=236
+hi SignifySignChange guibg=NONE ctermbg=236
+hi SignifySignDelete guibg=NONE ctermbg=236
+hi SignifySignChangeDelete guibg=NONE ctermbg=NONE
 
 hi SignColumn ctermbg=NONE guibg=NONE
 hi FoldColumn ctermbg=NONE guibg=NONE
