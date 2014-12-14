@@ -125,6 +125,13 @@ if 'VIRTUAL_ENV' in os.environ:
     activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
     execfile(activate_this, dict(__file__=activate_this))
 
+cur_dir = os.path.join(os.getcwd().split('/').pop())
+if os.path.exists(os.path.join(cur_dir, 'settings.py')):
+    os.environ['DJANGO_SETTINGS_MODULE'] = '%s.settings' % cur_dir
+else:
+    #Your on your own. Set to fail loudly
+    os.environ['DJANGO_SETTINGS_MODULE'] = 'settings.local'
+
 #add the pwd to sys path as it is not appearing in
 sys.path.insert(0,os.getcwd())
 EOF
