@@ -39,10 +39,10 @@ let g:signify_sign_change=nr2char(0xE0BD)
 
 " {{{ Color options
 " Signify colors
-hi SignifySignAdd guibg=#4e4e4e ctermbg=NONE
-hi SignifySignChange guibg=#4e4e4e ctermbg=NONE
-hi SignifySignDelete guibg=#4e4e4e ctermbg=NONE
-hi SignifySignChangeDelete guibg=#4e4e4e ctermbg=NONE
+hi! SignifySignAdd guibg=NONE guifg=NONE ctermbg=NONE
+hi! SignifySignChange guibg=NONE ctermbg=NONE
+hi! SignifySignDelete guibg=NONE ctermbg=NONE
+hi! SignifySignChangeDelete guibg=NONE ctermbg=NONE
 
 hi SignColumn ctermbg=NONE guibg=NONE
 hi FoldColumn ctermbg=NONE guibg=NONE
@@ -56,7 +56,7 @@ hi SyntasticWarningSign ctermbg=NONE ctermfg=214 guibg=NONE
 " Disable background and foreground for vertical split
 hi vertsplit ctermbg=NONE guibg=NONE
 
-" hi Folded ctermbg=237
+hi! link Folded ColorColumn
 
 " }}}
 
