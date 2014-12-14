@@ -56,7 +56,7 @@ hi SyntasticWarningSign ctermbg=NONE ctermfg=214 guibg=NONE
 " Disable background and foreground for vertical split
 hi vertsplit ctermbg=NONE guibg=NONE
 
-hi Folded ctermbg=237
+" hi Folded ctermbg=237
 
 " }}}
 
@@ -107,6 +107,9 @@ nnoremap <leader>e :NERDTreeToggle<CR>
 
 " T-Comment keymap
 let g:tcommentMapLeader2 = '<leader>/'
+
+" Double Esc for clear search history
+nnoremap <silent> <Esc><Esc> :let @/=""<CR>
 " }}}
 
 " Add the virtualenv's site-packages to vim path {{{
