@@ -50,9 +50,6 @@ Plugin 'hynek/vim-python-pep8-indent'
 " Auto complete for django templates
 Plugin 'aliev/vim-htmldjango_omnicomplete'
 
-" Improved syntax and folding for python
-Plugin 'hdima/python-syntax'
-
 " Indentation for html/javascript
 Plugin 'lukaszb/vim-web-indent'
 
