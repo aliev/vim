@@ -47,12 +47,13 @@ Plugin 'jonathanfilip/vim-lucius'
 " Python indent for vim
 Plugin 'hynek/vim-python-pep8-indent'
 
-" Wonderful plugin for python support
-Plugin 'aliev/vim-python-autoimport'
-
-" Django autocomplete support
+" Auto complete for django templates
 Plugin 'aliev/vim-htmldjango_omnicomplete'
 
+" Improved syntax and folding for python
 Plugin 'hdima/python-syntax'
+
+" Indentation for html/javascript
+Plugin 'lukaszb/vim-web-indent'
 
 filetype plugin indent on     " required!

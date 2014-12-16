@@ -1,3 +1,7 @@
+"
+" Plugins options and little scripts
+"
+
 " {{{ Airline
 let g:airline_powerline_fonts = 1 " Use airline fonts
 " If you want to auto-completion to work stable in older vim, disable this option
@@ -157,6 +161,20 @@ function! FoldText()
     return line . repeat(" ", fillcharcount)
 endfunction
 set foldtext=FoldText()
+" }}}
+
+" Fill 'import' when a space is entered after the from part. {{{
+function! CompleteAndImport()
+  if search('\<from\s\+[A-Za-z0-9._]\+\s*\%#\s*$', 'bcn', line('.'))
+    " Enter character and start completion.
+    return " import \<C-x>\<C-o>"
+  endif
+  return ' '
+endfunction
+
+if has("autocmd") 
+    au FileType python inoremap <buffer> <expr> <Space> CompleteAndImport()
+endif
 " }}}
 
 " Required for vim-python-pep8-indent
