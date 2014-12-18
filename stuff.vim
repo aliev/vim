@@ -43,18 +43,19 @@ let g:signify_sign_change=nr2char(0xE0BD)
 
 " {{{ Color options
 " Signify colors
-hi SignifySignAdd guibg=NONE ctermbg=236
-hi SignifySignChange guibg=NONE ctermbg=236
-hi SignifySignDelete guibg=NONE ctermbg=236
-hi SignifySignChangeDelete guibg=NONE ctermbg=NONE
-
-hi SignColumn ctermbg=NONE guibg=NONE
 hi FoldColumn ctermbg=NONE guibg=NONE
+
+hi! link SignifySignAdd FoldColumn
+hi! link SignifySignChange FoldColumn
+hi! link SignifySignDelete FoldColumn
+hi! link SignifySignChangeDelete FoldCoumn
+
+hi! link SignColumn FoldColumn
 
 highlight SpellBad cterm=NONE ctermfg=NONE ctermbg=NONE
 highlight SpellCap cterm=NONE ctermfg=NONE ctermbg=NONE
 
-hi SyntasticError ctermbg=NONE ctermfg=NONE guibg=NONE guifg=NONE
+hi! link SyntasticError FoldColumn 
 hi SyntasticErrorSign ctermbg=NONE ctermfg=181 guibg=NONE guifg=red
 hi SyntasticWarningSign ctermbg=NONE ctermfg=214 guibg=NONE
 " Disable background and foreground for vertical split

@@ -12,7 +12,7 @@ if has("gui_running")
 else
     syntax on
     set t_Co=256
-    set background=dark
+    set background=light
     colors lucius
 
     hi clear SpellBad
@@ -65,7 +65,7 @@ if has("autocmd")
     " Python indentation
     " About nosmartindent please look this link
     " http://stackoverflow.com/questions/2063175/vim-insert-mode-comments-go-to-start-of-line
-    au FileType python setlocal expandtab shiftwidth=4 tabstop=8 nosmartindent
+    au FileType python setlocal expandtab shiftwidth=4 tabstop=8 nosmartindent nofoldenable
 
     " Django autocomplete options
     au FileType htmldjango set omnifunc=htmldjangocomplete#CompleteDjango
@@ -135,9 +135,9 @@ set autoindent " Enable auto indent
 
 set smartindent " Smart indent
 
-" set wrap " Enable word wrap
+set wrap " Enable word wrap
 
-set nowrap " Disable word wrap
+" set nowrap " Disable word wrap
 
 set noerrorbells visualbell t_vb= " No annoying sound on errors
 
