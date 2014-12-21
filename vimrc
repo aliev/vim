@@ -1,8 +1,7 @@
 " Load plugins
 source ~/.vim/plugins.vim
 
-" Gui and console vim optios {{{
-if has("gui_running")
+if has("gui_running") " {{{
     syntax on           " syntax-highlighting
     set background=dark " Backgroud
     colors lucius       " Color scheme
@@ -16,9 +15,7 @@ else
     colors lucius
 
     " Disable timeout for Esc key
-    set ttimeout
-    set ttimeoutlen=0
-    set notimeout
+    set ttimeout ttimeoutlen=0 notimeout
 
     " Set the cursor to a vertical line in insert mode
     " and a solid block in command mode
@@ -34,16 +31,14 @@ else
 endif
 " }}}
 
-" Mouse options {{{
-if has('mouse')
+if has('mouse') " {{{
     set mouse=a " Mouse support
     set mousemodel=popup
     set mousehide " Hide cursor when typing
 endif
 " }}}
 
-" Multibyte options {{{
-if has('multi_byte')
+if has('multi_byte') " {{{
     set listchars=tab:\ ,trail:·,eol:¶,extends:→,precedes:←,nbsp:×
     " Vertical split chars
     set fillchars=stl:\ ,stlnc:\ ,vert:│
@@ -53,8 +48,7 @@ if has('multi_byte')
 endif
 " }}}
 
-" Autocmd options {{{
-if has("autocmd")
+if has("autocmd") " {{{
     " Auto complete options for Python (we use jedi by default)
     au FileType python set omnifunc=jedi#completions
 
@@ -68,8 +62,9 @@ if has("autocmd")
 
     " Django autocomplete options
     au FileType htmldjango set omnifunc=htmldjangocomplete#CompleteDjango
-    au FileType htmldjango inoremap {% {% %}<left><left><left>
-    au FileType htmldjango inoremap {{ {{ }}<left><left><left>
+    au FileType htmldjango inoremap {% {%  %}<left><left><left>
+    au FileType htmldjango inoremap {{ {{  }}<left><left><left>
+    au FileType htmldjango inoremap {# {#  #}<left><left><left>
 
     " Folding by marker for vim files
     au FileType vim setlocal foldmethod=marker foldlevel=0
@@ -78,9 +73,6 @@ if has("autocmd")
     au FileType javascript setlocal expandtab shiftwidth=2 tabstop=8
 endif
 " }}}
-
-" Cursor position free mode
-"set ve=all nosol
 
 " Autocomplete option: do not select the first candidate automatically
 set completeopt=menuone,longest
@@ -102,8 +94,6 @@ set laststatus=2 " Enable statusline
 set magic " For regular expressions turn magic on
 
 set ignorecase " Searches are Non Case-sensitive
-
-" set cursorline " Highlight current cursor position
 
 set smartcase " Do smart case matching when searching
 
@@ -132,8 +122,6 @@ set autoindent " Enable auto indent
 set smartindent " Smart indent
 
 set wrap " Enable word wrap
-
-" set nowrap " Disable word wrap
 
 set noerrorbells visualbell t_vb= " No annoying sound on errors
 
@@ -168,6 +156,8 @@ set ttyfast " Optimize for fast terminal connections
 set foldmethod=indent " Folding method by default
 
 set foldlevel=3 " Folding level
+
+set foldcolumn=1 " Fold column size
 
 set path=.,,**
 

@@ -2,6 +2,7 @@
 " Plugins options and little scripts
 "
 
+" {{{ Plugins options
 " {{{ Airline
 let g:airline_powerline_fonts = 1 " Use airline fonts
 " If you want to auto-completion to work stable in older vim, disable this option
@@ -35,6 +36,13 @@ let g:signify_sign_add=nr2char(0xE0B9)
 let g:signify_sign_delete=nr2char(0xE0BA)
 let g:signify_sign_delete_first_line=nr2char(0xE0BB)
 let g:signify_sign_change=nr2char(0xE0BD)
+" }}}
+
+" Required for vim-python-pep8-indent
+let g:pymode_indent = 0
+" UltiSnips
+let g:UltiSnipsJumpForwardTrigger='<tab>'
+
 " }}}
 
 " {{{ Color options
@@ -100,18 +108,8 @@ imap <leader>f <c-x><c-f>
 " Default autocomplete
 imap <leader>c <c-x><c-o>
 
-" Toggle colorcolumn and list {{{
-function! g:ToggleColorColumn()
-    set list!
-  if &colorcolumn != ''
-    setlocal colorcolumn&
-  else
-    execute "set colorcolumn=" . join(range(81,335), ',')
-  endif
-endfunction
- 
-nnoremap <leader>l :call g:ToggleColorColumn()<CR>
-" }}}
+" List toggle
+nnoremap <leader>l :set list!<CR>
 
 " Close buffer with ask save it
 nnoremap <leader>w :confirm :Bclose<CR>
@@ -125,7 +123,7 @@ let g:tcommentMapLeader2 = '<leader>/'
 nnoremap <silent> <Esc><Esc> :let @/=""<CR>
 " }}}
 
-" Add the virtualenv's site-packages to vim path {{{
+" {{{ Add the virtualenv's site-packages to vim path
 if has("python")
 py << EOF
 import os.path
@@ -153,7 +151,7 @@ endif
 endif
 " }}}
 
-" Clean fold text without trailing dashes {{{
+" {{{ Clean fold text without trailing dashes
 function! FoldText()
     let line = getline(v:foldstart)
 
@@ -162,7 +160,7 @@ function! FoldText()
 
     " expand tabs into spaces
     let onetab = strpart('          ', 0, &tabstop)
-    let line = '⇲ ' . substitute(line, '\t', onetab, 'g')
+    let line = substitute(line, '\t', onetab, 'g')
 
     let line = strpart(line, 0, windowwidth - 2)
     let fillcharcount = windowwidth - len(line)
@@ -172,7 +170,7 @@ endfunction
 set foldtext=FoldText()
 " }}}
 
-" Auto fill import statement after type from A<space> {{{
+" {{{ Auto fill import statement after type from A<space>
 function! CompleteAndImport()
   if search('\<from\s\+[A-Za-z0-9._]\+\s*\%#\s*$', 'bcn', line('.'))
     " Enter character and start completion.
@@ -185,8 +183,3 @@ if has("autocmd")
     au FileType python inoremap <buffer> <expr> <Space> CompleteAndImport()
 endif
 " }}}
-
-" Required for vim-python-pep8-indent
-let g:pymode_indent = 0
-" UltiSnips
-let g:UltiSnipsJumpForwardTrigger='<tab>'
