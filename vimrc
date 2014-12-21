@@ -1,41 +1,40 @@
 " Load plugins
 source ~/.vim/plugins.vim
 
-" {{{ Gui and console vim options
+" Gui and console vim optios {{{
 if has("gui_running")
     syntax on           " syntax-highlighting
     set background=dark " Backgroud
     colors lucius       " Color scheme
     set guioptions=g    " Disable all GUI elements
     set guioptions+=c   " Enable Console-based dialogs for simple queries
-    set guifont=Menlo\ Regular\ for\ Powerline:h12
+    set guifont=Menlo\ Regular\ for\ Powerline:h13
 else
     syntax on
     set t_Co=256
     set background=light
     colors lucius
 
-    hi clear SpellBad
-    hi SpellBad cterm=underline,bold ctermfg=red
-    hi SpellCap cterm=underline,bold ctermfg=red
+    " Disable timeout for Esc key
+    set ttimeout
+    set ttimeoutlen=0
+    set notimeout
 
+    " Set the cursor to a vertical line in insert mode
+    " and a solid block in command mode
     if $TMUX == ''
-        " Set the cursor to a vertical line in insert mode and a
-        " solid block in command mode
         let &t_SI = "\<Esc>P\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
         let &t_EI = "\<Esc>P\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
     else
-        " enable resize vim splits inside tmux
+        " Enable resize vim splits inside tmux
         set ttymouse=xterm2
         let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
         let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
     endif
-
-    set timeout timeoutlen=1000 ttimeoutlen=10 " Speed up esc button
 endif
 " }}}
 
-" {{{ Mouse options
+" Mouse options {{{
 if has('mouse')
     set mouse=a " Mouse support
     set mousemodel=popup
@@ -43,7 +42,7 @@ if has('mouse')
 endif
 " }}}
 
-" {{{ Multibyte
+" Multibyte options {{{
 if has('multi_byte')
     set listchars=tab:\ ,trail:·,eol:¶,extends:→,precedes:←,nbsp:×
     " Vertical split chars
@@ -54,7 +53,7 @@ if has('multi_byte')
 endif
 " }}}
 
-" {{{ Autocmd
+" Autocmd options {{{
 if has("autocmd")
     " Auto complete options for Python (we use jedi by default)
     au FileType python set omnifunc=jedi#completions
@@ -79,9 +78,6 @@ if has("autocmd")
     au FileType javascript setlocal expandtab shiftwidth=2 tabstop=8
 endif
 " }}}
-
-" Enable colorcolumn
-execute "set colorcolumn=" . join(range(81,335), ',')
 
 " Cursor position free mode
 "set ve=all nosol
@@ -175,7 +171,7 @@ set foldlevel=3 " Folding level
 
 set path=.,,**
 
-" Store swap, backup and undo files in fixed location, not current directory.
+" Store swap, backup and undo files in fixed location
 set dir=/var/tmp//,/tmp//,.
 set backupdir=/var/tmp//,/tmp//,.
 set undodir=/var/tmp//,/tmp//,.

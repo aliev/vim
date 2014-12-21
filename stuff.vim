@@ -6,10 +6,8 @@
 let g:airline_powerline_fonts = 1 " Use airline fonts
 " If you want to auto-completion to work stable in older vim, disable this option
 let g:airline#extensions#tabline#enabled = 1
-" Airline tabs settings
+" Airline tabline settings
 let g:airline#extensions#tabline#fnamemod = ':t'
-" Airline symbol for modified buffers
-" let g:airline_symbols={'modified': nr2char(0xE0B7)}
 " }}}
 
 " {{{ Jedi-vim
@@ -22,14 +20,12 @@ let g:jedi#popup_on_dot = 1
 " {{{ NERDTree
 let g:NERDTreeMinimalUI=1
 let NERDTreeIgnore = ['\.pyc$']
-let g:UltiSnipsJumpForwardTrigger='<tab>'
 " }}}
 
 " {{{ Indent-line
 " Make indent line faster
 let g:indentLine_faster=1
-" IndentLine character
-" For use this feature please install patched font from repository root
+" IndentLine character For use this feature please install patched font from repository root
 let g:indentLine_char=nr2char(0xE0A3)
 " }}}
 
@@ -42,8 +38,11 @@ let g:signify_sign_change=nr2char(0xE0BD)
 " }}}
 
 " {{{ Color options
-" Signify colors
+
+" Disable colors for folding column
 hi FoldColumn ctermbg=NONE guibg=NONE
+
+" Signify colors
 
 hi! link SignifySignAdd FoldColumn
 hi! link SignifySignChange FoldColumn
@@ -51,13 +50,8 @@ hi! link SignifySignDelete FoldColumn
 hi! link SignifySignChangeDelete FoldCoumn
 
 hi! link SignColumn FoldColumn
+hi! link Error SpellBad
 
-highlight SpellBad cterm=NONE ctermfg=NONE ctermbg=NONE
-highlight SpellCap cterm=NONE ctermfg=NONE ctermbg=NONE
-
-hi! link SyntasticError FoldColumn 
-hi SyntasticErrorSign ctermbg=NONE ctermfg=181 guibg=NONE guifg=red
-hi SyntasticWarningSign ctermbg=NONE ctermfg=214 guibg=NONE
 " Disable background and foreground for vertical split
 hi vertsplit ctermbg=NONE guibg=NONE
 
@@ -78,7 +72,11 @@ let g:syntastic_always_populate_loc_list=1
 let g:syntastic_check_on_open=1
 
 " Syntastic signs (disabled by default)
-let g:syntastic_enable_signs=1
+if has("gui_running")
+    let g:syntastic_enable_signs=0
+else
+    let g:syntastic_enable_signs=1
+endif
 
 " Syntastic signs icons
 let g:syntastic_error_symbol = nr2char(0xE0BB)
@@ -102,8 +100,18 @@ imap <leader>f <c-x><c-f>
 " Default autocomplete
 imap <leader>c <c-x><c-o>
 
-" Show/hide trail characters
-nmap <leader>l :set list!<CR>
+" Toggle colorcolumn and list {{{
+function! g:ToggleColorColumn()
+    set list!
+  if &colorcolumn != ''
+    setlocal colorcolumn&
+  else
+    execute "set colorcolumn=" . join(range(81,335), ',')
+  endif
+endfunction
+ 
+nnoremap <leader>l :call g:ToggleColorColumn()<CR>
+" }}}
 
 " Close buffer with ask save it
 nnoremap <leader>w :confirm :Bclose<CR>
@@ -164,7 +172,7 @@ endfunction
 set foldtext=FoldText()
 " }}}
 
-" Fill 'import' when a space is entered after the from part. {{{
+" Auto fill import statement after type from A<space> {{{
 function! CompleteAndImport()
   if search('\<from\s\+[A-Za-z0-9._]\+\s*\%#\s*$', 'bcn', line('.'))
     " Enter character and start completion.
@@ -173,10 +181,12 @@ function! CompleteAndImport()
   return ' '
 endfunction
 
-if has("autocmd") 
+if has("autocmd")
     au FileType python inoremap <buffer> <expr> <Space> CompleteAndImport()
 endif
 " }}}
 
 " Required for vim-python-pep8-indent
 let g:pymode_indent = 0
+" UltiSnips
+let g:UltiSnipsJumpForwardTrigger='<tab>'
