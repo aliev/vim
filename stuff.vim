@@ -147,25 +147,6 @@ endif
 endif
 " }}}
 
-" {{{ Clean fold text without trailing dashes
-function! FoldText()
-    let line = getline(v:foldstart)
-
-    let nucolwidth = &fdc + &number * &numberwidth
-    let windowwidth = winwidth(0) - nucolwidth - 3
-
-    " expand tabs into spaces
-    let onetab = strpart('          ', 0, &tabstop)
-    let line = substitute(line, '\t', onetab, 'g')
-
-    let line = strpart(line, 0, windowwidth - 2)
-    let fillcharcount = windowwidth - len(line)
-
-    return line . repeat(" ", fillcharcount)
-endfunction
-set foldtext=FoldText()
-" }}}
-
 " {{{ Auto fill import statement after type from A<space>
 function! CompleteAndImport()
   if search('\<from\s\+[A-Za-z0-9._]\+\s*\%#\s*$', 'bcn', line('.'))
