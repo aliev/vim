@@ -80,11 +80,7 @@ let g:syntastic_always_populate_loc_list=1
 let g:syntastic_check_on_open=1
 
 " Syntastic signs (disabled by default)
-if has("gui_running")
-    let g:syntastic_enable_signs=0
-else
-    let g:syntastic_enable_signs=1
-endif
+let g:syntastic_enable_signs=0
 
 " Syntastic signs icons
 let g:syntastic_error_symbol = nr2char(0xE0BB)

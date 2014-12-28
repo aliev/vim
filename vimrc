@@ -157,8 +157,6 @@ set foldmethod=indent " Folding method by default
 
 set foldlevel=3 " Folding level
 
-set foldcolumn=1 " Fold column size
-
 set path=.,,**
 
 " Store swap, backup and undo files in fixed location
