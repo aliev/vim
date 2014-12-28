@@ -166,3 +166,5 @@ set undodir=/var/tmp//,/tmp//,.
 
 " Another stuff (plugins configurations, keymaps and colors)
 source ~/.vim/stuff.vim
+source ~/.vim/scripts.vim
+source ~/.vim/keys.vim
