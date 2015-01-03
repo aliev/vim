@@ -56,16 +56,13 @@ hi! link SignifySignDelete FoldColumn
 hi! link SignifySignChangeDelete FoldCoumn
 
 hi! link SignColumn FoldColumn
-hi! link Error SpellBad
 
 " Disable background and foreground for vertical split
 hi vertsplit ctermbg=NONE guibg=NONE
 
 hi! link Folded ColorColumn
 
-" }}}
-
-" {{{ Syntastic
+" Syntastic options {{{
 " Syntax check mode for python (pip install pylama)
 let g:syntastic_python_checkers = ['pylama']
 
@@ -77,13 +74,27 @@ let g:syntastic_javascript_checkers = ['jslint']
 let g:syntastic_always_populate_loc_list=1
 let g:syntastic_check_on_open=1
 
-" Syntastic signs (disabled by default)
-let g:syntastic_enable_signs=0
+if has('gui_running')
+    let g:syntastic_enable_signs=0
+    hi! link Error SpellBad
+else
 
-" Syntastic signs icons
-let g:syntastic_error_symbol = nr2char(0xE0BB)
-let g:syntastic_style_error_symbol = nr2char(0xE0BB)
+    " Enable signs for not gui vim
+    let g:syntastic_enable_signs=1
 
-let g:syntastic_warning_symbol = nr2char(0xE0BE)
-let g:syntastic_style_warning_symbol = nr2char(0xE0BE)
+    " Show icons for error and warning symbols
+    let g:syntastic_error_symbol = nr2char(0xE0BB)
+    let g:syntastic_style_error_symbol = nr2char(0xE0BB)
+    let g:syntastic_warning_symbol = nr2char(0xE0BE)
+    let g:syntastic_style_warning_symbol = nr2char(0xE0BE)
+    
+    hi SyntasticWarningSign ctermbg=NONE ctermfg=187
+    hi SyntasticStyleWarningSign ctermbg=NONE ctermfg=187
+    hi SyntasticErrorSign ctermbg=red ctermfg=181
+    hi SyntasticStyleErrorSign ctermbg=NONE ctermfg=181
+
+    hi SyntasticStyleError ctermbg=NONE ctermfg=NONE
+    hi SyntasticError ctermbg=NONE ctermfg=NONE
+    hi SyntasticWarning ctermbg=NONE ctermfg=NONE
+endif
 " }}}
