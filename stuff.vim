@@ -11,7 +11,7 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 
 " {{{ Jedi-vim
 " Disabple showing function call signature
-let g:jedi#show_call_signatures = 0
+let g:jedi#show_call_signatures = 2
 let g:jedi#use_tabs_not_buffers = 0
 let g:jedi#popup_on_dot = 1
 " }}}

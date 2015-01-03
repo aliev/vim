@@ -101,7 +101,7 @@ set showmatch " Show matching brackets when text indicator is over them
 
 set showcmd " Show incomplete cmds down the bottom
 
-set showmode " Show current mode down the bottom
+set noshowmode " Do not show current mode down the bottom (we use vim-airline)
 
 set title " Show title
 
