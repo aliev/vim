@@ -11,7 +11,7 @@ if has("gui_running") " {{{
 else
     syntax on
     set t_Co=256
-    set background=light
+    set background=dark
     colors lucius
 
     " Disable timeout for Esc key

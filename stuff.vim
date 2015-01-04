@@ -7,6 +7,7 @@ let g:airline_powerline_fonts = 1 " Use airline fonts
 let g:airline#extensions#tabline#enabled = 1
 " Airline tabline settings
 let g:airline#extensions#tabline#fnamemod = ':t'
+let g:airline#extensions#tabline#buffer_nr_show = 1
 " }}}
 
 " {{{ Jedi-vim
@@ -90,7 +91,7 @@ else
     
     hi SyntasticWarningSign ctermbg=NONE ctermfg=187
     hi SyntasticStyleWarningSign ctermbg=NONE ctermfg=187
-    hi SyntasticErrorSign ctermbg=red ctermfg=181
+    hi SyntasticErrorSign ctermbg=NONE ctermfg=181
     hi SyntasticStyleErrorSign ctermbg=NONE ctermfg=181
 
     hi SyntasticStyleError ctermbg=NONE ctermfg=NONE
