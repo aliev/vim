@@ -52,6 +52,9 @@ if has("autocmd") " {{{
     " Auto complete options for Python (we use jedi by default)
     au FileType python set omnifunc=jedi#completions
 
+    " Auto complete options for JavaScript
+    au FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+
     " Python: jedi-vim disable auto preview docs
     au FileType python setlocal completeopt-=preview
 

@@ -34,6 +34,14 @@ function! CompleteAndImport()
   return ' '
 endfunction
 
+function! Complete()
+    return ".\<C-x>\<C-o>\<C-n>"
+endfunction
+
 if has("autocmd")
     au FileType python inoremap <buffer> <expr> <Space> CompleteAndImport()
+
+    " Complete after pressing dot button
+    " TODO: Need refactoring
+    au FileType javascript inoremap <buffer> . <C-R>=Complete()<CR>
 endif

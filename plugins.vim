@@ -55,4 +55,8 @@ Plugin 'aliev/vim-htmldjango_omnicomplete'
 " Indentation for html/javascript
 Plugin 'lukaszb/vim-web-indent'
 
+Plugin 'gregsexton/gitv'
+
+Plugin 'myhere/vim-nodejs-complete'
+
 filetype plugin indent on     " required!

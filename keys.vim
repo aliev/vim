@@ -1,9 +1,5 @@
 " Keymaps
 
-nnoremap <leader>f :CtrlP<cr>
-nnoremap <leader>b :CtrlPBuffer<cr>
-nnoremap <leader>s :CtrlPBufTag<cr>
-
 " Comment selected line
 map <leader>/ :TComment<CR>
 
