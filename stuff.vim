@@ -79,7 +79,6 @@ if has('gui_running')
     let g:syntastic_enable_signs=0
     hi! link Error SpellBad
 else
-
     " Enable signs for not gui vim
     let g:syntastic_enable_signs=1
 

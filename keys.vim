@@ -1,5 +1,9 @@
 " Keymaps
 
+" CtrlP
+map <leader>f :CtrlP<CR>
+map <leader>b :CtrlPBufTag<CR>
+
 " Comment selected line
 map <leader>/ :TComment<CR>
 
