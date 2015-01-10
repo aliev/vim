@@ -12,8 +12,9 @@ let g:airline#extensions#tabline#buffer_nr_show = 1
 
 " {{{ Jedi-vim
 " Disabple showing function call signature
-let g:jedi#show_call_signatures = 2
+let g:jedi#show_call_signatures = 0
 let g:jedi#use_tabs_not_buffers = 0
+let g:jedi#popup_select_first=0
 let g:jedi#popup_on_dot = 1
 " }}}
 
@@ -98,3 +99,28 @@ else
     hi SyntasticWarning ctermbg=NONE ctermfg=NONE
 endif
 " }}}
+
+let g:rbpt_colorpairs = [
+    \ ['brown',       'RoyalBlue3'],
+    \ ['Darkblue',    'SeaGreen3'],
+    \ ['darkgray',    'DarkOrchid3'],
+    \ ['darkgreen',   'firebrick3'],
+    \ ['darkcyan',    'RoyalBlue3'],
+    \ ['darkred',     'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['brown',       'firebrick3'],
+    \ ['gray',        'RoyalBlue3'],
+    \ ['black',       'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['Darkblue',    'firebrick3'],
+    \ ['darkgreen',   'RoyalBlue3'],
+    \ ['darkcyan',    'SeaGreen3'],
+    \ ['darkred',     'DarkOrchid3'],
+    \ ['red',         'firebrick3'],
+    \ ]
+let g:rbpt_max = 16
+
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces

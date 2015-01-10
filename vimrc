@@ -1,3 +1,5 @@
+scriptencoding utf-8
+
 " Load plugins
 source ~/.vim/plugins.vim
 
@@ -77,7 +79,8 @@ if has("autocmd") " {{{
 endif
 " }}}
 
-" Autocomplete option: do not select the first candidate automatically
+" Autocomplete options:
+" do not select the first candidate
 set completeopt=menuone,longest
 
 set confirm " Get a dialog when :q, :w, or :wq fails

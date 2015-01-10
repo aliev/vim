@@ -39,6 +39,7 @@ Plugin 'honza/vim-snippets'
 " Git
 Plugin 'mhinz/vim-signify'
 Plugin 'tpope/vim-fugitive'
+Plugin 'gregsexton/gitv'
 
 " Jedi for comfortable development with python
 Plugin 'davidhalter/jedi-vim'
@@ -55,8 +56,7 @@ Plugin 'aliev/vim-htmldjango_omnicomplete'
 " Indentation for html/javascript
 Plugin 'lukaszb/vim-web-indent'
 
-Plugin 'gregsexton/gitv'
-
-Plugin 'myhere/vim-nodejs-complete'
+" Rainbow parentheses
+Plugin 'kien/rainbow_parentheses.vim'
 
 filetype plugin indent on     " required!

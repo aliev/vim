@@ -26,3 +26,6 @@ let g:tcommentMapLeader2 = '<leader>/'
 
 " Double Esc for clear search history
 nnoremap <silent> <Esc><Esc> :let @/=""<CR>
+
+
+nmap - <Plug>(choosewin)
