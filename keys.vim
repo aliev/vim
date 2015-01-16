@@ -4,9 +4,6 @@
 map <leader>f :CtrlP<CR>
 map <leader>b :CtrlPBufTag<CR>
 
-" Comment selected line
-map <leader>/ :TComment<CR>
-
 " File autocomplte
 imap <leader>f <c-x><c-f>
 
@@ -27,5 +24,5 @@ let g:tcommentMapLeader2 = '<leader>/'
 " Double Esc for clear search history
 nnoremap <silent> <Esc><Esc> :let @/=""<CR>
 
-
-nmap - <Plug>(choosewin)
+" Goto file with line number under cursor
+nnoremap gf gF
