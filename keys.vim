@@ -2,7 +2,8 @@
 
 " CtrlP
 map <leader>f :CtrlP<CR>
-map <leader>b :CtrlPBufTag<CR>
+map <leader>b :CtrlPBuffer<CR>
+map <leader>s :CtrlPBufTag<CR>
 
 " File autocomplte
 imap <leader>f <c-x><c-f>
