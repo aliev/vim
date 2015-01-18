@@ -69,6 +69,7 @@ if has("autocmd") " {{{
     au FileType python setlocal expandtab shiftwidth=4 tabstop=8 nosmartindent nofoldenable
 
     " Django autocomplete options
+    au FileType html set filetype=htmldjango
     au FileType htmldjango set omnifunc=htmldjangocomplete#CompleteDjango
     au FileType htmldjango inoremap {% {%  %}<left><left><left>
     au FileType htmldjango inoremap {{ {{  }}<left><left><left>
@@ -172,18 +173,6 @@ set path=.,,**
 set dir=/var/tmp//,/tmp//,.
 set backupdir=/var/tmp//,/tmp//,.
 set undodir=/var/tmp//,/tmp//,.
-
-if has('python')
-py << EOF
-import os.path, sys
-
-if 'VIRTUAL_ENV' in os.environ:
-    project_base_dir = os.environ['VIRTUAL_ENV']
-    sys.path.insert(0, project_base_dir)
-    activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
-    execfile(activate_this, dict(__file__=activate_this))
-EOF
-endif
 
 " Another stuff (plugins configurations, keymaps and colors)
 source ~/.vim/stuff.vim
