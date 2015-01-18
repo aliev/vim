@@ -23,9 +23,6 @@ Plugin 'aliev/nerdtree'
 " Toggle and display marks
 Plugin 'kshenoy/vim-signature'
 
-" Close buffer without close last window
-Plugin 'aliev/bclose'
-
 " Comment selected lines
 Plugin 'tomtom/tcomment_vim'
 
@@ -55,4 +52,6 @@ Plugin 'aliev/vim-htmldjango_omnicomplete'
 " Indentation for html/javascript
 Plugin 'lukaszb/vim-web-indent'
 
-filetype plugin indent on     " required!
+" Scripts collection for comfortable work
+" with python and vim
+Plugin 'aliev/vim-comfortable'
