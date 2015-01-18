@@ -95,6 +95,8 @@ let maplocalleader = "_" " Local leader
 
 set hlsearch " Highlight search terms (very useful!)
 
+set display+=lastline " Display lastline instead of @
+
 set incsearch " Show search matches while typing
 
 set lazyredraw " Don't redraw while executing macros (good performance config)
