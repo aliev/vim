@@ -46,9 +46,6 @@ Plugin 'jonathanfilip/vim-lucius'
 " Python indent for vim
 Plugin 'hynek/vim-python-pep8-indent'
 
-" Auto complete for django templates
-Plugin 'aliev/vim-htmldjango_omnicomplete'
-
 " Indentation for html/javascript
 Plugin 'lukaszb/vim-web-indent'
 
