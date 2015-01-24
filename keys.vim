@@ -17,13 +17,11 @@ nnoremap <leader>l :set list!<CR>
 " Close buffer with ask save it
 nnoremap <leader>w :confirm :Bclose<CR>
 
+" Open NERDTree
 nnoremap <leader>e :NERDTreeToggle<CR>
 
-" T-Comment keymap
-let g:tcommentMapLeader2 = '<leader>/'
-
 " Double Esc for clear search history
-nnoremap <silent> <Esc><Esc> :let @/=""<CR>
+nnoremap <Esc><Esc> :let @/=""<CR>
 
 " Goto file with line number under cursor
 nnoremap gf gF
