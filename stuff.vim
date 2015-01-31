@@ -32,10 +32,10 @@ let g:indentLine_char=nr2char(0xE0A3)
 
 " {{{ Signify
 " Signify characters
-let g:signify_sign_add=nr2char(0xE0B9)
-let g:signify_sign_delete=nr2char(0xE0BA)
-let g:signify_sign_delete_first_line=nr2char(0xE0BB)
-let g:signify_sign_change=nr2char(0xE0BD)
+" let g:signify_sign_add=nr2char(0xE0B9)
+" let g:signify_sign_delete=nr2char(0xE0BA)
+" let g:signify_sign_delete_first_line=nr2char(0xE0BB)
+" let g:signify_sign_change=nr2char(0xE0BD)
 " }}}
 
 " Required for vim-python-pep8-indent
@@ -88,7 +88,7 @@ else
     let g:syntastic_style_error_symbol = nr2char(0xE0BB)
     let g:syntastic_warning_symbol = nr2char(0xE0BE)
     let g:syntastic_style_warning_symbol = nr2char(0xE0BE)
-    
+
     hi SyntasticWarningSign ctermbg=NONE ctermfg=187
     hi SyntasticStyleWarningSign ctermbg=NONE ctermfg=187
     hi SyntasticErrorSign ctermbg=NONE ctermfg=181
