@@ -29,10 +29,6 @@ Plugin 'tomtom/tcomment_vim'
 " Syntax checker
 Plugin 'scrooloose/syntastic'
 
-" Snippets
-Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
-
 " Git
 Plugin 'mhinz/vim-signify'
 Plugin 'tpope/vim-fugitive'
