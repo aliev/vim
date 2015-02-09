@@ -37,7 +37,12 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'davidhalter/jedi-vim'
 
 " Color scheme
-Plugin 'jonathanfilip/vim-lucius'
+Plugin 'flazz/vim-colorschemes'
+
+" Snippets
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
+Plugin 'mattn/emmet-vim'
 
 " Python indent for vim
 Plugin 'hynek/vim-python-pep8-indent'

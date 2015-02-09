@@ -30,14 +30,6 @@ let g:indentLine_faster=1
 let g:indentLine_char=nr2char(0xE0A3)
 " }}}
 
-" {{{ Signify
-" Signify characters
-" let g:signify_sign_add=nr2char(0xE0B9)
-" let g:signify_sign_delete=nr2char(0xE0BA)
-" let g:signify_sign_delete_first_line=nr2char(0xE0BB)
-" let g:signify_sign_change=nr2char(0xE0BD)
-" }}}
-
 " Required for vim-python-pep8-indent
 let g:pymode_indent = 0
 " UltiSnips
@@ -56,17 +48,15 @@ hi! link SignifySignAdd FoldColumn
 hi! link SignifySignChange FoldColumn
 hi! link SignifySignDelete FoldColumn
 hi! link SignifySignChangeDelete FoldCoumn
-
 hi! link SignColumn FoldColumn
-
 " Disable background and foreground for vertical split
 hi vertsplit ctermbg=NONE guibg=NONE
-
 hi! link Folded ColorColumn
+hi! link Error SpellBad
 
 " Syntastic options {{{
 " Syntax check mode for python (pip install pylama)
-let g:syntastic_python_checkers = ['pylama']
+let g:syntastic_python_checkers = ['flake8']
 
 " Syntax check mode for javascript (npm install jslint)
 let g:syntastic_javascript_checkers = ['jslint']
@@ -75,27 +65,4 @@ let g:syntastic_javascript_checkers = ['jslint']
 " when the file opens
 let g:syntastic_always_populate_loc_list=1
 let g:syntastic_check_on_open=1
-
-if has('gui_running')
-    let g:syntastic_enable_signs=0
-    hi! link Error SpellBad
-else
-    " Enable signs for not gui vim
-    let g:syntastic_enable_signs=1
-
-    " Show icons for error and warning symbols
-    let g:syntastic_error_symbol = nr2char(0xE0BB)
-    let g:syntastic_style_error_symbol = nr2char(0xE0BB)
-    let g:syntastic_warning_symbol = nr2char(0xE0BE)
-    let g:syntastic_style_warning_symbol = nr2char(0xE0BE)
-
-    hi SyntasticWarningSign ctermbg=NONE ctermfg=187
-    hi SyntasticStyleWarningSign ctermbg=NONE ctermfg=187
-    hi SyntasticErrorSign ctermbg=NONE ctermfg=181
-    hi SyntasticStyleErrorSign ctermbg=NONE ctermfg=181
-
-    hi SyntasticStyleError ctermbg=NONE ctermfg=NONE
-    hi SyntasticError ctermbg=NONE ctermfg=NONE
-    hi SyntasticWarning ctermbg=NONE ctermfg=NONE
-endif
-" }}}
+let g:syntastic_enable_signs=0
