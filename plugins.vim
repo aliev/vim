@@ -30,8 +30,9 @@ Plugin 'tomtom/tcomment_vim'
 Plugin 'scrooloose/syntastic'
 
 " Git
-Plugin 'mhinz/vim-signify'
+Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-fugitive'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
 
 " Jedi for comfortable development with python
 Plugin 'davidhalter/jedi-vim'
