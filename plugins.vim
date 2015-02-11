@@ -53,3 +53,5 @@ Plugin 'lukaszb/vim-web-indent'
 " Scripts collection for comfortable work
 " with python and vim
 Plugin 'aliev/vim-comfortable'
+
+Plugin 'ryanoasis/vim-webdevicons'

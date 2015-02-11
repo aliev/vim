@@ -7,17 +7,13 @@ if has("gui_running") " {{{
     syntax on           " syntax-highlighting
     set background=dark " Backgroud
     colors lucius       " Color scheme
-    set guioptions=g    " Disable all GUI elements
-    set guioptions+=c   " Enable Console-based dialogs for simple queries
-    set guifont=Menlo\ Regular\ for\ Powerline:h13
+    set guioptions=gc   " Disable all GUI elements and enable console based dialogs for simple queries
+    set guifont=Literation\ Mono\ Powerline\ Plus\ Nerd\ File\ Types:h13
 else
     syntax on
     set t_Co=256
     set background=dark
     colors lucius
-
-    " Disable timeout for Esc key
-    set ttimeout ttimeoutlen=0 notimeout
 
     " Set the cursor to a vertical line in insert mode
     " and a solid block in command mode
@@ -82,6 +78,9 @@ if has("autocmd") " {{{
     au FileType javascript setlocal expandtab shiftwidth=2 tabstop=8
 endif
 " }}}
+
+" Disable timeout for Esc key
+set ttimeout ttimeoutlen=0 notimeout
 
 " Autocomplete options:
 " do not select the first candidate
