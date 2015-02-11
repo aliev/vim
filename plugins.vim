@@ -55,4 +55,8 @@ Plugin 'lukaszb/vim-web-indent'
 " with python and vim
 Plugin 'aliev/vim-comfortable'
 
+" Icons support for nerdtree and vim-airline
 Plugin 'ryanoasis/vim-webdevicons'
+
+" Virtualenv
+Plugin 'jmcantrell/vim-virtualenv'

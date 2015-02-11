@@ -42,12 +42,7 @@ let g:UltiSnipsJumpForwardTrigger='<tab>'
 " Disable colors for folding column
 hi FoldColumn ctermbg=NONE guibg=NONE
 
-" Signify colors
-
-hi! link SignifySignAdd FoldColumn
-hi! link SignifySignChange FoldColumn
-hi! link SignifySignDelete FoldColumn
-hi! link SignifySignChangeDelete FoldCoumn
+" Sign colors
 hi! link SignColumn FoldColumn
 " Disable background and foreground for vertical split
 hi vertsplit ctermbg=NONE guibg=NONE
