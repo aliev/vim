@@ -4,6 +4,7 @@
 map <leader>f :CtrlP<CR>
 map <leader>b :CtrlPBuffer<CR>
 map <leader>s :CtrlPBufTag<CR>
+map <leader>u :GitGutterRevertHunk<CR>
 
 " File autocomplte
 imap <leader>f <c-x><c-f>
