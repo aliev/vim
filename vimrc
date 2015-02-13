@@ -8,7 +8,7 @@ if has("gui_running") " {{{
     set background=dark " Backgroud
     colors lucius       " Color scheme
     set guioptions=gc   " Disable all GUI elements and enable console based dialogs for simple queries
-    set guifont=Literation\ Mono\ Powerline\ Plus\ Nerd\ File\ Types:h13
+    set guifont=Droid\ Sans\ Mono\ For\ Powerline\ Plus\ Nerd\ File\ Types:h14
 else
     syntax on
     set t_Co=256
