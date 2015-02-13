@@ -168,6 +168,9 @@ set foldmethod=indent " Folding method by default
 
 set foldlevel=3 " Folding level
 
+" Python path for neovim
+let g:python_host_prog='/usr/bin/python'
+
 set path=.,,**
 
 " Store swap, backup and undo files in fixed location
@@ -176,5 +179,6 @@ set backupdir=/var/tmp//,/tmp//,.
 set undodir=/var/tmp//,/tmp//,.
 
 " Another stuff (plugins configurations, keymaps and colors)
+
 source ~/.vim/stuff.vim
 source ~/.vim/keys.vim
