@@ -19,17 +19,6 @@ sudo pip install pylama
 
 # Syntax check for javascript users
 sudo npm install -g jslint
-
-# Tern library for javascript
-cd ~/.vim/bundle/tern_for_vim/
-sudo npm install tern
-```
-
-# Installing YouCompleteMe
-
-```
-cd ~/.vim/bundle/YouCompleteMe/
-./install.sh
 ```
 
 ## For Mac users
@@ -127,12 +116,9 @@ sudo apt-get install exuberant-ctags
 
 https://github.com/abertsch/Menlo-for-Powerline
 
-### Prezto (awesome zsh configuration)
+or you can install ready fonts from the root of my repository
 
-https://github.com/sorin-ionescu/prezto
-
-
-### Oh-my-zsh (my favorite configuration)
+### Oh-my-zsh
 
 Note: If tmux will not recognize the fonts, uncomment the following line to the file. zshrc
 
@@ -143,7 +129,7 @@ export LANG=en_EN.UTF-8
 
 To console has become even more beautiful, you can use the following extensions
 
-Zsh substring search
+Zsh history substring search
 https://github.com/zsh-users/zsh-history-substring-search
 
 Zsh asutosuggestions
@@ -157,6 +143,8 @@ An example of how I connected the extensions
 ```
 # Must be enabled before zsh-autosuggestions!
 source ~/zsh-history-substring-search/zsh-history-substring-search.zsh
+
+(If you're use oh-my-zsh just add "zsh-history-substring-search" into plugins variable)
 
 # Setup zsh-autosuggestions
 source ~/.zsh-autosuggestions/autosuggestions.zsh
@@ -190,6 +178,10 @@ https://github.com/Blackrush/vim-gocode
 
 https://github.com/marijnh/tern_for_vim
 
-### Multilanguage syntax checking
+### Beautiful icons for your vim
 
-https://github.com/scrooloose/syntastic
+https://github.com/ryanoasis/vim-webdevicons
+
+### Fonts patcher and patched fonts
+
+https://github.com/ryanoasis/nerd-filetype-glyphs-fonts-patcher
