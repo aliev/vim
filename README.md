@@ -37,10 +37,6 @@ If jedi-vim autocomplete doesn't work correctly, you must upgrade you vim to lat
 
 ## More goodies for console users
 
-### My .psqlrc config file
-
-[Here](https://gist.github.com/aliev/a25f0e8cf88fc02ef516)
-
 ### Powerline for tmux
 
 https://github.com/erikw/tmux-powerline
