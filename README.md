@@ -108,12 +108,6 @@ For Ubuntu Users:
 sudo apt-get install exuberant-ctags
 ```
 
-### Patched Menlo fonts for powerline you can get here
-
-https://github.com/abertsch/Menlo-for-Powerline
-
-or you can install ready fonts from the root of my repository
-
 ### Oh-my-zsh
 
 Note: If tmux will not recognize the fonts, uncomment the following line to the file. zshrc
@@ -181,3 +175,9 @@ https://github.com/ryanoasis/vim-webdevicons
 ### Fonts patcher and patched fonts
 
 https://github.com/ryanoasis/nerd-filetype-glyphs-fonts-patcher
+
+### Patched Menlo fonts for powerline you can get here
+
+https://github.com/abertsch/Menlo-for-Powerline
+
+or you can install ready fonts from the root of my repository
