@@ -14,11 +14,14 @@ Plugin 'bling/vim-airline'
 " CtrlP
 Plugin 'kien/ctrlp.vim'
 
-" Display indentation lines
-Plugin 'Yggdroot/indentLine'
+" NerdTree
+Plugin 'scrooloose/nerdtree'
 
-" Patched nerdtree with my fonts
-Plugin 'aliev/nerdtree'
+" Git plugin for NERDTree
+Plugin 'Xuyuanp/nerdtree-git-plugin'
+
+" Icons support for nerdtree and vim-airline
+Plugin 'aliev/vim-webdevicons'
 
 " Toggle and display marks
 Plugin 'kshenoy/vim-signature'
@@ -29,34 +32,30 @@ Plugin 'tomtom/tcomment_vim'
 " Syntax checker
 Plugin 'scrooloose/syntastic'
 
-" Git
+" Show a git diff in a sign column
 Plugin 'airblade/vim-gitgutter'
+
+" Git wrapper
 Plugin 'tpope/vim-fugitive'
-Plugin 'Xuyuanp/nerdtree-git-plugin'
 
 " Jedi for comfortable development with python
 Plugin 'davidhalter/jedi-vim'
 
-" Color scheme
+" Color schemes
 Plugin 'flazz/vim-colorschemes'
 
 " Snippets
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
-Plugin 'mattn/emmet-vim'
 
-" Python indent for vim
+" Python indent
 Plugin 'hynek/vim-python-pep8-indent'
 
-" Indentation for html/javascript
+" Html/JavaScript indent
 Plugin 'lukaszb/vim-web-indent'
 
-" Scripts collection for comfortable work
-" with python and vim
+" Display indentation lines
+Plugin 'Yggdroot/indentLine'
+
+" My scripts collection for comfortable work
 Plugin 'aliev/vim-comfortable'
-
-" Icons support for nerdtree and vim-airline
-Plugin 'ryanoasis/vim-webdevicons'
-
-" Virtualenv
-Plugin 'jmcantrell/vim-virtualenv'
