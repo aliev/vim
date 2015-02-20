@@ -181,3 +181,4 @@ https://github.com/ryanoasis/nerd-filetype-glyphs-fonts-patcher
 https://github.com/abertsch/Menlo-for-Powerline
 
 or you can install ready fonts from the root of my repository
+
