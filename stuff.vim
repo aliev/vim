@@ -61,3 +61,4 @@ let g:syntastic_javascript_checkers = ['jslint']
 let g:syntastic_always_populate_loc_list=1
 let g:syntastic_check_on_open=1
 let g:syntastic_enable_signs=0
+

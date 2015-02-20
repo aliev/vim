@@ -8,24 +8,12 @@ if has("gui_running") " {{{
     set background=dark " Backgroud
     colors lucius       " Color scheme
     set guioptions=gc   " Disable all GUI elements and enable console based dialogs for simple queries
-    set guifont=Droid\ Sans\ Mono\ For\ Powerline\ Plus\ Nerd\ File\ Types:h14
+    set guifont=Droid_Sans_Mono_For_Powerline_Plus_Nerd_File_Types:h13
 else
     syntax on
     set t_Co=256
     set background=dark
     colors lucius
-
-    " Set the cursor to a vertical line in insert mode
-    " and a solid block in command mode
-    if $TMUX == ''
-        let &t_SI = "\<Esc>P\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
-        let &t_EI = "\<Esc>P\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
-    else
-        " Enable resize vim splits inside tmux
-        set ttymouse=xterm2
-        let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
-        let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
-    endif
 endif
 " }}}
 
