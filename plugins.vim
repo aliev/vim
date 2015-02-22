@@ -17,9 +17,6 @@ Plugin 'kien/ctrlp.vim'
 " NerdTree
 Plugin 'scrooloose/nerdtree'
 
-" Git plugin for NERDTree
-Plugin 'Xuyuanp/nerdtree-git-plugin'
-
 " Icons support for nerdtree and vim-airline
 Plugin 'aliev/vim-webdevicons'
 
