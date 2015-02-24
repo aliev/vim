@@ -37,49 +37,6 @@ If jedi-vim autocomplete doesn't work correctly, you must upgrade you vim to lat
 
 ## More goodies for console users
 
-### Powerline for tmux
-
-https://github.com/erikw/tmux-powerline
-
-if you use tmux, possible for you will use the following configuration
-
-```
-# don't wait for an escape sequence after hitting
-# Esc. fixes insert mode exit lag in vim
-set -sg escape-time 0
-set -g terminal-overrides 'xterm*:smcup@:rmcup@'
-
-set-option -g default-terminal "screen-256color"
-# ---------------------
-# Enable mouse
-# ---------------------
-set -g mode-mouse on
-set -g mouse-resize-pane on
-set -g mouse-select-pane on
-set -g mouse-select-window on
-
-# No delay for escape key press
-set -sg escape-time 0
-
-set-window-option -g mode-keys vi
-bind-key -t vi-copy 'v' begin-selection
-bind-key -t vi-copy 'y' copy-selection
-```
-
-If you want to enable powerline for your tmux, you can use [this installation instruction](http://powerline.readthedocs.org/en/latest/installation.html)
-
-For example, i've installed my powerline by using command like this:
-
-```
-sudo pip install powerline
-```
-
-After installation i've added similar lines in my .tmux.conf (for os x only):
-
-```
-source /Library/Python/2.7/site-packages/Powerline-beta-py2.7.egg/powerline/bindings/tmux/powerline.conf
-```
-
 It seems all is well until it comes to using iTerm2 on OSX. Suddenly scrolling
 back in the outer terminal shows history from prior to the start of tmux. There
 are no end of suggestions about how to fix this, including "disable the status bar"
@@ -110,7 +67,7 @@ sudo apt-get install exuberant-ctags
 
 ### Oh-my-zsh
 
-Note: If tmux will not recognize the fonts, uncomment the following line to the file. zshrc
+Note: If tmux will not recognize the fonts, uncomment the following line to the file .zshrc
 
 ```
 # You may need to manually set your language environment
@@ -175,10 +132,3 @@ https://github.com/ryanoasis/vim-webdevicons
 ### Fonts patcher and patched fonts
 
 https://github.com/ryanoasis/nerd-filetype-glyphs-fonts-patcher
-
-### Patched Menlo fonts for powerline you can get here
-
-https://github.com/abertsch/Menlo-for-Powerline
-
-or you can install ready fonts from the root of my repository
-
