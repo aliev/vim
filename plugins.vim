@@ -60,3 +60,5 @@ Plugin 'aliev/vim-comfortable'
 " This plugin aims to provide the ability to change the cursor when entering
 " Vim's insert mode on terminals that support it.
 Plugin 'jszakmeister/vim-togglecursor'
+
+Plugin 'edkolev/tmuxline.vim'

@@ -37,6 +37,10 @@ If jedi-vim autocomplete doesn't work correctly, you must upgrade you vim to lat
 
 ## More goodies for console users
 
+### My tmux conf
+
+if you use tmux, possible for you will use my configuration from git repo
+
 It seems all is well until it comes to using iTerm2 on OSX. Suddenly scrolling
 back in the outer terminal shows history from prior to the start of tmux. There
 are no end of suggestions about how to fix this, including "disable the status bar"
@@ -67,7 +71,7 @@ sudo apt-get install exuberant-ctags
 
 ### Oh-my-zsh
 
-Note: If tmux will not recognize the fonts, uncomment the following line to the file .zshrc
+Note: If tmux will not recognize the fonts, uncomment the following line to the file. zshrc
 
 ```
 # You may need to manually set your language environment
@@ -132,3 +136,9 @@ https://github.com/ryanoasis/vim-webdevicons
 ### Fonts patcher and patched fonts
 
 https://github.com/ryanoasis/nerd-filetype-glyphs-fonts-patcher
+
+### Patched Menlo fonts for powerline you can get here
+
+https://github.com/abertsch/Menlo-for-Powerline
+
+or you can install ready fonts from the root of my repository
