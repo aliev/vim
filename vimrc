@@ -21,6 +21,10 @@ if has('mouse') " {{{
     set mouse=a " Mouse support
     set mousemodel=popup
     set mousehide " Hide cursor when typing
+    if &term =~ '^screen'
+        " tmux knows the extended mouse mode
+        set ttymouse=xterm2
+    endif
 endif
 " }}}
 

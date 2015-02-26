@@ -41,6 +41,8 @@ If jedi-vim autocomplete doesn't work correctly, you must upgrade you vim to lat
 
 if you use tmux, possible for you will use my configuration from git repo
 
+or you can generate your own theme by using this vim plugin https://github.com/edkolev/tmuxline.vim
+
 It seems all is well until it comes to using iTerm2 on OSX. Suddenly scrolling
 back in the outer terminal shows history from prior to the start of tmux. There
 are no end of suggestions about how to fix this, including "disable the status bar"
