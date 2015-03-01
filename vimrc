@@ -1,34 +1,36 @@
 scriptencoding utf-8
 
+syntax on " enable syntax-highlighting
+
 " Load plugins
 source ~/.vim/plugins.vim
 
-if has("gui_running") " {{{
-    syntax on           " syntax-highlighting
-    set background=dark " Backgroud
-    colors lucius       " Color scheme
+if has("gui_running")
     set guioptions=gc   " Disable all GUI elements and enable console based dialogs for simple queries
     set guifont=Droid_Sans_Mono_For_Powerline_Plus_Nerd_File_Types:h13
 else
-    syntax on
     set t_Co=256
-    set background=dark
-    colors lucius
+    " Allows cursor change in tmux mode
+    if exists('$TMUX')
+        let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+        let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+    else
+        let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+        let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+    endif
 endif
-" }}}
 
-if has('mouse') " {{{
-    set mouse=a " Mouse support
-    set mousemodel=popup
-    set mousehide " Hide cursor when typing
-    if &term =~ '^screen'
+if has('mouse')
+    set mouse=a " Enable mouse support
+    set mousemodel=popup " Use the mouse for copy/paste with popup in gui vim
+    set mousehide " Hide cursor while typing
+    if exists("$TMUX")
         " tmux knows the extended mouse mode
         set ttymouse=xterm2
     endif
 endif
-" }}}
 
-if has('multi_byte') " {{{
+if has('multi_byte')
     set listchars=tab:\ ,trail:·,eol:¶,extends:→,precedes:←,nbsp:×
     " Vertical split chars
     set fillchars=stl:\ ,stlnc:\ ,vert:│
@@ -36,9 +38,8 @@ if has('multi_byte') " {{{
           let &sbr = nr2char(8618).' ' " Show ↪ at the beginning of wrapped lines
     endif
 endif
-" }}}
 
-if has("autocmd") " {{{
+if has("autocmd")
     " Enable file type detection.
     filetype plugin indent on
 
@@ -59,9 +60,6 @@ if has("autocmd") " {{{
     " Django autocomplete options
     au FileType html set filetype=htmldjango
     au FileType htmldjango set omnifunc=htmldjangocomplete#CompleteDjango
-    au FileType htmldjango inoremap {% {%  %}<left><left><left>
-    au FileType htmldjango inoremap {{ {{  }}<left><left><left>
-    au FileType htmldjango inoremap {# {#  #}<left><left><left>
 
     " Folding by marker for vim files
     au FileType vim setlocal foldmethod=marker foldlevel=0
@@ -69,7 +67,10 @@ if has("autocmd") " {{{
     " JavaScript indentation
     au FileType javascript setlocal expandtab shiftwidth=2 tabstop=8
 endif
-" }}}
+
+set background=dark " Backgroud
+
+colors lucius " Color scheme
 
 " Disable timeout for Esc key
 set ttimeout ttimeoutlen=0 notimeout
@@ -171,6 +172,5 @@ set backupdir=/var/tmp//,/tmp//,.
 set undodir=/var/tmp//,/tmp//,.
 
 " Another stuff (plugins configurations, keymaps and colors)
-
 source ~/.vim/stuff.vim
 source ~/.vim/keys.vim
