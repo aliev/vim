@@ -56,3 +56,6 @@ Plugin 'Yggdroot/indentLine'
 
 " My scripts collection for comfortable work
 Plugin 'aliev/vim-comfortable'
+
+" PostgreSQL syntax support
+Plugin 'exu/pgsql.vim'
