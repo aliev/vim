@@ -119,6 +119,8 @@ set tabstop=4 " 1 tab == 4 spaces
 
 set shiftwidth=4
 
+set backspace=2
+
 set smarttab " Be smart when using tabs
 
 set autoindent " Enable auto indent

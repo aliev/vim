@@ -36,7 +36,7 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-fugitive'
 
 " Jedi for comfortable development with python
-Plugin 'davidhalter/jedi-vim'
+Plugin 'davidhalter/jedi-vim', {'v': 'dev'}
 
 " Color schemes
 Plugin 'flazz/vim-colorschemes'
