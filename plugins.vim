@@ -59,3 +59,6 @@ Plugin 'aliev/vim-comfortable'
 
 " PostgreSQL syntax support
 Plugin 'exu/pgsql.vim'
+
+" Match parent
+Plugin 'vim-scripts/matchparenpp'

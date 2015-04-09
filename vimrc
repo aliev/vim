@@ -73,7 +73,9 @@ set background=dark " Backgroud
 colors lucius " Color scheme
 
 " Disable timeout for Esc key
-set ttimeout ttimeoutlen=0 notimeout
+set ttimeout
+set ttimeoutlen=0
+set notimeout
 
 " Autocomplete options:
 " do not select the first candidate
@@ -101,7 +103,7 @@ set ignorecase " Searches are Non Case-sensitive
 
 set smartcase " Do smart case matching when searching
 
-set showmatch " Show matching brackets when text indicator is over them
+"set showmatch " Show matching brackets when text indicator is over them
 
 set showcmd " Show incomplete cmds down the bottom
 
