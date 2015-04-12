@@ -178,3 +178,8 @@ set undodir=/var/tmp//,/tmp//,.
 " Another stuff (plugins configurations, keymaps and colors)
 source ~/.vim/stuff.vim
 source ~/.vim/keys.vim
+
+" If neovim invlude neovim configurations
+if has("nvim")
+    source ~/.vim/nvim.vim
+endif
