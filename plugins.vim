@@ -11,12 +11,6 @@ Plugin 'gmarik/vundle'
 " Utils
 Plugin 'bling/vim-airline'
 
-" CtrlP
-Plugin 'kien/ctrlp.vim'
-
-" NerdTree
-Plugin 'scrooloose/nerdtree'
-
 " Icons support for nerdtree and vim-airline
 Plugin 'aliev/vim-webdevicons'
 

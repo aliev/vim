@@ -18,11 +18,6 @@ let g:jedi#popup_select_first = 0
 let g:jedi#popup_on_dot = 1
 " }}}
 
-" {{{ NERDTree
-let g:NERDTreeMinimalUI=1
-let NERDTreeIgnore = ['\.pyc$']
-" }}}
-
 " {{{ Indent-line
 " Make indent line faster
 let g:indentLine_faster=1
