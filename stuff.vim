@@ -58,3 +58,7 @@ let g:syntastic_check_on_open=1
 let g:syntastic_enable_signs=0
 
 let g:airline_section_c = '%t'
+
+let g:webdevicons_enable_nerdtree = 0
+let NERDTreeMinimalUI = 1
+let NERDTreeIgnore = ['\.pyc$']

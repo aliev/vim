@@ -56,3 +56,13 @@ Plugin 'exu/pgsql.vim'
 
 " Match parent
 Plugin 'vim-scripts/matchparenpp'
+
+" NERDTree
+Plugin 'scrooloose/nerdtree'
+
+" Git support for NERDTree
+Plugin 'Xuyuanp/nerdtree-git-plugin'
+
+" CtrlP
+Plugin 'kien/ctrlp.vim'
+
