@@ -1,9 +1,6 @@
 " alksdjaksl
 " Keymaps
 
-" File autocomplte
-imap <leader>f <c-x><c-f>
-
 " Default autocomplete keymap
 imap <leader>c <c-x><c-o>
 

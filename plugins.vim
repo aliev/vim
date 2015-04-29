@@ -35,10 +35,6 @@ Plugin 'davidhalter/jedi-vim', {'v': 'dev'}
 " Color schemes
 Plugin 'flazz/vim-colorschemes'
 
-" Snippets
-Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
-
 " Python indent
 Plugin 'hynek/vim-python-pep8-indent'
 
@@ -51,10 +47,7 @@ Plugin 'Yggdroot/indentLine'
 " My scripts collection for comfortable work
 Plugin 'aliev/vim-comfortable'
 
-" PostgreSQL syntax support
-Plugin 'exu/pgsql.vim'
-
-" Match parent
+" Match parent (instead of default)
 Plugin 'vim-scripts/matchparenpp'
 
 " NERDTree
