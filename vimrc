@@ -78,8 +78,9 @@ set ttimeoutlen=0
 set notimeout
 
 " Autocomplete options:
-" do not select the first candidate
-set completeopt=menuone,longest
+" longest: do not select the first candidate
+" set completeopt=menuone,longest
+set completeopt=menuone,longest,preview
 
 set confirm " Get a dialog when :q, :w, or :wq fails
 
