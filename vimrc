@@ -2,9 +2,6 @@ scriptencoding utf-8
 
 syntax on " enable syntax-highlighting
 
-" Load plugins
-source ~/.vim/plugins.vim
-
 if has("gui_running")
     set guioptions=gc   " Disable all GUI elements and enable console based dialogs for simple queries
     set guifont=Droid_Sans_Mono_For_Powerline_Plus_Nerd_File_Types:h13
@@ -69,8 +66,6 @@ if has("autocmd")
 endif
 
 set background=dark " Backgroud
-
-colors lucius " Color scheme
 
 " Disable timeout for Esc key
 set ttimeout
@@ -176,11 +171,30 @@ set dir=/var/tmp//,/tmp//,.
 set backupdir=/var/tmp//,/tmp//,.
 set undodir=/var/tmp//,/tmp//,.
 
-" Another stuff (plugins configurations, keymaps and colors)
-source ~/.vim/stuff.vim
-source ~/.vim/keys.vim
+if filereadable(expand('~/.vim/plugins.vim'))
+    " Load plugins
+    source ~/.vim/plugins.vim
+endif
+
+if filereadable(expand('~/.vim/options.vim'))
+    " Load Another stuff (plugins configurations, keymaps and colors)
+    source ~/.vim/options.vim
+endif
+
+if filereadable(expand('~/.vim/keys.vim'))
+    " Load keymaps
+    source ~/.vim/keys.vim
+endif
+
+if filereadable(expand('~/.vim/fzf.vim'))
+    " Load fzf options
+    source ~/.vim/fzf.vim
+endif
 
 " If neovim invlude neovim configurations
 if has("nvim")
-    source ~/.vim/nvim.vim
+    " Load NeoVim configurations
+    if filereadable('~/.vim/nvim.vim')
+        source ~/.vim/nvim.vim
+    endif
 endif

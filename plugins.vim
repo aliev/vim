@@ -30,7 +30,7 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-fugitive'
 
 " Jedi for comfortable development with python
-Plugin 'davidhalter/jedi-vim', {'v': 'dev'}
+Plugin 'davidhalter/jedi-vim'
 
 " Color schemes
 Plugin 'flazz/vim-colorschemes'
@@ -55,7 +55,3 @@ Plugin 'scrooloose/nerdtree'
 
 " Git support for NERDTree
 Plugin 'Xuyuanp/nerdtree-git-plugin'
-
-" CtrlP
-Plugin 'kien/ctrlp.vim'
-
