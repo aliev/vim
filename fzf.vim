@@ -57,8 +57,3 @@ command! -nargs=1 Ag call fzf#run({
 \ 'options': '--ansi --expect=ctrl-t,ctrl-v,ctrl-x --no-multi',
 \ 'down':    '50%'
 \ })
-
-command! -bar FZFTags if !empty(tagfiles()) | call fzf#run({
-\   'source': "sed '/^\\!/d;s/\t.*//' " . join(tagfiles()) . ' | uniq',
-\   'sink':   'tag',
-\ }) | else | echo 'Preparing tags' | call system('ctags -R') | FZFTag | endif
