@@ -23,7 +23,10 @@ if has('mouse')
     set mousehide " Hide cursor while typing
     if exists("$TMUX")
         " tmux knows the extended mouse mode
-        set ttymouse=xterm2
+        if has('nvim')
+        else
+            set ttymouse=xterm2
+        endif
     endif
 endif
 

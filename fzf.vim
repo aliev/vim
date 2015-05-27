@@ -40,21 +40,25 @@ nnoremap <silent><Leader>C :call fzf#run({
 
 nnoremap <leader>f :FZF<CR>
 
-function! s:escape(path)
-  return substitute(a:path, ' ', '\\ ', 'g')
+function! s:ag_handler(lines)
+  if len(a:lines) < 2 | return | endif
+
+  let [key, line] = a:lines[0:1]
+  let [file, line, col] = split(line, ':')[0:2]
+  let cmd = get({'ctrl-x': 'split', 'ctrl-v': 'vertical split', 'ctrl-t': 'tabe'}, key, 'e')
+  execute cmd escape(file, ' %#\')
+  execute line
+  execute 'normal!' col.'|zz'
 endfunction
 
-function! AgHandler(line)
-  let parts = split(a:line, ':')
-  let [fn, lno] = parts[0 : 1]
-  execute 'e '. s:escape(fn)
-  execute lno
-  normal! zz
-endfunction
-
-command! -nargs=+ Ag call fzf#run({
-  \ 'source': 'ag "<args>"',
-  \ 'sink': function('AgHandler'),
-  \ 'options': '+m',
-  \ 'tmux_height': '40%'
+command! -nargs=1 Ag call fzf#run({
+\ 'source':  'ag --nogroup --column --color "'.escape(<q-args>, '"\').'"',
+\ 'sink*':    function('<sid>ag_handler'),
+\ 'options': '--ansi --expect=ctrl-t,ctrl-v,ctrl-x --no-multi',
+\ 'down':    '50%'
 \ })
+
+command! -bar FZFTags if !empty(tagfiles()) | call fzf#run({
+\   'source': "sed '/^\\!/d;s/\t.*//' " . join(tagfiles()) . ' | uniq',
+\   'sink':   'tag',
+\ }) | else | echo 'Preparing tags' | call system('ctags -R') | FZFTag | endif

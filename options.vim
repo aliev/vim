@@ -57,3 +57,5 @@ let g:airline_section_c = '%t'
 let g:webdevicons_enable_nerdtree = 0
 let NERDTreeMinimalUI = 1
 let NERDTreeIgnore = ['\.pyc$']
+
+let g:gitgutter_max_signs=10000
