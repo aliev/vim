@@ -55,3 +55,5 @@ Plugin 'scrooloose/nerdtree'
 
 " Git support for NERDTree
 Plugin 'Xuyuanp/nerdtree-git-plugin'
+
+Plugin 'edkolev/promptline.vim'

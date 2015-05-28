@@ -59,3 +59,6 @@ let NERDTreeMinimalUI = 1
 let NERDTreeIgnore = ['\.pyc$']
 
 let g:gitgutter_max_signs=10000
+
+
+let g:netrw_liststyle=3
