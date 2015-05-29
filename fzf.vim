@@ -1,4 +1,4 @@
-set rtp+=/usr/local/Cellar/fzf/0.9.11
+set rtp+=~/.fzf
 
 " Open files in horizontal split
 nnoremap <silent> <Leader>s :call fzf#run({
