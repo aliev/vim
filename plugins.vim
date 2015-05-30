@@ -56,6 +56,4 @@ Plugin 'scrooloose/nerdtree'
 " Git support for NERDTree
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 
-Plugin 'diepm/vim-rest-console'
-
-Plugin 'mjbrownie/vim-htmldjango_omnicomplete'
+Plugin 'kien/ctrlp.vim'

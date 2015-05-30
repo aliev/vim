@@ -189,11 +189,6 @@ if filereadable(expand('~/.vim/keys.vim'))
     source ~/.vim/keys.vim
 endif
 
-if filereadable(expand('~/.vim/fzf.vim'))
-    " Load fzf options
-    source ~/.vim/fzf.vim
-endif
-
 " If neovim invlude neovim configurations
 if has("nvim")
     " Load NeoVim configurations
