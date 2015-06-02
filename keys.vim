@@ -1,8 +1,5 @@
 " Keymaps
 
-" Double Esc for clear search history
-nnoremap <silent> jj :nohl<CR>
-
 " Goto file with line number under cursor
 nnoremap gf gF
 
