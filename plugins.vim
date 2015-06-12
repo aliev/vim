@@ -61,3 +61,11 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'mileszs/ack.vim'
 
 Plugin 'rking/ag.vim'
+
+Plugin 'mattn/emmet-vim'
+
+Plugin 'SirVer/ultisnips'
+
+Plugin 'honza/vim-snippets'
+
+Plugin 'terryma/vim-multiple-cursors'

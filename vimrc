@@ -106,8 +106,6 @@ set smartcase " Do smart case matching when searching
 
 set showcmd " Show incomplete cmds down the bottom
 
-set noshowmode " Do not show current mode down the bottom (we use vim-airline)
-
 set title " Show title
 
 set acd " Vim will change the current working directory whenever you open a file
@@ -196,3 +194,5 @@ if has("nvim")
         source ~/.vim/nvim.vim
     endif
 endif
+
+set noshowmode " Suppress mode change messages

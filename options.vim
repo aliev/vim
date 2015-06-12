@@ -9,8 +9,7 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline#extensions#tabline#buffer_nr_show = 1
 
 " Jedi-vim
-" Disabple showing function call signature
-let g:jedi#show_call_signatures = 0
+let g:jedi#show_call_signatures = 2
 let g:jedi#use_tabs_not_buffers = 0
 let g:jedi#popup_on_dot = 1
 
@@ -59,6 +58,3 @@ let NERDTreeMinimalUI = 1
 let NERDTreeIgnore = ['\.pyc$']
 
 let g:gitgutter_max_signs=10000
-
-
-let g:netrw_liststyle=3
