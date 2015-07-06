@@ -1,5 +1,7 @@
 " Plugins options
 
+set rtp+=~/.fzf
+
 " Airline
 let g:airline_powerline_fonts = 1 " Use airline fonts
 " If you want to auto-completion to work stable in older vim, disable this option
@@ -58,3 +60,21 @@ let NERDTreeMinimalUI = 1
 let NERDTreeIgnore = ['\.pyc$']
 
 let g:gitgutter_max_signs=10000
+
+function! s:ag_handler(lines)
+  if len(a:lines) < 2 | return | endif
+
+  let [key, line] = a:lines[0:1]
+  let [file, line, col] = split(line, ':')[0:2]
+  let cmd = get({'ctrl-x': 'split', 'ctrl-v': 'vertical split', 'ctrl-t': 'tabe'}, key, 'e')
+  execute cmd escape(file, ' %#\')
+  execute line
+  execute 'normal!' col.'|zz'
+endfunction
+
+command! -nargs=1 Ag call fzf#run({
+\ 'source':  'ag --nogroup --column --color "'.escape(<q-args>, '"\').'"',
+\ 'sink*':    function('<sid>ag_handler'),
+\ 'options': '--ansi --expect=ctrl-t,ctrl-v,ctrl-x --no-multi --color hl:68,hl+:110',
+\ 'down':    '50%'
+\ })

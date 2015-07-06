@@ -58,10 +58,6 @@ Plugin 'Xuyuanp/nerdtree-git-plugin'
 
 Plugin 'kien/ctrlp.vim'
 
-Plugin 'mileszs/ack.vim'
-
-Plugin 'rking/ag.vim'
-
 Plugin 'mattn/emmet-vim'
 
 Plugin 'SirVer/ultisnips'
