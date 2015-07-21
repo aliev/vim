@@ -17,6 +17,12 @@ else
     endif
 endif
 
+if has("nvim")
+    " NeoVim specific configurations
+    tnoremap <Esc> <C-\><C-n>
+    let g:python_host_prog='/usr/bin/python'
+endif
+
 if has('mouse')
     set mouse=a " Enable mouse support
     set mousemodel=popup " Use the mouse for copy/paste with popup in gui vim
@@ -185,14 +191,6 @@ endif
 if filereadable(expand('~/.vim/keys.vim'))
     " Load keymaps
     source ~/.vim/keys.vim
-endif
-
-" If neovim invlude neovim configurations
-if has("nvim")
-    " Load NeoVim configurations
-    if filereadable('~/.vim/nvim.vim')
-        source ~/.vim/nvim.vim
-    endif
 endif
 
 set noshowmode " Suppress mode change messages

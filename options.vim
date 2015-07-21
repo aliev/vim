@@ -26,6 +26,8 @@ let g:pymode_indent = 0
 " UltiSnips
 let g:UltiSnipsJumpForwardTrigger='<tab>'
 
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|^.git$\|_site|^.pyc$'
+
 " Color options
 
 colors lucius " Color scheme
@@ -61,20 +63,38 @@ let NERDTreeIgnore = ['\.pyc$']
 
 let g:gitgutter_max_signs=10000
 
+function! s:ag_to_qf(line)
+  let parts = split(a:line, ':')
+  return {'filename': parts[0], 'lnum': parts[1], 'col': parts[2],
+        \ 'text': join(parts[3:], ':')}
+endfunction
+
 function! s:ag_handler(lines)
   if len(a:lines) < 2 | return | endif
 
-  let [key, line] = a:lines[0:1]
-  let [file, line, col] = split(line, ':')[0:2]
-  let cmd = get({'ctrl-x': 'split', 'ctrl-v': 'vertical split', 'ctrl-t': 'tabe'}, key, 'e')
-  execute cmd escape(file, ' %#\')
-  execute line
-  execute 'normal!' col.'|zz'
+  let cmd = get({'ctrl-x': 'split',
+               \ 'ctrl-v': 'vertical split',
+               \ 'ctrl-t': 'tabe'}, a:lines[0], 'e')
+  let list = map(a:lines[1:], 's:ag_to_qf(v:val)')
+
+  let first = list[0]
+  execute cmd escape(first.filename, ' %#\')
+  execute first.lnum
+  execute 'normal!' first.col.'|zz'
+
+  if len(list) > 1
+    call setqflist(list)
+    copen
+    wincmd p
+  endif
 endfunction
 
-command! -nargs=1 Ag call fzf#run({
-\ 'source':  'ag --nogroup --column --color "'.escape(<q-args>, '"\').'"',
+command! -nargs=* Ag call fzf#run({
+\ 'source':  printf('ag --nogroup --column --color "%s"',
+\                   escape(empty(<q-args>) ? '^(?=.)' : <q-args>, '"\')),
 \ 'sink*':    function('<sid>ag_handler'),
-\ 'options': '--ansi --expect=ctrl-t,ctrl-v,ctrl-x --no-multi --color hl:68,hl+:110',
+\ 'options': '--ansi --expect=ctrl-t,ctrl-v,ctrl-x '.
+\            '--multi --bind ctrl-a:select-all,ctrl-d:deselect-all '.
+\            '--color hl:68,hl+:110',
 \ 'down':    '50%'
 \ })

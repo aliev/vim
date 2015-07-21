@@ -56,7 +56,7 @@ Plugin 'scrooloose/nerdtree'
 " Git support for NERDTree
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 
-Plugin 'kien/ctrlp.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
 
 Plugin 'mattn/emmet-vim'
 
@@ -65,3 +65,5 @@ Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 
 Plugin 'terryma/vim-multiple-cursors'
+
+Plugin 'junegunn/goyo.vim'
