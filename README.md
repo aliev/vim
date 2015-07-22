@@ -55,20 +55,39 @@ taken from here http://dan.carley.co/blog/2013/01/11/tmux-scrollback-with-iterm2
 
 Enable clipboard between the Mac OS and tmux: https://github.com/ChrisJohnsen/tmux-MacOSX-pasteboard
 
-### CtrlP Note
+### FZF Note
 
-To work correctly CtrlPBufTag you must install exuberant ctags.
+To work correctly BTags and Ag commands you must install exuberant ctags, silver searcher, and fzf:
 
 For MacOS X Users:
 
 ```
 brew install ctags
+brew install ag
 ```
 
 For Ubuntu Users:
 
 ```
 sudo apt-get install exuberant-ctags
+apt-get install silversearcher-ag
+```
+
+FZF installation instructions you can find ![here](https://github.com/junegunn/fzf)
+
+My ~/.agignore file
+
+```
+*.pdf
+*.pyc
+*.png
+```
+
+Ag much more quickly than find (default in fzf). you can replace find to ag for fzf as follows:
+
+```
+# Setting ag as the default source for fzf
+export FZF_DEFAULT_COMMAND='ag -l -g ""'
 ```
 
 ### Oh-my-zsh
@@ -110,34 +129,6 @@ zle -N zle-line-init
 
 source ~/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 ```
-
-### Vim indent line
-
-https://github.com/Yggdroot/indentLine
-
-Note, option:
-
-```
-let g:indentLine_faster=1
-```
-
-will speed up the indentLine
-
-### Vim GoCode (like jedi-vim for golang)
-
-https://github.com/Blackrush/vim-gocode
-
-### Tern based JavaScript editing
-
-https://github.com/marijnh/tern_for_vim
-
-### Beautiful icons for your vim
-
-https://github.com/ryanoasis/vim-webdevicons
-
-### Fonts patcher and patched fonts
-
-https://github.com/ryanoasis/nerd-filetype-glyphs-fonts-patcher
 
 ### Patched Menlo fonts for powerline you can get here
 
