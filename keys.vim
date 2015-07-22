@@ -13,6 +13,5 @@ nnoremap <silent> <Leader>l :set list!<CR>
 nnoremap <silent> <Leader>w :confirm :Bclose<CR>
 
 " CtrlP
-nnoremap <silent> <Leader>f :CtrlP<CR>
-nnoremap <silent> <Leader>b :CtrlPBuffer<CR>
-nnoremap <silent> <Leader>s :CtrlPBufTag<CR>
+nnoremap <silent> <Leader>f :FZF<CR>
+nnoremap <silent> <Leader>s :BTags<CR>

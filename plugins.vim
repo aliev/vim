@@ -56,8 +56,6 @@ Plugin 'scrooloose/nerdtree'
 " Git support for NERDTree
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 
-Plugin 'ctrlpvim/ctrlp.vim'
-
 Plugin 'mattn/emmet-vim'
 
 Plugin 'SirVer/ultisnips'
