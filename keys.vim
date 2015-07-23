@@ -11,7 +11,4 @@ nnoremap <silent> <Leader>l :set list!<CR>
 
 " Close buffer with ask save it
 nnoremap <silent> <Leader>w :confirm :Bclose<CR>
-
-" CtrlP
-nnoremap <silent> <Leader>f :FZF<CR>
 nnoremap <silent> <Leader>s :BTags<CR>
