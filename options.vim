@@ -133,14 +133,14 @@ function! s:btags_sink(line)
           exec arr[-1]
       endif
   endfor
-  "execute split(a:line, "\t")[2]
+  sil! norm! zvzz
 endfunction
 
 function! s:btags()
   try
     call fzf#run({'source':  s:btags_source(),
-                 \'down':    '40%',
-                 \'options': '+m -d "\t" --with-nth 1,4..',
+                 \'down':    '50%',
+                 \'options': '+m -d "\t" --with-nth 4,1',
                  \'sink':    function('s:btags_sink')})
   catch
     echohl WarningMsg
