@@ -150,10 +150,6 @@ set wildignore+=*.o,*.pyc,*.jpg,*.png,*.gif,*.db,*.obj,.git " Ignore compiled fi
 
 set conceallevel=2 " Conceal level
 
-set foldmethod=indent " Folding method
-
-set foldlevel=3 " Folding level
-
 set modelines=1 " Make Vim only use folding settings for current file
 
 " Disable default Python indentation
