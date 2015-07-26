@@ -61,9 +61,6 @@ if has("autocmd")
     " http://stackoverflow.com/questions/2063175/vim-insert-mode-comments-go-to-start-of-line
     au FileType python setlocal expandtab shiftwidth=4 tabstop=8 nosmartindent nofoldenable
 
-    " Folding by marker for vim files
-    au FileType vim setlocal foldmethod=marker foldlevel=0
-
     " JavaScript indentation
     au FileType javascript setlocal expandtab shiftwidth=2 tabstop=8
 endif
@@ -153,10 +150,13 @@ set wildignore+=*.o,*.pyc,*.jpg,*.png,*.gif,*.db,*.obj,.git " Ignore compiled fi
 
 set conceallevel=2 " Conceal level
 
-set foldmethod=indent " Folding method by default
+set foldmethod=indent " Folding method
 
 set foldlevel=3 " Folding level
 
+set modelines=1 " Make Vim only use folding settings for current file
+
+" Disable default Python indentation
 " Required for vim-python-pep8-indent
 let g:pymode_indent = 0
 

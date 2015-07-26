@@ -240,3 +240,5 @@ command! FZFLines call fzf#run({
 \   'down':    '60%'
 \})
 " }}}
+
+" vim:foldmethod=marker:foldlevel=0
