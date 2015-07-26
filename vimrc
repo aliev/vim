@@ -56,9 +56,6 @@ if has("autocmd")
     " Auto complete options for Python (we use jedi by default)
     au FileType python set omnifunc=jedi#completions
 
-    " Auto complete options for JavaScript
-    au FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-
     " Python indentation
     " About nosmartindent please look this link
     " http://stackoverflow.com/questions/2063175/vim-insert-mode-comments-go-to-start-of-line
@@ -160,8 +157,8 @@ set foldmethod=indent " Folding method by default
 
 set foldlevel=3 " Folding level
 
-" Python path for neovim
-let g:python_host_prog='/usr/bin/python'
+" Required for vim-python-pep8-indent
+let g:pymode_indent = 0
 
 " FZF path
 set rtp+=~/.fzf
@@ -174,7 +171,7 @@ set backupdir=/var/tmp//,/tmp//,.
 set undodir=/var/tmp//,/tmp//,.
 
 if filereadable(expand('~/.vim/plugins.vim'))
-    " Load plugins list
+    " Load plugins
     source ~/.vim/plugins.vim
 endif
 

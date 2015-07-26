@@ -1,5 +1,3 @@
-" Plugins options
-
 " Airline {{{
 let g:airline_powerline_fonts = 1 " Use airline fonts
 " If you want to auto-completion to work stable in older vim, disable this option
@@ -22,10 +20,24 @@ let g:indentLine_faster=1
 let g:indentLine_char=nr2char(0xE0A3)
 " }}}
 
-" Required for vim-python-pep8-indent
-let g:pymode_indent = 0
-" UltiSnips
-let g:UltiSnipsJumpForwardTrigger='<tab>'
+" Syntastic {{{
+" Syntax check mode for python (pip install pylama)
+let g:syntastic_python_checkers = ['flake8']
+
+" Syntax check mode for javascript (npm install jslint)
+let g:syntastic_javascript_checkers = ['jslint']
+
+" Make syntastic auto update the location list and make it also check
+" when the file opens
+let g:syntastic_always_populate_loc_list=1
+let g:syntastic_check_on_open=1
+let g:syntastic_enable_signs=0
+" }}}
+
+" NERDTree {{{
+let NERDTreeMinimalUI = 1
+let NERDTreeIgnore = ['\.pyc$']
+" }}}
 
 " Color options {{{
 colors lucius " Color scheme
@@ -41,44 +53,39 @@ hi! link Folded ColorColumn
 hi! link Error SpellBad
 " }}}
 
-" Syntastic options {{{
-" Syntax check mode for python (pip install pylama)
-let g:syntastic_python_checkers = ['flake8']
-
-" Syntax check mode for javascript (npm install jslint)
-let g:syntastic_javascript_checkers = ['jslint']
-
-" Make syntastic auto update the location list and make it also check
-" when the file opens
-let g:syntastic_always_populate_loc_list=1
-let g:syntastic_check_on_open=1
-let g:syntastic_enable_signs=0
+" UltiSnips {{{
+let g:UltiSnipsJumpForwardTrigger='<tab>'
 " }}}
 
-
+" Aurline {{{
 let g:airline_section_c = '%t'
+" }}}
 
+" WebDevIcons {{{
 let g:webdevicons_enable_nerdtree = 0
-let NERDTreeMinimalUI = 1
-let NERDTreeIgnore = ['\.pyc$']
+" }}}
 
+" GitGutter {{{
 let g:gitgutter_max_signs=10000
+" }}}
 
-" Keymaps
-
-" Goto file with line number under cursor
+" | Goto file with line number under cursor | gf | {{{
 nnoremap gf gF
+" }}}
 
-" Show NERDTree
+" | Show NERDTree | leader+e | {{{
 nnoremap <silent> <Leader>e :NERDTreeToggle<CR>
+" }}}
 
-" List toggle
+" | List toggle | leader+l | {{{
 nnoremap <silent> <Leader>l :set list!<CR>
+" }}}
 
-" Close buffer with ask save it
+" | Close buffer with ask save it | leader+w | {{{
 nnoremap <silent> <Leader>w :confirm :Bclose<CR>
-nnoremap <silent> <Leader>s :BTags<CR>
+" }}}
 
+" | Silver searcher | :Ag | {{{
 function! s:ag_to_qf(line)
   let parts = split(a:line, ':')
   return {'filename': parts[0], 'lnum': parts[1], 'col': parts[2],
@@ -114,10 +121,9 @@ command! -nargs=* Ag call fzf#run({
 \            '--color hl:68,hl+:110',
 \ 'down':    '50%'
 \ })
+" }}}
 
-" ----------------------------------------------------------------------------
-" BTags
-" ----------------------------------------------------------------------------
+" | Quickly jump by declarations list | leader+b |{{{
 function! s:align_lists(lists)
   let maxes = {}
   for list in a:lists
@@ -169,6 +175,10 @@ endfunction
 
 command! BTags call s:btags()
 
+nnoremap <silent> <Leader>s :BTags<CR>
+" }}}
+
+" | Buffer list | leader+b | {{{
 function! s:buflist()
   redir => ls
   silent ls
@@ -186,17 +196,20 @@ nnoremap <silent> <Leader>b :call fzf#run({
 \   'options': '+m',
 \   'down':    len(<sid>buflist()) + 2
 \ })<CR>
+" }}}
 
+" | Open files in splits | leader+f, leader+v | {{{
 " Open files
 nnoremap <silent> <Leader>f :call fzf#run({
 \   'down': '40%',
 \   'sink': 'e' })<CR>
 
-" Open files in vertical horizontal split
 nnoremap <silent> <Leader>v :call fzf#run({
 \   'right': winwidth('.') / 2,
 \   'sink':  'vertical botright split' })<CR>
+" }}}
 
+" | MRU search | :FZFMru | {{{
 command! FZFMru call fzf#run({
             \'source': v:oldfiles,
             \'sink' : 'e ',
@@ -209,7 +222,9 @@ function! s:line_handler(l)
   exec keys[1]
   normal! ^zz
 endfunction
+" }}}
 
+" | Search lines in all open vim buffers | :FZFLines | {{{
 function! s:buffer_lines()
   let res = []
   for b in filter(range(1, bufnr('$')), 'buflisted(v:val)')
@@ -224,4 +239,4 @@ command! FZFLines call fzf#run({
 \   'options': '--extended --nth=3..',
 \   'down':    '60%'
 \})
-
+" }}}
