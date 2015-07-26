@@ -178,9 +178,9 @@ if filereadable(expand('~/.vim/plugins.vim'))
     source ~/.vim/plugins.vim
 endif
 
-if filereadable(expand('~/.vim/options.vim'))
+if filereadable(expand('~/.vim/stuff.vim'))
     " Load Another stuff (plugins configurations, keymaps and colors)
-    source ~/.vim/options.vim
+    source ~/.vim/stuff.vim
 endif
 
 set noshowmode " Suppress mode change messages
