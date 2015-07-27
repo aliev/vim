@@ -157,7 +157,7 @@ set modelines=1 " Make Vim only use folding settings for current file
 let g:pymode_indent = 0
 
 " FZF path
-set rtp+=~/.fzf
+set rtp+=~/.vim/bundle/fzf
 
 set path=.,,**
 

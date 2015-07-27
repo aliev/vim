@@ -62,3 +62,5 @@ Plugin 'honza/vim-snippets'
 Plugin 'terryma/vim-multiple-cursors'
 
 Plugin 'junegunn/goyo.vim'
+
+Plugin 'junegunn/fzf'
