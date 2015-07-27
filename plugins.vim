@@ -11,9 +11,6 @@ Plugin 'gmarik/vundle'
 " Utils
 Plugin 'bling/vim-airline'
 
-" Icons support for nerdtree and vim-airline
-Plugin 'aliev/vim-webdevicons'
-
 " Toggle and display marks
 Plugin 'kshenoy/vim-signature'
 

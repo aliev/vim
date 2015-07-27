@@ -4,7 +4,6 @@ let g:airline_powerline_fonts = 1 " Use airline fonts
 let g:airline#extensions#tabline#enabled = 1
 " Airline tabline settings
 let g:airline#extensions#tabline#fnamemod = ':t'
-let g:airline#extensions#tabline#buffer_nr_show = 1
 " }}}
 
 " Jedi-vim {{{
@@ -59,10 +58,6 @@ let g:UltiSnipsJumpForwardTrigger='<tab>'
 
 " Aurline {{{
 let g:airline_section_c = '%t'
-" }}}
-
-" WebDevIcons {{{
-let g:webdevicons_enable_nerdtree = 0
 " }}}
 
 " GitGutter {{{
