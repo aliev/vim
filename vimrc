@@ -4,6 +4,7 @@ syntax on " enable syntax-highlighting
 
 set background=dark " Backgroud color
 
+" GUI and Terminal VIM options {{{
 if has("gui_running")
     set guioptions=gc   " Disable all GUI elements and enable console based dialogs for simple queries
     set guifont=Droid_Sans_Mono_For_Powerline_Plus_Nerd_File_Types:h13
@@ -18,7 +19,9 @@ else
         let &t_EI = "\<Esc>]50;CursorShape=0\x7"
     endif
 endif
+" }}}
 
+" Neovim settings {{{
 if has("nvim")
     " Esc for exit from terminal
     tnoremap <Esc> <C-\><C-n>
@@ -39,7 +42,9 @@ if has('mouse')
         endif
     endif
 endif
+" }}}
 
+" Multibyte {{{
 if has('multi_byte')
     set listchars=tab:\ ,trail:·,eol:¶,extends:→,precedes:←,nbsp:×
     " Vertical split chars
@@ -48,7 +53,9 @@ if has('multi_byte')
           let &sbr = nr2char(8618).' ' " Show ↪ at the beginning of wrapped lines
     endif
 endif
+" }}}
 
+" Autocmd {{{
 if has("autocmd")
     " Enable file type detection.
     filetype plugin indent on
@@ -64,6 +71,7 @@ if has("autocmd")
     " JavaScript indentation
     au FileType javascript setlocal expandtab shiftwidth=2 tabstop=8
 endif
+" }}}
 
 " Disable timeout for Esc key
 set ttimeout
@@ -166,6 +174,29 @@ set dir=/var/tmp//,/tmp//,.
 set backupdir=/var/tmp//,/tmp//,.
 set undodir=/var/tmp//,/tmp//,.
 
+" Tell vim to remember certain things when we exit
+"  '10  :  marks will be remembered for up to 10 previously edited files
+"  "100 :  will save up to 100 lines for each register
+"  :20  :  up to 20 lines of command-line history will be remembered
+"  %    :  saves and restores the buffer list
+"  n... :  where to save the viminfo files
+set viminfo='10,\"100,:20,%,n~/.viminfo
+
+" Restore the cursor position and its autocmd so that it gets triggered {{{
+function! ResCur()
+  if line("'\"") <= line("$")
+    normal! g`"
+    return 1
+  endif
+endfunction
+
+augroup resCur
+  autocmd!
+  autocmd BufWinEnter * call ResCur()
+augroup END
+" }}}
+
+" Plugins and Stuff {{{
 if filereadable(expand('~/.vim/plugins.vim'))
     " Load plugins
     source ~/.vim/plugins.vim
@@ -175,5 +206,8 @@ if filereadable(expand('~/.vim/stuff.vim'))
     " Load Another stuff (plugins configurations, keymaps and colors)
     source ~/.vim/stuff.vim
 endif
+" }}}
 
 set noshowmode " Suppress mode change messages
+
+" vim:foldmethod=marker:foldlevel=0
