@@ -64,3 +64,5 @@ Plugin 'terryma/vim-multiple-cursors'
 Plugin 'junegunn/goyo.vim'
 
 Plugin 'junegunn/fzf'
+
+Plugin 'terryma/vim-expand-region'
