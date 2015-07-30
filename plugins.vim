@@ -66,3 +66,5 @@ Plugin 'junegunn/goyo.vim'
 Plugin 'junegunn/fzf'
 
 Plugin 'terryma/vim-expand-region'
+
+Plugin 'tpope/vim-surround'

@@ -21,7 +21,7 @@ else
 endif
 " }}}
 
-" Neovim settings {{{
+" Neovim settings
 if has("nvim")
     " Esc for exit from terminal
     tnoremap <Esc> <C-\><C-n>
@@ -42,9 +42,7 @@ if has('mouse')
         endif
     endif
 endif
-" }}}
 
-" Multibyte {{{
 if has('multi_byte')
     set listchars=tab:\ ,trail:·,eol:¶,extends:→,precedes:←,nbsp:×
     " Vertical split chars
@@ -53,9 +51,7 @@ if has('multi_byte')
           let &sbr = nr2char(8618).' ' " Show ↪ at the beginning of wrapped lines
     endif
 endif
-" }}}
 
-" Autocmd {{{
 if has("autocmd")
     " Enable file type detection.
     filetype plugin indent on
@@ -71,7 +67,6 @@ if has("autocmd")
     " JavaScript indentation
     au FileType javascript setlocal expandtab shiftwidth=2 tabstop=8
 endif
-" }}}
 
 " Disable timeout for Esc key
 set ttimeout
@@ -144,10 +139,6 @@ set ruler " Always display cursor position
 
 set hidden " A buffer becomes hidden when it is abandoned
 
-set noswapfile " Disable swap files
-
-set undofile " Persistent undo
-
 set noautochdir " Change the current working directory whenever you open a file
 
 set wildmenu " Turn on the Wild menu
@@ -167,12 +158,28 @@ let g:pymode_indent = 0
 " FZF path
 set rtp+=~/.vim/bundle/fzf
 
+" This will set your path variable to current directory
+" (from which you launched vim) and to all directories
+" under current directory recursively.
 set path=.,,**
 
-" Store swap, backup and undo files in to fixed location
-set dir=/var/tmp//,/tmp//,.
+if exists("+undofile")
+    " undofile - This allows you to use undos after exiting and restarting
+    " This, like swap and backups, uses .vim-undo first, then ~/.vim/undo
+    " :help undo-persistence
+    " This is only present in 7.3+
+    set undofile
+
+    " Store undo files in to fixed location
+    set undodir=/var/tmp//,/tmp//,.
+endif
+
+" Store swap and backup files in to fixed location
+set noswapfile
+set directory=/var/tmp//,/tmp//,.
+
+set nobackup
 set backupdir=/var/tmp//,/tmp//,.
-set undodir=/var/tmp//,/tmp//,.
 
 " Tell vim to remember certain things when we exit
 "  '10  :  marks will be remembered for up to 10 previously edited files
@@ -182,7 +189,7 @@ set undodir=/var/tmp//,/tmp//,.
 "  n... :  where to save the viminfo files
 set viminfo='10,\"100,:20,%,n~/.viminfo
 
-" Restore the cursor position and its autocmd so that it gets triggered {{{
+" Restore the cursor position and its autocmd so that it gets triggered
 function! ResCur()
   if line("'\"") <= line("$")
     normal! g`"
@@ -194,9 +201,7 @@ augroup resCur
   autocmd!
   autocmd BufWinEnter * call ResCur()
 augroup END
-" }}}
 
-" Plugins and Stuff {{{
 if filereadable(expand('~/.vim/plugins.vim'))
     " Load plugins
     source ~/.vim/plugins.vim
@@ -206,7 +211,6 @@ if filereadable(expand('~/.vim/stuff.vim'))
     " Load Another stuff (plugins configurations, keymaps and colors)
     source ~/.vim/stuff.vim
 endif
-" }}}
 
 set noshowmode " Suppress mode change messages
 
