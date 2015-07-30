@@ -118,7 +118,7 @@ command! -nargs=* Ag call fzf#run({
 \ })
 " }}}
 
-" | Quickly jump by declarations list | leader+b |{{{
+" | Quickly jump by declarations list | leader+s |{{{
 function! s:align_lists(lists)
   let maxes = {}
   for list in a:lists
