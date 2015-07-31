@@ -153,7 +153,7 @@ function! s:btags()
   try
     call fzf#run({'source':  s:btags_source(),
                  \'down':    '50%',
-                 \'options': '+m -d "\t" --with-nth 4,1,5 -n 1 --tiebreak=index',
+                 \'options': '+m -d "\t" --with-nth 1,4,5 -n 1 --tiebreak=index',
                  \'sink':    function('s:btags_sink')})
   catch
     echohl WarningMsg
