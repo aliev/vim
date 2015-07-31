@@ -136,7 +136,7 @@ endfunction
 
 function! s:btags_source()
   let lines = map(split(system(printf(
-    \ 'ctags -f - --sort=no --fields=nKs --excmd=pattern --language-force=%s %s',
+    \ 'ctags -f - --sort=no --fields=nKs --excmd=number --language-force=%s %s',
     \ &filetype, expand('%:S'))), "\n"), 'split(v:val, "\t")')
   if v:shell_error
     throw 'failed to extract tags'
@@ -145,21 +145,15 @@ function! s:btags_source()
 endfunction
 
 function! s:btags_sink(line)
-  let lines = split(a:line, "\t")
-  for line in lines
-      let arr = split(line, ":")
-      if arr[0] == "line"
-          exec arr[-1]
-      endif
-  endfor
-  sil! norm! zvzz
+    execute split(a:line, "\t")[2]
+    sil! norm! zvzz
 endfunction
 
 function! s:btags()
   try
     call fzf#run({'source':  s:btags_source(),
                  \'down':    '50%',
-                 \'options': '+m -d "\t" --with-nth 4,1,5',
+                 \'options': '+m -d "\t" --with-nth 4,1,5 -n 1 --tiebreak=index',
                  \'sink':    function('s:btags_sink')})
   catch
     echohl WarningMsg
