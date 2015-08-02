@@ -44,7 +44,7 @@ if has('mouse')
 endif
 
 if has('multi_byte')
-    set listchars=tab:\ ,trail:·,eol:¶,extends:→,precedes:←,nbsp:×
+    set listchars=trail:·,tab:»·,eol:¶,extends:→,precedes:←,nbsp:×
     " Vertical split chars
     set fillchars=stl:\ ,stlnc:\ ,vert:│
     if has("linebreak")
