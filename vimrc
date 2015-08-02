@@ -56,7 +56,7 @@ if has("autocmd")
     " Enable file type detection.
     filetype plugin indent on
 
-    " Auto complete options for Python (we use jedi by default)
+    " Auto complete option for Python (we use jedi by default)
     au FileType python set omnifunc=jedi#completions
 
     " Python indentation
@@ -201,6 +201,12 @@ augroup resCur
   autocmd!
   autocmd BufWinEnter * call ResCur()
 augroup END
+
+" The Silver Searcher
+if executable('ag')
+    " Use ag over grep
+    set grepprg=ag\ --nogroup\ --nocolor
+endif
 
 if filereadable(expand('~/.vim/plugins.vim'))
     " Load plugins
