@@ -14,6 +14,8 @@ Plugin 'bling/vim-airline'
 " Toggle and display marks
 Plugin 'kshenoy/vim-signature'
 
+Plugin 'ryanoasis/vim-devicons'
+
 " Comment selected lines
 Plugin 'tomtom/tcomment_vim'
 
