@@ -1,4 +1,4 @@
-" Airline {{{
+" | Airline | {{{
 let g:airline_powerline_fonts = 1 " Use airline fonts
 " If you want to auto-completion to work stable in older vim, disable this option
 let g:airline#extensions#tabline#enabled = 1
@@ -6,20 +6,25 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 " }}}
 
-" Jedi-vim {{{
+" | Jedi-vim | {{{
 let g:jedi#show_call_signatures = 0
 let g:jedi#use_tabs_not_buffers = 0
 let g:jedi#popup_on_dot = 1
 " }}}
 
-" Indent-line {{{
+" | Indent-line | {{{
 " Make indent line faster
 let g:indentLine_faster=1
 " IndentLine character For use this feature please install patched font from repository root
-let g:indentLine_char=nr2char(0xE0A3)
+let g:indentLine_char=nr2char(0xE0B4)
 " }}}
 
-" Syntastic {{{
+" | WebDevIcons options | {{{
+let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
+let g:WebDevIconsUnicodeDecorateFolderNodes = 1
+" }}}
+
+" | Syntastic | {{{
 " Syntax check mode for python (pip install pylama)
 let g:syntastic_python_checkers = ['flake8']
 
@@ -33,12 +38,12 @@ let g:syntastic_check_on_open=1
 let g:syntastic_enable_signs=0
 " }}}
 
-" NERDTree {{{
+" | NERDTree | {{{
 let NERDTreeMinimalUI = 1
 let NERDTreeIgnore = ['\.pyc$']
 " }}}
 
-" Color options {{{
+" | Color options | {{{
 colors lucius " Color scheme
 
 " Disable colors for folding column
@@ -52,15 +57,21 @@ hi! link Folded ColorColumn
 hi! link Error SpellBad
 " }}}
 
-" UltiSnips {{{
+" | UltiSnips | {{{
 let g:UltiSnipsJumpForwardTrigger='<tab>'
 " }}}
 
-" Aurline {{{
+" | Airline | {{{
 let g:airline_section_c = '%t'
 " }}}
 
-" GitGutter {{{
+" | IncSearch Options {{{
+map /  <Plug>(incsearch-forward)
+map ?  <Plug>(incsearch-backward)
+map g/ <Plug>(incsearch-stay)
+" }}}
+
+" | GitGutter | {{{
 let g:gitgutter_max_signs=10000
 " }}}
 
@@ -228,12 +239,6 @@ command! FZFLines call fzf#run({
 \   'options': '--extended --nth=3..',
 \   'down':    '60%'
 \})
-" }}}
-
-" {{{
-map /  <Plug>(incsearch-forward)
-map ?  <Plug>(incsearch-backward)
-map g/ <Plug>(incsearch-stay)
 " }}}
 
 " vim:foldmethod=marker:foldlevel=0
