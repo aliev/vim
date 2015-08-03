@@ -230,4 +230,10 @@ command! FZFLines call fzf#run({
 \})
 " }}}
 
+" {{{
+map /  <Plug>(incsearch-forward)
+map ?  <Plug>(incsearch-backward)
+map g/ <Plug>(incsearch-stay)
+" }}}
+
 " vim:foldmethod=marker:foldlevel=0

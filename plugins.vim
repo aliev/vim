@@ -68,3 +68,5 @@ Plugin 'junegunn/fzf'
 Plugin 'terryma/vim-expand-region'
 
 Plugin 'tpope/vim-surround'
+
+Plugin 'haya14busa/incsearch.vim'
