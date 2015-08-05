@@ -72,3 +72,5 @@ Plugin 'terryma/vim-expand-region'
 Plugin 'tpope/vim-surround'
 
 Plugin 'haya14busa/incsearch.vim'
+
+Plugin 'wakatime/vim-wakatime'
