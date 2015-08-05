@@ -50,7 +50,7 @@ Plugin 'aliev/vim-comfortable'
 Plugin 'vim-scripts/matchparenpp'
 
 " NERDTree
-Plugin 'scrooloose/nerdtree'
+Plugin 'alialiev/nerdtree'
 
 " Git support for NERDTree
 Plugin 'Xuyuanp/nerdtree-git-plugin'
