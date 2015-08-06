@@ -7,7 +7,7 @@ set background=dark " Backgroud color
 " GUI and Terminal VIM options {{{
 if has("gui_running")
     set guioptions=gc   " Disable all GUI elements and enable console based dialogs for simple queries
-    set guifont=Droid_Sans_Mono_For_Powerline_Plus_Nerd_File_Types:h13
+    set guifont=DroidSansMonoForPowerlinePlusNerdFileTypesPlusPomicons:h13
 else
     set t_Co=256
     " Allows cursor change in tmux and normal mode (for me works only in iTerm2)
