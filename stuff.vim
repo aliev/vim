@@ -21,7 +21,7 @@ let g:indentLine_char=nr2char(0xE0B4)
 
 " | WebDevIcons options | {{{
 let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
-let g:WebDevIconsUnicodeDecorateFolderNodes = 0
+let g:WebDevIconsUnicodeDecorateFolderNodes = 1
 " }}}
 
 " | Syntastic | {{{
