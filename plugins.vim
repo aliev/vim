@@ -8,64 +8,81 @@ call vundle#rc()
 
 Plugin 'gmarik/vundle'
 
-" Utils
+" Lean & mean status/tabline for vim that's light as air
 Plugin 'bling/vim-airline'
 
-" Toggle and display marks
+" Plugin to toggle, display and navigate marks
 Plugin 'kshenoy/vim-signature'
 
 " Icons support
+" Adds font icons (glyphs ★♨☢) to programming languages,
+" libraries, and web developer filetypes for:
+" NERDTree, vim-airline, ctrlp, unite, lightline.vim, vimfiler, and flagship
 Plugin 'ryanoasis/vim-devicons'
 
-" Comment selected lines
+" An extensible & universal comment vim-plugin that also handles embedded
+" filetypes
 Plugin 'tomtom/tcomment_vim'
 
-" Syntax checker
+" Syntax checking hacks for vim
 Plugin 'scrooloose/syntastic'
 
-" Show a git diff in a sign column
+" Plugin which shows a git diff in the gutter (sign column)
+" and stages/reverts hunks.
 Plugin 'airblade/vim-gitgutter'
 
-" Git wrapper
+" a Git wrapper so awesome, it should be illegal
 Plugin 'tpope/vim-fugitive'
 
 " Jedi for comfortable development with python
+" TODO: jedi 0.9.0 library has issue with imports
+" you can fix this issue by move to stable jedi version (0.8.0):
+" cd ~/.vim/bundle/jedi-vim/jedi/
+" git checkout 7b402d7
 Plugin 'davidhalter/jedi-vim'
 
-" Color schemes
+" Color scheme
 Plugin 'jonathanfilip/vim-lucius'
 
-" Python indent
+" A nicer Python indentation style for vim.
 Plugin 'hynek/vim-python-pep8-indent'
 
-" Html/JavaScript indent
+" Javascript indenter (HTML indent is included)
 Plugin 'lukaszb/vim-web-indent'
 
-" Display indentation lines
+" Plugin to display the indention levels with thin vertical lines
 Plugin 'Yggdroot/indentLine'
 
 " My scripts collection for comfortable work
 Plugin 'aliev/vim-comfortable'
 
-" Match parent (instead of default)
+" Improvement over standard matchparen plugin
 Plugin 'vim-scripts/matchparenpp'
 
-" NERDTree
+" A tree explorer plugin for vim.
 Plugin 'scrooloose/nerdtree'
 
-" Git support for NERDTree
+" A plugin of NERDTree showing git status
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 
+" The ultimate snippet solution for Vim. Send pull requests to
+" SirVer/ultisnips!
 Plugin 'SirVer/ultisnips'
-
 Plugin 'honza/vim-snippets'
 
+" A command-line fuzzy finder written in Go
 Plugin 'junegunn/fzf'
 
 Plugin 'wakatime/vim-wakatime'
 
+" True Sublime Text style multiple selections for Vim
 Plugin 'terryma/vim-multiple-cursors'
+" Vim plugin that allows you to visually select increasingly larger regions of
+" text using the same key combination.
 Plugin 'terryma/vim-expand-region'
+" quoting/parenthesizing made simple
 Plugin 'tpope/vim-surround'
+" Improved incremental searching for Vim
 Plugin 'haya14busa/incsearch.vim'
+" Lightning fast left-right movement in Vim
 Plugin 'unblevable/quick-scope'
