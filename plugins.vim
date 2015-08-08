@@ -14,6 +14,7 @@ Plugin 'bling/vim-airline'
 " Toggle and display marks
 Plugin 'kshenoy/vim-signature'
 
+" Icons support
 Plugin 'ryanoasis/vim-devicons'
 
 " Comment selected lines
@@ -59,14 +60,12 @@ Plugin 'SirVer/ultisnips'
 
 Plugin 'honza/vim-snippets'
 
-Plugin 'terryma/vim-multiple-cursors'
-
 Plugin 'junegunn/fzf'
 
-Plugin 'terryma/vim-expand-region'
-
-Plugin 'tpope/vim-surround'
-
-Plugin 'haya14busa/incsearch.vim'
-
 Plugin 'wakatime/vim-wakatime'
+
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'terryma/vim-expand-region'
+Plugin 'tpope/vim-surround'
+Plugin 'haya14busa/incsearch.vim'
+Plugin 'unblevable/quick-scope'

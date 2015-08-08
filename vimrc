@@ -27,7 +27,7 @@ if has("nvim")
     tnoremap <Esc> <C-\><C-n>
 
     " Python path
-    let g:python_host_prog='/usr/bin/python'
+    let g:python_host_prog='/usr/local/bin/python'
 endif
 
 if has('mouse')
