@@ -268,7 +268,7 @@ command! FZFLines call fzf#run({
 " }}}
 
 " | Search by Ag under cursor | leader + a | {{{
-noremap <silent><Leader>a :Ag <cword><cr>
+noremap <silent><Leader>a :Ag <C-R>=expand("<cword>")<CR><CR>
 " }}}
 
 " vim:foldmethod=marker:foldlevel=0
