@@ -86,3 +86,6 @@ Plugin 'tpope/vim-surround'
 Plugin 'haya14busa/incsearch.vim'
 " Lightning fast left-right movement in Vim
 Plugin 'unblevable/quick-scope'
+
+" Vim Emoji
+Plugin 'junegunn/vim-emoji'
