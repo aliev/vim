@@ -1,1 +1,1 @@
-[Project Homepage, description, installation instruction](http://aliev.me/vim/)
+[My blog post about this vim configuration and installation](bit.ly/1NzFrBK)

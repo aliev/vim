@@ -280,7 +280,7 @@ command! FZFLines call fzf#run({
 \})
 " }}}
 
-" | Search by Ag under cursor | leader + a | {{{
+" | Search word under cursor by using Ag | leader + a | {{{
 noremap <silent><Leader>a :Ag <C-R>=expand("<cword>")<CR><CR>
 " }}}
 
