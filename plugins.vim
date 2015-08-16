@@ -86,8 +86,8 @@ Plugin 'tpope/vim-surround'
 Plugin 'haya14busa/incsearch.vim'
 " Lightning fast left-right movement in Vim
 Plugin 'unblevable/quick-scope'
-" Vim plugin, insert or delete brackets, parens, quotes in pair
-Plugin 'jiangmiao/auto-pairs'
+" Provides insert mode auto-completion for quotes, parens, brackets, etc.
+Plugin 'Raimondi/delimitMate'
 " Plugin for vim to enable opening a file in a given line
 Plugin 'bogado/file-line'
 
