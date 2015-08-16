@@ -1,3 +1,9 @@
+" | vim-python-pep8-indent | {{{
+" Disable default Python indentation
+" Required for vim-python-pep8-indent
+let g:pymode_indent = 0
+" }}}
+
 " | Airline | {{{
 let g:airline_powerline_fonts = 1 " Use airline fonts
 " If you want to auto-completion to work stable in older vim, disable this option

@@ -151,10 +151,6 @@ set conceallevel=2 " Conceal level
 
 set modelines=1 " Make Vim only use folding settings for current file
 
-" Disable default Python indentation
-" Required for vim-python-pep8-indent
-let g:pymode_indent = 0
-
 " FZF path
 set rtp+=~/.vim/bundle/fzf
 
