@@ -10,14 +10,6 @@ if has("gui_running")
     set guifont=DroidSansMonoForPowerlinePlusNerdFileTypesPlusPomicons:h13
 else
     set t_Co=256
-    " Allows cursor change in tmux and normal mode (for me works only in iTerm2)
-    if exists('$TMUX')
-        let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
-        let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
-    else
-        let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-        let &t_EI = "\<Esc>]50;CursorShape=0\x7"
-    endif
 endif
 " }}}
 
