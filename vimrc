@@ -27,9 +27,9 @@ if has('mouse')
     set mousemodel=popup " Use the mouse for copy/paste with popup in gui vim
     set mousehide " Hide cursor while typing
     if exists("$TMUX")
-        " tmux knows the extended mouse mode
         if has('nvim')
         else
+            " tmux knows the extended mouse mode
             set ttymouse=xterm2
         endif
     endif
