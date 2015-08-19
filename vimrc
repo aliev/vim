@@ -143,9 +143,6 @@ set conceallevel=2 " Conceal level
 
 set modelines=1 " Make Vim only use folding settings for current file
 
-" FZF path
-set rtp+=~/.vim/bundle/fzf
-
 " This will set your path variable to current directory
 " (from which you launched vim) and to all directories
 " under current directory recursively.
