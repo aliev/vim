@@ -14,6 +14,7 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 
 " | vim-togglecursor | {{{
 let g:togglecursor_default = 'block'
+let g:togglecursor_insert = 'blinking_line'
 " }}}
 
 " | Jedi-vim | {{{
