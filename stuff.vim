@@ -15,7 +15,7 @@ let g:airline_section_c = '%t'
 
 " | vim-togglecursor | {{{
 let g:togglecursor_default = 'block'
-let g:togglecursor_insert = 'blinking_line'
+let g:togglecursor_insert = 'line'
 " }}}
 
 " | jedi-vim | {{{
