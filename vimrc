@@ -48,9 +48,6 @@ if has("autocmd")
     " Enable file type detection.
     filetype plugin indent on
 
-    " Auto complete option for Python (we use jedi by default)
-    au FileType python set omnifunc=jedi#completions
-
     " Python indentation
     " About nosmartindent please look this link
     " http://stackoverflow.com/questions/2063175/vim-insert-mode-comments-go-to-start-of-line
@@ -58,6 +55,9 @@ if has("autocmd")
 
     " JavaScript indentation
     au FileType javascript setlocal expandtab shiftwidth=2 tabstop=8
+
+    " Remember cursor position
+    au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 endif
 
 " Disable timeout for Esc key
@@ -176,9 +176,6 @@ set backupdir=/var/tmp//,/tmp//,.
 "  %    :  saves and restores the buffer list
 "  n... :  where to save the viminfo files
 set viminfo='10,\"100,:20,%,n~/.viminfo
-
-" Remember cursor position
-au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 
 " The Silver Searcher
 if executable('ag')
