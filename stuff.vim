@@ -4,12 +4,13 @@
 let g:pymode_indent = 0
 " }}}
 
-" | Airline | {{{
+" | vim-airline | {{{
 let g:airline_powerline_fonts = 1 " Use airline fonts
 " If you want to auto-completion to work stable in older vim, disable this option
 let g:airline#extensions#tabline#enabled = 1
 " Airline tabline settings
 let g:airline#extensions#tabline#fnamemod = ':t'
+let g:airline_section_c = '%t'
 " }}}
 
 " | vim-togglecursor | {{{
@@ -17,26 +18,26 @@ let g:togglecursor_default = 'block'
 let g:togglecursor_insert = 'blinking_line'
 " }}}
 
-" | Jedi-vim | {{{
+" | jedi-vim | {{{
 let g:jedi#show_call_signatures = 0
 let g:jedi#use_tabs_not_buffers = 0
 let g:jedi#popup_on_dot = 1
 let g:jedi#smart_auto_mappings = 0
 " }}}
 
-" | Indent-line | {{{
+" | indentLine | {{{
 " Make indent line faster
 let g:indentLine_faster=1
 " IndentLine character For use this feature please install patched font from repository root
 let g:indentLine_char=nr2char(0xE0B4)
 " }}}
 
-" | WebDevIcons options | {{{
+" | vim-devicons | {{{
 let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
 let g:WebDevIconsUnicodeDecorateFolderNodes = 1
 " }}}
 
-" | Syntastic | {{{
+" | syntastic | {{{
 " Syntax check mode for python (pip install pylama)
 let g:syntastic_python_checkers = ['flake8']
 
@@ -50,12 +51,10 @@ let g:syntastic_check_on_open=1
 let g:syntastic_enable_signs=0
 " }}}
 
-" | NERDTree | {{{
+" | nerdtree | leader+e, leader+E{{{
 let NERDTreeMinimalUI = 1
 let NERDTreeIgnore = ['\.pyc$']
-" }}}
 
-" NERDTress File highlighting {{{
 function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
 exec 'autocmd FileType nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
 exec 'autocmd FileType nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
@@ -79,38 +78,24 @@ call NERDTreeHighlightFile('gitconfig', 'Gray', 'none', '#686868', '#151515')
 call NERDTreeHighlightFile('gitignore', 'Gray', 'none', '#686868', '#151515')
 call NERDTreeHighlightFile('bashrc', 'Gray', 'none', '#686868', '#151515')
 call NERDTreeHighlightFile('bashprofile', 'Gray', 'none', '#686868', '#151515')
+
+nnoremap <silent> <Leader>e :NERDTreeToggle<CR>
+nnoremap <silent> <Leader>E :NERDTreeFind<CR>
 " }}}
 
-" | Color options | {{{
-colors lucius " Color scheme
-
-" Disable colors for folding column
-hi FoldColumn ctermbg=NONE guibg=NONE
-
-" Sign colors
-hi! link SignColumn FoldColumn
-" Disable background and foreground for vertical split
-hi vertsplit ctermbg=NONE guibg=NONE
-hi! link Folded ColorColumn
-hi! link Error SpellBad
-" }}}
-
-" | UltiSnips | {{{
+" | ultisnips | {{{
 let g:UltiSnipsJumpForwardTrigger='<tab>'
 " }}}
 
-" | Airline | {{{
-let g:airline_section_c = '%t'
-" }}}
-
-" | IncSearch Key Bindings | / ? g/ | {{{
+" | incsearch.vim | / ? g/ | {{{
 map /  <Plug>(incsearch-forward)
 map ?  <Plug>(incsearch-backward)
 map g/ <Plug>(incsearch-stay)
 " }}}
 
-" | GitGutter | {{{
+" | vim-gitgutter | {{{
 let g:gitgutter_max_signs=10000
+
 silent! if emoji#available()
   let g:gitgutter_sign_added = emoji#for('small_blue_diamond')
   let g:gitgutter_sign_modified = emoji#for('small_orange_diamond')
@@ -121,11 +106,6 @@ endif
 
 " | Goto file with line number under cursor | gf | {{{
 nnoremap gf gF
-" }}}
-
-" | Show NERDTree | leader+e | {{{
-nnoremap <silent> <Leader>e :NERDTreeToggle<CR>
-nnoremap <silent> <Leader>E :NERDTreeFind<CR>
 " }}}
 
 " | List toggle | leader+l | {{{
@@ -288,6 +268,20 @@ command! FZFLines call fzf#run({
 
 " | Search word under cursor by using Ag | leader + a | {{{
 noremap <silent><Leader>a :Ag <C-R>=expand("<cword>")<CR><CR>
+" }}}
+
+" | Color options | {{{
+colors lucius " Color scheme
+
+" Disable colors for folding column
+hi FoldColumn ctermbg=NONE guibg=NONE
+
+" Sign colors
+hi! link SignColumn FoldColumn
+" Disable background and foreground for vertical split
+hi vertsplit ctermbg=NONE guibg=NONE
+hi! link Folded ColorColumn
+hi! link Error SpellBad
 " }}}
 
 " vim:foldmethod=marker:foldlevel=0
