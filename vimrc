@@ -72,8 +72,8 @@ if has("autocmd")
     " Python indentation
     " About nosmartindent please look this link
     " http://stackoverflow.com/questions/2063175/vim-insert-mode-comments-go-to-start-of-line
-    au FileType python setlocal nosmartindent tw=79 linebreak nolist
-    "au FileType python setlocal foldenable foldmethod=syntax
+    au FileType python setl nosmartindent tw=79 wrap linebreak nolist
+    au FileType python setl foldmethod=expr foldlevel=1 foldexpr=PythonFold\(v:lnum\)
 
     " JavaScript indentation
     au FileType javascript setlocal expandtab shiftwidth=2
@@ -199,6 +199,8 @@ set wildignore+=*.o,*.pyc,*.jpg,*.png,*.gif,*.db,*.obj,.git " Ignore compiled fi
 set conceallevel=2 " Conceal level
 
 set modelines=1 " Make Vim only use folding settings for current file
+
+set foldtext=getline(v:foldstart)
 
 if filereadable(expand('~/.vim/plugins.vim'))
     " Plugins

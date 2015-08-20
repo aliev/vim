@@ -87,8 +87,5 @@ Plugin 'haya14busa/incsearch.vim'
 " Lightning fast left-right movement in Vim
 Plugin 'unblevable/quick-scope'
 
-" Plugin for vim to enable opening a file in a given line
-Plugin 'bogado/file-line'
-
 " Vim Emoji
 Plugin 'junegunn/vim-emoji'
