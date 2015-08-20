@@ -65,29 +65,37 @@ Plugin 'scrooloose/nerdtree'
 " A plugin of NERDTree showing git status
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 
-" The ultimate snippet solution for Vim. Send pull requests to
-" SirVer/ultisnips!
+" The ultimate snippet solution for Vim
 Plugin 'SirVer/ultisnips'
+
+" vim-snipmate default snippets
 Plugin 'honza/vim-snippets'
 
 " A command-line fuzzy finder written in Go
 Plugin 'junegunn/fzf'
 
+" Vim plugin to quantify your coding with automatic time tracking and metrics
+" about your programming.
 Plugin 'wakatime/vim-wakatime'
 
 " True Sublime Text style multiple selections for Vim
 Plugin 'terryma/vim-multiple-cursors'
-" Vim plugin that allows you to visually select increasingly larger regions of
+
 " text using the same key combination.
 Plugin 'terryma/vim-expand-region'
-" quoting/parenthesizing made simple
+
+" Quoting/parenthesizing made simple
 Plugin 'tpope/vim-surround'
+
 " Improved incremental searching for Vim
 Plugin 'haya14busa/incsearch.vim'
+
 " Lightning fast left-right movement in Vim
 Plugin 'unblevable/quick-scope'
+
 " Provides insert mode auto-completion for quotes, parens, brackets, etc.
-Plugin 'Raimondi/delimitMate'
+"Plugin 'Raimondi/delimitMate'
+
 " Plugin for vim to enable opening a file in a given line
 Plugin 'bogado/file-line'
 
