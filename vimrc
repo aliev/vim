@@ -116,10 +116,9 @@ set path=.,,**
 set viminfo='10,\"100,:20,%,n~/.viminfo
 
 " Disable timeout for Esc key
-set ttimeout
-set ttimeoutlen=0
-set notimeout
+set ttimeout ttimeoutlen=0 notimeout
 set ttyfast " Optimize for fast terminal connections
+set lazyredraw " Don't redraw while executing macros (good performance config)
 
 " Autocomplete options:
 " longest: do not select the first candidate
@@ -137,8 +136,6 @@ set hlsearch " Highlight search terms (very useful!)
 set display+=lastline " Display lastline instead of @
 
 set incsearch " Show search matches while typing
-
-set lazyredraw " Don't redraw while executing macros (good performance config)
 
 set laststatus=2 " Enable statusline
 
