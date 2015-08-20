@@ -18,6 +18,13 @@ if has("gui_running")
     set guifont=DroidSansMonoForPowerlinePlusNerdFileTypesPlusPomicons:h13
 else
     set t_Co=256
+    if exists('$TMUX')
+        let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+        let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+    else
+        let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+        let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+    endif
 endif
 " }}}
 
@@ -65,10 +72,11 @@ if has("autocmd")
     " Python indentation
     " About nosmartindent please look this link
     " http://stackoverflow.com/questions/2063175/vim-insert-mode-comments-go-to-start-of-line
-    au FileType python setlocal expandtab shiftwidth=4 tabstop=8 nosmartindent nofoldenable
+    au FileType python setlocal nosmartindent tw=79 linebreak nolist
+    "au FileType python setlocal foldenable foldmethod=syntax
 
     " JavaScript indentation
-    au FileType javascript setlocal expandtab shiftwidth=2 tabstop=8
+    au FileType javascript setlocal expandtab shiftwidth=2
 
     " Remember cursor position
     au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
