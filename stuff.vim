@@ -22,7 +22,7 @@ let g:togglecursor_insert = 'line'
 let g:jedi#show_call_signatures = 0
 let g:jedi#use_tabs_not_buffers = 0
 let g:jedi#popup_on_dot = 1
-let g:jedi#smart_auto_mappings = 1
+let g:jedi#smart_auto_mappings = 0
 " }}}
 
 " | indentLine | {{{
