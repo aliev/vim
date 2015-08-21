@@ -70,7 +70,7 @@ Plugin 'junegunn/fzf'
 
 " Vim plugin to quantify your coding with automatic time tracking and metrics
 " about your programming.
-Plugin 'wakatime/vim-wakatime'
+"Plugin 'wakatime/vim-wakatime'
 
 " True Sublime Text style multiple selections for Vim
 Plugin 'terryma/vim-multiple-cursors'
