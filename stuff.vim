@@ -13,11 +13,6 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline_section_c = '%t'
 " }}}
 
-" | vim-togglecursor | {{{
-let g:togglecursor_default = 'block'
-let g:togglecursor_insert = 'line'
-" }}}
-
 " | jedi-vim | {{{
 let g:jedi#show_call_signatures = 0
 let g:jedi#use_tabs_not_buffers = 0
@@ -106,6 +101,12 @@ endif
 
 " | Goto file with line number under cursor | gf | {{{
 nnoremap gf gF
+" }}}
+
+" | Paste multiple lines | y, p | {{{
+vnoremap <silent> y y`]
+vnoremap <silent> p p`]
+nnoremap <silent> p p`]
 " }}}
 
 " | List toggle | leader+l | {{{
