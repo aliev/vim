@@ -75,7 +75,8 @@ if has("autocmd")
     au FileType python setl nosmartindent tw=79 wrap linebreak nolist
 
     " JavaScript indentation
-    au FileType javascript setlocal expandtab shiftwidth=2
+    au FileType javascript setlocal expandtab shiftwidth=2 tabstop=2
+    au FileType vim setlocal expandtab shiftwidth=2 tabstop=2
 
     " Remember cursor position
     au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
@@ -200,15 +201,15 @@ set conceallevel=2 " Conceal level
 set modelines=1 " Make Vim only use folding settings for current file
 
 if filereadable(expand('~/.vim/plugins.vim'))
-    " Plugins
-    source ~/.vim/plugins.vim
+  " Plugins
+  source ~/.vim/plugins.vim
 endif
 
 if filereadable(expand('~/.vim/stuff.vim'))
-    " Plugins options
-    source ~/.vim/stuff.vim
+  " Plugins options
+  source ~/.vim/stuff.vim
 endif
 
 set noshowmode " Suppress mode change messages
 
-" vim:foldmethod=marker:foldlevel=0
+" vim:foldmethod=marker:foldlevel=0:tabstop=2:shiftwidth=2
