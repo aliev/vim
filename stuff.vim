@@ -82,15 +82,23 @@ nnoremap <silent> <Leader>E :NERDTreeFind<CR>
 let g:UltiSnipsJumpForwardTrigger='<tab>'
 " }}}
 
-" | incsearch.vim | / ? g/ | {{{
+" | incsearch.vim | / ? g/ n N * # g* g# | {{{
+let g:incsearch#auto_nohlsearch = 1
 map /  <Plug>(incsearch-forward)
 map ?  <Plug>(incsearch-backward)
 map g/ <Plug>(incsearch-stay)
+map n  <Plug>(incsearch-nohl-n)
+map N  <Plug>(incsearch-nohl-N)
+map *  <Plug>(incsearch-nohl-*)
+map #  <Plug>(incsearch-nohl-#)
+map g* <Plug>(incsearch-nohl-g*)
+map g# <Plug>(incsearch-nohl-g#)
 " }}}
 
 " | vim-gitgutter | {{{
 let g:gitgutter_max_signs=10000
 
+" Just for fun. Emoji for gitgutter. Works only in Mac ;)
 silent! if emoji#available()
   let g:gitgutter_sign_added = emoji#for('small_blue_diamond')
   let g:gitgutter_sign_modified = emoji#for('small_orange_diamond')
