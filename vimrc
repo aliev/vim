@@ -136,7 +136,7 @@ set confirm " Get a dialog when :q, :w, or :wq fails
 
 let mapleader = "," " Map leader
 
-let maplocalleader = "_" " Local leader
+let maplocalleader = "\\" " Local leader
 
 set hlsearch " Highlight search terms (very useful!)
 
