@@ -20,6 +20,9 @@ Plugin 'kshenoy/vim-signature'
 " NERDTree, vim-airline, ctrlp, unite, lightline.vim, vimfiler, and flagship
 Plugin 'ryanoasis/vim-devicons'
 
+" Vim Emoji
+Plugin 'junegunn/vim-emoji'
+
 " An extensible & universal comment vim-plugin that also handles embedded
 " filetypes
 Plugin 'tomtom/tcomment_vim'
@@ -41,23 +44,17 @@ Plugin 'tpope/vim-fugitive'
 " git checkout 7b402d7
 Plugin 'davidhalter/jedi-vim'
 
-" Color scheme
-Plugin 'jonathanfilip/vim-lucius'
-
 " A nicer Python indentation style for vim.
 Plugin 'hynek/vim-python-pep8-indent'
+
+" Color scheme
+Plugin 'jonathanfilip/vim-lucius'
 
 " Javascript indenter (HTML indent is included)
 Plugin 'lukaszb/vim-web-indent'
 
-" Plugin to display the indention levels with thin vertical lines
-Plugin 'Yggdroot/indentLine'
-
 " My scripts collection for comfortable work
 Plugin 'aliev/vim-comfortable'
-
-" Improvement over standard matchparen plugin
-Plugin 'vim-scripts/matchparenpp'
 
 " A tree explorer plugin for vim.
 Plugin 'scrooloose/nerdtree'
@@ -68,24 +65,21 @@ Plugin 'Xuyuanp/nerdtree-git-plugin'
 " A command-line fuzzy finder written in Go
 Plugin 'junegunn/fzf'
 
-" Vim plugin to quantify your coding with automatic time tracking and metrics
-" about your programming.
-"Plugin 'wakatime/vim-wakatime'
+" Plugin to display the indention levels with thin vertical lines
+Plugin 'Yggdroot/indentLine'
+
+" Improvement over standard matchparen plugin
+Plugin 'vim-scripts/matchparenpp'
 
 " True Sublime Text style multiple selections for Vim
 Plugin 'terryma/vim-multiple-cursors'
 
+" Vim plugin that allows you to visually select increasingly larger regions of
 " text using the same key combination.
 Plugin 'terryma/vim-expand-region'
-
-" Quoting/parenthesizing made simple
-Plugin 'tpope/vim-surround'
 
 " Improved incremental searching for Vim
 Plugin 'haya14busa/incsearch.vim'
 
 " Lightning fast left-right movement in Vim
 Plugin 'unblevable/quick-scope'
-
-" Vim Emoji
-Plugin 'junegunn/vim-emoji'

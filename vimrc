@@ -136,13 +136,13 @@ set confirm " Get a dialog when :q, :w, or :wq fails
 
 let mapleader = "," " Map leader
 
-let maplocalleader = "\\" " Local leader
+let maplocalleader = "_" " Local leader
 
 set hlsearch " Highlight search terms (very useful!)
 
-set display+=lastline " Display lastline instead of @
-
 set incsearch " Show search matches while typing
+
+set display+=lastline " Display lastline instead of @
 
 set laststatus=2 " Enable statusline
 
