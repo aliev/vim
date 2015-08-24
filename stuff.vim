@@ -149,7 +149,10 @@ noremap <silent><Leader>a :Ag <C-R>=expand("<cword>")<CR><CR>
 " }}}
 
 " | Color options | {{{
-colors lucius " Color scheme
+try
+    colors lucius
+catch /^Vim\%((\a\+)\)\=:E185/
+endtry
 
 " Disable colors for folding column
 hi FoldColumn ctermbg=NONE guibg=NONE

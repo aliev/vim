@@ -1,85 +1,76 @@
-" Plugins
+call plug#begin('~/.vim/plugged')
 
-set nocompatible              " be iMproved
-filetype off                  " required!
-
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-
-Plugin 'gmarik/vundle'
+Plug 'gmarik/vundle'
 
 " Lean & mean status/tabline for vim that's light as air
-Plugin 'bling/vim-airline'
+Plug 'bling/vim-airline'
 
-" Plugin to toggle, display and navigate marks
-Plugin 'kshenoy/vim-signature'
+" Plug to toggle, display and navigate marks
+Plug 'kshenoy/vim-signature'
 
 " Icons support
 " Adds font icons (glyphs ★♨☢) to programming languages,
 " libraries, and web developer filetypes for:
 " NERDTree, vim-airline, ctrlp, unite, lightline.vim, vimfiler, and flagship
-Plugin 'ryanoasis/vim-devicons'
+Plug 'ryanoasis/vim-devicons'
 
 " Vim Emoji
-Plugin 'junegunn/vim-emoji'
+Plug 'junegunn/vim-emoji'
 
 " An extensible & universal comment vim-plugin that also handles embedded
 " filetypes
-Plugin 'tomtom/tcomment_vim'
+Plug 'tomtom/tcomment_vim'
 
 " Syntax checking hacks for vim
-Plugin 'scrooloose/syntastic'
+Plug 'scrooloose/syntastic'
 
-" Plugin which shows a git diff in the gutter (sign column)
+" Plug which shows a git diff in the gutter (sign column)
 " and stages/reverts hunks.
-Plugin 'airblade/vim-gitgutter'
+Plug 'airblade/vim-gitgutter'
 
 " a Git wrapper so awesome, it should be illegal
-Plugin 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive'
 
 " Jedi for comfortable development with python
 " TODO: jedi 0.9.0 library has issue with imports
-" you can fix this issue by move to stable jedi version (0.8.0):
-" cd ~/.vim/bundle/jedi-vim/jedi/
-" git checkout 7b402d7
-Plugin 'davidhalter/jedi-vim'
+" I'll fix this issue by using stable jedi version (0.8.1):
+Plug 'davidhalter/jedi-vim', {'do': 'cd ~/.vim/plugged/jedi-vim/jedi && git checkout 7b402d7'}
 
 " A nicer Python indentation style for vim.
-Plugin 'hynek/vim-python-pep8-indent'
+Plug 'hynek/vim-python-pep8-indent'
 
 " Color scheme
-Plugin 'jonathanfilip/vim-lucius'
+Plug 'jonathanfilip/vim-lucius'
 
 " Javascript indenter (HTML indent is included)
-Plugin 'lukaszb/vim-web-indent'
+Plug 'lukaszb/vim-web-indent'
 
 " My scripts collection for comfortable work
-Plugin 'aliev/vim-comfortable'
+Plug 'aliev/vim-comfortable'
 
 " A tree explorer plugin for vim.
-Plugin 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree'
 
 " A plugin of NERDTree showing git status
-Plugin 'Xuyuanp/nerdtree-git-plugin'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 
 " A command-line fuzzy finder written in Go
-Plugin 'junegunn/fzf'
+Plug 'junegunn/fzf', {'do': 'yes \| ./install'}
 
-" Plugin to display the indention levels with thin vertical lines
-Plugin 'Yggdroot/indentLine'
+" Plug to display the indention levels with thin vertical lines
+Plug 'Yggdroot/indentLine'
 
 " Improvement over standard matchparen plugin
-Plugin 'vim-scripts/matchparenpp'
+Plug 'vim-scripts/matchparenpp'
 
 " True Sublime Text style multiple selections for Vim
-Plugin 'terryma/vim-multiple-cursors'
+Plug 'terryma/vim-multiple-cursors'
 
 " Vim plugin that allows you to visually select increasingly larger regions of
 " text using the same key combination.
-Plugin 'terryma/vim-expand-region'
+Plug 'terryma/vim-expand-region'
 
 " Improved incremental searching for Vim
-Plugin 'haya14busa/incsearch.vim'
+Plug 'haya14busa/incsearch.vim'
 
-" Lightning fast left-right movement in Vim
-Plugin 'unblevable/quick-scope'
+call plug#end()
