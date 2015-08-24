@@ -32,7 +32,7 @@ Plug 'tpope/vim-fugitive'
 " Jedi for comfortable development with python
 " TODO: jedi 0.9.0 library has issue with imports
 " I'll fix this issue by using stable jedi version (0.8.1):
-Plug 'davidhalter/jedi-vim', {'do': 'cd ~/.vim/plugged/jedi-vim/jedi && git checkout 7b402d7'}
+Plug 'davidhalter/jedi-vim', {'do': 'cd jedi/ && git checkout 7b402d7'}
 
 " A nicer Python indentation style for vim.
 Plug 'hynek/vim-python-pep8-indent'
