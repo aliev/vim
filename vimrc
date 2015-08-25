@@ -8,8 +8,6 @@ scriptencoding utf-8
 
 syntax on " enable syntax-highlighting
 
-set background=dark " Backgroud color
-
 " GUI and Terminal VIM options {{{
 if has("gui_running")
     " Disable all GUI elements and enable console based dialogs for simple queries

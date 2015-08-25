@@ -149,6 +149,7 @@ noremap <silent><Leader>a :Ag <C-R>=expand("<cword>")<CR><CR>
 " }}}
 
 " | Color options | {{{
+set background=dark
 try
     colors lucius
 catch /^Vim\%((\a\+)\)\=:E185/
