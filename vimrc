@@ -70,10 +70,12 @@ if has("autocmd")
     " Python indentation
     " About nosmartindent please look this link
     " http://stackoverflow.com/questions/2063175/vim-insert-mode-comments-go-to-start-of-line
-    au FileType python setl nosmartindent tw=79 wrap linebreak nolist
+    au FileType python setl nosmartindent
 
     " JavaScript indentation
     au FileType javascript setlocal expandtab shiftwidth=2 tabstop=2
+
+    " Vim indentation
     au FileType vim setlocal expandtab shiftwidth=2 tabstop=2
 
     " Remember cursor position
@@ -170,7 +172,9 @@ set autoindent " Enable auto indent
 
 set smartindent " Smart indent
 
-set wrap " Enable word wrap
+" Enable word wrap
+" Disable line break
+set wrap tw=0
 
 set noerrorbells visualbell t_vb= " No annoying sound on errors
 

@@ -71,4 +71,6 @@ Plug 'terryma/vim-expand-region'
 " Improved incremental searching for Vim
 Plug 'haya14busa/incsearch.vim'
 
+Plug 'wakatime/vim-wakatime'
+
 call plug#end()
