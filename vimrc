@@ -26,16 +26,6 @@ else
 endif
 " }}}
 
-" Neovim {{{
-if has("nvim")
-    " Esc for exit from terminal
-    tnoremap <Esc> <C-\><C-n>
-
-    " Python path
-    let g:python_host_prog='/usr/local/bin/python'
-endif
-" }}}
-
 " Mouse {{{
 if has('mouse')
     set mouse=a " Enable mouse support
