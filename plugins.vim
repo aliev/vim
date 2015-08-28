@@ -73,4 +73,6 @@ Plug 'haya14busa/incsearch.vim'
 
 Plug 'wakatime/vim-wakatime'
 
+Plug 'edkolev/tmuxline.vim'
+
 call plug#end()

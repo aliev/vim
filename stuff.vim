@@ -5,6 +5,10 @@ let g:airline#extensions#tabline#enabled = 1
 " Airline tabline settings
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline_section_c = '%t'
+let g:airline_left_sep          = ''
+let g:airline_left_alt_sep      = ''
+let g:airline_right_sep         = ''
+let g:airline_right_alt_sep     = ''
 " }}}
 
 " | jedi-vim | {{{
@@ -95,6 +99,25 @@ silent! if emoji#available()
   let g:gitgutter_sign_removed = emoji#for('small_red_triangle')
   let g:gitgutter_sign_modified_removed = emoji#for('collision')
 endif
+" }}}
+
+" | tmuxline.vim | {{{
+let g:tmuxline_separators = {
+    \ 'left' : '',
+    \ 'left_alt': '',
+    \ 'right' : '',
+    \ 'right_alt' : '',
+    \ 'space' : ' '}
+
+let g:tmuxline_preset = {
+    \ 'a': '#S',
+    \ 'b': '#F',
+    \ 'c': '#W',
+    \ 'win': ['#I', '#W'],
+    \ 'cwin': ['#I', '#W'],
+    \ 'x': '%a',
+    \ 'y': ['%b %d', '%R'],
+    \ 'z': '#h'}
 " }}}
 
 " | Goto file with line number under cursor | gf | {{{
