@@ -144,21 +144,10 @@ noremap <silent><Leader>a :Ag <C-R>=expand("<cword>")<CR><CR>
 
 " | Color options | {{{
 set background=dark
-try
-  let base16colorspace=256
-  colors base16-railscasts
-catch /^Vim\%((\a\+)\)\=:E185/
-endtry
-
-" Disable colors for folding column
-hi FoldColumn ctermbg=NONE guibg=NONE
-
-" Sign colors
-hi! link SignColumn FoldColumn
+let base16colorspace=256
+colors base16-eighties
 " Disable background and foreground for vertical split
 hi vertsplit ctermbg=NONE guibg=NONE
-hi! link Folded ColorColumn
-hi! link Error SpellBad
 " }}}
 
 " vim:foldmethod=marker:foldlevel=0
