@@ -34,9 +34,6 @@ Plug 'davidhalter/jedi-vim', {'do': 'cd jedi/ && git checkout 7b402d7'}
 " A nicer Python indentation style for vim.
 Plug 'hynek/vim-python-pep8-indent'
 
-" Color scheme
-Plug 'jonathanfilip/vim-lucius'
-
 " Javascript indenter (HTML indent is included)
 Plug 'lukaszb/vim-web-indent'
 
@@ -71,5 +68,11 @@ Plug 'haya14busa/incsearch.vim'
 Plug 'wakatime/vim-wakatime'
 
 Plug 'edkolev/tmuxline.vim'
+
+" For correct install color schemes pls read these notes
+" https://github.com/chriskempson/base16-vim
+" https://github.com/chriskempson/base16-shell
+" https://github.com/chriskempson/base16-iterm2
+Plug 'chriskempson/base16-vim'
 
 call plug#end()
