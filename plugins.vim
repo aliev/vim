@@ -12,9 +12,6 @@ Plug 'kshenoy/vim-signature'
 " NERDTree, vim-airline, ctrlp, unite, lightline.vim, vimfiler, and flagship
 Plug 'ryanoasis/vim-devicons'
 
-" Vim Emoji
-Plug 'junegunn/vim-emoji'
-
 " An extensible & universal comment vim-plugin that also handles embedded
 " filetypes
 Plug 'tomtom/tcomment_vim'
