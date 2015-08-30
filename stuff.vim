@@ -112,12 +112,6 @@ let g:tmuxline_preset = {
 nnoremap gf gF
 " }}}
 
-" | Paste multiple lines | y, p | {{{
-vnoremap <silent> y y`]
-vnoremap <silent> p p`]
-nnoremap <silent> p p`]
-" }}}
-
 " | List toggle | leader+l | {{{
 nnoremap <silent> <Leader>l :set list!<CR>
 " }}}
