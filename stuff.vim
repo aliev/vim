@@ -122,8 +122,8 @@ nnoremap <silent> p p`]
 nnoremap <silent> <Leader>l :set list!<CR>
 " }}}
 
-" | Close buffer with ask save it | leader+w | {{{
-nnoremap <silent> <Leader>w :confirm :Bclose<CR>
+" | Close the current buffer and move to the previous one | leader+w | {{{
+nnoremap <silent> <leader>w :bp <BAR> bd #<CR>
 " }}}
 
 " | Quickly jump by declarations list | :BTags |{{{
