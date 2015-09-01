@@ -26,12 +26,6 @@ else
 endif
 " }}}
 
-" Neovim options {{{
-if has('nvim')
-  set rtp+=~/.vim/
-endif
-" }}}
-
 " Mouse {{{
 if has('mouse')
     set mouse=a " Enable mouse support
@@ -81,6 +75,12 @@ endif
 " Use ag over grep {{{
 if executable('ag')
     set grepprg=ag\ --nogroup\ --nocolor
+endif
+" }}}
+
+" Neovim options {{{
+if has('nvim')
+  set rtp+=~/.vim/
 endif
 " }}}
 
