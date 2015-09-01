@@ -4,3 +4,4 @@ bundle/
 plugged/
 .netrwhist
 undodir/*
+autoload/

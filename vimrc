@@ -26,16 +26,21 @@ else
 endif
 " }}}
 
+" Neovim options {{{
+if has('nvim')
+  set rtp+=~/.vim/
+endif
+" }}}
+
 " Mouse {{{
 if has('mouse')
     set mouse=a " Enable mouse support
     set mousemodel=popup " Use the mouse for copy/paste with popup in gui vim
     set mousehide " Hide cursor while typing
     if exists("$TMUX")
-        if has('nvim')
-        else
-            " Tmux knows the extended mouse mode
-            set ttymouse=xterm2
+        if !has('nvim')
+          " Tmux knows the extended mouse mode
+          set ttymouse=xterm2
         endif
     endif
 endif

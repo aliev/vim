@@ -1,3 +1,9 @@
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall
+endif
+
 call plug#begin('~/.vim/plugged')
 
 " Lean & mean status/tabline for vim that's light as air
@@ -74,5 +80,9 @@ Plug 'edkolev/tmuxline.vim'
 " https://github.com/chriskempson/base16-shell
 " https://github.com/chriskempson/base16-iterm2
 Plug 'chriskempson/base16-vim'
+
+Plug 'justinmk/vim-gtfo'
+
+Plug 'gregsexton/gitv'
 
 call plug#end()
