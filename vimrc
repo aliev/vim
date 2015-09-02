@@ -81,6 +81,11 @@ endif
 " Neovim options {{{
 if has('nvim')
   set rtp+=~/.vim/
+  " If Neovim support is enabled, then let set the
+  " NVIM_TUI_ENABLE_CURSOR_SHAPE for the user.
+  if $NVIM_TUI_ENABLE_CURSOR_SHAPE == ""
+    let $NVIM_TUI_ENABLE_CURSOR_SHAPE = 1
+  endif
 endif
 " }}}
 
@@ -197,6 +202,8 @@ set conceallevel=2 " Conceal level
 
 set modelines=1 " Make Vim only use folding settings for current file
 
+set noshowmode " Suppress mode change messages
+
 if filereadable(expand('~/.vim/plugins.vim'))
   " Plugins
   source ~/.vim/plugins.vim
@@ -206,7 +213,5 @@ if filereadable(expand('~/.vim/stuff.vim'))
   " Plugins options
   source ~/.vim/stuff.vim
 endif
-
-set noshowmode " Suppress mode change messages
 
 " vim:foldmethod=marker:foldlevel=0:tabstop=2:shiftwidth=2

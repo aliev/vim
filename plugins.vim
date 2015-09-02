@@ -82,8 +82,4 @@ Plug 'edkolev/tmuxline.vim'
 " https://github.com/chriskempson/base16-iterm2
 Plug 'chriskempson/base16-vim'
 
-Plug 'justinmk/vim-gtfo'
-
-Plug 'gregsexton/gitv'
-
 call plug#end()
