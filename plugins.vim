@@ -82,4 +82,6 @@ Plug 'edkolev/tmuxline.vim'
 " https://github.com/chriskempson/base16-iterm2
 Plug 'chriskempson/base16-vim'
 
+Plug 'rizzatti/dash.vim'
+
 call plug#end()
