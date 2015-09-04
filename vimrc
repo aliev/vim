@@ -13,7 +13,7 @@ if has("gui_running")
     " Disable all GUI elements and enable console based dialogs for simple queries
     set guioptions=gc
     " Default font for GUI Vim
-    set guifont=DroidSansMonoForPowerlinePlusNerdFileTypesPlusPomicons:h13
+    set guifont=Droid\ Sans\ Mono\ For\ Powerline\ Plus\ Nerd\ File\ Types\ Plus\ Pomicons:h13
 else
     set t_Co=256
     if exists('$TMUX')
