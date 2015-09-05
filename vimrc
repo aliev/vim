@@ -83,8 +83,6 @@ endif
 " Use ag over grep {{{
 if executable('ag')
   set grepprg=ag\ --nogroup\ --nocolor
-else
-  set grepprg='grep -rn $* *'
 endif
 " }}}
 

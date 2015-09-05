@@ -89,25 +89,6 @@ map g/ <Plug>(incsearch-stay)
 let g:gitgutter_max_signs=10000
 " }}}
 
-" | tmuxline.vim | {{{
-let g:tmuxline_separators = {
-    \ 'left' : '',
-    \ 'left_alt': '',
-    \ 'right' : '',
-    \ 'right_alt' : '',
-    \ 'space' : ' '}
-
-let g:tmuxline_preset = {
-    \ 'a': '#S',
-    \ 'b': '#F',
-    \ 'c': '#W',
-    \ 'win': ['#I', '#W'],
-    \ 'cwin': ['#I', '#W'],
-    \ 'x': '%a',
-    \ 'y': ['%b %d', '%R'],
-    \ 'z': '#h'}
-" }}}
-
 " | Goto file with line number under cursor | gf | {{{
 nnoremap gf gF
 " }}}
