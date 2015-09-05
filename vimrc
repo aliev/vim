@@ -10,77 +10,81 @@ syntax on " enable syntax-highlighting
 
 " GUI and Terminal VIM options {{{
 if has("gui_running")
-    " Disable all GUI elements and enable console based dialogs for simple queries
-    set guioptions=gc
-    " Default font for GUI Vim
-    set guifont=Droid\ Sans\ Mono\ For\ Powerline\ Plus\ Nerd\ File\ Types\ Plus\ Pomicons:h13
+  " Disable all GUI elements and enable console based dialogs for simple queries
+  set guioptions=gc
+  " Default font for GUI Vim
+  set guifont=Droid\ Sans\ Mono\ For\ Powerline\ Plus\ Nerd\ File\ Types\ Plus\ Pomicons:h13
 else
-    set t_Co=256
-    if exists('$TMUX')
-        let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
-        let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
-    else
-        let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-        let &t_EI = "\<Esc>]50;CursorShape=0\x7"
-    endif
+  set t_Co=256
+  if exists('$TMUX')
+    let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+    let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+  else
+    let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+    let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+  endif
 
-    " Automatic rename of tmux window
-    if exists('$TMUX') && !exists('$NORENAME')
-      au BufEnter * call system('tmux rename-window '.expand('%:t:S'))
-      au VimLeave * call system('tmux set-window automatic-rename on')
-    endif
+  " Automatic rename of tmux window
+  if exists('$TMUX') && !exists('$NORENAME')
+    au BufEnter * call system('tmux rename-window '.expand('%:t:S'))
+    au VimLeave * call system('tmux set-window automatic-rename on')
+  endif
 endif
 " }}}
 
 " Mouse {{{
 if has('mouse')
-    set mouse=a " Enable mouse support
-    set mousemodel=popup " Use the mouse for copy/paste with popup in gui vim
-    set mousehide " Hide cursor while typing
-    if exists("$TMUX")
-        if !has('nvim')
-          " Tmux knows the extended mouse mode
-          set ttymouse=xterm2
-        endif
+  set mouse=a " Enable mouse support
+  set mousemodel=popup " Use the mouse for copy/paste with popup in gui vim
+  set mousehide " Hide cursor while typing
+  if exists("$TMUX")
+    if !has('nvim')
+      " Tmux knows the extended mouse mode
+      set ttymouse=xterm2
     endif
+  endif
 endif
 " }}}
 
 " Multibyte {{{
 if has('multi_byte')
-    set listchars=trail:·,tab:»·,eol:¶,extends:→,precedes:←,nbsp:×
-    " Vertical split chars
-    set fillchars=stl:\ ,stlnc:\ ,vert:│
-    if has("linebreak")
-          let &sbr = nr2char(8618).' ' " Show ↪ at the beginning of wrapped lines
-    endif
+  set listchars=trail:·,tab:»·,eol:¶,extends:→,precedes:←,nbsp:×
+  " Vertical split chars
+  set fillchars=stl:\ ,stlnc:\ ,vert:│
+  if has("linebreak")
+    let &sbr = nr2char(8618).' ' " Show ↪ at the beginning of wrapped lines
+    set breakindent
+    set breakindentopt=sbr
+  endif
 endif
 " }}}
 
 " Autocmd {{{
 if has("autocmd")
-    " Enable file type detection.
-    filetype plugin indent on
+  " Enable file type detection.
+  filetype plugin indent on
 
-    " Python indentation
-    " About nosmartindent please look this link
-    " http://stackoverflow.com/questions/2063175/vim-insert-mode-comments-go-to-start-of-line
-    au FileType python setl nosmartindent
+  " Python indentation
+  " About nosmartindent please look this link
+  " http://stackoverflow.com/questions/2063175/vim-insert-mode-comments-go-to-start-of-line
+  au FileType python setl nosmartindent
 
-    " JavaScript indentation
-    au FileType javascript setlocal expandtab shiftwidth=2 tabstop=2
+  " JavaScript indentation
+  au FileType javascript setlocal expandtab shiftwidth=2 tabstop=2
 
-    " Vim indentation
-    au FileType vim setlocal expandtab shiftwidth=2 tabstop=2
+  " Vim indentation
+  au FileType vim setlocal expandtab shiftwidth=2 tabstop=2
 
-    " Remember cursor position
-    au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+  " Remember cursor position
+  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 endif
 " }}}
 
 " Use ag over grep {{{
 if executable('ag')
-    set grepprg=ag\ --nogroup\ --nocolor
+  set grepprg=ag\ --nogroup\ --nocolor
+else
+  set grepprg='grep -rn $* *'
 endif
 " }}}
 
