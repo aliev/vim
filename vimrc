@@ -23,6 +23,12 @@ else
         let &t_SI = "\<Esc>]50;CursorShape=1\x7"
         let &t_EI = "\<Esc>]50;CursorShape=0\x7"
     endif
+
+    " Automatic rename of tmux window
+    if exists('$TMUX') && !exists('$NORENAME')
+      au BufEnter * call system('tmux rename-window '.expand('%:t:S'))
+      au VimLeave * call system('tmux set-window automatic-rename on')
+    endif
 endif
 " }}}
 
