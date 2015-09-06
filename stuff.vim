@@ -89,6 +89,11 @@ map g/ <Plug>(incsearch-stay)
 let g:gitgutter_max_signs=10000
 " }}}
 
+" | vim-togglecursor | {{{
+let g:togglecursor_default="block"
+let g:togglecursor_insert="line"
+" }}}
+
 " | Goto file with line number under cursor | gf | {{{
 nnoremap gf gF
 " }}}

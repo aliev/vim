@@ -16,14 +16,6 @@ if has("gui_running")
   set guifont=Droid\ Sans\ Mono\ For\ Powerline\ Plus\ Nerd\ File\ Types\ Plus\ Pomicons:h13
 else
   set t_Co=256
-  if exists('$TMUX')
-    let &t_SI = "\<Esc>Ptmux;\<Esc>\e[5 q\<Esc>\\"
-    let &t_EI = "\<Esc>Ptmux;\<Esc>\e[2 q\<Esc>\\"
-  else
-    let &t_SI = "\e[5 q"
-    let &t_EI = "\e[2 q"
-  endif
-
   " Automatic rename of tmux window
   if exists('$TMUX') && !exists('$NORENAME')
     au BufEnter * call system('tmux rename-window '.expand('%:t:S'))

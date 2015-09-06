@@ -72,8 +72,11 @@ Plug 'terryma/vim-expand-region'
 " Improved incremental searching for Vim
 Plug 'haya14busa/incsearch.vim'
 
-Plug 'wakatime/vim-wakatime'
+" Toggle the cursor shape in the terminal for Vim 
+Plug 'jszakmeister/vim-togglecursor'
 
+" Simple tmux statusline generator with support for powerline symbols and
+" statusline / airline / lightline integration
 Plug 'edkolev/tmuxline.vim'
 
 " For correct install color schemes pls read these notes
@@ -83,5 +86,6 @@ Plug 'edkolev/tmuxline.vim'
 Plug 'chriskempson/base16-vim'
 
 Plug 'rizzatti/dash.vim'
+"Plug 'wakatime/vim-wakatime'
 
 call plug#end()
