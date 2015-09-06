@@ -65,10 +65,6 @@ Plug 'vim-scripts/matchparenpp'
 " True Sublime Text style multiple selections for Vim
 Plug 'terryma/vim-multiple-cursors'
 
-" Vim plugin that allows you to visually select increasingly larger regions of
-" text using the same key combination.
-Plug 'terryma/vim-expand-region'
-
 " Improved incremental searching for Vim
 Plug 'haya14busa/incsearch.vim'
 
