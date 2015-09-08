@@ -81,7 +81,13 @@ Plug 'edkolev/tmuxline.vim'
 " https://github.com/chriskempson/base16-iterm2
 Plug 'chriskempson/base16-vim'
 
+" vim plugin to interact with tmux
+Plug 'benmills/vimux'
+
+" htmldjango filetype omnicomplete - completes template tags/filters/variables
+Plug 'mjbrownie/vim-htmldjango_omnicomplete'
+
 Plug 'rizzatti/dash.vim'
-"Plug 'wakatime/vim-wakatime'
+Plug 'wakatime/vim-wakatime'
 
 call plug#end()

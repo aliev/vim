@@ -210,8 +210,12 @@ if filereadable(expand('~/.vim/plugins.vim'))
 endif
 
 if filereadable(expand('~/.vim/stuff.vim'))
-  " Plugins options
+  " Plugins options and keymaps
   source ~/.vim/stuff.vim
 endif
 
+if filereadable(expand('./.settings'))
+  " Local project specific settings
+  source ./.settings
+endif
 " vim:foldmethod=marker:foldlevel=0:tabstop=2:shiftwidth=2

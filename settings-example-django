@@ -1,0 +1,11 @@
+" Local settings example for django development
+
+let $DJANGO_SETTINGS_MODULE="project_name.settings.local"
+let $PYTHONPATH=""
+let $ACTIVATE="export PYTHONPATH=\"\"&&" . "source " . $VIRTUAL_ENV . "/bin/activate" . "&& export DJANGO_SETTINGS_MODULE=" . $DJANGO_SETTINGS_MODULE . "&&"
+
+command! -nargs=1 Django :VimuxRunCommand $ACTIVATE . "django-admin " . <f-args>
+
+if has("autocmd")
+  au FileType htmldjango set omnifunc=htmldjangocomplete#CompleteDjango
+endif
