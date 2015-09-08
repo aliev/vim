@@ -101,6 +101,9 @@ map <Leader>vq :VimuxCloseRunner<CR>
 " Interrupt any command running in the runner pane
 map <Leader>vx :VimuxInterruptRunner<CR>
 
+" Toggle vimux pane
+map <Leader>vt :VimuxTogglePane<CR>
+
 " Zoom the runner pane (use <bind-key> z to restore runner pane)
 map <Leader>vz :call VimuxZoomRunner()<CR>
 " }}}
@@ -134,14 +137,10 @@ nnoremap <silent> <Leader>s :BTags<CR>
 nnoremap <silent> <Leader>b :BList<CR>
 " }}}
 
-" | Open files in splits | leader+f, leader+v | {{{
+" | Open files in splits | leader+f | {{{
 nnoremap <silent> <Leader>f :call fzf#run({
 \   'down': '40%',
 \   'sink': 'e' })<CR>
-
-nnoremap <silent> <Leader>v :call fzf#run({
-\   'right': winwidth('.') / 2,
-\   'sink':  'vertical botright split' })<CR>
 " }}}
 
 " | Search word under cursor by using Ag | leader + a | {{{
