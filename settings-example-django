@@ -2,11 +2,12 @@
 
 let $DJANGO_SETTINGS_MODULE="project_name.settings"
 let $PYTHONPATH=""
-let $ACTIVATE="export PYTHONPATH=\"\"&&" . "source " . $VIRTUAL_ENV . "/bin/activate" . "&& export DJANGO_SETTINGS_MODULE=" . $DJANGO_SETTINGS_MODULE . "&&"
 
 function! DjangoRun(args)
-  call VimuxSendKeys("C-c")
-  :VimuxRunCommand $ACTIVATE . "django-admin " . a:args
+  :VimuxInterruptRunner
+  :VimuxRunCommand "export DJANGO_SETTINGS_MODULE=" . $DJANGO_SETTINGS_MODULE
+  :VimuxRunCommand "export PYTHONPATH=" . $PYTHONPATH
+  :VimuxRunCommand $VIRTUAL_ENV . "/bin/django-admin " . a:args
 endfunction
 
 command! -nargs=1 Django :call DjangoRun(<f-args>)
