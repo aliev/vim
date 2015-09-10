@@ -121,7 +121,7 @@ set path=.,,**
 "  :20  :  up to 20 lines of command-line history will be remembered
 "  %    :  saves and restores the buffer list
 "  n... :  where to save the viminfo files
-set viminfo='10,\"100,:20,%,n~/.viminfo
+"set viminfo='10,\"100,:20,%,n~/.viminfo
 
 " Disable timeout for Esc key
 set ttimeout ttimeoutlen=0 notimeout
@@ -204,6 +204,8 @@ set modelines=1 " Make Vim only use folding settings for current file
 
 set noshowmode " Suppress mode change messages
 
+set exrc " Allow load .vimrc or _vimrc from current directory
+
 if filereadable(expand('~/.vim/plugins.vim'))
   " Plugins
   source ~/.vim/plugins.vim
@@ -212,10 +214,5 @@ endif
 if filereadable(expand('~/.vim/stuff.vim'))
   " Plugins options and keymaps
   source ~/.vim/stuff.vim
-endif
-
-if filereadable(expand('./.settings'))
-  " Local project specific settings
-  source ./.settings
 endif
 " vim:foldmethod=marker:foldlevel=0:tabstop=2:shiftwidth=2
