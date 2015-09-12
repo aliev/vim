@@ -25,7 +25,7 @@ let g:indentLine_char=nr2char(0xE0B4)
 
 " | vim-devicons | {{{
 let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
-let g:WebDevIconsUnicodeDecorateFolderNodes = 1
+let g:WebDevIconsUnicodeDecorateFolderNodes = 0
 " }}}
 
 " | syntastic | {{{
@@ -44,6 +44,9 @@ let g:syntastic_enable_signs=0
 
 " | nerdtree | leader+e, leader+E{{{
 let NERDTreeMinimalUI = 1
+let g:NERDTreeDirArrows = 1
+let g:NERDTreeDirArrowExpandable = nr2char(0xE0B5)
+let g:NERDTreeDirArrowCollapsible = nr2char(0xE0B6)
 let NERDTreeIgnore = ['\.pyc$']
 
 function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
