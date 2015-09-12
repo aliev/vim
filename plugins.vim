@@ -85,8 +85,9 @@ Plug 'chriskempson/base16-vim'
 " htmldjango filetype omnicomplete - completes template tags/filters/variables
 Plug 'mjbrownie/vim-htmldjango_omnicomplete'
 
-Plug 'rizzatti/dash.vim'
-Plug 'wakatime/vim-wakatime'
+" asynchronous build and test dispatcher
 Plug 'tpope/vim-dispatch'
+
+"Plug 'wakatime/vim-wakatime'
 
 call plug#end()
