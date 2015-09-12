@@ -73,6 +73,7 @@ Plug 'jszakmeister/vim-togglecursor'
 
 " Simple tmux statusline generator with support for powerline symbols and
 " statusline / airline / lightline integration
+" and my tmux conf https://gist.github.com/aliev/e900f25134a90c648442
 Plug 'edkolev/tmuxline.vim'
 
 " For correct install color schemes pls read these notes
@@ -81,13 +82,11 @@ Plug 'edkolev/tmuxline.vim'
 " https://github.com/chriskempson/base16-iterm2
 Plug 'chriskempson/base16-vim'
 
-" vim plugin to interact with tmux
-Plug 'benmills/vimux'
-
 " htmldjango filetype omnicomplete - completes template tags/filters/variables
 Plug 'mjbrownie/vim-htmldjango_omnicomplete'
 
 Plug 'rizzatti/dash.vim'
 Plug 'wakatime/vim-wakatime'
+Plug 'tpope/vim-dispatch'
 
 call plug#end()

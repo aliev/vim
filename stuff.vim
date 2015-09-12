@@ -117,6 +117,14 @@ let g:togglecursor_default="block"
 let g:togglecursor_insert="line"
 " }}}
 
+" | vim-htmldjango_omnicomplete | {{{
+if has("autocmd")
+  au FileType htmldjango set omnifunc=htmldjangocomplete#CompleteDjango
+  au FileType htmldjango inoremap {% {%  %}<left><left><left>
+  au FileType htmldjango inoremap {{ {{  }}<left><left><left>
+endif
+" }}}
+
 " | Goto file with line number under cursor | gf | {{{
 nnoremap gf gF
 " }}}
