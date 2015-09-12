@@ -141,7 +141,4 @@ colors base16-eighties
 hi vertsplit ctermbg=NONE guibg=NONE
 " }}}
 
-map <silent><leader>vt :Dispatch django-admin test<CR>
-map <silent><leader>vs :Dispatch django-admin shell<CR>
-
 " vim:foldmethod=marker:foldlevel=0
