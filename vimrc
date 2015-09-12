@@ -68,7 +68,10 @@ if has("autocmd")
   au FileType vim setlocal expandtab shiftwidth=2 tabstop=2
 
   " Remember cursor position
-  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+  augroup vimrc-remember-cursor-position
+    au!
+    au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+  augroup END
 endif
 " }}}
 
@@ -207,12 +210,13 @@ set noshowmode " Suppress mode change messages
 set exrc " Allow load .vimrc or _vimrc from current directory
 
 if filereadable(expand('~/.vim/plugins.vim'))
-  " Plugins
+  " Include plugins list
   source ~/.vim/plugins.vim
 endif
 
-if filereadable(expand('~/.vim/stuff.vim'))
-  " Plugins options and keymaps
-  source ~/.vim/stuff.vim
+if filereadable(expand("~/.vimrc.local"))
+  " Include user's local vim config
+  source ~/.vimrc.local
 endif
+
 " vim:foldmethod=marker:foldlevel=0:tabstop=2:shiftwidth=2

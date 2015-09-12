@@ -5,6 +5,7 @@ let g:airline#extensions#tabline#enabled = 1
 " Airline tabline settings
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline_section_c = '%t'
+
 " }}}
 
 " | jedi-vim | {{{
@@ -85,29 +86,6 @@ map ?  <Plug>(incsearch-backward)
 map g/ <Plug>(incsearch-stay)
 " }}}
 
-" | vimux | leader+vp, vl, vi, vq, vx, vz {{{
-" Prompt for a command to run
-map <Leader>vp :VimuxPromptCommand<CR>
-
-" Run last command executed by VimuxRunCommand
-map <Leader>vl :VimuxRunLastCommand<CR>
-
-" Inspect runner pane
-map <Leader>vi :VimuxInspectRunner<CR>
-
-" Close vim tmux runner opened by VimuxRunCommand
-map <Leader>vq :VimuxCloseRunner<CR>
-
-" Interrupt any command running in the runner pane
-map <Leader>vx :VimuxInterruptRunner<CR>
-
-" Toggle vimux pane
-map <Leader>vt :VimuxTogglePane<CR>
-
-" Zoom the runner pane (use <bind-key> z to restore runner pane)
-map <Leader>vz :call VimuxZoomRunner()<CR>
-" }}}
-
 " | vim-gitgutter | {{{
 let g:gitgutter_max_signs=10000
 " }}}
@@ -162,5 +140,8 @@ colors base16-eighties
 " Disable background and foreground for vertical split
 hi vertsplit ctermbg=NONE guibg=NONE
 " }}}
+
+map <silent><leader>vt :Dispatch django-admin test<CR>
+map <silent><leader>vs :Dispatch django-admin shell<CR>
 
 " vim:foldmethod=marker:foldlevel=0
