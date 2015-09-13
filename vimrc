@@ -67,6 +67,9 @@ if has("autocmd")
   " Vim indentation
   au FileType vim setlocal expandtab shiftwidth=2 tabstop=2
 
+  " Disable line numbers for QuickFix
+  au FileType qf setlocal nonumber
+
   " Remember cursor position
   augroup vimrc-remember-cursor-position
     au!
