@@ -212,8 +212,10 @@ set noshowmode " Suppress mode change messages
 
 set exrc " Allow load .vimrc or _vimrc from current directory
 
-" Set default command for :make to run django tests
-set makeprg=django-admin
+" I like to leave this option empty
+" So, you can run any commands by using :make
+" eg :make make, :make django-admin runserver
+set makeprg=
 
 " Add error format for pyunit testing
 set efm=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m
