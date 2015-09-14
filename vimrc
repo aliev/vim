@@ -218,7 +218,7 @@ set exrc " Allow load .vimrc or _vimrc from current directory
 set makeprg=
 
 " Add error format for pyunit testing
-set efm+=%-G%.%#lib/python%.%#/site-package%.%#,%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m
+set efm=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m
 
 if filereadable(expand('~/.vim/plugins.vim'))
   " Include plugins list
