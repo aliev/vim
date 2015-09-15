@@ -43,7 +43,7 @@ if has('multi_byte')
   set listchars=trail:·,tab:»·,eol:¶,extends:→,precedes:←,nbsp:×
   " Vertical split chars
   set fillchars=stl:\ ,stlnc:\ ,vert:│
-  if has("linebreak")
+  if has('patch-7.4.338')
     let &sbr = nr2char(8618).' ' " Show ↪ at the beginning of wrapped lines
     set breakindent
     set breakindentopt=sbr
@@ -81,6 +81,7 @@ endif
 " Use ag over grep {{{
 if executable('ag')
   set grepprg=ag\ --nogroup\ --nocolor
+  let $FZF_DEFAULT_COMMAND='ag -l -g ""'
 endif
 " }}}
 
