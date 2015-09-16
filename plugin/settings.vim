@@ -5,7 +5,6 @@ let g:airline#extensions#tabline#enabled = 1
 " Airline tabline settings
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline_section_c = '%t'
-let g:airline#extensions#branch#format = 'Git_flow_branch_format'
 " }}}
 
 " | jedi-vim | {{{

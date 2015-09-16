@@ -88,9 +88,7 @@ Plug 'mjbrownie/vim-htmldjango_omnicomplete'
 " asynchronous build and test dispatcher
 Plug 'tpope/vim-dispatch'
 
-Plug 'renyard/vim-git-flow-format'
-
-Plug 'tmux-plugins/vim-tmux-focus-events'
+"Plug 'tmux-plugins/vim-tmux-focus-events'
 
 "Plug 'wakatime/vim-wakatime'
 
