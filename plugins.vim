@@ -92,4 +92,8 @@ Plug 'tpope/vim-dispatch'
 
 "Plug 'wakatime/vim-wakatime'
 
+if has("mac")
+  Plug 'rizzatti/dash.vim',  { 'on': 'Dash' }
+endif
+
 call plug#end()
