@@ -143,7 +143,7 @@ colors base16-eighties
 hi vertsplit ctermbg=NONE guibg=NONE
 " }}}
 
-nnoremap <silent><leader>] :cprev<CR>
-nnoremap <silent><leader>[ :cnext<CR>
+nnoremap <silent><leader>[ :cprev<CR>
+nnoremap <silent><leader>] :cnext<CR>
 
 " vim:foldmethod=marker:foldlevel=0
