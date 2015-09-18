@@ -121,6 +121,11 @@ nnoremap <silent> <Leader>f :call fzf#run({
 noremap <silent><Leader>a :Ag <C-R>=expand("<cword>")<CR><CR>
 " }}}
 
+" | QuickList Navigate | leader + [, leader + ] {{{
+nnoremap <silent><leader>[ :cprev<CR>
+nnoremap <silent><leader>] :cnext<CR>
+" }}}
+
 " | Color options | {{{
 set background=dark
 let base16colorspace=256
@@ -129,7 +134,5 @@ colors base16-eighties
 hi vertsplit ctermbg=NONE guibg=NONE
 " }}}
 
-nnoremap <silent><leader>[ :cprev<CR>
-nnoremap <silent><leader>] :cnext<CR>
 
 " vim:foldmethod=marker:foldlevel=0

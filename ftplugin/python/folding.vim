@@ -44,3 +44,5 @@ function! PythonFoldText() "{{{
   let line = getline(v:foldstart + 1)
   return line.' ['.(v:foldend - v:foldstart).'] '
 endfunction "}}}
+
+" vim:foldmethod=marker:foldlevel=0

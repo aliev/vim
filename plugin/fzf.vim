@@ -50,7 +50,7 @@ command! FZFLines call fzf#run({
 \   'sink':    function('<sid>line_handler'),
 \   'options': '--extended --nth=3..',
 \   'down':    '60%'
-\})
+\ })
 " }}}
 
 " | Quickly jump by declarations list | :BTags |{{{
@@ -130,7 +130,7 @@ command! FZFLines call fzf#run({
 \   'sink':    function('<sid>line_handler'),
 \   'options': '--extended --nth=3..',
 \   'down':    '60%'
-\})
+\ })
 " }}}
 
 " | Buffer list | :BList | {{{
@@ -152,3 +152,5 @@ command! BList call fzf#run({
 \   'down':    len(<sid>buflist()) + 2
 \ })
 " }}}
+
+" vim:foldmethod=marker:foldlevel=0
