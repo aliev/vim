@@ -44,9 +44,6 @@ Plug 'hynek/vim-python-pep8-indent'
 " Javascript indenter (HTML indent is included)
 Plug 'lukaszb/vim-web-indent'
 
-" My scripts collection for comfortable work
-Plug 'aliev/vim-comfortable'
-
 " A tree explorer plugin for vim.
 Plug 'scrooloose/nerdtree'
 
@@ -89,11 +86,5 @@ Plug 'mjbrownie/vim-htmldjango_omnicomplete'
 Plug 'tpope/vim-dispatch'
 
 "Plug 'tmux-plugins/vim-tmux-focus-events'
-
-"Plug 'wakatime/vim-wakatime'
-
-if has("mac")
-  Plug 'rizzatti/dash.vim',  { 'on': 'Dash' }
-endif
 
 call plug#end()
