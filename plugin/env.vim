@@ -24,8 +24,3 @@ if exists('$VIRTUAL_ENV')
   " set errorformat to pylint
   set efm=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m
 endif
-
-if exists('$DJANGO_SETTINGS_MODULE')
-  " If Django, set makeprg to django-admin
-  set makeprg=django-admin
-endif
