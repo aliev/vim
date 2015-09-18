@@ -27,20 +27,6 @@ let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
 let g:WebDevIconsUnicodeDecorateFolderNodes = 0
 " }}}
 
-" | syntastic | {{{
-" Syntax check mode for python (pip install pylama)
-let g:syntastic_python_checkers = ['flake8']
-
-" Syntax check mode for javascript (npm install jslint)
-let g:syntastic_javascript_checkers = ['jslint']
-
-" Make syntastic auto update the location list and make it also check
-" when the file opens
-let g:syntastic_always_populate_loc_list=1
-let g:syntastic_check_on_open=1
-let g:syntastic_enable_signs=0
-" }}}
-
 " | nerdtree | leader+e, leader+E{{{
 let NERDTreeMinimalUI = 1
 let g:NERDTreeDirArrows = 1
