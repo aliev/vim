@@ -23,9 +23,6 @@ Plug 'ryanoasis/vim-devicons'
 " filetypes
 Plug 'tomtom/tcomment_vim'
 
-" Syntax checking hacks for vim
-Plug 'scrooloose/syntastic'
-
 " Plug which shows a git diff in the gutter (sign column)
 " and stages/reverts hunks.
 Plug 'airblade/vim-gitgutter'

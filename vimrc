@@ -218,6 +218,9 @@ set exrc " Allow load .vimrc or _vimrc from current directory
 " eg :make make, :make django-admin runserver
 set makeprg=
 
+" Add Python error format
+set efm+=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m
+
 if filereadable(expand('~/.vim/plugins.vim'))
   " Include plugins list
   source ~/.vim/plugins.vim
