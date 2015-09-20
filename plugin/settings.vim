@@ -79,6 +79,10 @@ let g:togglecursor_default="block"
 let g:togglecursor_insert="line"
 " }}}
 
+" | Syntastic | {{{
+let g:syntastic_enable_signs=0
+" }}}
+
 " | vim-htmldjango_omnicomplete | {{{
 if has("autocmd")
   au FileType htmldjango set omnifunc=htmldjangocomplete#CompleteDjango

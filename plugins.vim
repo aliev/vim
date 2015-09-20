@@ -83,6 +83,7 @@ Plug 'mjbrownie/vim-htmldjango_omnicomplete'
 " asynchronous build and test dispatcher
 Plug 'tpope/vim-dispatch'
 
-"Plug 'tmux-plugins/vim-tmux-focus-events'
+" Syntax checking hacks for vim
+Plug 'scrooloose/syntastic'
 
 call plug#end()
