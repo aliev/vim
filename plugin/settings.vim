@@ -18,8 +18,8 @@ let g:jedi#smart_auto_mappings = 0
 " | indentLine | {{{
 " Make indent line faster
 let g:indentLine_faster=1
-" IndentLine character For use this feature please install patched font from repository root
-let g:indentLine_char=nr2char(0xE0B4)
+" IndentLine character
+let g:indentLine_char=nr2char(0x250A)
 " }}}
 
 " | vim-devicons | {{{
@@ -30,8 +30,8 @@ let g:WebDevIconsUnicodeDecorateFolderNodes = 0
 " | nerdtree | leader+e, leader+E{{{
 let NERDTreeMinimalUI = 1
 let g:NERDTreeDirArrows = 1
-let g:NERDTreeDirArrowExpandable = nr2char(0xE0B5)
-let g:NERDTreeDirArrowCollapsible = nr2char(0xE0B6)
+let g:NERDTreeDirArrowExpandable = nr2char(0xE5FF)
+let g:NERDTreeDirArrowCollapsible = nr2char(0xE5FE)
 let NERDTreeIgnore = ['\.pyc$']
 
 function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)

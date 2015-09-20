@@ -69,13 +69,15 @@ if has("autocmd")
 
   " Disable line numbers for QuickFix
   au FileType qf setlocal nonumber
-
-  " Remember cursor position
-  augroup vimrc-remember-cursor-position
-    au!
-    au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
-  augroup END
 endif
+" }}}
+
+" Remember cursor position {{{
+augroup vimrc_remember_cursor_position
+  au!
+  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$")
+        \| exe "normal! g`\"" | endif
+augroup END
 " }}}
 
 " Use ag over grep {{{
