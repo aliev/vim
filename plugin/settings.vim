@@ -62,10 +62,6 @@ nnoremap <silent> <Leader>e :NERDTreeToggle<CR>
 nnoremap <silent> <Leader>E :NERDTreeFind<CR>
 " }}}
 
-" | ultisnips | {{{
-let g:UltiSnipsJumpForwardTrigger='<tab>'
-" }}}
-
 " | incsearch.vim | / ? g/ | {{{
 let g:incsearch#auto_nohlsearch = 1
 
@@ -108,7 +104,7 @@ nnoremap <silent> <Leader>s :BTags<CR>
 " }}}
 
 " | Buffer list | leader+b | {{{
-nnoremap <silent> <Leader>b :BList<CR>
+nnoremap <silent> <Leader>b :Buffers<CR>
 " }}}
 
 " | Open files in splits | leader+f | {{{

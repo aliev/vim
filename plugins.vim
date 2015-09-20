@@ -49,6 +49,7 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 
 " A command-line fuzzy finder written in Go
 Plug 'junegunn/fzf', {'do': 'yes \| ./install'}
+Plug 'junegunn/fzf.vim'
 
 " Plug to display the indention levels with thin vertical lines
 Plug 'Yggdroot/indentLine'
