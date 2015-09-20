@@ -18,21 +18,22 @@ Installed plugins. It will be available after the first running of vim
 
 Plugins settings
 
-## plugin/fzf.vim
-
-FZF Shortcuts
-
 ## plugin/env.vim
 
-Auto activate:
-$DJANGO_SETTINGS_MODULE if projectname/settings.py file exists
-$VIRTUAL_ENV if virtualenv activated
-$PYTHONPATH and $PYTHONWARNINGS
+Auto activate environment variables:
+
+``$DJANGO_SETTINGS_MODULE`` if projectname/settings.py file exists
+
+``$VIRTUAL_ENV`` if virtualenv activated
+
+``$PYTHONPATH`` and ``$PYTHONWARNINGS``
+
 environment variables
 
 ## ftplugin/autoimport.vim
 
 Auto insert import statement and run omnicomplete for Python
+
 Can be disabled by ``let g:python_auto_import=0`` option
 
 ## ftplugin/folding.vim
