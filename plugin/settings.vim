@@ -1,7 +1,10 @@
 " | vim-airline | {{{
 let g:airline_powerline_fonts = 1 " Use airline fonts
-" If you want to auto-completion to work stable in older vim, disable this option
-let g:airline#extensions#tabline#enabled = 1
+
+if v:version >= 703
+  let g:airline#extensions#tabline#enabled = 1
+endif
+
 " Airline tabline settings
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline_section_c = '%t'
@@ -19,11 +22,10 @@ let g:jedi#smart_auto_mappings = 0
 " Make indent line faster
 let g:indentLine_faster=1
 " IndentLine character
-let g:indentLine_char=nr2char(0x250A)
+let g:indentLine_char=nr2char(0xA6)
 " }}}
 
 " | vim-devicons | {{{
-let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
 let g:WebDevIconsUnicodeDecorateFolderNodes = 0
 " }}}
 
@@ -111,7 +113,7 @@ nnoremap <silent> <Leader>s :BTags<CR>
 nnoremap <silent> <Leader>b :Buffers<CR>
 " }}}
 
-" | Open files in splits | leader+f | {{{
+" | Open files | leader+f | {{{
 nnoremap <silent> <Leader>f :Files<CR>
 " }}}
 
