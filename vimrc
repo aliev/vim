@@ -18,7 +18,7 @@ else
   set t_Co=256
   " Automatic rename of tmux window
   if exists('$TMUX') && !exists('$NORENAME')
-    au BufEnter * call system('tmux rename-window '.expand('%:t:S'))
+    au BufEnter * if empty(&buftype) | call system('tmux rename-window '.expand('%:t:S')) | endif
     au VimLeave * call system('tmux set-window automatic-rename on')
   endif
 endif
