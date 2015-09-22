@@ -106,8 +106,15 @@ nnoremap <silent> <Leader>l :set list!<CR>
 nnoremap <silent> <leader>w :bp <BAR> bd #<CR>
 " }}}
 
-" | Quickly jump by declarations list | :BTags |{{{
+" | Quickly jump by declarations list | leader+b |{{{
 nnoremap <silent> <Leader>s :BTags<CR>
+" }}}
+
+" | Run django commands | :Django command | {{{
+fun! Django(args)
+  execute "Make django-admin " . a:args
+endfun
+command! -nargs=* Django call Django('<args>')
 " }}}
 
 " | Buffer list | leader+b | {{{
