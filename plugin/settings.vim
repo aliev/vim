@@ -26,6 +26,7 @@ let g:indentLine_char=nr2char(0xA6)
 " }}}
 
 " | vim-devicons | {{{
+let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
 let g:WebDevIconsUnicodeDecorateFolderNodes = 0
 " }}}
 
