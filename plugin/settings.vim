@@ -112,9 +112,7 @@ nnoremap <silent> <Leader>b :Buffers<CR>
 " }}}
 
 " | Open files in splits | leader+f | {{{
-nnoremap <silent> <Leader>f :call fzf#run({
-\   'down': '40%',
-\   'sink': 'e' })<CR>
+nnoremap <silent> <Leader>f :Files<CR>
 " }}}
 
 " | Search word under cursor by using Ag | leader + a | {{{
