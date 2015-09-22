@@ -1,3 +1,22 @@
+" pyenv.vim: An attempt to set
+" Python and Django environment
+" variables 
+" ============================
+" 
+" Features:
+"
+" We do not need Python warnings
+" in QuickFix and etc
+" $PYTHONWARNINGS="ignore"
+"
+" Set up $PYTHONPATH to current
+" working directory
+" $PYTHONPATH="current working directory"
+"
+" Only for django >= 1.5
+" $DJANGO_SETTINGS_MODULE="projectname.settings"
+"
+
 if !exists('$PYTHONWARNINGS')
   let $PYTHONWARNINGS="ignore"
 endif
