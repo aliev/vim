@@ -63,7 +63,7 @@ Plug 'terryma/vim-multiple-cursors'
 " Improved incremental searching for Vim
 Plug 'haya14busa/incsearch.vim'
 
-" Toggle the cursor shape in the terminal for Vim 
+" Toggle the cursor shape in the terminal for Vim
 Plug 'jszakmeister/vim-togglecursor'
 
 " Simple tmux statusline generator with support for powerline symbols and
@@ -82,6 +82,11 @@ Plug 'mjbrownie/vim-htmldjango_omnicomplete'
 
 " asynchronous build and test dispatcher
 Plug 'tpope/vim-dispatch'
+
+if has('nvim')
+  " Adds neovim support to vim-dispatch
+  Plug 'radenling/vim-dispatch-neovim'
+endif
 
 " Syntax checking hacks for vim
 Plug 'scrooloose/syntastic'
