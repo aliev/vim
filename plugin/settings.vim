@@ -25,6 +25,13 @@ let g:indentLine_faster=1
 let g:indentLine_char=nr2char(0xA6)
 " }}}
 
+" | ultisnips | {{{
+" better key bindings for UltiSnipsExpandTrigger
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+" }}}
+
 " | vim-devicons | {{{
 let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
 let g:WebDevIconsUnicodeDecorateFolderNodes = 0
