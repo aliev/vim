@@ -90,11 +90,6 @@ nnoremap <silent> <Leader>e :NERDTreeToggle<CR>
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
 " }}}
 
-" Set working directory | <leader>. <leader>~ | {{{
-nnoremap <silent><leader>. :lcd %:p:h<CR>
-nnoremap <silent><leader>~ :lcd $PWD<CR>
-" }}}
-
 " | incsearch.vim | / ? g/ | {{{
 let g:incsearch#auto_nohlsearch = 1
 
