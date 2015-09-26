@@ -95,6 +95,7 @@ if has('nvim')
   if $NVIM_TUI_ENABLE_CURSOR_SHAPE == ""
     let $NVIM_TUI_ENABLE_CURSOR_SHAPE = 1
   endif
+  tnoremap <Esc> <C-\><C-n>
 endif
 " }}}
 
