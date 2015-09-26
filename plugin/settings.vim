@@ -8,6 +8,20 @@ endif
 " Airline tabline settings
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline_section_c = '%t'
+let g:airline_mode_map = {
+  \ '__' : '-',
+  \ 'n' : 'N',
+  \ 'i' : 'I',
+  \ 'R' : 'R',
+  \ 'c' : 'C',
+  \ 'v' : 'V',
+  \ 'V' : 'V',
+  \ '' : 'V',
+  \ 's' : 'S',
+  \ 'S' : 'S',
+  \ '' : 'S',
+  \ }
+let g:airline_section_z = airline#section#create_right(['%{g:airline_symbols.linenr}% %3l:%2c'])
 " }}}
 
 " | jedi-vim | {{{
@@ -37,7 +51,7 @@ let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
 let g:WebDevIconsUnicodeDecorateFolderNodes = 0
 " }}}
 
-" | nerdtree | leader+e, leader+E{{{
+" | nerdtree | <leader>e{{{
 let NERDTreeMinimalUI = 1
 let g:NERDTreeDirArrows = 1
 let g:NERDTreeDirArrowExpandable = nr2char(0xE5FF)
@@ -69,7 +83,15 @@ call NERDTreeHighlightFile('bashrc', 'Gray', 'none', '#686868', '#151515')
 call NERDTreeHighlightFile('bashprofile', 'Gray', 'none', '#686868', '#151515')
 
 nnoremap <silent> <Leader>e :NERDTreeToggle<CR>
-nnoremap <silent> <Leader>E :NERDTreeFind<CR>
+" }}}
+
+" double percentage sign in command mode is expanded {{{
+" to directory of current file - http://vimcasts.org/e/14
+cnoremap %% <C-R>=expand('%:h').'/'<cr>
+" }}}
+
+" Set working directory | <leader>. | {{{
+nnoremap <silent><leader>. :lcd %:p:h<CR>
 " }}}
 
 " | incsearch.vim | / ? g/ | {{{
@@ -90,22 +112,40 @@ let g:togglecursor_insert="line"
 " }}}
 
 " | Syntastic | {{{
+
+" Disable signs just show inline errors
 let g:syntastic_enable_signs=0
+
+" Syntastic python syntax checkers
+let g:syntastic_python_checkers=['flake8', 'python']
+
+" Don't warn on
+"   E121 continuation line indentation is not a multiple of four
+"   E128 continuation line under-indented for visual indent
+"   E711 comparison to None should be 'if cond is not None:'
+"   E301 expected 1 blank line, found 0
+"   E261 at least two spaces before inline comment
+"   E241 multiple spaces after ':'
+"   E124 closing bracket does not match visual indentation
+"   E126 continuation line over-indented for hanging indent
+"   E721 do not compare types, use 'isinstance()'
+let g:syntastic_python_flake8_args='--ignore=E121,E128,E711,E301,E261,E241,E124,E126,E721
+    \ --max-line-length=84'
 " }}}
 
 " | Goto file with line number under cursor | gf | {{{
 nnoremap gf gF
 " }}}
 
-" | List toggle | leader+l | {{{
+" | List toggle | <leader>l | {{{
 nnoremap <silent> <Leader>l :set list!<CR>
 " }}}
 
-" | Close the current buffer and move to the previous one | leader+w | {{{
+" | Close the current buffer and move to the previous one | <leader>w | {{{
 nnoremap <silent> <leader>w :bp <BAR> bd #<CR>
 " }}}
 
-" | Quickly jump by declarations list | leader+b |{{{
+" | Quickly jump by declarations list | <leader>b |{{{
 nnoremap <silent> <Leader>s :BTags<CR>
 " }}}
 
@@ -116,19 +156,19 @@ endfun
 command! -nargs=* Django call Django('<args>')
 " }}}
 
-" | Buffer list | leader+b | {{{
+" | Buffer list | <leader>b | {{{
 nnoremap <silent> <Leader>b :Buffers<CR>
 " }}}
 
-" | Open files | leader+f | {{{
+" | Open files | <leader>f | {{{
 nnoremap <silent> <Leader>f :Files<CR>
 " }}}
 
-" | Search word under cursor by using Ag | leader + a | {{{
+" | Search word under cursor by using Ag | <leader>a | {{{
 noremap <silent><Leader>a :Ag <C-R>=expand("<cword>")<CR><CR>
 " }}}
 
-" | QuickList Navigate | leader + [, leader + ] {{{
+" | QuickList Navigate | <leader>[, <leader>] {{{
 nnoremap <silent><leader>[ :cprev<CR>
 nnoremap <silent><leader>] :cnext<CR>
 " }}}
