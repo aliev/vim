@@ -35,6 +35,9 @@ let g:airline_symbols.linenr = '␤'
 let g:airline_symbols.branch = '⎇'
 let g:airline_symbols.paste = 'ρ'
 let g:airline_symbols.whitespace = 'Ξ'
+
+let g:airline#extensions#hunks#non_zero_only = 1
+
 " }}}
 
 " | jedi-vim | {{{
