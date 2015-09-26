@@ -51,6 +51,12 @@ let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
 let g:WebDevIconsUnicodeDecorateFolderNodes = 0
 " }}}
 
+" | vim-htmldjango_omnicomplete | {{{
+if has("autocmd")
+  au FileType htmldjango set omnifunc=htmldjangocomplete#CompleteDjango
+endif
+" }}}
+
 " | nerdtree | <leader>e{{{
 let NERDTreeMinimalUI = 1
 let g:NERDTreeDirArrows = 1
