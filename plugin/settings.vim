@@ -167,13 +167,6 @@ nnoremap <silent> <leader>w :bp <BAR> bd #<CR>
 nnoremap <silent> <Leader>s :BTags<CR>
 " }}}
 
-" | Run django commands | :Django command | {{{
-fun! Django(args)
-  execute "Make django-admin " . a:args
-endfun
-command! -nargs=* Django call Django('<args>')
-" }}}
-
 " | Buffer list | <leader>b | {{{
 nnoremap <silent> <Leader>b :Buffers<CR>
 " }}}
