@@ -13,9 +13,6 @@ if !exists('$DJANGO_SETTINGS_MODULE')
   endif
 endif
 
-if exists('$DJANGO_SETTINGS_MODULE')
-  let &makeprg = "django-admin"
-endif
 
 command! -bang -nargs=* -complete=customlist,django#completions#managmentcommands Django
-      \ Dispatch<bang> _ <args>
+      \ execute django#dispatch#make(<bang>0, <q-args>)

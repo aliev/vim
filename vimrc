@@ -216,8 +216,6 @@ set noshowmode " Suppress mode change messages
 
 set exrc " Allow load .vimrc or _vimrc from current directory
 
-" Add Python error format
-set efm+=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m
 
 set shell=/bin/bash
 
