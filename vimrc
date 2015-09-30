@@ -219,6 +219,8 @@ set exrc " Allow load .vimrc or _vimrc from current directory
 " Add Python error format
 set efm+=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m
 
+set shell=/bin/bash
+
 if filereadable(expand('~/.vim/plugins.vim'))
   " Include plugins list
   source ~/.vim/plugins.vim
