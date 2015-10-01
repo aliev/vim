@@ -7,7 +7,10 @@ endif
 
 " Airline tabline settings
 let g:airline#extensions#tabline#fnamemod = ':t'
-let g:airline_section_c = '%t'
+let g:airline_section_c = ''
+
+" Define the shortform set of text to display
+" for each mode
 let g:airline_mode_map = {
   \ '__' : '-',
   \ 'n' : 'N',
@@ -21,6 +24,7 @@ let g:airline_mode_map = {
   \ 'S' : 'S',
   \ '' : 'S',
   \ }
+
 let g:airline_section_z = airline#section#create_right(['%{g:airline_symbols.linenr}% %3l:%2c'])
 
 " Airline symbols
@@ -120,6 +124,11 @@ map ?  <Plug>(incsearch-backward)
 map g/ <Plug>(incsearch-stay)
 " }}}
 
+" | Commands List | <leader>: | {{{
+" Show Commands <leader>,
+nnoremap <leader>: :Commands<CR>
+" }}}
+
 " | vim-gitgutter | {{{
 let g:gitgutter_max_signs=10000
 " }}}
@@ -163,7 +172,7 @@ nnoremap <silent> <Leader>l :set list!<CR>
 nnoremap <silent> <leader>w :bp <BAR> bd #<CR>
 " }}}
 
-" | Quickly jump by declarations list | <leader>b |{{{
+" | Quickly jump by declarations list | <leader>s |{{{
 nnoremap <silent> <Leader>s :BTags<CR>
 " }}}
 

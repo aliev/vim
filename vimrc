@@ -216,8 +216,13 @@ set noshowmode " Suppress mode change messages
 
 set exrc " Allow load .vimrc or _vimrc from current directory
 
+" I like to leave this option empty
+" So, I can run any commands by using :make
+" eg :make make, :make django-admin runserver
+set makeprg=
 
-set shell=/bin/bash
+" Add Python error format
+set efm+=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m
 
 if filereadable(expand('~/.vim/plugins.vim'))
   " Include plugins list
