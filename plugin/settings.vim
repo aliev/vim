@@ -7,7 +7,6 @@ endif
 
 " Airline tabline settings
 let g:airline#extensions#tabline#fnamemod = ':t'
-let g:airline_section_c = ''
 
 " Define the shortform set of text to display
 " for each mode
