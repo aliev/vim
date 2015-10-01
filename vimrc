@@ -206,7 +206,12 @@ set wildmenu " Turn on the Wild menu
 
 set wildmode=list:longest,list:full " Wildmenu configuration
 
-set wildignore+=*.o,*.pyc,*.jpg,*.png,*.gif,*.db,*.obj,.git " Ignore compiled files
+" ignore general temp files
+set wildignore+=.DS_Store,.git/**,tmp/**,*.log,.bundle/**,node_modules/**,tags
+" ignore compiled files
+set wildignore+=*.rbc,.rbx,*.scssc,*.sassc,.sass-cache,*.pyc,*.gem
+" ignore images
+set wildignore+=*.jpg,*.jpeg,*.tiff,*.gif,*.png,*.svg,*.psd,*.pdf
 
 set conceallevel=2 " Conceal level
 
@@ -223,6 +228,9 @@ set makeprg=
 
 " Add Python error format
 set efm+=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m
+
+" incresase size of preview windows (e.g. fugitive's :Gstatus)
+set previewheight=25
 
 if filereadable(expand('~/.vim/plugins.vim'))
   " Include plugins list
