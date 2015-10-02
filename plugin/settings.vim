@@ -5,9 +5,6 @@ if v:version >= 703
   let g:airline#extensions#tabline#enabled = 1
 endif
 
-" Airline tabline settings
-let g:airline#extensions#tabline#fnamemod = ':t'
-
 " Define the shortform set of text to display
 " for each mode
 let g:airline_mode_map = {
@@ -24,22 +21,47 @@ let g:airline_mode_map = {
   \ '' : 'S',
   \ }
 
-let g:airline_section_z = airline#section#create_right(['%{g:airline_symbols.linenr}% %3l:%2c'])
-
 " Airline symbols
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
 
-let g:airline_left_sep = ''
-let g:airline_right_sep = '◀'
-let g:airline_symbols.crypt = '🔒'
-let g:airline_symbols.linenr = '␤'
-let g:airline_symbols.branch = '⎇'
-let g:airline_symbols.paste = 'ρ'
-let g:airline_symbols.whitespace = 'Ξ'
+if !exists('g:airline_powerline_fonts')
+  let g:airline#extensions#tabline#left_sep = ' '
+  let g:airline#extensions#tabline#left_alt_sep = '|'
+  let g:airline_left_sep          = '▶'
+  let g:airline_left_alt_sep      = '»'
+  let g:airline_right_sep         = '◀'
+  let g:airline_right_alt_sep     = '«'
+  let g:airline#extensions#branch#prefix     = '⤴' "➔, ➥, ⎇
+  let g:airline#extensions#readonly#symbol   = '⊘'
+  let g:airline#extensions#linecolumn#prefix = '¶'
+  let g:airline#extensions#paste#symbol      = 'ρ'
+  let g:airline_symbols.linenr    = '␊'
+  let g:airline_symbols.branch    = '⎇'
+  let g:airline_symbols.paste     = 'ρ'
+  let g:airline_symbols.paste     = 'Þ'
+  let g:airline_symbols.paste     = '∥'
+  let g:airline_symbols.whitespace = 'Ξ'
+else
+  let g:airline#extensions#tabline#left_sep = ''
+  let g:airline#extensions#tabline#left_alt_sep = ''
+
+  " powerline symbols
+  let g:airline_left_sep = ''
+  let g:airline_left_alt_sep = ''
+  let g:airline_right_sep = ''
+  let g:airline_right_alt_sep = ''
+  let g:airline_symbols.branch = ''
+  let g:airline_symbols.readonly = ''
+  let g:airline_symbols.linenr = ''
+endif
 
 let g:airline#extensions#hunks#non_zero_only = 1
+let g:airline_section_z = airline#section#create_right(['%{g:airline_symbols.linenr}% %3l:%2c'])
+
+" Airline tabline settings
+let g:airline#extensions#tabline#fnamemod = ':t'
 
 " }}}
 
@@ -49,6 +71,13 @@ let g:jedi#popup_on_dot = 1
 let g:jedi#show_call_signatures = 0
 let g:jedi#use_tabs_not_buffers = 0
 let g:jedi#smart_auto_mappings = 0
+" }}}
+
+" | ultisnips | {{{
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<c-b>"
+let g:UltiSnipsEditSplit="vertical"
 " }}}
 
 " | indentLine | {{{
@@ -101,11 +130,6 @@ call NERDTreeHighlightFile('bashrc', 'Gray', 'none', '#686868', '#151515')
 call NERDTreeHighlightFile('bashprofile', 'Gray', 'none', '#686868', '#151515')
 
 nnoremap <silent> <Leader>e :NERDTreeToggle<CR>
-" }}}
-
-" double percentage sign in command mode is expanded {{{
-" to directory of current file - http://vimcasts.org/e/14
-cnoremap %% <C-R>=expand('%:h').'/'<cr>
 " }}}
 
 " | incsearch.vim | / ? g/ | {{{
@@ -179,42 +203,12 @@ nnoremap <leader><leader> <c-^>
 noremap <silent><Leader>a :Ag <C-R>=expand("<cword>")<CR><CR>
 " }}}
 
-" | QuickList Navigate | <leader>[, <leader>] {{{
-nnoremap <silent><leader>[ :cprev<CR>
-nnoremap <silent><leader>] :cnext<CR>
-" }}}
-
 " | Color options | {{{
 set background=dark
 let base16colorspace=256
 colors base16-eighties
 " Disable background and foreground for vertical split
 hi vertsplit ctermbg=NONE guibg=NONE
-" }}}
-
-" | Experimental: Tab completion and UltiSnips | {{{
-" will insert tab at beginning of line,
-" will use completion if not at beginning
-set wildmode=list:longest,list:full
-
-" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<c-s>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-
-" If you want :UltiSnipsEdit to split your window.
-let g:UltiSnipsEditSplit="vertical"
-function! InsertTabWrapper()
-    let col = col('.') - 1
-    if !col || getline('.')[col - 1] !~ '\k'
-        return "\<tab>"
-    else
-        return "\<c-x>\<c-o>"
-    endif
-endfunction
-inoremap <silent><tab> <c-r>=InsertTabWrapper()<cr>
-      \<c-r>=UltiSnips#ExpandSnippetOrJump()<cr>
-inoremap <S-Tab> <c-n>
 " }}}
 
 " vim:foldmethod=marker:foldlevel=0
