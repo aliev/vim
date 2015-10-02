@@ -23,12 +23,13 @@ else
     au VimLeave * call system('tmux set-window automatic-rename on')
   endif
 
-  " Use a blinking upright bar cursor in Insert mode, a blinking block in normal
+  " Cursor Shape
   if &term == 'xterm-256color' || &term == 'screen-256color'
-    let &t_SI = "\<Esc>[5 q"
-    let &t_EI = "\<Esc>[1 q"
+    let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+    let &t_EI = "\<Esc>]50;CursorShape=0\x7"
   endif
 
+  " Cursor Shape for tmux
   if exists('$TMUX')
     let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
     let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
