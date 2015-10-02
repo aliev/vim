@@ -58,13 +58,6 @@ let g:indentLine_faster=1
 let g:indentLine_char=nr2char(0xA6)
 " }}}
 
-" | ultisnips | {{{
-" better key bindings for UltiSnipsExpandTrigger
-let g:UltiSnipsExpandTrigger = "<tab>"
-let g:UltiSnipsJumpForwardTrigger = "<tab>"
-let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
-" }}}
-
 " | vim-devicons | {{{
 let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
 let g:WebDevIconsUnicodeDecorateFolderNodes = 0
@@ -132,11 +125,6 @@ nnoremap <leader>: :Commands<CR>
 let g:gitgutter_max_signs=10000
 " }}}
 
-" | vim-togglecursor | {{{
-let g:togglecursor_default="block"
-let g:togglecursor_insert="line"
-" }}}
-
 " | Syntastic | {{{
 
 " Disable signs just show inline errors
@@ -190,6 +178,20 @@ noremap <silent><Leader>a :Ag <C-R>=expand("<cword>")<CR><CR>
 " | QuickList Navigate | <leader>[, <leader>] {{{
 nnoremap <silent><leader>[ :cprev<CR>
 nnoremap <silent><leader>] :cnext<CR>
+" }}}
+
+" Tab completion {{{
+" will insert tab at beginning of line,
+" will use completion if not at beginning
+function! InsertTabWrapper()
+    let col = col('.') - 1
+    if !col || getline('.')[col - 1] !~ '\k'
+        return "\<tab>"
+    else
+        return "\<c-x>\<c-o>"
+    endif
+endfunction
+inoremap <Tab> <c-r>=InsertTabWrapper()<cr>
 " }}}
 
 " | Color options | {{{

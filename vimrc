@@ -16,10 +16,22 @@ if has("gui_running")
   set guifont=Droid\ Sans\ Mono\ For\ Powerline\ Plus\ Nerd\ File\ Types\ Plus\ Pomicons:h13
 else
   set t_Co=256
+
   " Automatic rename of tmux window
   if exists('$TMUX') && !exists('$NORENAME')
     au BufEnter * if empty(&buftype) | call system('tmux rename-window '.expand('%:t:S')) | endif
     au VimLeave * call system('tmux set-window automatic-rename on')
+  endif
+
+  " Use a blinking upright bar cursor in Insert mode, a blinking block in normal
+  if &term == 'xterm-256color' || &term == 'screen-256color'
+    let &t_SI = "\<Esc>[5 q"
+    let &t_EI = "\<Esc>[1 q"
+  endif
+
+  if exists('$TMUX')
+    let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+    let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
   endif
 endif
 " }}}
@@ -95,7 +107,6 @@ if has('nvim')
   if $NVIM_TUI_ENABLE_CURSOR_SHAPE == ""
     let $NVIM_TUI_ENABLE_CURSOR_SHAPE = 1
   endif
-  tnoremap <Esc> <C-\><C-n>
 endif
 " }}}
 

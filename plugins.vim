@@ -63,9 +63,6 @@ Plug 'terryma/vim-multiple-cursors'
 " Improved incremental searching for Vim
 Plug 'haya14busa/incsearch.vim'
 
-" Toggle the cursor shape in the terminal for Vim
-Plug 'jszakmeister/vim-togglecursor'
-
 " Simple tmux statusline generator with support for powerline symbols and
 " statusline / airline / lightline integration
 " and my tmux conf https://gist.github.com/aliev/e900f25134a90c648442
@@ -90,11 +87,5 @@ endif
 
 " Syntax checking hacks for vim
 Plug 'scrooloose/syntastic'
-
-" Track the engine.
-Plug 'SirVer/ultisnips'
-
-" Snippets are separated from the engine. Add this if you want them:
-Plug 'honza/vim-snippets'
 
 call plug#end()
