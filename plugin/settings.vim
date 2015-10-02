@@ -171,6 +171,10 @@ nnoremap <silent> <Leader>b :Buffers<CR>
 nnoremap <silent> <Leader>f :Files<CR>
 " }}}
 
+" Switch between the last two files {{{
+nnoremap <leader><leader> <c-^>
+" }}}
+
 " | Search word under cursor by using Ag | <leader>a | {{{
 noremap <silent><Leader>a :Ag <C-R>=expand("<cword>")<CR><CR>
 " }}}
