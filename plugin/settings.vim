@@ -184,42 +184,12 @@ nnoremap <silent><leader>[ :cprev<CR>
 nnoremap <silent><leader>] :cnext<CR>
 " }}}
 
-" Tab completion and integration with UltiSnips {{{
-" will insert tab at beginning of line,
-" will use completion if not at beginning
-function! InsertTabWrapper()
-  let col = col('.') - 1
-  if !col || getline('.')[col - 1] !~ '\k'
-    return "\<tab>"
-  else
-    let snippet_list = UltiSnips#SnippetsInCurrentScope()
-    let canditates = []
-    let curr_word = getline('.')
-    for snip in items(snippet_list)
-      if !empty(snip)
-        return "\<c-r>=UltiSnips#ExpandSnippet()\<CR>"
-      endif
-    endfor
-
-    return "\<c-x>\<c-o>"
-  endif
-endfunction
-inoremap <silent><Tab> <c-r>=InsertTabWrapper()<cr>
-" }}}
-
 " | Color options | {{{
 set background=dark
 let base16colorspace=256
 colors base16-eighties
 " Disable background and foreground for vertical split
 hi vertsplit ctermbg=NONE guibg=NONE
-" }}}
-
-" | ultisnips | {{{
-" better key bindings for UltiSnipsExpandTrigger
-let g:UltiSnipsExpandTrigger = "<C-S>"
-let g:UltiSnipsJumpForwardTrigger = "<C-S>"
-let g:UltiSnipsJumpBackwardTrigger = "<C-S>"
 " }}}
 
 " vim:foldmethod=marker:foldlevel=0
