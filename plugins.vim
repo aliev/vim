@@ -82,10 +82,16 @@ Plug 'tpope/vim-dispatch'
 
 if has('nvim')
   " Adds neovim support to vim-dispatch
-  Plug 'radenling/vim-dispatch-neovim'
+  Plug 'radenling/vim-dispatch-neovim', {'branch': 'foreground-terminal'}
 endif
 
 " Syntax checking hacks for vim
 Plug 'scrooloose/syntastic'
+
+" Track the engine.
+Plug 'SirVer/ultisnips'
+
+" Snippets are separated from the engine. Add this if you want them:
+Plug 'honza/vim-snippets'
 
 call plug#end()
