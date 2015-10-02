@@ -192,4 +192,29 @@ colors base16-eighties
 hi vertsplit ctermbg=NONE guibg=NONE
 " }}}
 
+" | Experimental: Tab completion and UltiSnips | {{{
+" will insert tab at beginning of line,
+" will use completion if not at beginning
+set wildmode=list:longest,list:full
+
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<c-s>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+function! InsertTabWrapper()
+    let col = col('.') - 1
+    if !col || getline('.')[col - 1] !~ '\k'
+        return "\<tab>"
+    else
+        return "\<c-x>\<c-o>"
+    endif
+endfunction
+inoremap <silent><tab> <c-r>=InsertTabWrapper()<cr>
+      \<c-r>=UltiSnips#ExpandSnippetOrJump()<cr>
+inoremap <S-Tab> <c-n>
+" }}}
+
 " vim:foldmethod=marker:foldlevel=0
