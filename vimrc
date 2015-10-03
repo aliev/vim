@@ -93,13 +93,6 @@ augroup vimrc-remember-cursor-position
 augroup END
 " }}}
 
-" The PC is fast enough, do syntax highlight syncing from start {{{
-augroup vimrc-sync-fromstart
-  autocmd!
-  autocmd BufEnter * :syntax sync fromstart
-augroup END
-" }}}
-
 " Use ag over grep {{{
 if executable('ag')
   set grepprg=ag\ --nogroup\ --nocolor
