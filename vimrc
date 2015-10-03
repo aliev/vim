@@ -86,10 +86,17 @@ endif
 " }}}
 
 " Remember cursor position {{{
-augroup vimrc_remember_cursor_position
+augroup vimrc-remember-cursor-position
   au!
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$")
         \| exe "normal! g`\"" | endif
+augroup END
+" }}}
+
+" The PC is fast enough, do syntax highlight syncing from start {{{
+augroup vimrc-sync-fromstart
+  autocmd!
+  autocmd BufEnter * :syntax sync fromstart
 augroup END
 " }}}
 
