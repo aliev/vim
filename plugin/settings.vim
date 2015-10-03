@@ -76,7 +76,7 @@ let g:jedi#smart_auto_mappings = 0
 " | ultisnips | {{{
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 let g:UltiSnipsEditSplit="vertical"
 " }}}
 
@@ -195,7 +195,7 @@ nnoremap <silent> <Leader>b :Buffers<CR>
 nnoremap <silent> <Leader>f :Files<CR>
 " }}}
 
-" Switch between the last two files {{{
+" | Switch between the last two files | <leader><leader> {{{
 nnoremap <leader><leader> <c-^>
 " }}}
 
