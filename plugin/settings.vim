@@ -133,7 +133,7 @@ nnoremap <leader>: :Commands<CR>
 " }}}
 
 " | vim-gitgutter | {{{
-let g:gitgutter_max_signs=10000
+let g:gitgutter_max_signs=500
 " }}}
 
 " | Syntastic | {{{
