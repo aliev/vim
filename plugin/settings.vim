@@ -127,14 +127,6 @@ call NERDTreeHighlightFile('bashprofile', 'Gray', 'none', '#686868', '#151515')
 nnoremap <silent> <Leader>e :NERDTreeToggle<CR>
 " }}}
 
-" | incsearch.vim | / ? g/ | {{{
-let g:incsearch#auto_nohlsearch = 1
-
-map /  <Plug>(incsearch-forward)
-map ?  <Plug>(incsearch-backward)
-map g/ <Plug>(incsearch-stay)
-" }}}
-
 " | Commands List | <leader>: | {{{
 " Show Commands <leader>,
 nnoremap <leader>: :Commands<CR>

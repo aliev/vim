@@ -48,14 +48,6 @@ Plug 'Yggdroot/indentLine'
 " True Sublime Text style multiple selections for Vim
 Plug 'terryma/vim-multiple-cursors'
 
-" Improved incremental searching for Vim
-Plug 'haya14busa/incsearch.vim'
-
-" Simple tmux statusline generator with support for powerline symbols and
-" statusline / airline / lightline integration
-" and my tmux conf https://gist.github.com/aliev/e900f25134a90c648442
-Plug 'edkolev/tmuxline.vim'
-
 " For correct install color schemes pls read these notes
 " https://github.com/chriskempson/base16-vim
 " https://github.com/chriskempson/base16-shell
