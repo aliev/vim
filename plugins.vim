@@ -13,12 +13,6 @@ Plug 'bling/vim-airline'
 " Plug to toggle, display and navigate marks
 Plug 'kshenoy/vim-signature'
 
-" Icons support
-" Adds font icons (glyphs ★♨☢) to programming languages,
-" libraries, and web developer filetypes for:
-" NERDTree, vim-airline, ctrlp, unite, lightline.vim, vimfiler, and flagship
-Plug 'ryanoasis/vim-devicons'
-
 " An extensible & universal comment vim-plugin that also handles embedded
 " filetypes
 Plug 'tomtom/tcomment_vim'
@@ -44,18 +38,12 @@ Plug 'lukaszb/vim-web-indent'
 " A tree explorer plugin for vim.
 Plug 'scrooloose/nerdtree'
 
-" A plugin of NERDTree showing git status
-Plug 'Xuyuanp/nerdtree-git-plugin'
-
 " A command-line fuzzy finder written in Go
 Plug 'junegunn/fzf', {'do': 'yes \| ./install'}
 Plug 'junegunn/fzf.vim'
 
 " Plug to display the indention levels with thin vertical lines
 Plug 'Yggdroot/indentLine'
-
-" Improvement over standard matchparen plugin
-Plug 'vim-scripts/matchparenpp'
 
 " True Sublime Text style multiple selections for Vim
 Plug 'terryma/vim-multiple-cursors'

@@ -87,11 +87,6 @@ let g:indentLine_faster=1
 let g:indentLine_char=nr2char(0xA6)
 " }}}
 
-" | vim-devicons | {{{
-let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
-let g:WebDevIconsUnicodeDecorateFolderNodes = 0
-" }}}
-
 " | vim-htmldjango_omnicomplete | {{{
 if has("autocmd")
   au FileType htmldjango set omnifunc=htmldjangocomplete#CompleteDjango
