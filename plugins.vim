@@ -65,9 +65,6 @@ if has('nvim')
   Plug 'radenling/vim-dispatch-neovim', {'branch': 'foreground-terminal'}
 endif
 
-" Syntax checking hacks for vim
-Plug 'scrooloose/syntastic'
-
 " Track the engine.
 Plug 'SirVer/ultisnips'
 
