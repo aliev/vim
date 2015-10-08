@@ -5,39 +5,19 @@
 """"""""""""""""""""""""""""""""""""""""
 
 scriptencoding utf-8
+set t_Co=256
 
-syntax on " enable syntax-highlighting
-
-" GUI and Terminal VIM options {{{
-if has("gui_running")
-  " Disable all GUI elements and enable console based dialogs for simple queries
-  set guioptions=gc
-  " Default font for GUI Vim
-  set guifont=Droid\ Sans\ Mono\ For\ Powerline\ Plus\ Nerd\ File\ Types\ Plus\ Pomicons:h13
-else
-  set t_Co=256
-
-  " Automatic rename of tmux window
-  if exists('$TMUX') && !exists('$NORENAME')
-    au BufEnter * if empty(&buftype) | call system('tmux rename-window '.expand('%:t:S')) | endif
-    au VimLeave * call system('tmux set-window automatic-rename on')
-  endif
-
-  " Cursor Shape
-  if &term == 'xterm-256color' || &term == 'screen-256color'
-    let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-    let &t_EI = "\<Esc>]50;CursorShape=0\x7"
-  endif
-
-  " Cursor Shape for tmux
-  if exists('$TMUX')
-    let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
-    let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
-  endif
+if has('syntax') && !exists('g:syntax_on')
+  syntax enable
 endif
-" }}}
 
-" Mouse {{{
+" Automatic rename of tmux window
+if exists('$TMUX') && !exists('$NORENAME')
+  au BufEnter * if empty(&buftype) | call system('tmux rename-window '.expand('%:t:S')) | endif
+  au VimLeave * call system('tmux set-window automatic-rename on')
+endif
+
+" Mouse
 if has('mouse')
   set mouse=a " Enable mouse support
   set mousemodel=popup " Use the mouse for copy/paste with popup in gui vim
@@ -49,9 +29,8 @@ if has('mouse')
     endif
   endif
 endif
-" }}}
 
-" Multibyte {{{
+" Multibyte
 if has('multi_byte')
   set listchars=trail:·,tab:»·,eol:¶,extends:→,precedes:←,nbsp:×
   " Vertical split chars
@@ -62,45 +41,27 @@ if has('multi_byte')
     set breakindentopt=sbr
   endif
 endif
-" }}}
 
-" Autocmd {{{
+" Autocmd
 if has("autocmd")
   " Enable file type detection.
   filetype plugin indent on
-
-  " Python indentation
-  " About nosmartindent please look this link
-  " http://stackoverflow.com/questions/2063175/vim-insert-mode-comments-go-to-start-of-line
-  au FileType python setl nosmartindent
-
-  " JavaScript indentation
-  au FileType javascript setlocal expandtab shiftwidth=2 tabstop=2
-
-  " Vim indentation
-  au FileType vim setlocal expandtab shiftwidth=2 tabstop=2
-
-  " Disable line numbers for QuickFix
-  au FileType qf setlocal nonumber
 endif
-" }}}
 
-" Remember cursor position {{{
+" Remember cursor position
 augroup vimrc-remember-cursor-position
   au!
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$")
         \| exe "normal! g`\"" | endif
 augroup END
-" }}}
 
-" Use ag over grep {{{
+" Use ag over grep
 if executable('ag')
   set grepprg=ag\ --nogroup\ --nocolor
   let $FZF_DEFAULT_COMMAND='ag -l -g ""'
 endif
-" }}}
 
-" Neovim options {{{
+" Neovim options
 if has('nvim')
   set rtp+=~/.vim/
   " If Neovim support is enabled, then let set the
@@ -109,9 +70,8 @@ if has('nvim')
     let $NVIM_TUI_ENABLE_CURSOR_SHAPE = 1
   endif
 endif
-" }}}
 
-" Store undofile in to fixed location {{{
+" Store undofile in to fixed location
 if exists("+undofile")
     " undofile - This allows you to use undos after exiting and restarting
     " This, like swap and backups, uses .vim-undo first, then ~/.vim/undo
@@ -122,7 +82,30 @@ if exists("+undofile")
     " Store undo files in to fixed location
     set undodir=/var/tmp//,/tmp//,.
 endif
-" }}}
+
+if &shell =~# 'fish$'
+  set shell=/bin/bash
+endif
+
+if !&scrolloff
+  set scrolloff=1
+endif
+
+if !&sidescrolloff
+  set sidescrolloff=5
+endif
+
+if v:version > 703 || v:version == 703 && has("patch541")
+  set formatoptions+=j " Delete comment character when joining commented lines
+endif
+
+if &history < 1000
+  set history=1000
+endif
+
+if v:version > 703 || v:version == 703 && has("patch541")
+  set formatoptions+=j " Delete comment character when joining commented lines
+endif
 
 " Store swap files in to fixed location
 set noswapfile
@@ -232,17 +215,6 @@ set modelines=1 " Make Vim only use folding settings for current file
 set noshowmode " Suppress mode change messages
 
 set exrc " Allow load .vimrc or _vimrc from current directory
-
-" I like to leave this option empty
-" So, I can run any commands by using :make
-" eg :make make, :make django-admin runserver
-set makeprg=
-
-" Add Python error format
-set efm+=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m
-
-" incresase size of preview windows (e.g. fugitive's :Gstatus)
-set previewheight=25
 
 if filereadable(expand('~/.vim/plugins.vim'))
   " Include plugins list
