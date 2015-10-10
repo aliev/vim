@@ -51,7 +51,7 @@ function! python#pymake#fixqflist()
   let l:traceback = []
   let qflist = getqflist()
   for i in qflist
-    if i.type == 'E'
+    if !empty(i['type'])
       call add(l:traceback, i)
     endif
   endfor
