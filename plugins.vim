@@ -74,6 +74,4 @@ Plug 'honza/vim-snippets'
 " Toggle the cursor shape in the terminal for Vim. 
 Plug 'jszakmeister/vim-togglecursor'
 
-Plug 'aliev/vim-python-tools'
-
 call plug#end()

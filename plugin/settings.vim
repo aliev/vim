@@ -174,5 +174,4 @@ colors base16-eighties
 " Disable background and foreground for vertical split
 hi vertsplit ctermbg=NONE guibg=NONE
 " }}}
-
 " vim:foldmethod=marker:foldlevel=0

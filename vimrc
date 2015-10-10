@@ -11,10 +11,8 @@ if has('syntax') && !exists('g:syntax_on')
   syntax enable
 endif
 
-" Automatic rename of tmux window
-if exists('$TMUX') && !exists('$NORENAME')
-  au BufEnter * if empty(&buftype) | call system('tmux rename-window '.expand('%:t:S')) | endif
-  au VimLeave * call system('tmux set-window automatic-rename on')
+if has("autocmd")
+  filetype plugin indent on
 endif
 
 " Mouse
@@ -42,10 +40,20 @@ if has('multi_byte')
   endif
 endif
 
-" Autocmd
-if has("autocmd")
-  " Enable file type detection.
-  filetype plugin indent on
+" Neovim options
+if has('nvim')
+  set rtp+=~/.vim/
+  " If Neovim support is enabled, then let set the
+  " NVIM_TUI_ENABLE_CURSOR_SHAPE for the user.
+  if $NVIM_TUI_ENABLE_CURSOR_SHAPE == ""
+    let $NVIM_TUI_ENABLE_CURSOR_SHAPE = 1
+  endif
+endif
+
+" Automatic rename of tmux window
+if exists('$TMUX') && !exists('$NORENAME')
+  au BufEnter * if empty(&buftype) | call system('tmux rename-window '.expand('%:t:S')) | endif
+  au VimLeave * call system('tmux set-window automatic-rename on')
 endif
 
 " Remember cursor position
@@ -59,16 +67,6 @@ augroup END
 if executable('ag')
   set grepprg=ag\ --nogroup\ --nocolor
   let $FZF_DEFAULT_COMMAND='ag -l -g ""'
-endif
-
-" Neovim options
-if has('nvim')
-  set rtp+=~/.vim/
-  " If Neovim support is enabled, then let set the
-  " NVIM_TUI_ENABLE_CURSOR_SHAPE for the user.
-  if $NVIM_TUI_ENABLE_CURSOR_SHAPE == ""
-    let $NVIM_TUI_ENABLE_CURSOR_SHAPE = 1
-  endif
 endif
 
 " Store undofile in to fixed location
