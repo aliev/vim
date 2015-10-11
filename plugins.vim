@@ -75,6 +75,7 @@ Plug 'honza/vim-snippets'
 Plug 'jszakmeister/vim-togglecursor'
 
 Plug 'aliev/vim-python-dispatch'
+Plug 'aliev/vim-python-env'
 
 " Tern plugin for Vim
 Plug 'marijnh/tern_for_vim', {'do': 'npm install'}
