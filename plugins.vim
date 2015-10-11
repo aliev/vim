@@ -17,24 +17,6 @@ Plug 'kshenoy/vim-signature'
 " filetypes
 Plug 'tomtom/tcomment_vim'
 
-" Plug which shows a git diff in the gutter (sign column)
-" and stages/reverts hunks.
-Plug 'airblade/vim-gitgutter'
-
-" a Git wrapper so awesome, it should be illegal
-Plug 'tpope/vim-fugitive'
-
-" Jedi for comfortable development with python
-" TODO: jedi 0.9.0 library has issue with imports
-" I'll fix this issue by using stable jedi version (0.8.1):
-Plug 'davidhalter/jedi-vim', {'do': 'cd jedi/ && git checkout 7b402d7'}
-
-" A nicer Python indentation style for vim.
-Plug 'hynek/vim-python-pep8-indent'
-
-" Javascript indenter (HTML indent is included)
-Plug 'lukaszb/vim-web-indent'
-
 " A tree explorer plugin for vim.
 Plug 'scrooloose/nerdtree'
 
@@ -48,23 +30,6 @@ Plug 'Yggdroot/indentLine'
 " True Sublime Text style multiple selections for Vim
 Plug 'terryma/vim-multiple-cursors'
 
-" For correct install color schemes pls read these notes
-" https://github.com/chriskempson/base16-vim
-" https://github.com/chriskempson/base16-shell
-" https://github.com/chriskempson/base16-iterm2
-Plug 'chriskempson/base16-vim'
-
-" htmldjango filetype omnicomplete - completes template tags/filters/variables
-Plug 'mjbrownie/vim-htmldjango_omnicomplete'
-
-" asynchronous build and test dispatcher
-Plug 'tpope/vim-dispatch'
-
-if has('nvim')
-  " Adds neovim support to vim-dispatch
-  Plug 'radenling/vim-dispatch-neovim', {'branch': 'foreground-terminal'}
-endif
-
 " Track the engine.
 Plug 'SirVer/ultisnips'
 
@@ -74,13 +39,53 @@ Plug 'honza/vim-snippets'
 " Toggle the cursor shape in the terminal for Vim. 
 Plug 'jszakmeister/vim-togglecursor'
 
-Plug 'aliev/vim-python-dispatch'
-Plug 'aliev/vim-python-env'
-
 " Tern plugin for Vim
 Plug 'marijnh/tern_for_vim', {'do': 'npm install'}
+
+" Javascript indenter (HTML indent is included)
+Plug 'lukaszb/vim-web-indent'
 
 " Syntax checking hacks for vim
 Plug 'scrooloose/syntastic'
 
+" asynchronous build and test dispatcher
+Plug 'tpope/vim-dispatch'
+
+if has('nvim')
+  " Adds neovim support to vim-dispatch
+  Plug 'radenling/vim-dispatch-neovim', {'branch': 'foreground-terminal'}
+endif
+
+" Git Place {{{
+" Plug which shows a git diff in the gutter (sign column)
+" and stages/reverts hunks.
+Plug 'airblade/vim-gitgutter'
+
+" a Git wrapper so awesome, it should be illegal
+Plug 'tpope/vim-fugitive'
+" }}}
+
+" Python Place {{{
+Plug 'aliev/vim-python-dispatch'
+Plug 'aliev/vim-python-env'
+
+" htmldjango filetype omnicomplete - completes template tags/filters/variables
+Plug 'mjbrownie/vim-htmldjango_omnicomplete'
+
+" A nicer Python indentation style for vim.
+Plug 'hynek/vim-python-pep8-indent'
+
+" Jedi for comfortable development with python
+" TODO: jedi 0.9.0 library has issue with imports
+" I'll fix this issue by using stable jedi version (0.8.1):
+Plug 'davidhalter/jedi-vim', {'do': 'cd jedi/ && git checkout 7b402d7'}
+" }}}
+
+" For correct install color schemes pls read these notes
+" https://github.com/chriskempson/base16-vim
+" https://github.com/chriskempson/base16-shell
+" https://github.com/chriskempson/base16-iterm2
+Plug 'chriskempson/base16-vim'
+
 call plug#end()
+" vim:foldmethod=marker:foldlevel=0
