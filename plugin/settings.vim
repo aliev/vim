@@ -83,6 +83,12 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 
 " }}}
 
+" | syntastic | {{{
+let g:syntastic_python_checkers = ['flake8']
+let g:syntastic_javascript_checkers = ['jslint']
+let g:syntastic_enable_signs = 0
+" }}}
+
 " | jedi-vim | {{{
 let g:jedi#popup_on_dot = 1
 
@@ -174,4 +180,5 @@ colors base16-eighties
 " Disable background and foreground for vertical split
 hi vertsplit ctermbg=NONE guibg=NONE
 " }}}
+
 " vim:foldmethod=marker:foldlevel=0

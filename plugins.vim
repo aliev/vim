@@ -74,6 +74,12 @@ Plug 'honza/vim-snippets'
 " Toggle the cursor shape in the terminal for Vim. 
 Plug 'jszakmeister/vim-togglecursor'
 
-Plug 'aliev/vim-python-tools'
+Plug 'aliev/vim-python-dispatch'
+
+" Tern plugin for Vim
+Plug 'marijnh/tern_for_vim', {'do': 'npm install'}
+
+" Syntax checking hacks for vim
+Plug 'scrooloose/syntastic'
 
 call plug#end()
