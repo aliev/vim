@@ -53,7 +53,7 @@ Plug 'tpope/vim-dispatch'
 
 if has('nvim')
   " Adds neovim support to vim-dispatch
-  Plug 'radenling/vim-dispatch-neovim', {'branch': 'foreground-terminal'}
+  Plug 'radenling/vim-dispatch-neovim'
 endif
 
 " Git Place {{{
@@ -63,6 +63,9 @@ Plug 'airblade/vim-gitgutter'
 
 " a Git wrapper so awesome, it should be illegal
 Plug 'tpope/vim-fugitive'
+
+" A plugin of NERDTree showing git status
+Plug 'Xuyuanp/nerdtree-git-plugin'
 " }}}
 
 " Python Place {{{

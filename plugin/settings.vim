@@ -122,7 +122,7 @@ if has("autocmd")
 endif
 " }}}
 
-" | nerdtree | <leader>e{{{
+" | nerdtree | <leader>e <leader>d{{{
 let NERDTreeMinimalUI = 1
 let g:NERDTreeDirArrows = 1
 let g:NERDTreeDirArrowExpandable = nr2char(0xE5FF)
@@ -130,6 +130,10 @@ let g:NERDTreeDirArrowCollapsible = nr2char(0xE5FE)
 let NERDTreeIgnore = ['\.pyc$']
 
 nnoremap <silent> <Leader>e :NERDTreeToggle<CR>
+
+" Oh, I Love It!
+let g:NERDTreeHijackNetrw = 1
+nnoremap <silent> <leader>d :execute 'e '. expand('%:p:h')<CR>
 " }}}
 
 " | Commands List | <leader>: | {{{
