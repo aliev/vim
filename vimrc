@@ -1,21 +1,21 @@
+scriptencoding utf-8
+
 """"""""""""""""""""""""""""""""""""""""
 " This is the minimum vim configuration
 " file which can be used separately
 " from other files
 """"""""""""""""""""""""""""""""""""""""
 
-scriptencoding utf-8
 set t_Co=256
-
-if has('syntax') && !exists('g:syntax_on')
-  syntax enable
-endif
 
 if has("autocmd")
   filetype plugin indent on
 endif
 
-" Mouse
+if has('syntax') && !exists('g:syntax_on')
+  syntax enable
+endif
+
 if has('mouse')
   set mouse=a " Enable mouse support
   set mousemodel=popup " Use the mouse for copy/paste with popup in gui vim
@@ -28,19 +28,17 @@ if has('mouse')
   endif
 endif
 
-" Multibyte
-if has('multi_byte')
-  set listchars=trail:·,tab:»·,eol:¶,extends:→,precedes:←,nbsp:×
-  " Vertical split chars
-  set fillchars=stl:\ ,stlnc:\ ,vert:│
+if has('multi_byte') && &encoding ==# 'utf-8'
+  let &listchars = 'trail:·,tab:»·,eol:¶,extends:→,precedes:←,nbsp:×'
+  let &fillchars = 'stl: ,stlnc: ,vert:│,diff:▚'
+
   if has('patch-7.4.338')
-    let &sbr = nr2char(8618).' ' " Show ↪ at the beginning of wrapped lines
+    let &showbreak = nr2char(8618).' ' " Show ↪ at the beginning of wrapped lines
     set breakindent
     set breakindentopt=sbr
   endif
 endif
 
-" Neovim options
 if has('nvim')
   set rtp+=~/.vim/
   " If Neovim support is enabled, then let set the
@@ -50,35 +48,35 @@ if has('nvim')
   endif
 endif
 
-" Automatic rename of tmux window
 if exists('$TMUX') && !exists('$NORENAME')
+  " Automatic rename of tmux window
   au BufEnter * if empty(&buftype) | call system('tmux rename-window '.expand('%:t:S')) | endif
   au VimLeave * call system('tmux set-window automatic-rename on')
 endif
 
-" Remember cursor position
 augroup vimrc-remember-cursor-position
+  " Remember cursor position
   au!
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$")
         \| exe "normal! g`\"" | endif
 augroup END
 
-" Use ag over grep
 if executable('ag')
+  " Use ag over grep
   set grepprg=ag\ --nogroup\ --nocolor
   let $FZF_DEFAULT_COMMAND='ag -l -g ""'
 endif
 
-" Store undofile in to fixed location
 if exists("+undofile")
-    " undofile - This allows you to use undos after exiting and restarting
-    " This, like swap and backups, uses .vim-undo first, then ~/.vim/undo
-    " :help undo-persistence
-    " This is only present in 7.3+
-    set undofile
+  " Store undofile in to fixed location
+  " undofile - This allows you to use undos after exiting and restarting
+  " This, like swap and backups, uses .vim-undo first, then ~/.vim/undo
+  " :help undo-persistence
+  " This is only present in 7.3+
+  set undofile
 
-    " Store undo files in to fixed location
-    set undodir=/var/tmp//,/tmp//,.
+  " Store undo files in to fixed location
+  set undodir=/var/tmp//,/tmp//,.
 endif
 
 if &shell =~# 'fish$'
@@ -94,16 +92,16 @@ if !&sidescrolloff
 endif
 
 if v:version > 703 || v:version == 703 && has("patch541")
-  set formatoptions+=j " Delete comment character when joining commented lines
+  " Delete comment character when joining commented lines
+  set formatoptions+=j
 endif
 
 if &history < 1000
   set history=1000
 endif
 
-if v:version > 703 || v:version == 703 && has("patch541")
-  set formatoptions+=j " Delete comment character when joining commented lines
-endif
+let mapleader = "," " Map leader
+let maplocalleader = "_" " Local leader
 
 " Store swap files in to fixed location
 set noswapfile
@@ -126,8 +124,7 @@ set path=.,,**
 "  n... :  where to save the viminfo files
 "set viminfo='10,\"100,:20,%,n~/.viminfo
 
-" Disable timeout for Esc key
-set ttimeout ttimeoutlen=0 notimeout
+set ttimeout ttimeoutlen=0 notimeout " Disable timeout for Esc key
 set ttyfast " Optimize for fast terminal connections
 set lazyredraw " Don't redraw while executing macros (good performance config)
 
@@ -137,10 +134,6 @@ set lazyredraw " Don't redraw while executing macros (good performance config)
 set completeopt=menuone,longest
 
 set confirm " Get a dialog when :q, :w, or :wq fails
-
-let mapleader = "," " Map leader
-
-let maplocalleader = "_" " Local leader
 
 set hlsearch " Highlight search terms (very useful!)
 
@@ -164,8 +157,7 @@ set acd " Vim will change the current working directory whenever you open a file
 
 set autoread " Reload files changed outside automatically
 
-" Use space instead of tab
-set tabstop=4 shiftwidth=4 expandtab
+set tabstop=4 shiftwidth=4 expandtab " Use space instead of tab
 
 set backspace=2 " Make backspace work like most other apps
 
