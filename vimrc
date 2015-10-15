@@ -9,10 +9,6 @@ scriptencoding utf-8
 set nocompatible
 set t_Co=256
 
-if has("autocmd")
-  filetype plugin indent on
-endif
-
 if has('syntax') && !exists('g:syntax_on')
   syntax enable
 endif
@@ -49,24 +45,28 @@ if has('nvim')
   endif
 endif
 
-if exists('$TMUX') && !exists('$NORENAME')
-  " Automatic rename of tmux window
-  au BufEnter * if empty(&buftype) | call system('tmux rename-window '.expand('%:t:S')) | endif
-  au VimLeave * call system('tmux set-window automatic-rename on')
+if has("autocmd")
+  filetype plugin indent on
+
+  if exists('$TMUX') && !exists('$NORENAME')
+    " Automatic rename of tmux window
+    au BufEnter * if empty(&buftype) | call system('tmux rename-window '.expand('%:t:S')) | endif
+    au VimLeave * call system('tmux set-window automatic-rename on')
+  endif
+
+  augroup vimrc-remember-cursor-position
+    " Remember cursor position
+    au!
+    au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$")
+          \| exe "normal! g`\"" | endif
+  augroup END
+
+  augroup vimrc-sync-fromstart
+    " Do syntax highlight syncing from start
+    au!
+    au BufEnter * :syntax sync fromstart
+  augroup END
 endif
-
-augroup vimrc-remember-cursor-position
-  " Remember cursor position
-  au!
-  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$")
-        \| exe "normal! g`\"" | endif
-augroup END
-
-augroup vimrc-sync-fromstart
-  " Do syntax highlight syncing from start
-  au!
-  au BufEnter * :syntax sync fromstart
-augroup END
 
 if executable('ag')
   " Use ag over grep
