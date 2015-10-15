@@ -180,8 +180,8 @@ nnoremap <leader>. <Esc>: <C-R>=expand("%:p:h") . "/" <CR><Home>
 nnoremap <leader><leader> <c-^>
 " }}}
 
-" | Search word under cursor by using Ag | <leader>a | {{{
-noremap <silent><Leader>a :Ag <C-R>=expand("<cword>")<CR><CR>
+" | Search word under cursor by using Ag | <leader>ag | {{{
+noremap <silent><Leader>ag :Ag <C-R>=expand("<cword>")<CR><CR>
 " }}}
 
 " | Color options | {{{
