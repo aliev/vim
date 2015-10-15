@@ -172,7 +172,11 @@ nnoremap <silent> <Leader>b :Buffers<CR>
 nnoremap <silent> <Leader>f :Files<CR>
 " }}}
 
-" | Switch between the last two files | <leader><leader> {{{
+" | Give directory for current file and open command mode | <leader>. | {{{
+nnoremap <leader>. <Esc>: <C-R>=expand("%:p:h") . "/" <CR><Home>
+" }}}
+
+" | Switch between the last edited two files | <leader><leader> {{{
 nnoremap <leader><leader> <c-^>
 " }}}
 
