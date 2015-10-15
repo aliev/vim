@@ -61,6 +61,12 @@ augroup vimrc-remember-cursor-position
         \| exe "normal! g`\"" | endif
 augroup END
 
+augroup vimrc-sync-fromstart
+  " Do syntax highlight syncing from start
+  au!
+  au BufEnter * :syntax sync fromstart
+augroup END
+
 if executable('ag')
   " Use ag over grep
   set grepprg=ag\ --nogroup\ --nocolor

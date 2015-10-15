@@ -122,7 +122,7 @@ if has("autocmd")
 endif
 " }}}
 
-" | nerdtree | <leader>e {{{
+" | nerdtree | - | {{{
 let NERDTreeMinimalUI = 1
 let g:NERDTreeDirArrows = 1
 let g:NERDTreeDirArrowExpandable = nr2char(0xE5FF)
@@ -134,17 +134,22 @@ let g:NERDTreeHijackNetrw = 1
 nnoremap <silent> <leader>e :execute 'e '. expand('%:p:h')<CR>
 " }}}
 
+" | vim-gitgutter | {{{
+let g:gitgutter_max_signs=500
+" }}}
+
 " | Commands List | <leader>: | {{{
 " Show Commands <leader>,
 nnoremap <leader>: :Commands<CR>
 " }}}
 
-" | vim-gitgutter | {{{
-let g:gitgutter_max_signs=500
-" }}}
-
 " | Goto file with line number under cursor | gf | {{{
 nnoremap gf gF
+" }}}
+
+" | Move visual block up or down | J, K | {{{
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
 " }}}
 
 " | List toggle | <leader>l | {{{
