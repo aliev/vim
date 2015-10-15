@@ -6,6 +6,7 @@ scriptencoding utf-8
 " from other files
 """"""""""""""""""""""""""""""""""""""""
 
+set nocompatible
 set t_Co=256
 
 if has("autocmd")
