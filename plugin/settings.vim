@@ -138,9 +138,9 @@ nnoremap <silent> <leader>e :execute 'e '. expand('%:p:h')<CR>
 let g:gitgutter_max_signs=500
 " }}}
 
-" | Commands List | <leader>: | {{{
-" Show Commands <leader>,
-nnoremap <leader>: :Commands<CR>
+" | :<tab> shows command list from fzf | {{{
+set wildcharm=<Tab>
+cnoremap <expr><tab> getcmdpos()>1?"\<Tab>":"Commands<CR>"
 " }}}
 
 " | Goto file with line number under cursor | gf | {{{
