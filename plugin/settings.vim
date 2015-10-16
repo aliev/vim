@@ -122,7 +122,7 @@ if has("autocmd")
 endif
 " }}}
 
-" | nerdtree | - | {{{
+" | nerdtree | <leader>e | {{{
 let NERDTreeMinimalUI = 1
 let g:NERDTreeDirArrows = 1
 let g:NERDTreeDirArrowExpandable = nr2char(0xE5FF)
@@ -140,7 +140,7 @@ let g:gitgutter_max_signs=500
 
 " | :<tab> shows command list from fzf | {{{
 set wildcharm=<Tab>
-cnoremap <silent><expr><tab> getcmdpos()>1?"\<Tab>":"Commands<CR>"
+cnoremap <expr><tab> getcmdpos()>1?"\<Tab>":"Commands<CR>"
 " }}}
 
 " | Goto file with line number under cursor | gf | {{{
@@ -182,6 +182,17 @@ nnoremap <leader><leader> <c-^>
 
 " | Search word under cursor by using Ag | <leader>ag | {{{
 noremap <silent><Leader>ag :Ag <C-R>=expand("<cword>")<CR><CR>
+" }}}
+
+" | Readline-style key bindings in command-line (excerpt from rsi.vim) | {{{
+cnoremap        <C-A> <Home>
+cnoremap        <C-B> <Left>
+cnoremap <expr> <C-D> getcmdpos()>strlen(getcmdline())?"\<Lt>C-D>":"\<Lt>Del>"
+cnoremap <expr> <C-F> getcmdpos()>strlen(getcmdline())?&cedit:"\<Lt>Right>"
+cnoremap        <M-b> <S-Left>
+cnoremap        <M-f> <S-Right>
+silent! exe "set <S-Left>=\<Esc>b"
+silent! exe "set <S-Right>=\<Esc>f"
 " }}}
 
 " | Color options | {{{
