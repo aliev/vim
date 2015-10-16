@@ -140,7 +140,7 @@ let g:gitgutter_max_signs=500
 
 " | :<tab> shows command list from fzf | {{{
 set wildcharm=<Tab>
-cnoremap <expr><tab> getcmdpos()>1?"\<Tab>":"Commands<CR>"
+cnoremap <silent><expr><tab> getcmdpos()>1?"\<Tab>":"Commands<CR>"
 " }}}
 
 " | Goto file with line number under cursor | gf | {{{
