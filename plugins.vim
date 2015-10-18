@@ -71,6 +71,7 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 " Python Place {{{
 Plug 'aliev/vim-python-dispatch'
 Plug 'aliev/vim-python-env'
+Plug 'aliev/vim-python'
 
 " htmldjango filetype omnicomplete - completes template tags/filters/variables
 Plug 'mjbrownie/vim-htmldjango_omnicomplete'

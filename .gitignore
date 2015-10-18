@@ -2,6 +2,7 @@
 tmp/
 bundle/
 plugged/
+autoload/
 autoload/plug.vim
 .netrwhist
 undodir/*
