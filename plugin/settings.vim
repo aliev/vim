@@ -122,16 +122,33 @@ if has("autocmd")
 endif
 " }}}
 
-" | nerdtree | <leader>e | {{{
+" | nerdtree | - | {{{
 let NERDTreeMinimalUI = 1
+let NERDTreeIgnore = ['\.pyc$']
 let g:NERDTreeDirArrows = 1
+let g:NERDTreeHijackNetrw = 1
 let g:NERDTreeDirArrowExpandable = nr2char(0xE5FF)
 let g:NERDTreeDirArrowCollapsible = nr2char(0xE5FE)
-let NERDTreeIgnore = ['\.pyc$']
 
-" Oh, I Love It!
-let g:NERDTreeHijackNetrw = 1
-nnoremap <silent> <leader>e :execute 'e '. expand('%:p:h')<CR>
+" Oh, I Love It! Taken from vim-vinegar
+" but needed some refactoring
+function! s:up_or_edit()
+  if &filetype ==# 'netrw'
+    execute s:netrw_up
+  else
+    if empty(expand('%'))
+      execute 'edit .'
+    else
+      execute 'edit %:h/'
+    endif
+  endif
+endfunction
+
+nnoremap <silent> <Plug>VinegarUp :call <SID>up_or_edit()<CR>
+if empty(maparg('-', 'n'))
+  nmap - <Plug>VinegarUp
+endif
+nmap <buffer> - <Plug>VinegarUp
 " }}}
 
 " | vim-gitgutter | {{{
