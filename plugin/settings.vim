@@ -133,22 +133,18 @@ let g:NERDTreeDirArrowCollapsible = nr2char(0xE5FE)
 " Oh, I Love It! Taken from vim-vinegar
 " but needed some refactoring
 function! s:up_or_edit()
-  if &filetype ==# 'netrw'
-    execute s:netrw_up
+  if empty(expand('%'))
+    execute 'edit .'
   else
-    if empty(expand('%'))
-      execute 'edit .'
-    else
-      execute 'edit %:h/'
-    endif
+    execute 'edit %:h/'
   endif
 endfunction
 
-nnoremap <silent> <Plug>VinegarUp :call <SID>up_or_edit()<CR>
+nnoremap <silent> <Plug>Up :call <SID>up_or_edit()<CR>
 if empty(maparg('-', 'n'))
-  nmap - <Plug>VinegarUp
+  nmap - <Plug>Up
 endif
-nmap <buffer> - <Plug>VinegarUp
+nmap <buffer> - <Plug>Up
 " }}}
 
 " | vim-gitgutter | {{{
