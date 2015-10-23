@@ -134,9 +134,9 @@ let g:NERDTreeDirArrowCollapsible = nr2char(0xE5FE)
 " but needed some refactoring
 function! s:up_or_edit()
   if empty(expand('%'))
-    execute 'edit .'
+    execute 'silent edit .'
   else
-    execute 'edit %:h/'
+    execute 'silent edit %:h/'
   endif
 endfunction
 
