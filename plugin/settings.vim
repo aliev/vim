@@ -83,6 +83,10 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 
 " }}}
 
+" | tmuxline | {{{
+let g:tmuxline_preset = 'minimal'
+" }}}
+
 " | syntastic | {{{
 let g:syntastic_python_checkers = ['flake8']
 let g:syntastic_javascript_checkers = ['jslint']
