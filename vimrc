@@ -60,12 +60,6 @@ if has("autocmd")
     au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$")
           \| exe "normal! g`\"" | endif
   augroup END
-
-  augroup vimrc-sync-fromstart
-    " Do syntax highlight syncing from start
-    au!
-    au BufEnter * :syntax sync fromstart
-  augroup END
 endif
 
 if executable('ag')
