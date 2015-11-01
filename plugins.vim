@@ -45,16 +45,8 @@ Plug 'marijnh/tern_for_vim', {'do': 'npm install'}
 " Javascript indenter (HTML indent is included)
 Plug 'lukaszb/vim-web-indent'
 
-" Syntax checking hacks for vim
-Plug 'scrooloose/syntastic'
-
 " asynchronous build and test dispatcher
 Plug 'tpope/vim-dispatch'
-
-if has('nvim')
-  " Adds neovim support to vim-dispatch
-  Plug 'radenling/vim-dispatch-neovim'
-endif
 
 " Git Place {{{
 " Plug which shows a git diff in the gutter (sign column)
