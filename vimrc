@@ -27,7 +27,7 @@ endif
 
 if has('multi_byte') && &encoding ==# 'utf-8'
   let &listchars = 'trail:·,tab:»·,eol:¶,extends:→,precedes:←,nbsp:×'
-  let &fillchars = 'stl: ,stlnc: ,vert:│,diff:▚'
+  let &fillchars = 'stl: ,stlnc: ,vert:│'
 
   if has('patch-7.4.338')
     let &showbreak = nr2char(8618).' ' " Show ↪ at the beginning of wrapped lines
