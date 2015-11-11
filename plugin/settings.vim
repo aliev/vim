@@ -16,10 +16,24 @@ if has("autocmd")
 endif
 " }}}
 
-" | vim-airline | {{{
+" | vim-airline, tmuxline | {{{
 if v:version >= 703
   let g:airline#extensions#tabline#enabled = 1
+  let g:airline#extensions#tabline#left_sep = ''
+  let g:airline#extensions#tabline#left_alt_sep = ''
+  let g:airline#extensions#tabline#fnamemod = ':t'
 endif
+
+let g:airline#extensions#hunks#non_zero_only = 1
+
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
 
 " Define the shortform set of text to display
 " for each mode
@@ -37,37 +51,12 @@ let g:airline_mode_map = {
   \ '' : 'S',
   \ }
 
-" Airline symbols
-if !exists('g:airline_symbols')
-  let g:airline_symbols = {}
-endif
-
-" powerline symbols
-let g:airline#extensions#tabline#left_sep = ''
-let g:airline#extensions#tabline#left_alt_sep = ''
-let g:airline_left_sep = ''
-let g:airline_left_alt_sep = ''
-let g:airline_right_sep = '◀'
-let g:airline_right_alt_sep = ''
-let g:airline_symbols.branch = ''
-let g:airline_symbols.readonly = '🔒'
-let g:airline_symbols.linenr = ''
-
-let g:airline#extensions#hunks#non_zero_only = 1
-let g:airline_section_z = airline#section#create_right(['%{g:airline_symbols.linenr}% %3l:%2c'])
-
-" Airline tabline settings
-let g:airline#extensions#tabline#fnamemod = ':t'
-
-" }}}
-
-" | tmuxline | {{{
 let g:tmuxline_preset = 'minimal'
 let g:tmuxline_separators = {
-    \ 'left' : '',
-    \ 'left_alt': '>',
-    \ 'right' : '◀',
-    \ 'right_alt' : '<',
+    \ 'left' : '',
+    \ 'left_alt': '',
+    \ 'right' : '',
+    \ 'right_alt' : '',
     \ 'space' : ' '}
 " }}}
 
