@@ -39,9 +39,6 @@ Plug 'honza/vim-snippets'
 " Toggle the cursor shape in the terminal for Vim. 
 Plug 'jszakmeister/vim-togglecursor'
 
-" Tern plugin for Vim
-Plug 'marijnh/tern_for_vim', {'do': 'npm install'}
-
 " Javascript indenter (HTML indent is included)
 Plug 'lukaszb/vim-web-indent'
 
