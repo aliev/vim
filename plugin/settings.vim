@@ -50,14 +50,6 @@ let g:airline_mode_map = {
   \ 'S' : 'S',
   \ '' : 'S',
   \ }
-
-let g:tmuxline_preset = 'minimal'
-let g:tmuxline_separators = {
-    \ 'left' : '',
-    \ 'left_alt': '',
-    \ 'right' : '',
-    \ 'right_alt' : '',
-    \ 'space' : ' '}
 " }}}
 
 " | jedi-vim | {{{
