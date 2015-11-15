@@ -135,6 +135,8 @@ set lazyredraw " Don't redraw while executing macros (good performance config)
 " preview: removed includes display of documentation
 set completeopt=menuone,longest
 
+set complete-=i " Disable completion by included files
+
 set confirm " Get a dialog when :q, :w, or :wq fails
 
 set hlsearch " Highlight search terms (very useful!)
