@@ -7,9 +7,6 @@ endif
 
 call plug#begin('~/.vim/plugged')
 
-" Lean & mean status/tabline for vim that's light as air
-Plug 'bling/vim-airline'
-
 " Plug to toggle, display and navigate marks
 Plug 'kshenoy/vim-signature'
 
@@ -80,6 +77,8 @@ Plug 'chriskempson/base16-vim'
 
 " Supertab for completion
 Plug 'ervandew/supertab'
+
+Plug 'ap/vim-buftabline'
 
 call plug#end()
 " vim:foldmethod=marker:foldlevel=0
