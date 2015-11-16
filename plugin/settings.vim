@@ -80,16 +80,15 @@ endfunction
 set laststatus=2
 set statusline=
 set statusline+=\ %{toupper(g:currentmode[mode()])}   " Current mode
-set statusline+=\ [%n]                                " buffernr
 set statusline+=\ %{GitInfo()}                        " Git Branch name
 set statusline+=\ %<%F\ %{ReadOnly()}\ %m\ %w\        " File+path
-set statusline+=%#warningmsg#
+"set statusline+=%#warningmsg#
 "set statusline+=%{SyntasticStatuslineFlag()}             " Syntastic errors
 set statusline+=%*
 set statusline+=\ %=                                  " Space
 set statusline+=\ %y\                                 " FileType
 set statusline+=\ %{(&fenc!=''?&fenc:&enc)}\[%{&ff}]\ " Encoding & Fileformat
-set statusline+=%{VirtualEnv()}                     " Virtualenv
+set statusline+=%{VirtualEnv()}                       " Virtualenv
 " }}}
 
 " | jedi-vim | {{{
