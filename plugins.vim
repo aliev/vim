@@ -77,5 +77,10 @@ Plug 'ervandew/supertab'
 
 Plug 'ap/vim-buftabline'
 
+if filereadable(expand('~/.vim-plugins.vim'))
+  " Local vimrc
+  source ~/.vim-plugins.vim
+endif
+
 call plug#end()
 " vim:foldmethod=marker:foldlevel=0
