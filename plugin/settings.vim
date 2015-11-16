@@ -79,17 +79,17 @@ endfunction
 
 set laststatus=2
 set statusline=
-set statusline+=%0*\ %{toupper(g:currentmode[mode()])}   " Current mode
-set statusline+=%8*\ [%n]                                " buffernr
-set statusline+=%8*\ %{GitInfo()}                        " Git Branch name
-set statusline+=%8*\ %<%F\ %{ReadOnly()}\ %m\ %w\        " File+path
+set statusline+=\ %{toupper(g:currentmode[mode()])}   " Current mode
+set statusline+=\ [%n]                                " buffernr
+set statusline+=\ %{GitInfo()}                        " Git Branch name
+set statusline+=\ %<%F\ %{ReadOnly()}\ %m\ %w\        " File+path
 set statusline+=%#warningmsg#
 "set statusline+=%{SyntasticStatuslineFlag()}             " Syntastic errors
 set statusline+=%*
-set statusline+=%0*\ %=                                  " Space
-set statusline+=%8*\ %y\                                 " FileType
-set statusline+=%7*\ %{(&fenc!=''?&fenc:&enc)}\[%{&ff}]\ " Encoding & Fileformat
-set statusline+=%8*\ %{VirtualEnv()}                     " Virtualenv
+set statusline+=\ %=                                  " Space
+set statusline+=\ %y\                                 " FileType
+set statusline+=\ %{(&fenc!=''?&fenc:&enc)}\[%{&ff}]\ " Encoding & Fileformat
+set statusline+=%{VirtualEnv()}                     " Virtualenv
 " }}}
 
 " | jedi-vim | {{{
@@ -216,6 +216,8 @@ endtry
 
 " Disable background and foreground for vertical split
 hi vertsplit ctermbg=NONE guibg=NONE
+hi StatusLine ctermbg=18 ctermfg=15
+hi StatusLineNC ctermbg=18 ctermfg=8
 " }}}
 
 " <tab> / <s-tab> / <c-v><tab> | super-duper-tab {{{
