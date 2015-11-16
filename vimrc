@@ -19,8 +19,10 @@ endif
 " 4 solid underscore
 " 5 blinking line
 " 6 solid line
-let &t_SI.="\e[6 q" " Start insert mode
-let &t_EI.="\e[2 q" " End insert mode
+if has("mac")
+  let &t_SI.="\e[6 q" " Start insert mode
+  let &t_EI.="\e[2 q" " End insert mode
+endif
 
 if has('mouse')
   set mouse=a " Enable mouse support
@@ -225,6 +227,11 @@ set exrc " Allow load .vimrc or _vimrc from current directory
 if filereadable(expand('~/.vim/plugins.vim'))
   " Include plugins list
   source ~/.vim/plugins.vim
+endif
+
+if filereadable(expand('~/.vimrc.local'))
+  " Local vimrc
+  source ~/.vimrc.local
 endif
 
 " vim:foldmethod=marker:foldlevel=0:tabstop=2:shiftwidth=2
