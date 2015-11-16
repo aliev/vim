@@ -34,7 +34,7 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
 " Toggle the cursor shape in the terminal for Vim. 
-Plug 'jszakmeister/vim-togglecursor'
+"Plug 'jszakmeister/vim-togglecursor'
 
 " Javascript indenter (HTML indent is included)
 Plug 'lukaszb/vim-web-indent'

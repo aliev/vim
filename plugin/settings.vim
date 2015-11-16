@@ -116,11 +116,6 @@ let g:jedi#use_tabs_not_buffers = 0
 let g:jedi#smart_auto_mappings = 0
 " }}}
 
-" | vim-togglecursor | {{{
-let g:togglecursor_default="block"
-let g:togglecursor_insert="line"
-" }}}
-
 " | ultisnips | {{{
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
