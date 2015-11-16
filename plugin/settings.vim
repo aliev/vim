@@ -63,15 +63,6 @@ let g:currentmode={
       \}
 
 
-highlight User1 ctermfg=007 guifg=fgcolor
-highlight User2 ctermfg=008 guifg=bgcolor
-highlight User3 ctermfg=008 guifg=bgcolor
-highlight User4 ctermfg=008 guifg=bgcolor
-highlight User5 ctermfg=008 guifg=bgcolor
-highlight User7 ctermfg=008 guifg=bgcolor
-highlight User8 ctermfg=008 guifg=bgcolor
-highlight User9 ctermfg=007 guifg=fgcolor
-
 " Automatically change the statusline color depending on mode
 function! ChangeStatuslineColor()
   if (mode() =~# '\v(n|no)')
@@ -103,7 +94,7 @@ endfunction
 
 set laststatus=2
 set statusline=
-"set statusline+=%{ChangeStatuslineColor()}               " Changing the statusline color
+set statusline+=%{ChangeStatuslineColor()}               " Changing the statusline color
 set statusline+=%0*\ %{toupper(g:currentmode[mode()])}   " Current mode
 set statusline+=%8*\ [%n]                                " buffernr
 set statusline+=%8*\ %{GitInfo()}                        " Git Branch name
