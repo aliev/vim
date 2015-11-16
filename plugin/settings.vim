@@ -62,22 +62,6 @@ let g:currentmode={
       \ 't'  : 'Terminal '
       \}
 
-
-" Automatically change the statusline color depending on mode
-function! ChangeStatuslineColor()
-  if (mode() =~# '\v(n|no)')
-    exe 'hi! StatusLine ctermfg=008 guifg=fgcolor'
-  elseif (mode() =~# '\v(v|V)' || g:currentmode[mode()] ==# 'V·Block' || get(g:currentmode, mode(), '') ==# 't')
-    exe 'hi! StatusLine ctermfg=005 guifg=#00ff00'
-  elseif (mode() ==# 'i')
-    exe 'hi! StatusLine ctermfg=004 guifg=#6CBCE8'
-  else
-    exe 'hi! StatusLine ctermfg=006 guifg=orange'
-  endif
-
-  return ''
-endfunction
-
 function! ReadOnly()
   if &readonly || !&modifiable
     return ''
@@ -94,7 +78,6 @@ endfunction
 
 set laststatus=2
 set statusline=
-set statusline+=%{ChangeStatuslineColor()}               " Changing the statusline color
 set statusline+=%0*\ %{toupper(g:currentmode[mode()])}   " Current mode
 set statusline+=%8*\ [%n]                                " buffernr
 set statusline+=%8*\ %{GitInfo()}                        " Git Branch name
