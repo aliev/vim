@@ -1,10 +1,9 @@
 scriptencoding utf-8
 
-""""""""""""""""""""""""""""""""""""""""
-" This is the minimum vim configuration
-" file which can be used separately
-" from other files
-""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""
+" This is the minimum vim configuration file
+" which can be used separately from other files
+""""""""""""""""""""""""""""""""""""""""""""""""
 
 set nocompatible
 set t_Co=256
@@ -20,10 +19,8 @@ endif
 " 4 solid underscore
 " 5 blinking line
 " 6 solid line
-let &t_SI.="\e[6 q" "Start insert mode
+let &t_SI.="\e[6 q" " Start insert mode
 let &t_EI.="\e[2 q" " End insert mode
-" Reset cursor when vim exits
-autocmd VimLeave * silent !echo -ne "\033]112\007"
 
 if has('mouse')
   set mouse=a " Enable mouse support
@@ -63,9 +60,16 @@ if has("autocmd")
 
   if exists('$TMUX') && !exists('$NORENAME')
     " Automatic rename of tmux window
+    " Set this option for ~/.tmux.conf: set-option -g allow-rename off 
     au BufEnter * if empty(&buftype) | call system('tmux rename-window '.expand('%:t:S')) | endif
     au VimLeave * call system('tmux set-window automatic-rename on')
   endif
+
+  augroup reset-cursor
+    " Reset cursor when vim exits
+    " pls look at the cursor shape options
+    au VimLeave * silent !echo -ne "\033]112\007"
+  augroup END
 
   augroup vimrc-remember-cursor-position
     " Remember cursor position
@@ -88,8 +92,6 @@ if exists("+undofile")
   " :help undo-persistence
   " This is only present in 7.3+
   set undofile
-
-  " Store undo files in to fixed location
   set undodir=/var/tmp//,/tmp//,.
 endif
 
@@ -115,6 +117,7 @@ if &history < 1000
 endif
 
 let mapleader = "," " Map leader
+
 let maplocalleader = "_" " Local leader
 
 " Store swap files in to fixed location
@@ -142,10 +145,7 @@ set ttimeout ttimeoutlen=0 notimeout " Disable timeout for Esc key
 set ttyfast " Optimize for fast terminal connections
 set lazyredraw " Don't redraw while executing macros (good performance config)
 
-" Autocomplete options:
-" longest: do not select the first candidate
-" preview: removed includes display of documentation
-set completeopt=menuone,longest
+set completeopt=menuone,longest " Completion do not select the first candidate
 
 set complete-=i " Disable completion by included files
 
@@ -183,9 +183,7 @@ set autoindent " Enable auto indent
 
 set smartindent " Smart indent
 
-" Enable word wrap
-" Disable line break
-set wrap tw=0
+set wrap tw=0 " Enable word wrap, disable line break
 
 set noerrorbells visualbell t_vb= " No annoying sound on errors
 
@@ -209,8 +207,10 @@ set wildmode=list:longest,list:full " Wildmenu configuration
 
 " ignore general temp files
 set wildignore+=.DS_Store,.git/**,tmp/**,*.log,.bundle/**,node_modules/**,tags
+
 " ignore compiled files
 set wildignore+=*.rbc,.rbx,*.scssc,*.sassc,.sass-cache,*.pyc,*.gem
+
 " ignore images
 set wildignore+=*.jpg,*.jpeg,*.tiff,*.gif,*.png,*.svg,*.psd,*.pdf
 

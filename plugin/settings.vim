@@ -17,11 +17,11 @@ endif
 " }}}
 
 " | statusline, buftabline | {{{
+
 let g:buftabline_indicators=1
 
-" Settings
-"================================================================================
-" Dynamically getting the fg/bg colors from the current colorscheme, returns hex which is enough for me to use in Neovim
+" Dynamically getting the fg/bg colors from the current
+" colorscheme, returns hex which is enough for me to use in Neovim
 " Needs to figure out how to return cterm values too
 let fgcolor=synIDattr(synIDtrans(hlID("Normal")), "fg", "gui")
 let bgcolor=synIDattr(synIDtrans(hlID("Normal")), "bg", "gui")
@@ -29,16 +29,6 @@ let bgcolor=synIDattr(synIDtrans(hlID("Normal")), "bg", "gui")
 " Tabline/Buffer line
 set showtabline=2
 set tabline="%1T"
-" reverse hybrid tabline colors
-highlight TabLineFill cterm=none gui=none
-highlight TabLine cterm=none gui=none
-" This doesn't work, odd!
-" highlight TabLineSel ctermfg=black ctermfg=white guibg=fgcolor guifg=bgcolor
-highlight TabLineSel ctermfg=black ctermfg=white guibg=#c5c8c6 guifg=#1d1f21
-highlight BufTabLineActive cterm=none gui=none
-
-" Statusline
-" https://github.com/Greduan/dotfiles/blob/76e16dd8a04501db29989824af512c453550591d/vim/after/plugin/statusline.vim
 
 let g:currentmode={
       \ 'n'  : 'N ',
@@ -68,12 +58,23 @@ function! ReadOnly()
   else
     return ''
 endfunction
+
 function! GitInfo()
   let git = fugitive#head()
   if git != ''
     return ' '.fugitive#head()
   else
     return ''
+endfunction
+
+function! VirtualEnv()
+  let virtualenv = $VIRTUAL_ENV
+  if virtualenv != ''
+    let env = join(split($VIRTUAL_ENV, '/')[-2:-1], '/')
+    return '(' . env . ')'
+  else
+    return ''
+  endif
 endfunction
 
 set laststatus=2
@@ -85,10 +86,10 @@ set statusline+=%8*\ %<%F\ %{ReadOnly()}\ %m\ %w\        " File+path
 set statusline+=%#warningmsg#
 "set statusline+=%{SyntasticStatuslineFlag()}             " Syntastic errors
 set statusline+=%*
-set statusline+=%9*\ %=                                  " Space
+set statusline+=%0*\ %=                                  " Space
 set statusline+=%8*\ %y\                                 " FileType
 set statusline+=%7*\ %{(&fenc!=''?&fenc:&enc)}\[%{&ff}]\ " Encoding & Fileformat
-set statusline+=%0*\ %3p%%\ \ %l:\ %3c\                 " Rownumber/total (%)
+set statusline+=%8*\ %{VirtualEnv()}                        " Git Branch name
 " }}}
 
 " | jedi-vim | {{{
