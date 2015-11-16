@@ -89,7 +89,7 @@ set statusline+=%*
 set statusline+=%0*\ %=                                  " Space
 set statusline+=%8*\ %y\                                 " FileType
 set statusline+=%7*\ %{(&fenc!=''?&fenc:&enc)}\[%{&ff}]\ " Encoding & Fileformat
-set statusline+=%8*\ %{VirtualEnv()}                        " Git Branch name
+set statusline+=%8*\ %{VirtualEnv()}                     " Virtualenv
 " }}}
 
 " | jedi-vim | {{{
