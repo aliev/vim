@@ -124,8 +124,8 @@ let NERDTreeMinimalUI = 1
 let NERDTreeIgnore = ['\.pyc$']
 let g:NERDTreeDirArrows = 1
 let g:NERDTreeHijackNetrw = 1
-let g:NERDTreeDirArrowExpandable = nr2char(0xE5FF)
-let g:NERDTreeDirArrowCollapsible = nr2char(0xE5FE)
+let g:NERDTreeDirArrowExpandable = nr2char(0xF07b)
+let g:NERDTreeDirArrowCollapsible = nr2char(0xF07c)
 
 " Oh, I Love It! Taken from vim-vinegar
 " but needed some refactoring
