@@ -18,14 +18,6 @@ endif
 
 " | statusline, buftabline | {{{
 
-let g:buftabline_indicators=1
-
-" Dynamically getting the fg/bg colors from the current
-" colorscheme, returns hex which is enough for me to use in Neovim
-" Needs to figure out how to return cterm values too
-let fgcolor=synIDattr(synIDtrans(hlID("Normal")), "fg", "gui")
-let bgcolor=synIDattr(synIDtrans(hlID("Normal")), "bg", "gui")
-
 " Tabline/Buffer line
 set showtabline=2
 set tabline="%1T"
@@ -142,6 +134,10 @@ if empty(maparg('-', 'n'))
   nmap - <Plug>Up
 endif
 nmap <buffer> - <Plug>Up
+" }}}
+
+" | Find merge conflict markers | <leader>c | {{{
+map <leader>c /\v^[<\|=>]{7}( .*\|$)<CR>
 " }}}
 
 " | vim-gitgutter | {{{
