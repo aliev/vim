@@ -77,9 +77,10 @@ Plug 'ervandew/supertab'
 
 Plug 'ap/vim-buftabline'
 
-if filereadable(expand('~/.vim-plugins.vim'))
-  " Local vimrc
-  source ~/.vim-plugins.vim
+if filereadable(expand('~/.vimrc.local'))
+  " Local vimrc file
+  " can be included local plugins list too
+  source ~/.vimrc.local
 endif
 
 call plug#end()

@@ -229,9 +229,4 @@ if filereadable(expand('~/.vim/plugins.vim'))
   source ~/.vim/plugins.vim
 endif
 
-if filereadable(expand('~/.vimrc.local'))
-  " Local vimrc
-  source ~/.vimrc.local
-endif
-
 " vim:foldmethod=marker:foldlevel=0:tabstop=2:shiftwidth=2
