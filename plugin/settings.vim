@@ -16,7 +16,7 @@ if has("autocmd")
 endif
 " }}}
 
-" | statusline, buftabline | {{{
+" | Very simple statusline like airline | {{{
 
 " Tabline/Buffer line
 set showtabline=2
@@ -201,31 +201,6 @@ nnoremap <leader><leader> <c-^>
 noremap <silent><Leader>ag :Ag <C-R>=expand("<cword>")<CR><CR>
 " }}}
 
-" | Readline-style key bindings in command-line (excerpt from rsi.vim) | {{{
-cnoremap        <C-A> <Home>
-cnoremap        <C-B> <Left>
-cnoremap <expr> <C-D> getcmdpos()>strlen(getcmdline())?"\<Lt>C-D>":"\<Lt>Del>"
-cnoremap <expr> <C-F> getcmdpos()>strlen(getcmdline())?&cedit:"\<Lt>Right>"
-cnoremap        <M-b> <S-Left>
-cnoremap        <M-f> <S-Right>
-silent! exe "set <S-Left>=\<Esc>b"
-silent! exe "set <S-Right>=\<Esc>f"
-" }}}
-
-" | Color options | {{{
-try
-  set background=dark
-  let base16colorspace=256
-  colors base16-eighties
-catch
-endtry
-
-" Disable background and foreground for vertical split
-hi vertsplit ctermbg=NONE guibg=NONE
-hi StatusLine ctermbg=18 ctermfg=15
-hi StatusLineNC ctermbg=18 ctermfg=8
-" }}}
-
 " <tab> / <s-tab> / <c-v><tab> | super-duper-tab {{{
 function! s:can_complete(func, prefix)
   if empty(a:func) || call(a:func, [1, '']) < 0
@@ -276,6 +251,31 @@ else
   inoremap <expr> <tab>   <SID>super_duper_tab("\<c-n>", "\<tab>")
   inoremap <expr> <s-tab> <SID>super_duper_tab("\<c-p>", "\<s-tab>")
 endif
+" }}}
+
+" | Readline-style key bindings in command-line (excerpt from rsi.vim) | {{{
+cnoremap        <C-A> <Home>
+cnoremap        <C-B> <Left>
+cnoremap <expr> <C-D> getcmdpos()>strlen(getcmdline())?"\<Lt>C-D>":"\<Lt>Del>"
+cnoremap <expr> <C-F> getcmdpos()>strlen(getcmdline())?&cedit:"\<Lt>Right>"
+cnoremap        <M-b> <S-Left>
+cnoremap        <M-f> <S-Right>
+silent! exe "set <S-Left>=\<Esc>b"
+silent! exe "set <S-Right>=\<Esc>f"
+" }}}
+
+" | Color options | {{{
+try
+  set background=dark
+  let base16colorspace=256
+  colors base16-eighties
+catch
+endtry
+
+" Disable background and foreground for vertical split
+hi vertsplit ctermbg=NONE guibg=NONE
+hi StatusLine ctermbg=18 ctermfg=15
+hi StatusLineNC ctermbg=18 ctermfg=8
 " }}}
 
 " vim:foldmethod=marker:foldlevel=0
