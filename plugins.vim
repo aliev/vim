@@ -10,10 +10,6 @@ call plug#begin('~/.vim/plugged')
 " Plug to toggle, display and navigate marks
 Plug 'kshenoy/vim-signature'
 
-" An extensible & universal comment vim-plugin that also handles embedded
-" filetypes
-Plug 'tomtom/tcomment_vim'
-
 " A tree explorer plugin for vim.
 Plug 'scrooloose/nerdtree'
 
