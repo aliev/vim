@@ -207,13 +207,9 @@ set wildmenu " Turn on the Wild menu
 
 set wildmode=list:longest,list:full " Wildmenu configuration
 
-" ignore general temp files
+" Ignore files
 set wildignore+=.DS_Store,.git/**,tmp/**,*.log,.bundle/**,node_modules/**,tags
-
-" ignore compiled files
 set wildignore+=*.rbc,.rbx,*.scssc,*.sassc,.sass-cache,*.pyc,*.gem
-
-" ignore images
 set wildignore+=*.jpg,*.jpeg,*.tiff,*.gif,*.png,*.svg,*.psd,*.pdf
 
 set conceallevel=2 " Conceal level
@@ -223,6 +219,10 @@ set modelines=1 " Make Vim only use folding settings for current file
 set noshowmode " Suppress mode change messages
 
 set exrc " Allow load .vimrc or _vimrc from current directory
+
+set showtabline=2
+
+set tabline="%1T"
 
 if filereadable(expand('~/.vim/plugins.vim'))
   " Include plugins list

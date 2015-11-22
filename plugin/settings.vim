@@ -18,10 +18,6 @@ endif
 
 " | Very simple statusline like airline | {{{
 
-" Tabline/Buffer line
-set showtabline=2
-set tabline="%1T"
-
 let g:currentmode={
       \ 'n'  : 'N ',
       \ 'no' : 'N·Operator Pending ',
