@@ -94,6 +94,10 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 let g:UltiSnipsEditSplit="vertical"
 " }}}
 
+" | supertab | {{{
+let g:SuperTabDefaultCompletionType = "context"
+" }}}
+
 " | indentLine | {{{
 " Make indent line faster
 let g:indentLine_faster=1
