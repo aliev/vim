@@ -12,14 +12,14 @@ if has('syntax') && !exists('g:syntax_on')
   syntax enable
 endif
 
-" Vim cursor shape options
-" 1 or 0 blinking block
-" 2 solid block
-" 3 blinking underscore
-" 4 solid underscore
-" 5 blinking line
-" 6 solid line
 if has("mac")
+  " Vim cursor shape options
+  " 1 or 0 blinking block
+  " 2 solid block
+  " 3 blinking underscore
+  " 4 solid underscore
+  " 5 blinking line
+  " 6 solid line
   let &t_SI.="\e[6 q" " Start insert mode
   let &t_EI.="\e[2 q" " End insert mode
 endif
