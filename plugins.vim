@@ -68,9 +68,6 @@ Plug 'davidhalter/jedi-vim', {'do': 'cd jedi/ && git checkout 7b402d7'}
 " https://github.com/chriskempson/base16-iterm2
 Plug 'chriskempson/base16-vim'
 
-" Perform all your vim insert mode completions with Tab
-Plug 'ervandew/supertab'
-
 " Forget Vim tabs – now you can have buffer tabs
 Plug 'ap/vim-buftabline'
 
