@@ -20,9 +20,6 @@ Plug 'junegunn/fzf.vim'
 " Plug to display the indention levels with thin vertical lines
 Plug 'Yggdroot/indentLine'
 
-" True Sublime Text style multiple selections for Vim
-Plug 'terryma/vim-multiple-cursors'
-
 " Track the engine.
 Plug 'SirVer/ultisnips'
 
