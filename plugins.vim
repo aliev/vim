@@ -71,6 +71,9 @@ Plug 'ervandew/supertab'
 " Forget Vim tabs – now you can have buffer tabs
 Plug 'ap/vim-buftabline'
 
+" Make terminal vim and tmux work better together.
+Plug 'tmux-plugins/vim-tmux-focus-events'
+
 if filereadable(expand('~/.vimrc.local'))
   " Local vimrc file
   " can be included local plugins list too
