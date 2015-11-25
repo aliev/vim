@@ -17,17 +17,15 @@ Plug 'scrooloose/nerdtree'
 Plug 'junegunn/fzf', {'do': 'yes \| ./install'}
 Plug 'junegunn/fzf.vim'
 
-" Plug to display the indention levels with thin vertical lines
-Plug 'Yggdroot/indentLine'
-
-" Track the engine.
-Plug 'SirVer/ultisnips'
-
 " Snippets are separated from the engine. Add this if you want them:
 Plug 'honza/vim-snippets'
+Plug 'SirVer/ultisnips'
 
 " Javascript indenter (HTML indent is included)
 Plug 'lukaszb/vim-web-indent'
+
+" Plug to display the indention levels with thin vertical lines
+Plug 'Yggdroot/indentLine'
 
 " asynchronous build and test dispatcher
 Plug 'tpope/vim-dispatch'
@@ -79,6 +77,7 @@ if filereadable(expand('~/.vimrc.local'))
   " can be included local plugins list too
   source ~/.vimrc.local
 endif
+set background=light
 
 call plug#end()
 " vim:foldmethod=marker:foldlevel=0
