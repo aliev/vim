@@ -312,6 +312,10 @@ set showtabline=2
 
 set tabline="%1T"
 
+let base16colorspace=256
+
+colors base16-eighties
+
 " Load plugins options from ~/.vimrc.local
 if filereadable(expand('~/.vimrc.local'))
   " Plugins list and settings should be loaded
