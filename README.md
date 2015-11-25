@@ -55,3 +55,18 @@ Local settings and local plugin list
 ```
 ~/.vimrc.local
 ```
+
+Local settings should be as follows
+
+
+```
+if g:local_plugins
+  " Plugins list here
+endif
+
+if g:local_settings
+  " Settings here
+endif
+```
+
+[https://github.com/aliev/dotfiles/blob/master/.vimrc.local](My ~/.vimrc.local example)
