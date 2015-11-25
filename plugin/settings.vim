@@ -212,15 +212,7 @@ silent! exe "set <S-Left>=\<Esc>b"
 silent! exe "set <S-Right>=\<Esc>f"
 " }}}
 
-" | Color options | {{{
-try
-  set background=dark
-  let base16colorspace=256
-  colors base16-eighties
-catch
-endtry
-
-" Disable background and foreground for vertical split
+" Disable background and foreground for vertical split {{{
 hi vertsplit ctermbg=NONE guibg=NONE
 hi StatusLine ctermbg=18 ctermfg=15
 hi StatusLineNC ctermbg=18 ctermfg=8

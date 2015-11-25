@@ -72,12 +72,23 @@ Plug 'ap/vim-buftabline'
 " Make terminal vim and tmux work better together.
 Plug 'tmux-plugins/vim-tmux-focus-events'
 
+" Load plugins from ~/.vimrc.local
 if filereadable(expand('~/.vimrc.local'))
-  " Local vimrc file
-  " can be included local plugins list too
+  " Plugins list and settings should be loaded
+  " only once. Load local_plugins block
+  let g:local_plugins = 1
+  let g:local_settings = 0
   source ~/.vimrc.local
 endif
-set background=light
 
 call plug#end()
+
+" Load plugins options from ~/.vimrc.local
+if filereadable(expand('~/.vimrc.local'))
+  " Plugins list and settings should be loaded
+  " only once. Load local_settings block
+  let g:local_plugins = 0
+  let g:local_settings = 1
+  source ~/.vimrc.local
+endif
 " vim:foldmethod=marker:foldlevel=0
