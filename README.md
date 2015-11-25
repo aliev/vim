@@ -69,4 +69,4 @@ if g:local_settings
 endif
 ```
 
-[https://github.com/aliev/dotfiles/blob/master/.vimrc.local](My ~/.vimrc.local example)
+[My ~/.vimrc.local example](https://github.com/aliev/dotfiles/blob/master/.vimrc.local)
