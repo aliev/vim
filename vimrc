@@ -312,6 +312,8 @@ set showtabline=2
 
 set tabline="%1T"
 
+set background=dark
+
 try
   let base16colorspace=256
   colors base16-eighties
