@@ -1,21 +1,3 @@
-" | FileType options | {{{
-if has("autocmd")
-  " Python indentation
-  " About nosmartindent please look this link
-  " http://stackoverflow.com/questions/2063175/vim-insert-mode-comments-go-to-start-of-line
-  au FileType python setl nosmartindent
-
-  " JavaScript indentation
-  au FileType javascript setlocal expandtab shiftwidth=2 tabstop=2
-
-  " Vim indentation
-  au FileType vim setlocal expandtab shiftwidth=2 tabstop=2
-
-  " Disable line numbers for QuickFix
-  au FileType qf setlocal nonumber
-endif
-" }}}
-
 " | Very simple statusline like airline | {{{
 
 let g:currentmode={
@@ -79,38 +61,6 @@ set statusline+=\ %{(&fenc!=''?&fenc:&enc)}\[%{&ff}]\ " Encoding & Fileformat
 set statusline+=%{VirtualEnv()}                       " Virtualenv
 " }}}
 
-" | jedi-vim | {{{
-let g:jedi#popup_on_dot = 1
-
-let g:jedi#show_call_signatures = 0
-let g:jedi#use_tabs_not_buffers = 0
-let g:jedi#smart_auto_mappings = 0
-" }}}
-
-" | ultisnips | {{{
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-let g:UltiSnipsEditSplit="vertical"
-" }}}
-
-" | supertab | {{{
-let g:SuperTabDefaultCompletionType = "context"
-" }}}
-
-" | indentLine | {{{
-" Make indent line faster
-let g:indentLine_faster=1
-" IndentLine character
-let g:indentLine_char=nr2char(0xA6)
-" }}}
-
-" | vim-htmldjango_omnicomplete | {{{
-if has("autocmd")
-  au FileType htmldjango set omnifunc=htmldjangocomplete#CompleteDjango
-endif
-" }}}
-
 " | nerdtree | - | {{{
 let NERDTreeMinimalUI = 1
 let NERDTreeIgnore = ['\.pyc$']
@@ -138,10 +88,6 @@ nmap <buffer> - <Plug>Up
 
 " | Find merge conflict markers | <leader>c | {{{
 map <leader>c /\v^[<\|=>]{7}( .*\|$)<CR>
-" }}}
-
-" | vim-gitgutter | {{{
-let g:gitgutter_max_signs=500
 " }}}
 
 " | :<tab> shows command list from fzf | {{{
@@ -210,12 +156,6 @@ cnoremap        <M-b> <S-Left>
 cnoremap        <M-f> <S-Right>
 silent! exe "set <S-Left>=\<Esc>b"
 silent! exe "set <S-Right>=\<Esc>f"
-" }}}
-
-" Disable background and foreground for vertical split {{{
-hi vertsplit ctermbg=NONE guibg=NONE
-hi StatusLine ctermbg=18 ctermfg=15
-hi StatusLineNC ctermbg=18 ctermfg=8
 " }}}
 
 " vim:foldmethod=marker:foldlevel=0

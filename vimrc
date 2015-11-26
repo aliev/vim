@@ -1,9 +1,5 @@
 scriptencoding utf-8
-
-""""""""""""""""""""""""""""""""""""""""""""""""
-" This is the minimum vim configuration file
-" which can be used separately from other files
-""""""""""""""""""""""""""""""""""""""""""""""""
+set nocompatible
 
 " Plugins {{{
 " Automatic installation
@@ -15,70 +11,24 @@ endif
 
 call plug#begin('~/.vim/plugged')
 
-" Plug to toggle, display and navigate marks
-Plug 'kshenoy/vim-signature'
-
 " A tree explorer plugin for vim.
 Plug 'scrooloose/nerdtree'
 
-" A command-line fuzzy finder written in Go
-Plug 'junegunn/fzf', {'do': 'yes \| ./install'}
-Plug 'junegunn/fzf.vim'
-
-" Snippets are separated from the engine. Add this if you want them:
-Plug 'honza/vim-snippets'
-Plug 'SirVer/ultisnips'
-
-" Javascript indenter (HTML indent is included)
-Plug 'lukaszb/vim-web-indent'
-
-" Plug to display the indention levels with thin vertical lines
-Plug 'Yggdroot/indentLine'
-
-" asynchronous build and test dispatcher
-Plug 'tpope/vim-dispatch'
-
-" Git Place {{{
-" Plug which shows a git diff in the gutter (sign column)
-" and stages/reverts hunks.
-Plug 'airblade/vim-gitgutter'
+" A plugin of NERDTree showing git status
+Plug 'Xuyuanp/nerdtree-git-plugin'
 
 " a Git wrapper so awesome, it should be illegal
 Plug 'tpope/vim-fugitive'
-
-" A plugin of NERDTree showing git status
-Plug 'Xuyuanp/nerdtree-git-plugin'
-" }}}
-
-" Python/Django Place {{{
-Plug 'aliev/vim-python'
-
-" htmldjango filetype omnicomplete - completes template tags/filters/variables
-Plug 'mjbrownie/vim-htmldjango_omnicomplete'
-
-" A nicer Python indentation style for vim.
-Plug 'hynek/vim-python-pep8-indent'
-
-" Jedi for comfortable development with python
-" TODO: jedi 0.9.0 library has issue with imports
-" I'll fix this issue by using stable jedi version (0.8.1):
-Plug 'davidhalter/jedi-vim', {'do': 'cd jedi/ && git checkout 7b402d7'}
-" }}}
-
-" For correct install color schemes pls read these notes
-" https://github.com/chriskempson/base16-vim
-" https://github.com/chriskempson/base16-shell
-" https://github.com/chriskempson/base16-iterm2
-Plug 'chriskempson/base16-vim'
-
-" Perform all your vim insert mode completions with Tab
-Plug 'ervandew/supertab'
 
 " Forget Vim tabs – now you can have buffer tabs
 Plug 'ap/vim-buftabline'
 
 " Make terminal vim and tmux work better together.
 Plug 'tmux-plugins/vim-tmux-focus-events'
+
+" A command-line fuzzy finder written in Go
+Plug 'junegunn/fzf', {'do': 'yes \| ./install'}
+Plug 'junegunn/fzf.vim'
 
 " Load plugins from ~/.vimrc.local
 if filereadable(expand('~/.vimrc.local'))
@@ -91,10 +41,6 @@ endif
 
 call plug#end()
 " }}}
-
-set nocompatible
-
-set t_Co=256
 
 if has('syntax') && !exists('g:syntax_on')
   syntax enable
@@ -206,6 +152,8 @@ if &history < 1000
   set history=1000
 endif
 
+set t_Co=256 " Enable 256 colors
+
 let mapleader = "," " Map leader
 
 let maplocalleader = "_" " Local leader
@@ -306,19 +254,13 @@ set modelines=1 " Make Vim only use folding settings for current file
 
 set noshowmode " Suppress mode change messages
 
+set background=dark " Dark background by default
+
 set exrc " Allow load .vimrc or _vimrc from current directory
 
 set showtabline=2
 
 set tabline="%1T"
-
-set background=dark
-
-try
-  let base16colorspace=256
-  colors base16-eighties
-catch
-endtry
 
 " Load plugins options from ~/.vimrc.local
 if filereadable(expand('~/.vimrc.local'))
