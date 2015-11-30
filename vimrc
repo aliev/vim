@@ -1,6 +1,18 @@
 scriptencoding utf-8
 set nocompatible
 
+if has('nvim')
+  " For neovim load plugins
+  " from ~/.vim directory
+  set rtp+=~/.vim
+  " If Neovim support is enabled, then let set the
+  " NVIM_TUI_ENABLE_CURSOR_SHAPE for the user.
+  if $NVIM_TUI_ENABLE_CURSOR_SHAPE == ""
+    let $NVIM_TUI_ENABLE_CURSOR_SHAPE = 1
+  endif
+  let g:python_host_prog = "/usr/local/bin/python"
+endif
+
 " Plugins {{{
 " Automatic installation
 if empty(glob('~/.vim/autoload/plug.vim'))
@@ -79,16 +91,6 @@ if has('multi_byte') && &encoding ==# 'utf-8'
     set breakindent
     set breakindentopt=sbr
   endif
-endif
-
-if has('nvim')
-  set rtp+=~/.vim/
-  " If Neovim support is enabled, then let set the
-  " NVIM_TUI_ENABLE_CURSOR_SHAPE for the user.
-  if $NVIM_TUI_ENABLE_CURSOR_SHAPE == ""
-    let $NVIM_TUI_ENABLE_CURSOR_SHAPE = 1
-  endif
-  let g:python_host_prog = "/usr/local/bin/python"
 endif
 
 if has("autocmd")
