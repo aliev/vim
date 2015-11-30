@@ -52,8 +52,6 @@ set statusline=
 set statusline+=\ %{toupper(g:currentmode[mode()])}   " Current mode
 set statusline+=\ %{GitInfo()}                        " Git Branch name
 set statusline+=\ %<%F\ %{ReadOnly()}\ %m\ %w\        " File+path
-"set statusline+=%#warningmsg#
-"set statusline+=%{SyntasticStatuslineFlag()}             " Syntastic errors
 set statusline+=%*
 set statusline+=\ %=                                  " Space
 set statusline+=\ %y\                                 " FileType
