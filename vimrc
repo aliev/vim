@@ -1,5 +1,9 @@
 scriptencoding utf-8
-set nocompatible
+
+if has('vim_starting')
+  " Be iMproved
+  set nocompatible
+endif
 
 if has('nvim')
   " For neovim load plugins
@@ -213,9 +217,15 @@ set acd " Vim will change the current working directory whenever you open a file
 
 set autoread " Reload files changed outside automatically
 
-set tabstop=4 shiftwidth=4 expandtab " Use space instead of tab
+set tabstop=4 " Number of spaces that a <Tab> in the file counts for
 
-set backspace=2 " Make backspace work like most other apps
+set softtabstop=0 " Number of spaces that a <Tab> counts for while performing editing operations
+
+set shiftwidth=4 " Number of spaces to use for each step of (auto)indent
+
+set expandtab " Use the appropriate number of spaces to insert a <Tab>
+
+set backspace=indent,eol,start " Fix backspace indent
 
 set smarttab " Be smart when using tabs
 
@@ -231,13 +241,13 @@ set encoding=utf8 " Default encoding
 
 set termencoding=utf-8 " Terminal encoding
 
-set fileencodings=utf8,cp1251 " Supported file encodings
+set fileencodings=utf8 " Supported file encodings
 
 set number " Enable line numbers
 
 set ruler " Always display cursor position
 
-set hidden " A buffer becomes hidden when it is abandoned
+set hidden " Enable hidden buffers
 
 set noautochdir " Change the current working directory whenever you open a file
 
