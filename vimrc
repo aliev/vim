@@ -6,12 +6,11 @@ if has('vim_starting')
 endif
 
 if has('nvim')
-  " For neovim load plugins
-  " from ~/.vim directory
+  " Plugins directory
   set rtp+=~/.vim
-  " If Neovim support is enabled, then let set the
-  " NVIM_TUI_ENABLE_CURSOR_SHAPE for the user.
-  if $NVIM_TUI_ENABLE_CURSOR_SHAPE == ""
+
+  " Enable cursor shape
+  if !$NVIM_TUI_ENABLE_CURSOR_SHAPE
     let $NVIM_TUI_ENABLE_CURSOR_SHAPE = 1
   endif
   let g:python_host_prog = "/usr/local/bin/python"
