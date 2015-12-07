@@ -36,11 +36,6 @@ cnoremap <expr><tab> getcmdpos()>1?"\<Tab>":"Commands<CR>"
 nnoremap gf gF
 " }}}
 
-" | Move visual block up or down | J, K | {{{
-vnoremap J :m '>+1<CR>gv=gv
-vnoremap K :m '<-2<CR>gv=gv
-" }}}
-
 " | List toggle | <leader>l | {{{
 nnoremap <silent> <Leader>l :set list!<CR>
 " }}}
