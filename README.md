@@ -43,11 +43,10 @@ This configuration directory with plugins and vimrc
 ~/.vim
 ```
 
-Project specific options for vim and neovim
+Project specific options:
 
 ```
-~/some/project/path/.vimrc
-~/some/project/path/.nvimrc
+~/some/project/path/.exrc
 ```
 
 Local settings and local plugin list
@@ -57,7 +56,6 @@ Local settings and local plugin list
 ```
 
 Local settings should be as follows
-
 
 ```
 if g:local_plugins
