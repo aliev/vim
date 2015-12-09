@@ -30,11 +30,11 @@ function! ReadOnly()
 endfunction
 
 function! GitInfo()
-  let branch = system("git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* //'")
-  if branch != ''
-    return ' ' . substitute(branch, '\n', '', 'g')
-  en
-  return ''
+  let git = fugitive#head()
+  if git != ''
+    return ' '.fugitive#head()
+  else
+    return ''
 endfunction
 
 function! VirtualEnv()

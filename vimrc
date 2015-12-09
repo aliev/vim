@@ -32,6 +32,9 @@ Plug 'scrooloose/nerdtree'
 " A plugin of NERDTree showing git status
 Plug 'Xuyuanp/nerdtree-git-plugin'
 
+" a Git wrapper so awesome, it should be illegal
+Plug 'tpope/vim-fugitive'
+
 " Forget Vim tabs – now you can have buffer tabs
 Plug 'ap/vim-buftabline'
 
