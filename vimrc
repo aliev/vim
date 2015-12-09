@@ -267,7 +267,7 @@ set noshowmode " Suppress mode change messages
 
 set background=dark " Dark background by default
 
-set exrc " Allow load .vimrc or _vimrc from current directory
+set secure exrc " Allow load .vimrc or _vimrc from current directory
 
 set showtabline=2
 

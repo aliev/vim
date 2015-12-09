@@ -67,6 +67,8 @@ if g:local_settings
 endif
 ```
 
+[My ~/.vimrc.local example](https://github.com/aliev/dotfiles/blob/master/.vimrc.local)
+
 # Included plugins
 
 * [vim-plug](https://github.com/junegunn/vim-plug)
@@ -78,4 +80,3 @@ endif
 * [FZF](https://github.com/junegunn/fzf)
 * [FZF.vim](https://github.com/junegunn/fzf.vim)
 
-[My ~/.vimrc.local example](https://github.com/aliev/dotfiles/blob/master/.vimrc.local)
