@@ -69,13 +69,13 @@ endif
 
 # Included plugins
 
-* vim-plug
-* NERDTree
-* NERDTree git plugin
-* Vim Fugitive
-* BufTabLine
-* Tmux focus events
-* FZF
-* FZF.vim
+* [vim-plug](https://github.com/junegunn/vim-plug)
+* [NERDTree](https://github.com/scrooloose/nerdtree)
+* [NERDTree git plugin](https://github.com/Xuyuanp/nerdtree-git-plugin)
+* [Vim Fugitive](https://github.com/tpope/vim-fugitive)
+* [BufTabLine](https://github.com/ap/vim-buftabline)
+* [Tmux focus events](https://github.com/tmux-plugins/vim-tmux-focus-events)
+* [FZF](https://github.com/junegunn/fzf)
+* [FZF.vim](https://github.com/junegunn/fzf.vim)
 
 [My ~/.vimrc.local example](https://github.com/aliev/dotfiles/blob/master/.vimrc.local)
