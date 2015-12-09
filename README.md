@@ -67,4 +67,15 @@ if g:local_settings
 endif
 ```
 
+# Included plugins
+
+* vim-plug
+* NERDTree
+* NERDTree git plugin
+* Vim Fugitive
+* BufTabLine
+* Tmux focus events
+* FZF
+* FZF.vim
+
 [My ~/.vimrc.local example](https://github.com/aliev/dotfiles/blob/master/.vimrc.local)
