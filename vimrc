@@ -104,6 +104,8 @@ if has("autocmd")
     " Set this option for ~/.tmux.conf: set-option -g allow-rename off 
     au BufEnter * if empty(&buftype) | call system('tmux rename-window '.expand('%:t:S')) | endif
     au VimLeave * call system('tmux set-window automatic-rename on')
+    au FocusGained * silent redraw!
+    au FocusLost * silent redraw!
   endif
 
   augroup reset-cursor
