@@ -67,7 +67,10 @@ if g:local_settings
 endif
 ```
 
-[My ~/.vimrc.local example](https://github.com/aliev/dotfiles/blob/master/.vimrc.local)
+Vimrc: [~/.vim/vimrc](https://github.com/aliev/vim/blob/master/plugin/settings/statusline.vim)
+Local vimrc example: [~/.vimrc.local](https://github.com/aliev/dotfiles/blob/master/.vimrc.local)
+Keymaps with description: [~/.vim/plugin/settings/keymap.vim](https://github.com/aliev/vim/blob/master/plugin/settings/keymap.vim)
+Simple statusline: [~/.vim/plugin/settings/statusline.vim](https://github.com/aliev/vim/blob/master/plugin/settings/statusline.vim)
 
 # Included plugins
 
