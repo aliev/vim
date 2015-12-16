@@ -67,15 +67,7 @@ if g:local_settings
 endif
 ```
 
-Vimrc: [~/.vim/vimrc](https://github.com/aliev/vim/blob/master/plugin/settings/statusline.vim)
-
-Local vimrc example: [~/.vimrc.local](https://github.com/aliev/dotfiles/blob/master/.vimrc.local)
-
-Keymaps with description: [~/.vim/plugin/settings/keymap.vim](https://github.com/aliev/vim/blob/master/plugin/settings/keymap.vim)
-
-Simple statusline: [~/.vim/plugin/settings/statusline.vim](https://github.com/aliev/vim/blob/master/plugin/settings/statusline.vim)
-
-# Included plugins
+# What included?
 
 * [vim-plug](https://github.com/junegunn/vim-plug)
 * [NERDTree](https://github.com/scrooloose/nerdtree)
@@ -85,4 +77,8 @@ Simple statusline: [~/.vim/plugin/settings/statusline.vim](https://github.com/al
 * [Tmux focus events](https://github.com/tmux-plugins/vim-tmux-focus-events)
 * [FZF](https://github.com/junegunn/fzf)
 * [FZF.vim](https://github.com/junegunn/fzf.vim)
-
+* Vimrc: [~/.vim/vimrc](https://github.com/aliev/vim/blob/master/plugin/settings/statusline.vim)
+* Local vimrc example: [~/.vimrc.local](https://github.com/aliev/dotfiles/blob/master/.vimrc.local)
+* Keymaps with description: [~/.vim/plugin/settings/keymap.vim](https://github.com/aliev/vim/blob/master/plugin/settings/keymap.vim)
+* Simple statusline: [~/.vim/plugin/settings/statusline.vim](https://github.com/aliev/vim/blob/master/plugin/settings/statusline.vim)
+* My Tmux config: [~/.tmux.conf](https://github.com/aliev/dotfiles/blob/master/.tmux.conf)
