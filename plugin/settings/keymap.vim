@@ -29,7 +29,21 @@ map <leader>c /\v^[<\|=>]{7}( .*\|$)<CR>
 
 " | :<tab> shows command list from fzf | {{{
 set wildcharm=<Tab>
-cnoremap <expr><tab> getcmdpos()>1?"\<Tab>":"Commands<CR>"
+
+cnoremap <expr><tab>
+      \ getcmdtype() == ":"
+        \ ? getcmdpos() > 1
+        \ ? "\<Tab>"
+        \ : "Commands<CR>"
+      \ : getcmdtype() == "?"
+        \ ? getcmdpos() > 1
+        \ ? ""
+        \ : ""
+      \ : getcmdtype() == "/"
+        \ ? getcmdpos() > 1
+        \ ? ""
+        \ : ""
+      \ : ""
 " }}}
 
 " | Goto file with line number under cursor | gf | {{{
