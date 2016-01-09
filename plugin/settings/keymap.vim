@@ -33,16 +33,8 @@ set wildcharm=<Tab>
 cnoremap <expr><tab>
       \ getcmdtype() == ":"
         \ ? getcmdpos() > 1
-        \ ? "\<Tab>"
+          \ ? "\<Tab>"
         \ : "Commands<CR>"
-      \ : getcmdtype() == "?"
-        \ ? getcmdpos() > 1
-        \ ? ""
-        \ : ""
-      \ : getcmdtype() == "/"
-        \ ? getcmdpos() > 1
-        \ ? ""
-        \ : ""
       \ : ""
 " }}}
 
