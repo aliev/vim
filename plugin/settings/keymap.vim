@@ -24,7 +24,7 @@ nmap <buffer> - <Plug>Up
 " }}}
 
 " | Find merge conflict markers | <leader>c | {{{
-map <leader>c /\v^[<\|=>]{7}( .*\|$)<CR>
+map <Silent><leader>c /\v^[<\|=>]{7}( .*\|$)<CR>
 " }}}
 
 " | :<tab> shows command list from fzf | {{{
