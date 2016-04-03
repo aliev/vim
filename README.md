@@ -1,3 +1,8 @@
+- [x] @mentions, #refs, [links](), **formatting**, and <del>tags</del> supported
+- [x] list syntax required (any unordered or ordered list supported)
+- [x] this is a complete item
+- [ ] this is an incomplete item
+
 [My blog post about this vim configuration and installation](http://bit.ly/1NzFrBK)
 
 [Fonts: I use this one](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/DroidSansMono/complete)
