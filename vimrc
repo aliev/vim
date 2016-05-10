@@ -285,6 +285,15 @@ set showtabline=2
 
 set tabline="%1T"
 
+if has('python')
+py << EOF
+import os, sys
+
+current_directory = os.getcwd()
+sys.path.insert(1, current_directory)
+EOF
+endif
+
 " Load plugins options from ~/.vimrc.local
 if filereadable(expand('~/.vimrc.local'))
   " Plugins list and settings should be loaded
