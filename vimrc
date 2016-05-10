@@ -283,6 +283,8 @@ set secure exrc " Allow load .vimrc or _vimrc from current directory
 
 set showtabline=2
 
+set synmaxcol=120 " Fix performance when syntax is on
+
 set tabline="%1T"
 
 if has('python')
