@@ -1,4 +1,4 @@
-" | nerdtree | - | {{{
+" | nerdtree | - and <leader>e for toggle | {{{
 let NERDTreeMinimalUI = 1
 let NERDTreeIgnore = ['\.pyc$']
 let g:NERDTreeDirArrows = 1
@@ -15,6 +15,8 @@ function! s:up_or_edit()
 endfunction
 
 nnoremap <silent> <Plug>Up :call <SID>up_or_edit()<CR>
+nnoremap <silent> <leader>e :NERDTreeToggle<CR>
+
 if empty(maparg('-', 'n'))
   nmap - <Plug>Up
 endif
