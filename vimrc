@@ -283,7 +283,11 @@ set secure exrc " Allow load .vimrc or _vimrc from current directory
 
 set showtabline=2
 
-set synmaxcol=120 " Fix performance when syntax is on
+" Do not highlight if the string is longer than 80 characters.
+" This option can improve performance
+" In any case, go beyond the more than 80 characters
+" are not very good practice
+set synmaxcol=80
 
 set tabline="%1T"
 
