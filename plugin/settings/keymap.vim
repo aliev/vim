@@ -1,4 +1,4 @@
-" | nerdtree | - and <leader>e for toggle | {{{
+" | nerdtree | - | {{{
 let NERDTreeMinimalUI = 1
 let NERDTreeIgnore = ['\.pyc$']
 let g:NERDTreeDirArrows = 1
@@ -7,15 +7,16 @@ let g:NERDTreeHijackNetrw = 1
 " Oh, I Love It! Taken from vim-vinegar
 " but needed some refactoring
 function! s:up_or_edit()
-  if empty(expand('%'))
-    execute 'silent edit .'
+  if expand('%') == 'NERD_tree_1'
+    execute 'NERDTreeToggle'
+  elseif empty(expand("%"))
+    execute 'NERDTreeToggle'
   else
-    execute 'silent edit %:h/'
+    execute 'NERDTreeFind'
   endif
 endfunction
 
 nnoremap <silent> <Plug>Up :call <SID>up_or_edit()<CR>
-nnoremap <silent> <leader>e :NERDTreeToggle<CR>
 
 if empty(maparg('-', 'n'))
   nmap - <Plug>Up
@@ -85,4 +86,4 @@ silent! exe "set <S-Left>=\<Esc>b"
 silent! exe "set <S-Right>=\<Esc>f"
 " }}}
 
-" vim:foldmethod=marker:foldlevel=0
+" vim:foldmethod=marker:foldlevel=1
