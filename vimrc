@@ -35,15 +35,15 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 " a Git wrapper so awesome, it should be illegal
 Plug 'tpope/vim-fugitive'
 
-" Forget Vim tabs – now you can have buffer tabs
-Plug 'ap/vim-buftabline'
-
 " Make terminal vim and tmux work better together.
 Plug 'tmux-plugins/vim-tmux-focus-events'
 
 " A command-line fuzzy finder written in Go
 Plug 'junegunn/fzf', {'do': 'yes \| ./install'}
 Plug 'junegunn/fzf.vim'
+
+" super simple vim plugin to show the list of buffers in the command bar
+Plug 'bling/vim-bufferline'
 
 " Load plugins from ~/.vimrc.local
 if filereadable(expand('~/.vimrc.local'))

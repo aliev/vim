@@ -30,6 +30,13 @@ endif
 nmap <buffer> - <Plug>Up
 " }}}
 
+" | Bufferline | {{{
+let g:bufferline_echo = 0
+let g:bufferline_active_buffer_left = ''
+let g:bufferline_active_buffer_right = ''
+let g:bufferline_show_bufnr = 0
+" }}}
+
 " | Find merge conflict markers | <leader>c | {{{
 map <leader>c /\v^[<\|=>]{7}( .*\|$)<CR>
 " }}}
