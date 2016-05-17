@@ -1,7 +1,12 @@
 " | Git add current buffer file | <leader>ga,gc,gp | {{{
-nnoremap <silent> <Leader>ga :Gwrite<CR>
-nnoremap <silent> <Leader>gc :Gcommit<CR>
-nnoremap <silent> <Leader>gp :Gpush<CR>
+" Add current file <leader>ga
+map <silent> <Leader>ga :Gwrite<CR>
+" Commit current file <leader>gc
+map <silent> <Leader>gc :Gcommit<CR>
+" Push <leader>gp
+map <silent> <Leader>gp :Gpush<CR>
+" Find merge conflict markers <leader>c
+map <Leader>c /\v^[<\|=>]{7}( .*\|$)<CR>
 " }}}
 
 " | nerdtree | - | {{{
@@ -10,19 +15,23 @@ let NERDTreeIgnore = ['\.pyc$']
 let g:NERDTreeDirArrows = 1
 let g:NERDTreeHijackNetrw = 1
 
-" Oh, I Love It! Taken from vim-vinegar
-" but needed some refactoring
-function! s:up_or_edit()
+function! s:comfortable_nerd()
+  " For NERDTree buffer
   if expand('%') == 'NERD_tree_1'
+    " Close NERDTree
     execute 'NERDTreeToggle'
+  " If buffer if empty
   elseif empty(expand("%"))
+    " Just open NERDTree
     execute 'NERDTreeToggle'
+  " If file opened in buffer
   else
+    " Run NERDTreeFind
     execute 'NERDTreeFind'
   endif
 endfunction
 
-nnoremap <silent> <Plug>Up :call <SID>up_or_edit()<CR>
+nnoremap <silent> <Plug>Up :call <SID>comfortable_nerd()<CR>
 
 if empty(maparg('-', 'n'))
   nmap - <Plug>Up
@@ -35,10 +44,6 @@ let g:bufferline_echo = 0
 let g:bufferline_active_buffer_left = ''
 let g:bufferline_active_buffer_right = ''
 let g:bufferline_show_bufnr = 0
-" }}}
-
-" | Find merge conflict markers | <leader>c | {{{
-map <leader>c /\v^[<\|=>]{7}( .*\|$)<CR>
 " }}}
 
 " | :<tab> shows command list from fzf | {{{
