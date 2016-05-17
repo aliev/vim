@@ -85,6 +85,7 @@ if has('mouse')
   endif
 endif
 
+
 if has('multi_byte') && &encoding ==# 'utf-8'
   let &listchars = 'trail:·,tab:»·,eol:¶,extends:→,precedes:←,nbsp:×'
   let &fillchars = 'stl: ,stlnc: ,vert:│'
