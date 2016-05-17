@@ -1,3 +1,9 @@
+" | Git add current buffer file | <leader>ga,gc,gp | {{{
+nnoremap <silent> <Leader>ga :Gwrite<CR>
+nnoremap <silent> <Leader>gc :Gcommit<CR>
+nnoremap <silent> <Leader>gp :Gpush<CR>
+" }}}
+
 " | nerdtree | - | {{{
 let NERDTreeMinimalUI = 1
 let NERDTreeIgnore = ['\.pyc$']
