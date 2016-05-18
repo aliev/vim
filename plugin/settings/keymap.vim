@@ -7,6 +7,8 @@ map <silent> <Leader>gc :Gcommit<CR>
 map <silent> <Leader>gp :Gpush<CR>
 " Revert current file to last checked in version <leader>gr
 map <silent> <Leader>gr :Gread<CR>
+" Git status
+map <silent> <Leader>gs :Gstatus<CR>
 " Find merge conflict markers <leader>c
 map <Leader>c /\v^[<\|=>]{7}( .*\|$)<CR>
 " }}}
