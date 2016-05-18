@@ -73,7 +73,7 @@ endif
 * [NERDTree](https://github.com/scrooloose/nerdtree)
 * [NERDTree git plugin](https://github.com/Xuyuanp/nerdtree-git-plugin)
 * [Vim Fugitive](https://github.com/tpope/vim-fugitive)
-* [BufTabLine](https://github.com/ap/vim-buftabline)
+* [Vim bufferline](https://github.com/bling/vim-bufferline)
 * [Tmux focus events](https://github.com/tmux-plugins/vim-tmux-focus-events)
 * [FZF](https://github.com/junegunn/fzf)
 * [FZF.vim](https://github.com/junegunn/fzf.vim)
