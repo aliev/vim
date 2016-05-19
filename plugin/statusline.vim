@@ -70,7 +70,6 @@ set laststatus=2
 set statusline=
 set statusline+=\ %{toupper(g:currentmode[mode()])}   " Current mode
 set statusline+=\ %{GitInfo()}                        " Git Branch name
-"set statusline+=\ %<%F\ %{ReadOnly()}\ %m\ %w\        " File+path
 set statusline+=\ %{Bufferline()}
 set statusline+=%*
 set statusline+=\ %=                                  " Space
