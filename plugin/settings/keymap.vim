@@ -10,7 +10,7 @@ map <silent> <Leader>gr :Gread<CR>
 " Git status
 map <silent> <Leader>gs :Gstatus<CR>
 " Git diff
-map <silent> <Leader>gd :Gdiff
+map <silent> <Leader>gd :Gdiff<CR>
 " Find merge conflict markers <leader>c
 map <Leader>c /\v^[<\|=>]{7}( .*\|$)<CR>
 " }}}
