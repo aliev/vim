@@ -100,26 +100,28 @@ endif
 if has("autocmd")
   filetype plugin indent on
 
-  if exists('$TMUX') && !exists('$NORENAME')
-    " Automatic rename of tmux window
-    " Set this option for ~/.tmux.conf: set-option -g allow-rename off 
-    au BufEnter * if empty(&buftype) | call system('tmux rename-window '.expand('%:t:S')) | endif
-    au VimLeave * call system('tmux set-window automatic-rename on')
-    au FocusGained * silent redraw!
-    au FocusLost * silent redraw!
-  endif
-
-  augroup reset-cursor
-    " Reset cursor when vim exits
-    " pls look at the cursor shape options
-    au VimLeave * silent !echo -ne "\033]112\007"
-  augroup END
-
-  augroup vimrc-remember-cursor-position
-    " Remember cursor position
+  augroup vimrc
     au!
+    " Display cursorline only in active window
+    au WinLeave * setlocal nocursorline
+    au WinEnter,BufRead * setlocal cursorline
+
+    " Remember cursor position
     au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$")
           \| exe "normal! g`\"" | endif
+
+    " Reset cursor when vim exist
+    " pls look at the cursor shape options
+    au VimLeave * silent !echo -ne "\033]112\007"
+
+    " Automatic rename of tmux window
+    " Set option set-option -g allow-rename off in ~/.tmux.conf
+    if exists('$TMUX') && !exists('$NORENAME')
+      au BufEnter * if empty(&buftype) | call system('tmux rename-window '.expand('%:t:S')) | endif
+      au VimLeave * call system('tmux set-window automatic-rename on')
+      au FocusGained * silent redraw!
+      au FocusLost * silent redraw!
+    endif
   augroup END
 endif
 
@@ -208,6 +210,8 @@ set laststatus=2 " Enable statusline
 set magic " For regular expressions turn magic on
 
 set ignorecase " Searches are Non Case-sensitive
+
+set cursorline " Set cursorline
 
 set smartcase " Do smart case matching when searching
 
