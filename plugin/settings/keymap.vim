@@ -1,6 +1,6 @@
 " | Git add current buffer file | <leader>ga,gc,gp | {{{
-" Add current file <leader>ga
-map <silent> <Leader>ga :Gwrite<CR>
+" Add current file <leader>gw
+map <silent> <Leader>gw :Gwrite<CR>
 " Commit current file <leader>gc
 map <silent> <Leader>gc :Gcommit<CR>
 " Push <leader>gp
