@@ -5,6 +5,11 @@ if has('vim_starting')
   set nocompatible
 endif
 
+if has('gui')
+  set guioptions=g
+  set guifont=Source\ Code\ Pro:h14
+endif
+
 if has('nvim')
   " Plugins directory
   set rtp+=~/.vim
