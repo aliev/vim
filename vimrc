@@ -47,8 +47,8 @@ Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'junegunn/fzf', {'do': 'yes \| ./install'}
 Plug 'junegunn/fzf.vim'
 
-" super simple vim plugin to show the list of buffers in the command bar
-Plug 'bling/vim-bufferline'
+" Forget Vim tabs – now you can have buffer tabs
+Plug 'ap/vim-buftabline'
 
 " Load plugins from ~/.vimrc.local
 if filereadable(expand('~/.vimrc.local'))
