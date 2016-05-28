@@ -107,10 +107,6 @@ if has("autocmd")
 
   augroup vimrc
     au!
-    " Display cursorline only in active window
-    au WinLeave * setlocal nocursorline
-    au WinEnter,BufRead * setlocal cursorline
-
     " Remember cursor position
     au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$")
           \| exe "normal! g`\"" | endif
@@ -215,8 +211,6 @@ set laststatus=2 " Enable statusline
 set magic " For regular expressions turn magic on
 
 set ignorecase " Searches are Non Case-sensitive
-
-set cursorline " Set cursorline
 
 set smartcase " Do smart case matching when searching
 
