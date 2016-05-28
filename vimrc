@@ -47,9 +47,6 @@ Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'junegunn/fzf', {'do': 'yes \| ./install'}
 Plug 'junegunn/fzf.vim'
 
-" Forget Vim tabs – now you can have buffer tabs
-Plug 'ap/vim-buftabline'
-
 " Load plugins from ~/.vimrc.local
 if filereadable(expand('~/.vimrc.local'))
   " Plugins list and settings should be loaded
@@ -275,7 +272,7 @@ set background=dark " Dark background by default
 
 set secure exrc " Allow load .vimrc or _vimrc from current directory
 
-set showtabline=2
+set showtabline=0
 
 " For slow machines
 " Do not highlight if the string is longer than 80 characters.
