@@ -1,17 +1,4 @@
-" | Git add current buffer file | <leader>ga,gc,gp | {{{
-" Add current file <leader>gw
-map <silent> <Leader>gw :Gwrite<CR>
-" Commit current file <leader>gc
-map <silent> <Leader>gc :Gcommit<CR>
-" Push <leader>gp
-map <silent> <Leader>gp :Gpush<CR>
-" Revert current file to last checked in version <leader>gr
-map <silent> <Leader>gr :Gread<CR>
-" Git status
-map <silent> <Leader>gs :Gstatus<CR>
-" Git diff
-map <silent> <Leader>gd :Gdiff<CR>
-" Find merge conflict markers <leader>c
+" Find merge conflict markers <leader>gc | {{{
 map <Leader>c /\v^[<\|=>]{7}( .*\|$)<CR>
 " }}}
 
