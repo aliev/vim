@@ -15,6 +15,12 @@ map <silent> <Leader>gd :Gdiff<CR>
 map <Leader>c /\v^[<\|=>]{7}( .*\|$)<CR>
 " }}}
 
+" | Use <C-L> to clear the highlighting of :set hlsearch. | {{{
+if maparg('<C-L>', 'n') ==# ''
+  nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
+endif
+" }}}
+
 " | nerdtree | - | {{{
 let NERDTreeMinimalUI = 1
 let NERDTreeIgnore = ['\.pyc$']
