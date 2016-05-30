@@ -140,6 +140,8 @@ if exists("+undofile")
 endif
 
 if &shell =~# 'fish$'
+  " Avoid problems with fish shell.
+  " https://github.com/tpope/vim-sensible/issues/50
   set shell=/bin/bash
 endif
 
@@ -266,13 +268,18 @@ set conceallevel=2 " Conceal level
 
 set modelines=1 " Make Vim only use folding settings for current file
 
+" Do not fold by default. But if, do it up to 3 levels.
+set foldmethod=indent
+set foldnestmax=3
+set nofoldenable
+
 set noshowmode " Suppress mode change messages
 
 set background=dark " Dark background by default
 
 set secure exrc " Allow load .vimrc or _vimrc from current directory
 
-set showtabline=0
+set showtabline=0 " Tabs is evil
 
 " For slow machines
 " Do not highlight if the string is longer than 80 characters.
