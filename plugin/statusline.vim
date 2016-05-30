@@ -57,5 +57,6 @@ set statusline+=\ %=                                  " Space
 set statusline+=\ %y\                                 " FileType
 set statusline+=\ %{(&fenc!=''?&fenc:&enc)}\[%{&ff}]\ " Encoding & Fileformat
 set statusline+=%{VirtualEnv()}                       " Virtualenv
+set statusline+=[%l\:%c]
 
 " vim:foldmethod=marker:foldlevel=0
