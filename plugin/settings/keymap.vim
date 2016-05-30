@@ -8,6 +8,10 @@ if maparg('<C-L>', 'n') ==# ''
 endif
 " }}}
 
+" Visually select the text that was last edited/pasted (Vimcast#26). | gV | {{{
+noremap gV `[v`]
+" }}}
+
 " | nerdtree | - | {{{
 let NERDTreeMinimalUI = 1
 let NERDTreeIgnore = ['\.pyc$']
@@ -102,5 +106,8 @@ cnoremap        <M-f> <S-Right>
 silent! exe "set <S-Left>=\<Esc>b"
 silent! exe "set <S-Right>=\<Esc>f"
 " }}}
+
+" Expand %% to path of current buffer in command mode.
+cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 
 " vim:foldmethod=marker:foldlevel=1

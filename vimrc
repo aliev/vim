@@ -281,6 +281,8 @@ set secure exrc " Allow load .vimrc or _vimrc from current directory
 
 set showtabline=0 " Tabs is evil
 
+set shortmess+=I " Don't display the intro message on starting Vim.
+
 " For slow machines
 " Do not highlight if the string is longer than 80 characters.
 " This option can improve performance
