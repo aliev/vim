@@ -1,7 +1,3 @@
-[My blog post about this vim configuration and installation](http://bit.ly/1NzFrBK)
-
-[Fonts: I use this one](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/DroidSansMono/complete)
-
 # Installation
 
 ```
@@ -73,12 +69,6 @@ endif
 * [NERDTree](https://github.com/scrooloose/nerdtree)
 * [NERDTree git plugin](https://github.com/Xuyuanp/nerdtree-git-plugin)
 * [Vim Fugitive](https://github.com/tpope/vim-fugitive)
-* [Vim bufferline](https://github.com/bling/vim-bufferline)
 * [Tmux focus events](https://github.com/tmux-plugins/vim-tmux-focus-events)
 * [FZF](https://github.com/junegunn/fzf)
 * [FZF.vim](https://github.com/junegunn/fzf.vim)
-* Vimrc: [~/.vim/vimrc](https://github.com/aliev/vim/blob/master/plugin/settings/statusline.vim)
-* Local vimrc example: [~/.vimrc.local](https://github.com/aliev/dotfiles/blob/master/.vimrc.local)
-* Keymaps with description: [~/.vim/plugin/settings/keymap.vim](https://github.com/aliev/vim/blob/master/plugin/settings/keymap.vim)
-* Simple statusline: [~/.vim/plugin/settings/statusline.vim](https://github.com/aliev/vim/blob/master/plugin/settings/statusline.vim)
-* My Tmux config: [~/.tmux.conf](https://github.com/aliev/dotfiles/blob/master/.tmux.conf)
