@@ -247,7 +247,7 @@ set termencoding=utf-8 " Terminal encoding
 
 set fileencodings=utf8 " Supported file encodings
 
-set number " Enable line numbers
+set nonumber " Disable line numbers
 
 set ruler " Always display cursor position
 
