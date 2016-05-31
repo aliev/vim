@@ -110,4 +110,7 @@ silent! exe "set <S-Right>=\<Esc>f"
 " Expand %% to path of current buffer in command mode.
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 
+" Remove trailing whitespaces
+nnoremap <silent> <Leader><Space> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>:w<CR>
+
 " vim:foldmethod=marker:foldlevel=1
