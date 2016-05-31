@@ -290,8 +290,6 @@ set shortmess+=I " Don't display the intro message on starting Vim.
 " are not very good practice
 " set synmaxcol=80
 
-set tabline="%1T"
-
 " Load plugins options from ~/.vimrc.local
 if filereadable(expand('~/.vimrc.local'))
   " Plugins list and settings should be loaded
