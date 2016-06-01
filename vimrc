@@ -34,9 +34,6 @@ call plug#begin('~/.vim/plugged')
 " A tree explorer plugin for vim.
 Plug 'scrooloose/nerdtree'
 
-" A plugin of NERDTree showing git status
-Plug 'Xuyuanp/nerdtree-git-plugin'
-
 " a Git wrapper so awesome, it should be illegal
 Plug 'tpope/vim-fugitive'
 
