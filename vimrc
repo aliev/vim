@@ -40,10 +40,6 @@ Plug 'tpope/vim-fugitive'
 " Make terminal vim and tmux work better together.
 Plug 'tmux-plugins/vim-tmux-focus-events'
 
-" A command-line fuzzy finder written in Go
-Plug 'junegunn/fzf', {'do': 'yes \| ./install'}
-Plug 'junegunn/fzf.vim'
-
 " Load plugins from ~/.vimrc.local
 if filereadable(expand('~/.vimrc.local'))
   " Plugins list and settings should be loaded
@@ -254,7 +250,9 @@ set noautochdir " Change the current working directory whenever you open a file
 
 set wildmenu " Turn on the Wild menu
 
-set wildmode=list:longest,list:full " Wildmenu configuration
+set wildmode=list:longest,list:full
+
+set wildcharm=<Tab>
 
 " Ignore files
 set wildignore+=.DS_Store,.git/**,tmp/**,*.log,.bundle/**,node_modules/**,tags

@@ -43,24 +43,6 @@ endif
 nmap <buffer> - <Plug>Up
 " }}}
 
-" | Bufferline | {{{
-let g:bufferline_echo = 0
-let g:bufferline_active_buffer_left = '[ '
-let g:bufferline_active_buffer_right = ']'
-let g:bufferline_show_bufnr = 0
-" }}}
-
-" | :<tab> shows command list from fzf | {{{
-set wildcharm=<Tab>
-
-cnoremap <expr><tab>
-      \ getcmdtype() == ":"
-        \ ? getcmdpos() > 1
-          \ ? "\<Tab>"
-        \ : "Commands<CR>"
-      \ : ""
-" }}}
-
 " | Goto file with line number under cursor | gf | {{{
 nnoremap gf gF
 " }}}
@@ -73,16 +55,14 @@ nnoremap <silent> <Leader>l :set list!<CR>
 nnoremap <silent> <leader>w :bp <BAR> bd #<CR>
 " }}}
 
-" | Quickly jump by declarations list | <leader>s |{{{
-nnoremap <silent> <Leader>s :BTags<CR>
-" }}}
-
 " | Buffer list | <leader>b | {{{
-nnoremap <silent> <Leader>b :Buffers<CR>
+nnoremap <Leader>bb :buffers<CR>:buffer<Space>
+nnoremap <Leader>bn :bn<CR>
+nnoremap <Leader>bp :bp<CR>
 " }}}
 
 " | Open files | <leader>f | {{{
-nnoremap <silent> <Leader>f :Files<CR>
+nnoremap <Leader>f :e<Space><Tab>
 " }}}
 
 " | Give directory for current file and open command mode | <leader>. | {{{
