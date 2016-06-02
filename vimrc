@@ -8,6 +8,7 @@ endif
 if has('gui')
   set guioptions=g
   set guifont=Source\ Code\ Pro:h14
+  set guicursor+=a:blinkon0
 endif
 
 if has('nvim')
@@ -119,7 +120,6 @@ endif
 if executable('ag')
   " Use ag over grep
   set grepprg=ag\ --nogroup\ --nocolor
-  let $FZF_DEFAULT_COMMAND='ag -l -g ""'
 endif
 
 if exists("+undofile")
