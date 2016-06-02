@@ -73,8 +73,10 @@ nnoremap <leader>. <Esc>: <C-R>=expand("%:p:h") . "/" <CR><Home>
 nnoremap <leader><leader> <c-^>
 " }}}
 
-" | Search word under cursor by using Ag | <leader>ag | {{{
-noremap <silent><Leader>ag :Ag <C-R>=expand("<cword>")<CR><CR>
+" | Silver searcher | <leader>ag, \ and :Ag | {{{
+command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
+nnoremap \ :Ag<SPACE>
+noremap <silent><Leader>ag :Ag <C-R>=expand("<cword>")<CR><CR><CR>:cw<CR>
 " }}}
 
 " | Readline-style key bindings in command-line (excerpt from rsi.vim) | {{{

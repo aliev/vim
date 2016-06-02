@@ -118,8 +118,9 @@ if has("autocmd")
 endif
 
 if executable('ag')
-  " Use ag over grep
-  set grepprg=ag\ --nogroup\ --nocolor
+  " Silver searcher instead of grep
+  set grepprg=ag\ --nogroup\ --nocolor\ --column
+  set grepformat=%f:%l:%c%m
 endif
 
 if exists("+undofile")
