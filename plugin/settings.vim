@@ -21,7 +21,7 @@ let NERDTreeQuitOnOpen = 1
 
 function! s:comfortable_nerd()
   " For NERDTree buffer
-  if expand('%') == 'NERD_tree_1'
+  if expand('%') =~# 'NERD_tree_[0-9]'
     " Close NERDTree
     execute 'NERDTreeToggle'
   " If buffer if empty
