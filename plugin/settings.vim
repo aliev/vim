@@ -12,6 +12,14 @@ endif
 noremap gV `[v`]
 " }}}
 
+" Expand %% to path of current buffer in command mode. {{{
+if empty(expand("%"))
+  cnoremap <expr> %% getcmdtype() == ':' ? 'e ' . expand('%:p:h').'/<Tab>' : '%%'
+else
+  cnoremap <expr> %% getcmdtype() == ':' ? 'e ' . expand('%:h').'/<Tab>' : '%%'
+endif
+" }}}
+
 " | nerdtree | - | {{{
 let NERDTreeMinimalUI = 1
 let NERDTreeRespectWildIgnore = 1
@@ -61,14 +69,6 @@ nnoremap <Leader>bn :bn<CR>
 nnoremap <Leader>bp :bp<CR>
 " }}}
 
-" | Open files | <leader>f | {{{
-nnoremap <Leader>f :e<Space><Tab>
-" }}}
-
-" | Give directory for current file and open command mode | <leader>. | {{{
-nnoremap <leader>. <Esc>: <C-R>=expand("%:p:h") . "/" <CR><Home>
-" }}}
-
 " | Switch between the last edited two files | <leader><leader> {{{
 nnoremap <leader><leader> <c-^>
 " }}}
@@ -90,10 +90,8 @@ silent! exe "set <S-Left>=\<Esc>b"
 silent! exe "set <S-Right>=\<Esc>f"
 " }}}
 
-" Expand %% to path of current buffer in command mode.
-cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
-
-" Remove trailing whitespaces
+" Remove trailing whitespaces {{{
 nnoremap <silent> <Leader><Space> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>:w<CR>
+" }}}
 
-" vim:foldmethod=marker:foldlevel=1
+" vim:foldmethod=marker:foldlevel=0
