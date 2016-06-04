@@ -1,33 +1,25 @@
-" Find merge conflict markers <leader>gc | {{{
+" Find merge conflict markers | "<leader>gc" | {{{
 map <Leader>c /\v^[<\|=>]{7}( .*\|$)<CR>
 " }}}
 
-" | Use <C-L> to clear the highlighting of :set hlsearch. | {{{
+" | Clear highlighting | "C-L" | {{{
 if maparg('<C-L>', 'n') ==# ''
   nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
 endif
 " }}}
 
-" Visually select the text that was last edited/pasted (Vimcast#26). | gV | {{{
+" Visually select the text that was last edited/pasted (Vimcast#26). | "gV" | {{{
 noremap gV `[v`]
 " }}}
 
-" Expand %% to path of current buffer in command mode. {{{
-if empty(expand("%"))
-  cnoremap <expr> %% getcmdtype() == ':' ? 'e ' . expand('%:p:h').'/<Tab>' : '%%'
-else
-  cnoremap <expr> %% getcmdtype() == ':' ? 'e ' . expand('%:h').'/<Tab>' : '%%'
-endif
-" }}}
-
-" | nerdtree | - | {{{
+" | Smart NERDTree | "-" | {{{
 let NERDTreeMinimalUI = 1
 let NERDTreeRespectWildIgnore = 1
 let g:NERDTreeDirArrows = 1
 let g:NERDTreeHijackNetrw = 1
 let NERDTreeQuitOnOpen = 1
 
-function! s:comfortable_nerd()
+function! s:smart_nerdtree()
   " For NERDTree buffer
   if expand('%') =~# 'NERD_tree_[0-9]'
     " Close NERDTree
@@ -43,7 +35,7 @@ function! s:comfortable_nerd()
   endif
 endfunction
 
-nnoremap <silent> <Plug>Up :call <SID>comfortable_nerd()<CR>
+nnoremap <silent> <Plug>Up :call <SID>smart_nerdtree()<CR>
 
 if empty(maparg('-', 'n'))
   nmap - <Plug>Up
@@ -51,32 +43,37 @@ endif
 nmap <buffer> - <Plug>Up
 " }}}
 
-" | Goto file with line number under cursor | gf | {{{
+" | Goto file with line number under cursor | "gf" | {{{
 nnoremap gf gF
 " }}}
 
-" | List toggle | <leader>l | {{{
+" | List toggle | "<leader>l" | {{{
 nnoremap <silent> <Leader>l :set list!<CR>
 " }}}
 
-" | Close the current buffer and move to the previous one | <leader>w | {{{
+" | Close the current buffer and move to the previous one | "<leader>w" | {{{
 nnoremap <silent> <leader>w :bp <BAR> bd #<CR>
 " }}}
 
-" | Buffer list | <leader>b | {{{
-nnoremap <Leader>bb :buffers<CR>:buffer<Space>
+" | Buffer list | "<leader>b", "<leader>bn", "<leader>bp" | {{{
+nnoremap <Leader>bb :ls<CR>:b<Space>
 nnoremap <Leader>bn :bn<CR>
 nnoremap <Leader>bp :bp<CR>
 " }}}
 
-" | Switch between the last edited two files | <leader><leader> {{{
+" | Switch between the last edited two files | "<leader><leader>" {{{
 nnoremap <leader><leader> <c-^>
 " }}}
 
-" | Silver searcher | <leader>ag, \ and :Ag | {{{
-command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
-nnoremap \ :Ag<SPACE>
-noremap <silent><Leader>ag :Ag <C-R>=expand("<cword>")<CR><CR><CR>:cw<CR>
+" | Search word under cursor | "\" | {{{
+if !exists(":Ag")
+  command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
+endif
+nnoremap \ :Ag <C-R>=expand("<cword>")<CR><CR>
+" }}}
+
+" Remove trailing whitespaces | "<leader>space" {{{
+nnoremap <silent> <Leader><Space> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>:w<CR>
 " }}}
 
 " | Readline-style key bindings in command-line (excerpt from rsi.vim) | {{{
@@ -90,8 +87,5 @@ silent! exe "set <S-Left>=\<Esc>b"
 silent! exe "set <S-Right>=\<Esc>f"
 " }}}
 
-" Remove trailing whitespaces {{{
-nnoremap <silent> <Leader><Space> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>:w<CR>
-" }}}
 
 " vim:foldmethod=marker:foldlevel=0
