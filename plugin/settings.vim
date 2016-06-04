@@ -14,7 +14,7 @@ noremap gV `[v`]
 
 " | nerdtree | - | {{{
 let NERDTreeMinimalUI = 1
-let NERDTreeIgnore = ['\.pyc$']
+let NERDTreeRespectWildIgnore = 1
 let g:NERDTreeDirArrows = 1
 let g:NERDTreeHijackNetrw = 1
 let NERDTreeQuitOnOpen = 1
