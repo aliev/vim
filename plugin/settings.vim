@@ -72,7 +72,7 @@ nnoremap <leader><leader> <c-^>
 
 " | Search word under cursor | "\" | {{{
 if !exists(":Ag")
-  command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
+  command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|copen|redraw!
 endif
 nnoremap \ :Ag <C-R>=expand("<cword>")<CR><CR>
 " }}}
