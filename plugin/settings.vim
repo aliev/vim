@@ -55,10 +55,15 @@ nnoremap <silent> <Leader>l :set list!<CR>
 nnoremap <silent> <leader>w :bp <BAR> bd #<CR>
 " }}}
 
-" | Buffer list | "<leader>b", "<leader>bn", "<leader>bp" | {{{
+" | Buffer list | "<leader>bb", "<leader>bn", "<leader>bp", "<leader>bf" | {{{
+" Buffers list
 nnoremap <Leader>bb :ls<CR>:b<Space>
-nnoremap <Leader>bn :bn<CR>
-nnoremap <Leader>bp :bp<CR>
+" Files list
+nnoremap <Leader>bf :e<Space><Tab>
+" Next buffer
+nnoremap <silent><Leader>bn :bn<CR>
+" Previous buffer
+nnoremap <silent><Leader>bp :bp<CR>
 " }}}
 
 " | Switch between the last edited two files | "<leader><leader>" {{{
