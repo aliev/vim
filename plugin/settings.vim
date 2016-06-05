@@ -87,9 +87,6 @@ cnoremap <expr><tab>
 " }}}
 
 " | Ctags and QuickFix integration | "C-]" | {{{
-" Example of ctags command
-" ctags -f - --sort=no --language-force=python -R . > tags
-
 if !exists(":Tags")
   command! -nargs=1 -complete=tag Tags call s:Tags(<f-args>)
 endif
