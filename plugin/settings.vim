@@ -80,7 +80,7 @@ nnoremap \ :Ag <C-R>=expand("<cword>")<CR><CR>
 " | Ctags and QuickFix integration | "C-]" | {{{
 " Example of ctags command
 " ctags -f - --sort=no --language-force=python -R . > tags
-command! -nargs=1 Tags call s:Tags(<f-args>)
+command! -nargs=1 -complete=tag Tags call s:Tags(<f-args>)
 function! s:Tags(name)
   " Retrieve tags of the 'f' kind
   let tags = taglist(a:name)
