@@ -21,7 +21,7 @@ let g:NERDTreeQuitOnOpen = 1
 
 function! s:smart_nerdtree()
   " For NERDTree buffer
-  if expand('%') =~# 'NERD_tree_[0-9]'
+  if expand('%') =~# 'NERD_tree'
     " Close NERDTree
     execute 'NERDTreeToggle'
   " If buffer if empty
@@ -71,9 +71,6 @@ nnoremap <leader><leader> <c-^>
 " }}}
 
 " | Search word under cursor | "\" | {{{
-if !exists(":Ag")
-  command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|copen|redraw!
-endif
 nnoremap \ :Ag <C-R>=expand("<cword>")<CR><CR>
 " }}}
 
@@ -86,33 +83,7 @@ cnoremap <expr><tab>
       \ : ""
 " }}}
 
-" | Ctags and QuickFix integration | "C-]" | {{{
-if !exists(":Tags")
-  command! -nargs=1 -complete=tag Tags call s:Tags(<f-args>)
-endif
-
-function! s:Tags(name)
-  " Retrieve tags of the 'f' kind
-  let tags = taglist('^'.a:name.'$')
-
-  " Prepare them for inserting in the quickfix window
-  let qf_taglist = []
-  for entry in tags
-    call add(qf_taglist, {
-          \ 'text':  entry['name'],
-          \ 'filename': entry['filename'],
-          \ 'lnum': entry['line'],
-          \ })
-  endfor
-
-  " Place the tags in the quickfix window, if possible
-  if len(qf_taglist) > 0
-    call setqflist(qf_taglist)
-    copen
-  else
-    echo "No tags found for ".a:name
-  endif
-endfunction
+" | Ctags integration | "C-]" | {{{
 nnoremap <C-]> :Tags <C-R>=expand("<cword>")<CR><CR>
 " }}}
 
@@ -130,6 +101,5 @@ cnoremap        <M-f> <S-Right>
 silent! exe "set <S-Left>=\<Esc>b"
 silent! exe "set <S-Right>=\<Esc>f"
 " }}}
-
 
 " vim:foldmethod=marker:foldlevel=0
