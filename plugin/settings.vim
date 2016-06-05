@@ -17,6 +17,7 @@ let NERDTreeMinimalUI = 1
 let NERDTreeRespectWildIgnore = 1
 let g:NERDTreeDirArrows = 1
 let g:NERDTreeHijackNetrw = 1
+let g:NERDTreeQuitOnOpen = 1
 
 function! s:smart_nerdtree()
   " For NERDTree buffer
@@ -54,11 +55,11 @@ nnoremap <silent> <Leader>l :set list!<CR>
 nnoremap <silent> <leader>w :bp <BAR> bd #<CR>
 " }}}
 
-" | Buffer list | "<leader>bb", "<leader>bn", "<leader>bp", "<leader>bf" | {{{
-" Buffers list
-nnoremap <Leader>bb :ls<CR>:b<Space>
-" Files list
-nnoremap <Leader>bf :e<Space><Tab>
+" | Buffer and files | "<leader>f", "<leader>bb", "<leader>bs", "<leader>bn", "<leader>bp"| {{{
+nnoremap <silent> <expr> <Leader>f (expand('%') =~ 'NERD_tree' ? "\<c-w>\<c-w>" : '').":Files\<cr>"
+nnoremap <leader>bb :Buffers<CR>
+nnoremap <leader>bs :BTags<CR>
+
 " Next buffer
 nnoremap <silent><Leader>bn :bn<CR>
 " Previous buffer
@@ -76,10 +77,23 @@ endif
 nnoremap \ :Ag <C-R>=expand("<cword>")<CR><CR>
 " }}}
 
+" | Tab in command mode run Command from FZF {{{
+cnoremap <expr><tab>		
+      \ getcmdtype() == ":"		
+        \ ? getcmdpos() > 1		
+          \ ? "\<Tab>"		
+        \ : "Commands<CR>"		
+      \ : ""
+" }}}
+
 " | Ctags and QuickFix integration | "C-]" | {{{
 " Example of ctags command
 " ctags -f - --sort=no --language-force=python -R . > tags
-command! -nargs=1 -complete=tag Tags call s:Tags(<f-args>)
+
+if !exists(":Tags")
+  command! -nargs=1 -complete=tag Tags call s:Tags(<f-args>)
+endif
+
 function! s:Tags(name)
   " Retrieve tags of the 'f' kind
   let tags = taglist('^'.a:name.'$')

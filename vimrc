@@ -41,6 +41,10 @@ Plug 'tpope/vim-fugitive'
 " Make terminal vim and tmux work better together.
 Plug 'tmux-plugins/vim-tmux-focus-events'
 
+" A command-line fuzzy finder written in Go
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+
 " Load plugins from ~/.vimrc.local
 if filereadable(expand('~/.vimrc.local'))
   " Plugins list and settings should be loaded
