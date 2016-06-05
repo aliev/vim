@@ -82,7 +82,7 @@ nnoremap \ :Ag <C-R>=expand("<cword>")<CR><CR>
 command! -nargs=1 -complete=tag Tags call s:Tags(<f-args>)
 function! s:Tags(name)
   " Retrieve tags of the 'f' kind
-  let tags = taglist(a:name)
+  let tags = taglist('^'.a:name.'$')
 
   " Prepare them for inserting in the quickfix window
   let qf_taglist = []
