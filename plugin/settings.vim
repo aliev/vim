@@ -71,7 +71,8 @@ nnoremap <leader><leader> <c-^>
 " }}}
 
 " | Search word under cursor | "\" | {{{
-nnoremap \ :Ag <C-R>=expand("<cword>")<CR><CR>
+command -nargs=+ -complete=file -bar AG silent! grep! <args>|cwindow|copen|redraw!
+nnoremap \ :AG <C-R>=expand("<cword>")<CR><CR>
 " }}}
 
 " | Tab in command mode run Command from FZF {{{
