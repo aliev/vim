@@ -6,7 +6,9 @@ if has('vim_starting')
 endif
 
 if has('gui')
-  set guioptions=g
+  " Remove all gui elements
+  " keep only gui tabs
+  set guioptions-=mTrL
   set guifont=Source\ Code\ Pro:h14
   set guicursor+=a:blinkon0
 endif
@@ -40,10 +42,6 @@ Plug 'tpope/vim-fugitive'
 
 " Make terminal vim and tmux work better together.
 Plug 'tmux-plugins/vim-tmux-focus-events'
-
-" A command-line fuzzy finder written in Go
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
 
 " Load plugins from ~/.vimrc.local
 if filereadable(expand('~/.vimrc.local'))
@@ -279,7 +277,7 @@ set background=dark " Dark background by default
 
 set secure exrc " Allow load .vimrc or _vimrc from current directory
 
-set showtabline=0 " Tabs is evil
+set showtabline=2 " Always show tabline
 
 set shortmess+=I " Don't display the intro message on starting Vim.
 

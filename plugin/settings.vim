@@ -28,7 +28,7 @@ function! s:smart_nerdtree()
   elseif empty(expand("%"))
     " Just open NERDTree
     execute 'NERDTreeToggle'
-  " If file opened in buffer
+    " If file opened in buffer
   else
     " Run NERDTreeFind
     execute 'NERDTreeFind'
@@ -55,11 +55,11 @@ nnoremap <silent> <Leader>l :set list!<CR>
 nnoremap <silent> <leader>w :bp <BAR> bd #<CR>
 " }}}
 
-" | Buffer and files | "<leader>f", "<leader>bb", "<leader>bs", "<leader>bn", "<leader>bp"| {{{
-nnoremap <silent> <expr> <Leader>f (expand('%') =~ 'NERD_tree' ? "\<c-w>\<c-w>" : '').":Files\<cr>"
-nnoremap <leader>bb :Buffers<CR>
-nnoremap <leader>bs :BTags<CR>
+cnoremap .. <C-R>=fnameescape(expand('%:p:h')).'/'<cr>
 
+" Buffers " {{{
+" List of buffers
+nnoremap <leader>bb :ls<CR>:b<space>
 " Next buffer
 nnoremap <silent><Leader>bn :bn<CR>
 " Previous buffer
@@ -71,23 +71,14 @@ nnoremap <leader><leader> <c-^>
 " }}}
 
 " | Search word under cursor | "\" | {{{
-command -nargs=+ -complete=file -bar AG silent! grep! <args>|cwindow|copen|redraw!
-nnoremap \ :AG <C-R>=expand("<cword>")<CR><CR>
-" }}}
-
-" | Tab in command mode run Command from FZF {{{
-cnoremap <expr><tab>		
-      \ getcmdtype() == ":"		
-        \ ? getcmdpos() > 1		
-          \ ? "\<Tab>"		
-        \ : "Commands<CR>"		
-      \ : ""
+command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|copen|redraw!
+nnoremap \ :Ag <C-R>=expand("<cword>")<CR><CR>
 " }}}
 
 " | Ctags integration | "C-]" | {{{
-command! -nargs=1 -complete=tag TT call s:TT(<f-args>)
+command! -nargs=1 -complete=tag Tags call s:Tags(<f-args>)
 
-function! s:TT(name)
+function! s:Tags(name)
   " Retrieve tags of the 'f' kind
   let tags = taglist('^'.a:name.'$')
 
@@ -109,7 +100,7 @@ function! s:TT(name)
     echo "No tags found for ".a:name
   endif
 endfunction
-nnoremap <C-]> :TT <C-R>=expand("<cword>")<CR><CR>
+nnoremap <C-]> :Tags <C-R>=expand("<cword>")<CR><CR>
 " }}}
 
 " Remove trailing whitespaces | "<leader>space" {{{
