@@ -13,7 +13,7 @@ if has('gui')
   set guioptions-=r  "remove right-hand scroll bar
   set guioptions-=L  "remove left-hand scroll bar
   set guifont=Source\ Code\ Pro:h14
-  set guicursor+=a:blinkon0
+  set guicursor+=a:blinkon0 " Nu blink cursor
 endif
 
 if has('nvim')
@@ -280,7 +280,7 @@ set background=dark " Dark background by default
 
 set secure exrc " Allow load .vimrc or _vimrc from current directory
 
-set showtabline=2 " Always show tabline
+set showtabline=1
 
 set shortmess+=I " Don't display the intro message on starting Vim.
 
