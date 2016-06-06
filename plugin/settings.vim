@@ -55,7 +55,7 @@ nnoremap <silent> <Leader>l :set list!<CR>
 nnoremap <silent> <leader>w :bp <BAR> bd #<CR>
 " }}}
 
-cnoremap .. <C-R>=fnameescape(expand('%:p:h')).'/'<cr>
+cnoremap %% <C-R>=fnameescape(expand('%:p:h')).'/'<cr>
 
 " Buffers " {{{
 " List of buffers
