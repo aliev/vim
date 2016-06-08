@@ -70,12 +70,25 @@ nnoremap <leader><leader> <c-^>
 " }}}
 
 " | Search word under cursor | "\" | {{{
-command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|copen|redraw!
+function! s:Ag(args)
+  let l:_makeprg = &makeprg
+  let l:_errorformat = &errorformat
+
+  let &makeprg = &grepprg . ' ' . a:args
+  let &errorformat = &grepformat
+
+  Make
+
+  let &makeprg = l:_makeprg
+  let &errorformat = l:_errorformat
+endfunction
+
+command -nargs=1 Ag call s:Ag(<q-args>)
 nnoremap \ :Ag <C-R>=expand("<cword>")<CR><CR>
 " }}}
 
 " | Ctags integration | "C-]" | {{{
-command! -nargs=1 -complete=tag Tags call s:Tags(<f-args>)
+command! -nargs=* -complete=tag Tags call s:Tags(<q-args>)
 
 function! s:Tags(name)
   " Retrieve tags of the 'f' kind

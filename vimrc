@@ -46,6 +46,9 @@ Plug 'tpope/vim-fugitive'
 " Make terminal vim and tmux work better together.
 Plug 'tmux-plugins/vim-tmux-focus-events'
 
+" asynchronous build and test dispatcher
+Plug 'tpope/vim-dispatch'
+
 " Load plugins from ~/.vimrc.local
 if filereadable(expand('~/.vimrc.local'))
   " Plugins list and settings should be loaded
