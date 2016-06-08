@@ -99,7 +99,6 @@ function! s:Tags(name)
     echo "No tags found for ".a:name
   endif
 endfunction
-nnoremap <C-]> :Tags <C-R>=expand("<cword>")<CR><CR>
 " }}}
 
 " Remove trailing whitespaces | "<leader>space" {{{
