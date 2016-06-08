@@ -116,14 +116,5 @@ silent! exe "set <S-Left>=\<Esc>b"
 silent! exe "set <S-Right>=\<Esc>f"
 " }}}
 
-" http://vimcasts.org/episodes/fugitive-vim-browsing-the-git-object-database/
-" hacks from above (the url, not jesus) to delete fugitive buffers when we
-" leave them - otherwise the buffer list gets poluted
-" add a mapping on .. to view parent tree
-autocmd BufReadPost fugitive://* set bufhidden=delete
-autocmd BufReadPost fugitive://*
-  \ if fugitive#buffer().type() =~# '^\%(tree\|blob\)$' |
-  \   nnoremap <buffer> .. :edit %:h<CR> |
-  \ endif
 
 " vim:foldmethod=marker:foldlevel=0

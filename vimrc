@@ -13,7 +13,7 @@ if has('gui')
   set guioptions-=r  "remove right-hand scroll bar
   set guioptions-=L  "remove left-hand scroll bar
   set guifont=Source\ Code\ Pro:h14
-  set guicursor+=a:blinkon0 " Nu blink cursor
+  set guicursor+=a:blinkon0 " No blink cursor
 endif
 
 if has('nvim')
@@ -103,21 +103,37 @@ if has("autocmd")
 
   augroup vimrc
     au!
+
     " Remember cursor position
     au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$")
-          \| exe "normal! g`\"" | endif
+          \| exe "normal! g`\""
+          \| endif
 
-    " Reset cursor when vim exist
-    " pls look at the cursor shape options
-    au VimLeave * silent !echo -ne "\033]112\007"
+    " http://vimcasts.org/episodes/fugitive-vim-browsing-the-git-object-database/
+    " hacks from above (the url, not jesus) to delete fugitive buffers when we
+    " leave them - otherwise the buffer list gets poluted
+    " add a mapping on .. to view parent tree
+    autocmd BufReadPost fugitive://* set bufhidden=delete
+    autocmd BufReadPost fugitive://*
+          \ if fugitive#buffer().type() =~# '^\%(tree\|blob\)$' |
+          \   nnoremap <buffer> .. :edit %:h<CR> |
+          \ endif
 
-    " Automatic rename of tmux window
-    " Set option set-option -g allow-rename off in ~/.tmux.conf
-    if exists('$TMUX') && !exists('$NORENAME')
-      au BufEnter * if empty(&buftype) | call system('tmux rename-window '.expand('%:t:S')) | endif
-      au VimLeave * call system('tmux set-window automatic-rename on')
-      au FocusGained * silent redraw!
-      au FocusLost * silent redraw!
+    if exists('$TMUX')
+      if !exists('$NORENAME') && !has('gui')
+        " Automatic rename of tmux window
+        " Set option set-option -g allow-rename off in ~/.tmux.conf
+        au BufEnter * if empty(&buftype)
+              \| call system('tmux rename-window '.expand('%:t:S'))
+              \| endif
+        au VimLeave * call system('tmux set-window automatic-rename on')
+        au FocusGained * silent redraw!
+        au FocusLost * silent redraw!
+      endif
+
+      " Reset cursor when vim exist
+      " pls look at the cursor shape options
+      au VimLeave * silent !echo -ne "\033]112\007"
     endif
   augroup END
 endif
