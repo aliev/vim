@@ -7,11 +7,7 @@ endif
 
 if has('gui')
   " Removed all gui elements
-  " keep only tabs
-  set guioptions-=m  "remove menu bar
-  set guioptions-=T  "remove toolbar
-  set guioptions-=r  "remove right-hand scroll bar
-  set guioptions-=L  "remove left-hand scroll bar
+  set guioptions=g
   set guifont=Source\ Code\ Pro:h14
   set guicursor+=a:blinkon0 " No blink cursor
 endif
@@ -36,24 +32,6 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/plugged')
-
-" A tree explorer plugin for vim.
-Plug 'scrooloose/nerdtree'
-
-" Make terminal vim and tmux work better together.
-Plug 'tmux-plugins/vim-tmux-focus-events'
-
-" a Git wrapper so awesome, it should be illegal
-Plug 'tpope/vim-fugitive'
-
-" asynchronous build and test dispatcher
-Plug 'tpope/vim-dispatch'
-
-Plug 'vim-airline/vim-airline'
-
-Plug 'vim-airline/vim-airline-themes'
-
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
 " Load plugins from ~/.vimrc.local
 if filereadable(expand('~/.vimrc.local'))
@@ -94,7 +72,6 @@ if has('mouse')
     endif
   endif
 endif
-
 
 if has('multi_byte') && &encoding ==# 'utf-8'
   let &listchars = 'trail:·,tab:»·,eol:¶,extends:→,precedes:←,nbsp:×,space:␣'
@@ -305,16 +282,9 @@ set background=dark " Dark background by default
 
 set secure exrc " Allow load .vimrc or _vimrc from current directory
 
-set showtabline=1
+set showtabline=1 " Show tabline
 
 set shortmess+=I " Don't display the intro message on starting Vim.
-
-" For slow machines
-" Do not highlight if the string is longer than 80 characters.
-" This option can improve performance
-" In any case, go beyond the more than 80 characters
-" are not very good practice
-" set synmaxcol=80
 
 " Load plugins options from ~/.vimrc.local
 if filereadable(expand('~/.vimrc.local'))

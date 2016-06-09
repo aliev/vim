@@ -62,10 +62,3 @@ if g:local_settings
   " Settings here
 endif
 ```
-
-# What included?
-
-* [vim-plug](https://github.com/junegunn/vim-plug)
-* [NERDTree](https://github.com/scrooloose/nerdtree)
-* [Vim Fugitive](https://github.com/tpope/vim-fugitive)
-* [Tmux focus events](https://github.com/tmux-plugins/vim-tmux-focus-events)
