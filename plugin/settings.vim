@@ -17,7 +17,6 @@ let g:NERDTreeMinimalUI = 1
 let g:NERDTreeRespectWildIgnore = 1
 let g:NERDTreeDirArrows = 1
 let g:NERDTreeHijackNetrw = 1
-let g:NERDTreeQuitOnOpen = 1
 let g:NERDTreeAutoDeleteBuffer = 1
 
 function! s:smart_nerdtree()
