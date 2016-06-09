@@ -33,6 +33,10 @@ endif
 
 call plug#begin('~/.vim/plugged')
 
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+Plug 'tmux-plugins/vim-tmux-focus-events'
+
 " Load plugins from ~/.vimrc.local
 if filereadable(expand('~/.vimrc.local'))
   " Plugins list and settings should be loaded
