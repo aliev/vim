@@ -49,8 +49,9 @@ Plug 'tpope/vim-fugitive'
 " asynchronous build and test dispatcher
 Plug 'tpope/vim-dispatch'
 
-" Configurable and extensible tab line and status line
-Plug 'tpope/vim-flagship'
+Plug 'vim-airline/vim-airline'
+
+Plug 'vim-airline/vim-airline-themes'
 
 " Load plugins from ~/.vimrc.local
 if filereadable(expand('~/.vimrc.local'))
