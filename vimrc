@@ -40,14 +40,17 @@ call plug#begin('~/.vim/plugged')
 " A tree explorer plugin for vim.
 Plug 'scrooloose/nerdtree'
 
-" a Git wrapper so awesome, it should be illegal
-Plug 'tpope/vim-fugitive'
-
 " Make terminal vim and tmux work better together.
 Plug 'tmux-plugins/vim-tmux-focus-events'
 
+" a Git wrapper so awesome, it should be illegal
+Plug 'tpope/vim-fugitive'
+
 " asynchronous build and test dispatcher
 Plug 'tpope/vim-dispatch'
+
+" Configurable and extensible tab line and status line
+Plug 'tpope/vim-flagship'
 
 " Load plugins from ~/.vimrc.local
 if filereadable(expand('~/.vimrc.local'))
