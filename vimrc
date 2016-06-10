@@ -1,26 +1,18 @@
 scriptencoding utf-8
 
 if has('vim_starting')
-  " Be iMproved
   set nocompatible
 endif
 
 if has('gui')
-  " Removed all gui elements
   set guioptions=g
   set guifont=Source\ Code\ Pro:h14
-  set guicursor+=a:blinkon0 " No blink cursor
+  set guicursor+=a:blinkon0
 endif
 
 if has('nvim')
-  " Plugins directory
+  " Load plugins
   set rtp+=~/.vim
-
-  " Enable cursor shape
-  if !$NVIM_TUI_ENABLE_CURSOR_SHAPE
-    let $NVIM_TUI_ENABLE_CURSOR_SHAPE = 1
-  endif
-  let g:python_host_prog = "/usr/local/bin/python"
 endif
 
 " Plugins {{{
@@ -33,9 +25,13 @@ endif
 
 call plug#begin('~/.vim/plugged')
 
+" A command-line fuzzy finder written in Go
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+" Make terminal vim and tmux work better together.
 Plug 'tmux-plugins/vim-tmux-focus-events'
+" Readline style insertion
+Plug 'tpope/vim-rsi'
 
 " Load plugins from ~/.vimrc.local
 if filereadable(expand('~/.vimrc.local'))
@@ -51,18 +47,6 @@ call plug#end()
 
 if has('syntax') && !exists('g:syntax_on')
   syntax enable
-endif
-
-if has("mac")
-  " Vim cursor shape options
-  " 1 or 0 blinking block
-  " 2 solid block
-  " 3 blinking underscore
-  " 4 solid underscore
-  " 5 blinking line
-  " 6 solid line
-  let &t_SI.="\e[6 q" " Start insert mode
-  let &t_EI.="\e[2 q" " End insert mode
 endif
 
 if has('mouse')
@@ -99,16 +83,6 @@ if has("autocmd")
           \| exe "normal! g`\""
           \| endif
 
-    " http://vimcasts.org/episodes/fugitive-vim-browsing-the-git-object-database/
-    " hacks from above (the url, not jesus) to delete fugitive buffers when we
-    " leave them - otherwise the buffer list gets poluted
-    " add a mapping on .. to view parent tree
-    autocmd BufReadPost fugitive://* set bufhidden=delete
-    autocmd BufReadPost fugitive://*
-          \ if fugitive#buffer().type() =~# '^\%(tree\|blob\)$' |
-          \   nnoremap <buffer> .. :edit %:h<CR> |
-          \ endif
-
     if exists('$TMUX')
       if !exists('$NORENAME') && !has('gui')
         " Automatic rename of tmux window
@@ -122,7 +96,6 @@ if has("autocmd")
       endif
 
       " Reset cursor when vim exist
-      " pls look at the cursor shape options
       au VimLeave * silent !echo -ne "\033]112\007"
     endif
   augroup END
