@@ -27,7 +27,6 @@ call plug#begin('~/.vim/plugged')
 
 " A command-line fuzzy finder written in Go
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
 " Make terminal vim and tmux work better together.
 Plug 'tmux-plugins/vim-tmux-focus-events'
 " Readline style insertion
