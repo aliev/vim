@@ -5,7 +5,7 @@ if has('vim_starting')
 endif
 
 if has('gui')
-  set guioptions=g
+  set guioptions=gc
   set guifont=Source\ Code\ Pro:h14
   set guicursor+=a:blinkon0
 endif
