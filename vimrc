@@ -1,20 +1,4 @@
 scriptencoding utf-8
-
-if has('vim_starting')
-  set nocompatible
-endif
-
-if has('gui')
-  set guioptions=gc
-  set guifont=Source\ Code\ Pro:h14
-  set guicursor+=a:blinkon0
-endif
-
-if has('nvim')
-  " Load plugins
-  set rtp+=~/.vim
-endif
-
 " Plugins {{{
 " Automatic installation
 if empty(glob('~/.vim/autoload/plug.vim'))
@@ -44,6 +28,21 @@ endif
 
 call plug#end()
 " }}}
+
+if has('vim_starting')
+  set nocompatible
+endif
+
+if has('gui')
+  set guioptions=gc
+  set guifont=Source\ Code\ Pro:h14
+  set guicursor+=a:blinkon0
+endif
+
+if has('nvim')
+  " Load plugins
+  set rtp+=~/.vim
+endif
 
 if has('syntax') && !exists('g:syntax_on')
   syntax enable
