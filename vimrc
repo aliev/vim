@@ -1,4 +1,10 @@
 scriptencoding utf-8
+
+if has('nvim')
+  " Load plugins
+  set rtp+=~/.vim
+endif
+
 " Plugins {{{
 " Automatic installation
 if empty(glob('~/.vim/autoload/plug.vim'))
@@ -37,11 +43,6 @@ if has('gui')
   set guioptions=gc
   set guifont=Source\ Code\ Pro:h14
   set guicursor+=a:blinkon0
-endif
-
-if has('nvim')
-  " Load plugins
-  set rtp+=~/.vim
 endif
 
 if has('syntax') && !exists('g:syntax_on')
