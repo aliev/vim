@@ -41,8 +41,6 @@ endif
 
 if has('gui_running')
   set guioptions=gc
-  set guifont=Source\ Code\ Pro:h14
-  set guicursor+=a:blinkon0
 endif
 
 if has('syntax') && !exists('g:syntax_on')
