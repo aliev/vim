@@ -39,7 +39,7 @@ if has('vim_starting')
   set nocompatible
 endif
 
-if has('gui')
+if has('gui_running')
   set guioptions=gc
   set guifont=Source\ Code\ Pro:h14
   set guicursor+=a:blinkon0
