@@ -101,7 +101,7 @@ endif
 
 if executable('ag')
   " Silver searcher instead of grep
-  set grepprg=ag\ --nogroup\ --nocolor\ --column
+  set grepprg=ag\ --vimgrep
   set grepformat=%f:%l:%c%m
 endif
 
