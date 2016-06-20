@@ -103,6 +103,7 @@ if executable('ag')
   " Silver searcher instead of grep
   set grepprg=ag\ --vimgrep
   set grepformat=%f:%l:%c%m
+  let $FZF_DEFAULT_COMMAND='ag -g ""'
 endif
 
 if exists("+undofile")
