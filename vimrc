@@ -16,8 +16,12 @@ endif
 call plug#begin('~/.vim/plugged')
 
 " A command-line fuzzy finder written in Go
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
+" Disabled for GUI vim
+Plug 'junegunn/fzf', !has('gui_running') ?
+      \ { 'dir': '~/.fzf', 'do': './install --all' } :
+      \ { 'on': [] }
+Plug 'junegunn/fzf.vim', !has('gui_running') ? {} : { 'on': [] }
+
 " Make terminal vim and tmux work better together.
 Plug 'tmux-plugins/vim-tmux-focus-events'
 " Readline style insertion
@@ -40,7 +44,9 @@ if has('vim_starting')
 endif
 
 if has('gui_running')
-  set guioptions=gc
+  " set guioptions=gc
+  " Show only gui tabs
+  set guioptions=egc
 endif
 
 if has('syntax') && !exists('g:syntax_on')
