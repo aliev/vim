@@ -99,11 +99,21 @@ if has("autocmd")
   augroup END
 endif
 
-if executable('ag')
+if !executable('ag')
   " Silver searcher instead of grep
   set grepprg=ag\ --vimgrep
   set grepformat=%f:%l:%c%m
-  let $FZF_DEFAULT_COMMAND='ag -g ""'
+
+  " If you're running fzf in a large git repository, git ls-tree can boost up
+  " the speed of the traversal.
+  if isdirectory('.git')
+    let $FZF_DEFAULT_COMMAND='
+          \ (git ls-tree -r --name-only HEAD ||
+          \ find . -path "*/\.*" -prune -o -type f -print -o -type l -print |
+          \ sed s/^..//) 2> /dev/null'
+  else
+    let $FZF_DEFAULT_COMMAND='ag -g ""'
+  endif
 endif
 
 if exists("+undofile")
