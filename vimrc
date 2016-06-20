@@ -100,6 +100,7 @@ if has("autocmd")
 endif
 
 
+
 if executable('ag')
   " Silver searcher instead of grep
   set grepprg=ag\ --vimgrep
