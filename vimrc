@@ -44,9 +44,7 @@ if has('vim_starting')
 endif
 
 if has('gui_running')
-  " set guioptions=gc
-  " Show only gui tabs
-  set guioptions=egc
+  set guioptions=gc
 endif
 
 if has('syntax') && !exists('g:syntax_on')
