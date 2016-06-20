@@ -1,5 +1,6 @@
 # Installation
 
+
 ```
 git clone https://github.com/aliev/vim.git ~/.vim && echo "source ~/.vim/vimrc" > ~/.vimrc
 vim
