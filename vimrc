@@ -99,9 +99,6 @@ if has("autocmd")
   augroup END
 endif
 
-
-
-
 if executable('ag')
   " Silver searcher instead of grep
   set grepprg=ag\ --vimgrep
