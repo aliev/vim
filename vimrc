@@ -157,7 +157,7 @@ set t_Co=256 " Enable 256 colors
 
 let mapleader = "," " Map leader
 
-let maplocalleader = "_" " Local leader
+let maplocalleader = "\\" " Local leader
 
 " Store swap files in to fixed location
 set noswapfile
@@ -275,6 +275,21 @@ set secure exrc " Allow load .vimrc or _vimrc from current directory
 set showtabline=1 " Show tabline
 
 set shortmess+=I " Don't display the intro message on starting Vim.
+
+" absolute width of netrw window
+let g:netrw_winsize = -28
+
+" do not display info on the top of window
+let g:netrw_banner = 0
+
+" tree-view
+let g:netrw_liststyle = 3
+
+" sort is affecting only: directories on the top, files below
+let g:netrw_sort_sequence = '[\/]$,*'
+
+" use the previous window to open file
+let g:netrw_browse_split = 4
 
 " Load plugins options from ~/.vimrc.local
 if filereadable(expand('~/.vimrc.local'))
