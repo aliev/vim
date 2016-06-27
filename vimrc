@@ -208,6 +208,8 @@ set showcmd " Show incomplete cmds down the bottom
 
 set title " Show title
 
+set diffopt+=vertical " Vertical diff
+
 set acd " Vim will change the current working directory whenever you open a file
 
 set autoread " Reload files changed outside automatically
