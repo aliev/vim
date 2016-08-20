@@ -99,6 +99,9 @@ if has("autocmd")
 
       " Reset cursor when vim exist
       au VimLeave * silent !echo -ne "\033]112\007"
+
+      " Let terminal resize scale the internal windows
+      au VimResized * :wincmd =
     endif
   augroup END
 endif
