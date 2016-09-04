@@ -133,6 +133,10 @@ if exists("+undofile")
   set undodir=/var/tmp//,/tmp//,.
 endif
 
+" File preview using ccat if exists
+let g:fzf_files_options =
+      \ '--preview "(ccat --color=always {} || cat {}) 2> /dev/null | head -'.&lines.'"'
+
 if &shell =~# 'fish$'
   " Avoid problems with fish shell.
   " https://github.com/tpope/vim-sensible/issues/50
