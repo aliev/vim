@@ -17,10 +17,8 @@ call plug#begin('~/.vim/plugged')
 
 " A command-line fuzzy finder written in Go
 " Disabled for GUI vim
-Plug 'junegunn/fzf', !has('gui_running') ?
-      \ { 'dir': '~/.fzf', 'do': './install --all' } :
-      \ { 'on': [] }
-Plug 'junegunn/fzf.vim', !has('gui_running') ? {} : { 'on': [] }
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 
 " Make terminal vim and tmux work better together.
 Plug 'tmux-plugins/vim-tmux-focus-events'
@@ -59,6 +57,9 @@ if has('mouse')
   set mousemodel=popup " Use the mouse for copy/paste with popup in gui vim
   set mousehide " Hide cursor while typing
   if exists("$TMUX")
+    if has('nvim')
+      set inccommand=split
+    endif
     if !has('nvim')
       " Tmux knows the extended mouse mode
       set ttymouse=xterm2
