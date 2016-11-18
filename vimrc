@@ -97,12 +97,7 @@ if has("autocmd")
               \| call system('tmux rename-window '.expand('%:t:S'))
               \| endif
         au VimLeave * call system('tmux set-window automatic-rename on')
-        au FocusGained * silent redraw!
-        au FocusLost * silent redraw!
       endif
-
-      " Reset cursor when vim exist
-      au VimLeave * silent !echo -ne "\033]112\007"
     endif
   augroup END
 endif
