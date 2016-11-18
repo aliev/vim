@@ -25,9 +25,6 @@ Plug 'tmux-plugins/vim-tmux-focus-events'
 " Readline style insertion
 Plug 'tpope/vim-rsi'
 
-" Handles bracketed-paste-mode in vim (aka. automatic `:set paste`)
-Plug 'ConradIrwin/vim-bracketed-paste'
-
 " Load plugins from ~/.vimrc.local
 if filereadable(expand('~/.vimrc.local'))
   " Plugins list and settings should be loaded
