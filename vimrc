@@ -15,10 +15,6 @@ endif
 
 call plug#begin('~/.vim/plugged')
 
-" A command-line fuzzy finder written in Go
-" Disabled for GUI vim
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-
 " Make terminal vim and tmux work better together.
 Plug 'tmux-plugins/vim-tmux-focus-events'
 " Readline style insertion
