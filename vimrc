@@ -239,7 +239,7 @@ set number " Disable line numbers
 
 set ruler " Always display cursor position
 
-set hidden " Enable hidden buffers
+set nohidden " Disable hidden buffers
 
 set noautochdir " Change the current working directory whenever you open a file
 
