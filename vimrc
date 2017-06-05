@@ -60,7 +60,7 @@ if has('mouse')
 endif
 
 if has('multi_byte') && &encoding ==# 'utf-8'
-  let &listchars = 'trail:·,tab:»·,eol:¶,extends:→,precedes:←,nbsp:×'
+  let &listchars = 'trail:·,tab:»·,eol: ,extends:→,precedes:←,nbsp:×'
   let &fillchars = 'stl: ,stlnc: ,vert:│'
 
   if has('patch-7.4.338')
@@ -248,6 +248,8 @@ set wildmenu " Turn on the Wild menu
 set wildmode=list:longest,list:full
 
 set wildcharm=<Tab>
+
+set list
 
 " Ignore files
 set wildignore+=.DS_Store,.git/**,__pycache__,tmp/**,*.log,.bundle/**,node_modules/**
