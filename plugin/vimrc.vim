@@ -1,7 +1,6 @@
-" ----------------------------------------------------------------------------
-"  Local settings {{{
-" ----------------------------------------------------------------------------
-"
+let mapleader=','
+let mapleaderlocal='\'
+
 if filereadable(expand("~/.vimrc_background"))
   let base16colorspace=256
   source ~/.vimrc_background
@@ -11,15 +10,7 @@ if has('gui')
   set guifont=Source\ Code\ Pro:h14
   " colo mac
 endif
-"
-" ----------------------------------------------------------------------------
-"  End Local settings }}}
-" ----------------------------------------------------------------------------
 
-" ----------------------------------------------------------------------------
-"  AutoCMD {{{
-" ----------------------------------------------------------------------------
-"
 if has("autocmd")
   augroup local
     au!
@@ -33,38 +24,7 @@ if has("autocmd")
     au FileType qf setl nonumber
   augroup END
 endif
-"
-" ----------------------------------------------------------------------------
-"  End AutoCMD }}}
-" ----------------------------------------------------------------------------
-"
-" ----------------------------------------------------------------------------
-"  Key Binding                : Description
-"
-"  <Leader>                   : ,
-"  <LocalLeader>              : \
-"  -                          : toggle nerdtree
-"  g]                         : show list of tags under cursor
-"  gV                         : show last selection
-"  K                          : swap line up
-"  J                          : swap line down
-"  gf                         : go to file under cursor
-"  > (visual mode)            : in selection
-"  < (visual mode)            : outdent selection
-"  > (normal mode)            : next buffer
-"  < (normal mode)            : previous buffer
-"  <C-L>                      : clear highlighting
-"  <Leader>w                  : close buffer
-"  <Leader><Leader>           : switch between two last buffers
-"  number<Leader><Leader>     : go to buffer with number
-"  <Leader>b                  : list of buffers
-"  <Leader>s                  : list of tags
-"  <LocalLeader>c             : next merge conflict
-"  <LocalLeader>g             : Grep text in project under cursor
-"  <LocalLeader>w             : remove trailing
-"  {{{
-" ----------------------------------------------------------------------------
-"
+
 nnoremap g] :TList <C-R>=expand("<cword>")<CR><CR>
 
 " Clear highlighting
@@ -129,15 +89,7 @@ endfunction
 if empty(maparg('-', 'n'))
   nmap <silent>- :call Nerdtree()<CR>
 endif
-"
-" ----------------------------------------------------------------------------
-"  End Key Bindings }}}
-" ----------------------------------------------------------------------------
 
-" ----------------------------------------------------------------------------
-"  Plugin Settings {{{
-" ----------------------------------------------------------------------------
-"
 let g:html_indent_script1 = "inc"
 let g:html_indent_style1 = "inc"
 let g:html_indent_inctags = "html,body,head,tbody"
@@ -214,15 +166,7 @@ function! Gitgutter()
 
   return hunkline . ' '
 endfunction
-"
-" ----------------------------------------------------------------------------
-"  End Plugin Settings }}}
-" ----------------------------------------------------------------------------
 
-" ----------------------------------------------------------------------------
-"  Statusline {{{
-" ----------------------------------------------------------------------------
-"
 set statusline=%1*[B-%n]%*
 set statusline+=%6*\ %{exists('g:loaded_fugitive')?fugitive#head():''}%*
 set statusline+=%6*%{exists('g:loaded_gitgutter')?Gitgutter():''}%*
@@ -233,10 +177,7 @@ set statusline+=\ %{(&bomb?\",BOM\":\"\")}
 set statusline+=%2*\ %{tagbar#currenttag('%s','','f')}%*
 set statusline+=%{exists('g:loaded_ale')?ALEGetStatusLine():''}
 set statusline+=%2*\ %{grepper#statusline()}%*
-"
-" ----------------------------------------------------------------------------
-"  End Statusline }}}
-" ----------------------------------------------------------------------------
+
 if has('python')
 py << EOF
 import os
