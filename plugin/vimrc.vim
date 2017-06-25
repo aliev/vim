@@ -165,16 +165,15 @@ function! Gitgutter()
   return hunkline . ' '
 endfunction
 
-set statusline=%1*[B-%n]%*
-set statusline+=%6*\ %{exists('g:loaded_fugitive')?fugitive#head():''}%*
-set statusline+=%6*%{exists('g:loaded_gitgutter')?Gitgutter():''}%*
-set statusline+=%4*\ %f\ %*
-set statusline+=%=%8*\ %{&ff}\ \|
+set statusline+=\ %{exists('g:loaded_fugitive')?fugitive#head():''}%*
+set statusline+=%{exists('g:loaded_gitgutter')?Gitgutter():''}%*
+set statusline+=\ %f\ %*
+set statusline+=%=\ %{&ff}\ \|
 set statusline+=\ %{''.(&fenc!=''?&fenc:&enc).''}\ \|
 set statusline+=\ %{(&bomb?\",BOM\":\"\")}
-set statusline+=%2*\ %{tagbar#currenttag('%s','','f')}%*
+set statusline+=\ %{tagbar#currenttag('%s','','f')}%*
 set statusline+=%{exists('g:loaded_ale')?ALEGetStatusLine():''}
-set statusline+=%2*\ %{grepper#statusline()}%*
+set statusline+=\ %{grepper#statusline()}%*
 
 if has('python')
 py << EOF
