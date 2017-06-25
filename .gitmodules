@@ -1,0 +1,3 @@
+[submodule "plugins/vimrc"]
+	path = plugins/vimrc
+	url = https://github.com/aliev/vimrc.git

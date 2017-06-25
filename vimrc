@@ -19,7 +19,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'tmux-plugins/vim-tmux-focus-events'
 " Readline style insertion
 Plug 'tpope/vim-rsi'
-Plug 'aliev/vimrc'
+Plug '~/vimrc'
 
 " Load plugins from ~/.vimrc.local
 if filereadable(expand('~/.vimrc.local'))
