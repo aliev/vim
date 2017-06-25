@@ -33,6 +33,8 @@ endif
 call plug#end()
 " }}}
 
+let mapleader=','
+let maplocalleader='\\'
 
 " Load plugins options from ~/.vimrc.local
 if filereadable(expand('~/.vimrc.local'))
