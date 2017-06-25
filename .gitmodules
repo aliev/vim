@@ -46,3 +46,6 @@
 [submodule "pack/plugins/start/vim-jsx"]
 	path = pack/plugins/start/vim-jsx
 	url = git@github.com:mxw/vim-jsx.git
+[submodule "pack/plugins/start/tcomment_vim"]
+	path = pack/plugins/start/tcomment_vim
+	url = git@github.com:tomtom/tcomment_vim.git
