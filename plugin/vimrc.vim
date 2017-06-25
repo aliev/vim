@@ -25,8 +25,6 @@ if has("autocmd")
   augroup END
 endif
 
-nnoremap g] :TList <C-R>=expand("<cword>")<CR><CR>
-
 " Clear highlighting
 if maparg('<C-L>', 'n') ==# ''
   nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
