@@ -49,3 +49,6 @@
 [submodule "pack/plugins/start/tcomment_vim"]
 	path = pack/plugins/start/tcomment_vim
 	url = git@github.com:tomtom/tcomment_vim.git
+[submodule "pack/plugins/start/ale"]
+	path = pack/plugins/start/ale
+	url = git@github.com:w0rp/ale.git
