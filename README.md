@@ -1,17 +1,13 @@
 # Installation
 
+This vimrc supports only Vim 8 because of async jobs and [package manager](https://shapeshed.com/vim-packages/)
+
+If you want only configuration file you should use [vimrc](http://github.com/aliev/vimrc) plugin.
 
 ```
-git clone https://github.com/aliev/vim.git ~/.vim && echo "source ~/.vim/vimrc" > ~/.vimrc
-vim
-```
-
-For neovim users:
-
-```
-mkdir -p ~/.config/nvim/
-touch ~/.config/nvim/init.vim
-echo "source ~/.vim/vimrc" > ~/.config/nvim/init.vim
+git clone https://github.com/aliev/vim.git ~/.vim
+git submodule init
+git submodule update
 ```
 
 Tools: Ag, exuberant ctags
@@ -24,42 +20,4 @@ brew install ctags-exuberant
 # Ubuntu
 sudo apt-get install exuberant-ctags
 sudo apt-get install silversearcher-ag
-```
-
-# Vimrc files
-
-Initial for this configuration (vim, neovim)
-
-```
-~/.vimrc, ~/.config/nvim/init.vim
-```
-
-This configuration directory with plugins and vimrc
-
-```
-~/.vim
-```
-
-Project specific options:
-
-```
-~/some/project/path/.exrc
-```
-
-Local settings and local plugin list
-
-```
-~/.vimrc.local
-```
-
-Local settings should be as follows
-
-```
-if g:local_plugins
-  " Plugins list here
-endif
-
-if g:local_settings
-  " Settings here
-endif
 ```
