@@ -10,6 +10,12 @@ git submodule init
 git submodule update
 ```
 
+Update all plugins to latest version
+
+```
+git submodule foreach git pull origin master
+```
+
 Tools: Ag, exuberant ctags
 
 ```
