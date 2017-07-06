@@ -167,15 +167,15 @@ function! Gitgutter()
   return hunkline . ' '
 endfunction
 
-set statusline+=\ %{exists('g:loaded_fugitive')?fugitive#head():''}%*\ \│
-set statusline+=\ %{exists('g:loaded_gitgutter')?Gitgutter():''}%*\ \│
-set statusline+=\ %f\ %*\ \│
-set statusline+=\ %{exists('g:virtualenv_loaded')?virtualenv#statusline():''}%*\ \│
-set statusline+=%=\ %{&ff}\ \│
-set statusline+=\ %{''.(&fenc!=''?&fenc:&enc).''}\ \│
-set statusline+=\ %{(&bomb?\",BOM\":\"\")}\ \│
-set statusline+=\ %{tagbar#currenttag('%s','','f')}%*\ \│
-set statusline+=\ %{exists('g:loaded_ale')?ALEGetStatusLine():''}\ \│
-set statusline+=\ %{grepper#statusline()}%*\ \│
+set statusline+=\ %{exists('g:loaded_fugitive')?fugitive#head():''}%*
+set statusline+=\ %{exists('g:loaded_gitgutter')?Gitgutter():''}%*
+set statusline+=\ %f\ %*
+set statusline+=\ %{exists('g:virtualenv_loaded')?virtualenv#statusline():''}%*
+set statusline+=%=\ %{&ff}
+set statusline+=\ %{''.(&fenc!=''?&fenc:&enc).''}
+set statusline+=\ %{(&bomb?\",BOM\":\"\")}
+set statusline+=\ %{tagbar#currenttag('%s','','f')}%*
+set statusline+=\ %{exists('g:loaded_ale')?ALEGetStatusLine():''}
+set statusline+=\ %{grepper#statusline()}%*
 
 " vim:ft=vim:foldmethod=marker:foldlevel=0
