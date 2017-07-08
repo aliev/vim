@@ -8,7 +8,7 @@ endif
 
 if has('gui')
   set guifont=Source\ Code\ Pro:h14
-  set bg=light
+  set bg=dark
   colo PaperColor
 endif
 
@@ -124,6 +124,7 @@ let g:tagbar_silent = 1
 
 let g:completor_blacklist = ['tagbar', 'qf', 'netrw', 'unite', 'vimwiki', 'gitcommit']
 let g:completor_filetype_map = {"javascript.jsx": "javascript"}
+let g:completor_css_omni_trigger = '([\w-]+|@[\w-]*|[\w-]+:\s*[\w-]*)$'
 
 " npm install -g eslint
 " npm install -g babel-eslint
