@@ -105,16 +105,6 @@ let g:jsx_ext_required = 0 " Allow JSX in normal JS files
 
 let python_highlight_all = 1
 
-if isdirectory('.git') && executable('git')
-  let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
-else
-  let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
-endif
-
-let g:ctrlp_map = '<leader>f'
-let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_buftag_types = { 'javascript': '--language-force=javascript --javascript-types=fcmv' }
-
 let g:grepper = {}
 let g:grepper.tools = ['ag', 'git']
 let g:tagbar_silent = 1
