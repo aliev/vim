@@ -10,9 +10,6 @@
 [submodule "pack/plugins/start/completor.vim"]
 	path = pack/plugins/start/completor.vim
 	url = git@github.com:maralla/completor.vim.git
-[submodule "pack/plugins/start/ctrlp.vim"]
-	path = pack/plugins/start/ctrlp.vim
-	url = git@github.com:ctrlpvim/ctrlp.vim.git
 [submodule "pack/plugins/start/tagbar"]
 	path = pack/plugins/start/tagbar
 	url = git@github.com:majutsushi/tagbar.git

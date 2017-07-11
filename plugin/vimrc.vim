@@ -1,15 +1,12 @@
+set wildignore+=env/**
 let mapleader=','
 let mapleaderlocal='\'
 
-if filereadable(expand("~/.vimrc_background"))
-  let base16colorspace=256
-  source ~/.vimrc_background
-endif
+colo PaperColor
 
 if has('gui')
   set guifont=Source\ Code\ Pro:h14
-  set bg=dark
-  colo PaperColor
+  set bg=light
 endif
 
 if has("autocmd")
@@ -63,7 +60,7 @@ nnoremap N Nzz
 nnoremap <leader>s :CtrlPBufTag<CR>
 "
 " List of buffers
-nnoremap <leader>b :CtrlPBuffer<CR>
+nnoremap <leader>b :call setqflist(map(filter(range(1, bufnr('$')), 'buflisted(v:val)'), '{"bufnr": v:val}'))<CR>:copen<CR>
 "
 " Remove trailing whitespaces
 nnoremap <silent><LocalLeader>w :%s/\s\+$//<cr>:let @/=''<cr>
@@ -167,6 +164,31 @@ function! Gitgutter()
 
   return hunkline . ' '
 endfunction
+
+function! s:TList(name)
+  " Retrieve tags of the 'f' kind
+  let tags = taglist('^'.a:name.'$')
+
+  " Prepare them for inserting in the quickfix window
+  let qf_taglist = []
+  for entry in tags
+    call add(qf_taglist, {
+          \ 'text':  entry['name'],
+          \ 'filename': entry['filename'],
+          \ 'lnum': entry['line'],
+          \ })
+  endfor
+
+  " Place the tags in the quickfix window, if possible
+  if len(qf_taglist) > 0
+    call setqflist(qf_taglist)
+    copen
+  else
+    echo "No tags found for ".a:name
+  endif
+endfunction
+
+command! -nargs=1 -complete=tag TList call s:TList(<f-args>)
 
 set statusline+=\ %{exists('g:loaded_fugitive')?fugitive#head():''}%*
 set statusline+=\ %{exists('g:loaded_gitgutter')?Gitgutter():''}%*
