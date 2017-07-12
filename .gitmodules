@@ -58,3 +58,6 @@
 [submodule "pack/plugins/start/vim-python-pep8-indent"]
 	path = pack/plugins/start/vim-python-pep8-indent
 	url = git@github.com:Vimjas/vim-python-pep8-indent.git
+[submodule "pack/plugins/start/ctrlp.vim"]
+	path = pack/plugins/start/ctrlp.vim
+	url = git@github.com:ctrlpvim/ctrlp.vim.git

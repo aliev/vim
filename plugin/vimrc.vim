@@ -60,7 +60,7 @@ nnoremap N Nzz
 nnoremap <leader>s :CtrlPBufTag<CR>
 "
 " List of buffers
-nnoremap <leader>b :call setqflist(map(filter(range(1, bufnr('$')), 'buflisted(v:val)'), '{"bufnr": v:val}'))<CR>:copen<CR>
+nnoremap <leader>b :CtrlPBuffer<CR>
 "
 " Remove trailing whitespaces
 nnoremap <silent><LocalLeader>w :%s/\s\+$//<cr>:let @/=''<cr>
@@ -135,6 +135,15 @@ let g:buftabline_show = 2
 let g:buftabline_numbers = 1
 let g:buftabline_indicators = 1
 
+if isdirectory('.git') && executable('git')
+  let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+else
+  let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
+endif
+
+let g:ctrlp_map = '<leader>f'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_buftag_types = { 'javascript': '--language-force=javascript --javascript-types=fcmv' }
 
 function! Gitgutter()
   let symbols = ['+', '-', '~']
