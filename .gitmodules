@@ -16,9 +16,6 @@
 [submodule "pack/plugins/start/vim-buftabline"]
 	path = pack/plugins/start/vim-buftabline
 	url = git@github.com:ap/vim-buftabline.git
-[submodule "pack/plugins/start/vim-grepper"]
-	path = pack/plugins/start/vim-grepper
-	url = git@github.com:mhinz/vim-grepper.git
 [submodule "pack/plugins/start/vim-surround"]
 	path = pack/plugins/start/vim-surround
 	url = git@github.com:tpope/vim-surround.git

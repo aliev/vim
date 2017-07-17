@@ -62,11 +62,14 @@ nnoremap <leader>s :CtrlPBufTag<CR>
 " List of buffers
 nnoremap <leader>b :CtrlPBuffer<CR>
 "
+" Go to tag
+nnoremap <leader>t :CtrlPTag<CR>
+"
 " Remove trailing whitespaces
 nnoremap <silent><LocalLeader>w :%s/\s\+$//<cr>:let @/=''<cr>
 "
 " Git find/grep
-map <LocalLeader>g :GrepperGit <C-R>=expand("<cword>")<CR>
+map <LocalLeader>g :silent grep! <C-R>=expand("<cword>")<CR><CR>:redraw!<CR><CR>:copen<CR> 
 "
 " Find merge conflicts
 map <LocalLeader>c /\v^[<\|=>]{7}( .*\|$)<CR>
@@ -105,8 +108,6 @@ let g:jsx_ext_required = 0 " Allow JSX in normal JS files
 
 let python_highlight_all = 1
 
-let g:grepper = {}
-let g:grepper.tools = ['ag', 'git']
 let g:tagbar_silent = 1
 
 let g:completor_blacklist = ['tagbar', 'qf', 'netrw', 'unite', 'vimwiki', 'gitcommit']
@@ -164,31 +165,6 @@ function! Gitgutter()
   return hunkline . ' '
 endfunction
 
-function! s:TList(name)
-  " Retrieve tags of the 'f' kind
-  let tags = taglist('^'.a:name.'$')
-
-  " Prepare them for inserting in the quickfix window
-  let qf_taglist = []
-  for entry in tags
-    call add(qf_taglist, {
-          \ 'text':  entry['name'],
-          \ 'filename': entry['filename'],
-          \ 'lnum': entry['line'],
-          \ })
-  endfor
-
-  " Place the tags in the quickfix window, if possible
-  if len(qf_taglist) > 0
-    call setqflist(qf_taglist)
-    copen
-  else
-    echo "No tags found for ".a:name
-  endif
-endfunction
-
-command! -nargs=1 -complete=tag TList call s:TList(<f-args>)
-
 set statusline+=\ %{exists('g:loaded_fugitive')?fugitive#head():''}%*
 set statusline+=\ %{exists('g:loaded_gitgutter')?Gitgutter():''}%*
 set statusline+=\ %f\ %*
@@ -198,6 +174,4 @@ set statusline+=\ %{''.(&fenc!=''?&fenc:&enc).''}
 set statusline+=\ %{(&bomb?\",BOM\":\"\")}
 set statusline+=\ %{tagbar#currenttag('%s','','f')}%*
 set statusline+=\ %{exists('g:loaded_ale')?ALEGetStatusLine():''}
-set statusline+=\ %{grepper#statusline()}%*
-
 " vim:ft=vim:foldmethod=marker:foldlevel=0
