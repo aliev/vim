@@ -20,6 +20,8 @@ if has("autocmd")
 
     " Disable line numbers for QuickFix
     au FileType qf setl nonumber
+
+    au FileType gitrebase map s :2,$s/^pick/squash/<CR>
   augroup END
 endif
 
@@ -69,7 +71,7 @@ nnoremap <leader>t :CtrlPTag<CR>
 nnoremap <silent><LocalLeader>w :%s/\s\+$//<cr>:let @/=''<cr>
 "
 " Git find/grep
-map <LocalLeader>g :silent grep! <C-R>=expand("<cword>")<CR><CR>:redraw!<CR><CR>:copen<CR> 
+map <silent><LocalLeader>g :silent grep! <C-R>=expand("<cword>")<CR><CR>:redraw!<CR><CR>:copen<CR>
 "
 " Find merge conflicts
 map <LocalLeader>c /\v^[<\|=>]{7}( .*\|$)<CR>
