@@ -67,6 +67,9 @@ nnoremap <leader>b :CtrlPBuffer<CR>
 " Go to tag
 nnoremap <leader>t :CtrlPTag<CR>
 "
+" Go to definition
+nnoremap <leader>d :YcmCompleter GoTo<CR>
+"
 " Remove trailing whitespaces
 nnoremap <silent><LocalLeader>w :%s/\s\+$//<cr>:let @/=''<cr>
 "
@@ -112,9 +115,9 @@ let python_highlight_all = 1
 
 let g:tagbar_silent = 1
 
-let g:completor_blacklist = ['tagbar', 'qf', 'netrw', 'unite', 'vimwiki', 'gitcommit']
-let g:completor_filetype_map = {"javascript.jsx": "javascript"}
-let g:completor_css_omni_trigger = '([\w-]+|@[\w-]*|[\w-]+:\s*[\w-]*)$'
+if exists('$VIRTUAL_ENV')
+  let g:ycm_python_binary_path = $VIRTUAL_ENV . '/bin/python'
+end
 
 " npm install -g eslint
 " npm install -g babel-eslint
