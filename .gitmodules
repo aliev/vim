@@ -33,7 +33,7 @@
 	url = git@github.com:othree/yajs.vim.git
 [submodule "pack/plugins/start/vimrc"]
 	path = pack/plugins/start/vimrc
-	url = https://github.com/aliev/vimrc.git
+	url = git@github.com:aliev/vimrc.git
 [submodule "pack/plugins/start/vim-jsx"]
 	path = pack/plugins/start/vim-jsx
 	url = git@github.com:mxw/vim-jsx.git
