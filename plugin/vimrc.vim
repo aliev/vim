@@ -119,6 +119,9 @@ if exists('$VIRTUAL_ENV')
   let g:ycm_python_binary_path = $VIRTUAL_ENV . '/bin/python'
 end
 
+let g:ycm_collect_identifiers_from_tags_files = 1
+let g:ycm_key_invoke_completion = '<C-c>'
+
 " npm install -g eslint
 " npm install -g babel-eslint
 " npm install -g eslint-plugin-react
