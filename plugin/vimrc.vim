@@ -176,7 +176,6 @@ endfunction
 set statusline+=\ %{exists('g:loaded_fugitive')?fugitive#head():''}%*
 set statusline+=\ %{exists('g:loaded_gitgutter')?Gitgutter():''}%*
 set statusline+=\ %f\ %*
-set statusline+=\ %{exists('g:virtualenv_loaded')?virtualenv#statusline():''}%*
 set statusline+=%=\ %{&ff}
 set statusline+=\ %{''.(&fenc!=''?&fenc:&enc).''}
 set statusline+=\ %{(&bomb?\",BOM\":\"\")}
