@@ -49,9 +49,6 @@
 [submodule "pack/plugins/start/papercolor-theme"]
 	path = pack/plugins/start/papercolor-theme
 	url = git@github.com:NLKNguyen/papercolor-theme.git
-[submodule "pack/plugins/start/vim-virtualenv"]
-	path = pack/plugins/start/vim-virtualenv
-	url = git@github.com:jmcantrell/vim-virtualenv.git
 [submodule "pack/plugins/start/vim-python-pep8-indent"]
 	path = pack/plugins/start/vim-python-pep8-indent
 	url = git@github.com:Vimjas/vim-python-pep8-indent.git
