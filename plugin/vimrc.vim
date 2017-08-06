@@ -6,7 +6,7 @@ colo PaperColor
 
 if has('gui')
   set guifont=Source\ Code\ Pro:h14
-  set bg=light
+  set bg=dark
 endif
 
 if has("autocmd")

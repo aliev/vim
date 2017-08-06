@@ -19,9 +19,6 @@
 [submodule "pack/plugins/start/vim-surround"]
 	path = pack/plugins/start/vim-surround
 	url = git@github.com:tpope/vim-surround.git
-[submodule "pack/plugins/start/vim-repeat"]
-	path = pack/plugins/start/vim-repeat
-	url = git@github.com:tpope/vim-repeat
 [submodule "pack/plugins/start/vim-js-indent"]
 	path = pack/plugins/start/vim-js-indent
 	url = git@github.com:gavocanov/vim-js-indent.git
@@ -58,6 +55,3 @@
 [submodule "pack/plugins/start/YouCompleteMe"]
 	path = pack/plugins/start/YouCompleteMe
 	url = git@github.com:Valloric/YouCompleteMe.git
-[submodule "pack/plugins/start/gruvbox"]
-	path = pack/plugins/start/gruvbox
-	url = git@github.com:morhetz/gruvbox.git
