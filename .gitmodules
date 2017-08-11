@@ -13,9 +13,6 @@
 [submodule "pack/plugins/start/tagbar"]
 	path = pack/plugins/start/tagbar
 	url = git@github.com:majutsushi/tagbar.git
-[submodule "pack/plugins/start/vim-buftabline"]
-	path = pack/plugins/start/vim-buftabline
-	url = git@github.com:ap/vim-buftabline.git
 [submodule "pack/plugins/start/vim-surround"]
 	path = pack/plugins/start/vim-surround
 	url = git@github.com:tpope/vim-surround.git
@@ -43,3 +40,12 @@
 [submodule "pack/plugins/start/vim-polyglot"]
 	path = pack/plugins/start/vim-polyglot
 	url = git@github.com:sheerun/vim-polyglot.git
+[submodule "pack/plugins/start/vim-buftabline"]
+	path = pack/plugins/start/vim-buftabline
+	url = git@github.com:ap/vim-buftabline.git
+[submodule "pack/plugins/start/gruvbox"]
+	path = pack/plugins/start/gruvbox
+	url = git@github.com:morhetz/gruvbox.git
+[submodule "pack/plugins/start/lightline.vim"]
+	path = pack/plugins/start/lightline.vim
+	url = git@github.com:itchyny/lightline.vim.git

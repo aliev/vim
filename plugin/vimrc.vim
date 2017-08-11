@@ -2,7 +2,7 @@ set wildignore+=env/**
 let mapleader=','
 let mapleaderlocal='\'
 
-colo PaperColor
+colo gruvbox
 
 if has('gui')
   set guifont=Source\ Code\ Pro:h14
@@ -22,6 +22,8 @@ if has("autocmd")
     au FileType qf setl nonumber
 
     au FileType gitrebase map s :2,$s/^pick/squash/<CR>
+
+    au User ALELint call lightline#update()
   augroup END
 endif
 
@@ -134,6 +136,11 @@ let g:ale_sign_error = 'E'
 let g:ale_sign_warning = 'W'
 let g:ale_set_signs = 1
 let g:ale_set_highlights = 0
+let g:ale_sign_warning = '▲'
+let g:ale_sign_error = '✗'
+
+highlight link ALEWarningSign String
+highlight link ALEErrorSign Title
 
 let g:buftabline_show = 2
 let g:buftabline_numbers = 1
@@ -165,15 +172,75 @@ function! Gitgutter()
     let hunkline = printf('%s', hunkline[:-2])
   endif
 
-  return hunkline . ' '
+  return hunkline
 endfunction
 
-set statusline+=\ %{exists('g:loaded_fugitive')?fugitive#head():''}%*
-set statusline+=\ %{exists('g:loaded_gitgutter')?Gitgutter():''}%*
-set statusline+=\ %f\ %*
-set statusline+=%=\ %{&ff}
-set statusline+=\ %{''.(&fenc!=''?&fenc:&enc).''}
-set statusline+=\ %{(&bomb?\",BOM\":\"\")}
-set statusline+=\ %{tagbar#currenttag('%s','','f')}%*
-set statusline+=\ %{exists('g:loaded_ale')?ALEGetStatusLine():''}
+function! Tagbar()
+  return tagbar#currenttag('%s','','f')
+endfunction
+
+function! LightlineFugitive()
+  if &ft !~? 'vimfiler' && exists('*fugitive#head')
+    let branch = fugitive#head()
+    return branch !=# '' ? '⭠ '.branch : ''
+  endif
+  return ''
+endfunction
+
+function! LightlineLinterWarnings() abort
+  let l:counts = ale#statusline#Count(bufnr(''))
+  let l:all_errors = l:counts.error + l:counts.style_error
+  let l:all_non_errors = l:counts.total - l:all_errors
+  return l:counts.total == 0 ? '' : printf('%d ◆', all_non_errors)
+endfunction
+
+function! LightlineLinterErrors() abort
+  let l:counts = ale#statusline#Count(bufnr(''))
+  let l:all_errors = l:counts.error + l:counts.style_error
+  let l:all_non_errors = l:counts.total - l:all_errors
+  return l:counts.total == 0 ? '' : printf('%d ✗', all_errors)
+endfunction
+
+function! LightlineLinterOK() abort
+  let l:counts = ale#statusline#Count(bufnr(''))
+  let l:all_errors = l:counts.error + l:counts.style_error
+  let l:all_non_errors = l:counts.total - l:all_errors
+  return l:counts.total == 0 ? '✓ ' : ''
+endfunction
+
+let g:lightline = {}
+
+let g:lightline = {
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'gitgutter', 'readonly', 'relativepath', 'modified' ] ],
+      \ 'right': [ [ 'lineinfo', 'syntastic' ],
+      \            [ 'percent' ],
+      \            [ 'readonly', 'linter_warnings', 'linter_errors', 'linter_ok' ],
+      \            [ 'fileformat', 'fileencoding', 'filetype', 'tagbar' ] ]
+      \ },
+      \ 'component_expand': {
+      \   'linter_warnings': 'LightlineLinterWarnings',
+      \   'linter_errors': 'LightlineLinterErrors',
+      \   'linter_ok': 'LightlineLinterOK'
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'LightlineFugitive',
+      \   'gitgutter': 'Gitgutter',
+      \   'tagbar': 'Tagbar',
+      \ },
+      \ 'component_type': {
+      \   'readonly': 'error',
+      \   'linter_warnings': 'warning',
+      \   'linter_errors': 'error'
+      \ },
+      \ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
+      \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" }
+      \ }
+
+let g:lightline.inactive = {
+      \ 'left': [ [ 'absolutepath' ] ],
+      \ 'right': [ [ 'lineinfo' ],
+      \            [ 'percent' ] ] }
+
 " vim:ft=vim:foldmethod=marker:foldlevel=0
