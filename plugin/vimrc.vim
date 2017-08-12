@@ -132,8 +132,6 @@ let g:ale_statusline_format = ['E%d', 'W%d', '']
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
-let g:ale_sign_error = 'E'
-let g:ale_sign_warning = 'W'
 let g:ale_set_signs = 1
 let g:ale_set_highlights = 0
 let g:ale_sign_warning = '▲'
@@ -208,6 +206,10 @@ function! LightlineLinterOK() abort
   return l:counts.total == 0 ? '✓ ' : ''
 endfunction
 
+function! LightlineReadonly()
+  return &readonly ? '⭤' : ''
+endfunction
+
 let g:lightline = {}
 
 let g:lightline = {
@@ -228,6 +230,7 @@ let g:lightline = {
       \   'gitbranch': 'LightlineFugitive',
       \   'gitgutter': 'Gitgutter',
       \   'tagbar': 'Tagbar',
+      \   'readonly': 'LightlineReadonly'
       \ },
       \ 'component_type': {
       \   'readonly': 'error',
