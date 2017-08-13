@@ -8,7 +8,7 @@ set showtabline=2
 
 if has('gui')
   set guifont=Source\ Code\ Pro:h14
-  set bg=dark
+  set bg=light
 endif
 
 if has("autocmd")
@@ -51,8 +51,8 @@ nnoremap <silent><leader>w :bp <BAR> bd #<CR>
 
 " Buffers
 nnoremap <leader><leader> <C-^>
-nnoremap > gt<CR>
-nnoremap < gT<CR>
+nnoremap > :bn<CR>
+nnoremap < :bp<CR>
 
 " Keep selection after in/outdent
 vnoremap < <gv
@@ -230,6 +230,15 @@ function! GetFileName(n) abort
   return _ !=# '' ? _ : '[No Name]'
 endfunction
 
+function! LightlineBufferline()
+  call bufferline#refresh_status()
+  return [ g:bufferline_status_info.before, g:bufferline_status_info.current, g:bufferline_status_info.after]
+endfunction
+
+let g:bufferline_echo = 0
+let g:bufferline_active_buffer_left = ''
+let g:bufferline_active_buffer_right = ''
+
 let g:lightline = {}
 
 let g:lightline.enable = {
@@ -244,7 +253,7 @@ let g:lightline = {
       \ },
       \ 'active': {
       \  'left': [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch', 'gitgutter', 'readonly', 'relativepath', 'modified' ] ],
+      \             [ 'gitbranch', 'gitgutter', 'readonly', 'modified', 'bufferline' ] ],
       \ 'right': [ [ 'lineinfo', 'syntastic' ],
       \            [ 'percent' ],
       \            [ 'readonly', 'linter_warnings', 'linter_errors', 'linter_ok' ],
@@ -253,7 +262,8 @@ let g:lightline = {
       \ 'component_expand': {
       \   'linter_warnings': 'LightlineLinterWarnings',
       \   'linter_errors': 'LightlineLinterErrors',
-      \   'linter_ok': 'LightlineLinterOK'
+      \   'linter_ok': 'LightlineLinterOK',
+      \   'bufferline': 'LightlineBufferline',
       \ },
       \ 'component_function': {
       \   'gitbranch': 'LightlineFugitive',
@@ -264,7 +274,8 @@ let g:lightline = {
       \ 'component_type': {
       \   'readonly': 'error',
       \   'linter_warnings': 'warning',
-      \   'linter_errors': 'error'
+      \   'linter_errors': 'error',
+      \   'bufferline': 'tabsel',
       \ },
       \ 'tab_component_function' : {
       \  'filename': 'GetFileName',
