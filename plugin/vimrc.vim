@@ -4,6 +4,8 @@ let mapleaderlocal='\'
 
 colo gruvbox
 
+set showtabline=2
+
 if has('gui')
   set guifont=Source\ Code\ Pro:h14
   set bg=dark
@@ -49,8 +51,8 @@ nnoremap <silent><leader>w :bp <BAR> bd #<CR>
 
 " Buffers
 nnoremap <leader><leader> <C-^>
-nnoremap > :bn<CR>
-nnoremap < :bp<CR>
+nnoremap > gt<CR>
+nnoremap < gT<CR>
 
 " Keep selection after in/outdent
 vnoremap < <gv
@@ -109,7 +111,7 @@ let g:NERDTreeRespectWildIgnore = 1
 let g:NERDTreeDirArrows = 1
 let g:NERDTreeHijackNetrw = 1
 let g:NERDTreeAutoDeleteBuffer = 1
-let g:NERDTreeQuitOnOpen = 0
+let g:NERDTreeQuitOnOpen = 1
 
 let g:jsx_ext_required = 0 " Allow JSX in normal JS files
 
@@ -210,11 +212,38 @@ function! LightlineReadonly()
   return &readonly ? '⭤' : ''
 endfunction
 
+function! NumberOfSplits(tn)
+  let numbers = ['⁰', '¹', '²', '³', '⁴', '⁵', '⁶', '⁷', '⁸', '⁹', 'ⁿ']
+  let number_of_windows = tabpagewinnr(a:tn, '$')
+
+  if number_of_windows > len(numbers) - 1
+    return numbers[10]
+  endif
+
+  return number_of_windows > 1 ? numbers[number_of_windows] : ''
+endfunction
+
+function! GetFileName(n) abort
+  let buflist = tabpagebuflist(a:n)
+  let winnr = tabpagewinnr(a:n)
+  let _ = expand('#'.buflist[winnr - 1].":~:.")
+  return _ !=# '' ? _ : '[No Name]'
+endfunction
+
 let g:lightline = {}
 
+let g:lightline.enable = {
+      \ 'statusline': 1,
+      \ 'tabline': 1
+      \ }
+
 let g:lightline = {
+      \ 'tab': {
+      \ 'active': [ 'tabnum', 'filename', 'modified' ],
+      \ 'inactive': [ 'tabnum', 'number_of_splits', 'filename', 'modified' ]
+      \ },
       \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
+      \  'left': [ [ 'mode', 'paste' ],
       \             [ 'gitbranch', 'gitgutter', 'readonly', 'relativepath', 'modified' ] ],
       \ 'right': [ [ 'lineinfo', 'syntastic' ],
       \            [ 'percent' ],
@@ -230,12 +259,19 @@ let g:lightline = {
       \   'gitbranch': 'LightlineFugitive',
       \   'gitgutter': 'Gitgutter',
       \   'tagbar': 'Tagbar',
-      \   'readonly': 'LightlineReadonly'
+      \   'readonly': 'LightlineReadonly',
       \ },
       \ 'component_type': {
       \   'readonly': 'error',
       \   'linter_warnings': 'warning',
       \   'linter_errors': 'error'
+      \ },
+      \ 'tab_component_function' : {
+      \  'filename': 'GetFileName',
+      \  'modified': 'lightline#tab#modified',
+      \  'readonly': 'lightline#tab#readonly',
+      \  'number_of_splits': 'NumberOfSplits',
+      \  'tabnum': 'lightline#tab#tabnum'
       \ },
       \ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
       \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" }
