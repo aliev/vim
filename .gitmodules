@@ -42,7 +42,7 @@
 	url = git@github.com:sheerun/vim-polyglot.git
 [submodule "pack/plugins/start/vim-buftabline"]
 	path = pack/plugins/start/vim-buftabline
-	url = git@github.com:ap/vim-buftabline.git
+	url = https://github.com/ap/vim-buftabline
 [submodule "pack/plugins/start/gruvbox"]
 	path = pack/plugins/start/gruvbox
 	url = git@github.com:morhetz/gruvbox.git

@@ -51,8 +51,8 @@ nnoremap <silent><leader>w :bp <BAR> bd #<CR>
 
 " Buffers
 nnoremap <leader><leader> <C-^>
-nnoremap > :bn<CR>
-nnoremap < :bp<CR>
+nnoremap > gt<CR>
+nnoremap < gT<CR>
 
 " Keep selection after in/outdent
 vnoremap < <gv
@@ -230,15 +230,6 @@ function! GetFileName(n) abort
   return _ !=# '' ? _ : '[No Name]'
 endfunction
 
-function! LightlineBufferline()
-  call bufferline#refresh_status()
-  return [ g:bufferline_status_info.before, g:bufferline_status_info.current, g:bufferline_status_info.after]
-endfunction
-
-let g:bufferline_echo = 0
-let g:bufferline_active_buffer_left = ''
-let g:bufferline_active_buffer_right = ''
-
 let g:lightline = {}
 
 let g:lightline.enable = {
@@ -253,7 +244,7 @@ let g:lightline = {
       \ },
       \ 'active': {
       \  'left': [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch', 'gitgutter', 'readonly', 'modified', 'bufferline' ] ],
+      \             [ 'gitbranch', 'gitgutter', 'readonly', 'relativepath', 'modified' ] ],
       \ 'right': [ [ 'lineinfo', 'syntastic' ],
       \            [ 'percent' ],
       \            [ 'readonly', 'linter_warnings', 'linter_errors', 'linter_ok' ],
@@ -262,8 +253,7 @@ let g:lightline = {
       \ 'component_expand': {
       \   'linter_warnings': 'LightlineLinterWarnings',
       \   'linter_errors': 'LightlineLinterErrors',
-      \   'linter_ok': 'LightlineLinterOK',
-      \   'bufferline': 'LightlineBufferline',
+      \   'linter_ok': 'LightlineLinterOK'
       \ },
       \ 'component_function': {
       \   'gitbranch': 'LightlineFugitive',
@@ -274,8 +264,7 @@ let g:lightline = {
       \ 'component_type': {
       \   'readonly': 'error',
       \   'linter_warnings': 'warning',
-      \   'linter_errors': 'error',
-      \   'bufferline': 'tabsel',
+      \   'linter_errors': 'error'
       \ },
       \ 'tab_component_function' : {
       \  'filename': 'GetFileName',
