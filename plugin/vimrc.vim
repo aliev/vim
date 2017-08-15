@@ -51,8 +51,8 @@ nnoremap <silent><leader>w :bp <BAR> bd #<CR>
 
 " Buffers
 nnoremap <leader><leader> <C-^>
-nnoremap > gt<CR>
-nnoremap < gT<CR>
+nnoremap > :bn<CR>
+nnoremap < :bp<CR>
 
 " Keep selection after in/outdent
 vnoremap < <gv
@@ -111,7 +111,7 @@ let g:NERDTreeRespectWildIgnore = 1
 let g:NERDTreeDirArrows = 1
 let g:NERDTreeHijackNetrw = 1
 let g:NERDTreeAutoDeleteBuffer = 1
-let g:NERDTreeQuitOnOpen = 1
+let g:NERDTreeQuitOnOpen = 0
 
 let g:jsx_ext_required = 0 " Allow JSX in normal JS files
 
@@ -128,7 +128,7 @@ let g:ycm_key_invoke_completion = '<C-c>'
 let g:ale_linters = {
       \   'javascript': ['eslint'],
       \   'javascript.jsx': ['eslint'],
-      \   'python': ['flake8'],
+      \   'python': ['pylint', 'flake8'],
       \}
 let g:ale_statusline_format = ['E%d', 'W%d', '']
 let g:ale_echo_msg_error_str = 'E'
