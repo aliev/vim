@@ -6,8 +6,7 @@ If you want only configuration file you should use [vimrc](http://github.com/ali
 
 ```
 git clone https://github.com/aliev/vim.git ~/.vim
-git submodule init
-git submodule update
+git submodule update --init --recursive
 ```
 
 Update all plugins to latest version
