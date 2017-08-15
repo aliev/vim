@@ -49,6 +49,3 @@
 [submodule "pack/plugins/start/lightline.vim"]
 	path = pack/plugins/start/lightline.vim
 	url = git@github.com:itchyny/lightline.vim.git
-[submodule "pack/plugins/start/vim-bufferline"]
-	path = pack/plugins/start/vim-bufferline
-	url = git@github.com:bling/vim-bufferline.git
