@@ -2,8 +2,6 @@ set wildignore+=env/**
 let mapleader=','
 let mapleaderlocal='\'
 
-colo gruvbox
-
 set showtabline=2
 
 if has('gui')
@@ -27,6 +25,11 @@ if has("autocmd")
 
     au User ALELint call lightline#update()
   augroup END
+endif
+
+if filereadable(expand("~/.vimrc_background"))
+  let base16colorspace=256
+  source ~/.vimrc_background
 endif
 
 " Clear highlighting
@@ -180,9 +183,9 @@ function! Tagbar()
 endfunction
 
 function! LightlineFugitive()
-  if &ft !~? 'vimfiler' && exists('*fugitive#head')
+  if exists('*fugitive#head')
     let branch = fugitive#head()
-    return branch !=# '' ? '⭠ '.branch : ''
+    return branch !=# '' ? ' '.branch : ''
   endif
   return ''
 endfunction
@@ -209,7 +212,7 @@ function! LightlineLinterOK() abort
 endfunction
 
 function! LightlineReadonly()
-  return &readonly ? '⭤' : ''
+  return &readonly ? '' : ''
 endfunction
 
 function! NumberOfSplits(tn)
@@ -230,6 +233,7 @@ function! GetFileName(n) abort
   return _ !=# '' ? _ : '[No Name]'
 endfunction
 
+
 let g:lightline = {}
 
 let g:lightline.enable = {
@@ -249,6 +253,9 @@ let g:lightline = {
       \            [ 'percent' ],
       \            [ 'readonly', 'linter_warnings', 'linter_errors', 'linter_ok' ],
       \            [ 'fileformat', 'fileencoding', 'filetype', 'tagbar' ] ]
+      \ },
+      \ 'component': {
+      \   'lineinfo': ' %3l:%-2v',
       \ },
       \ 'component_expand': {
       \   'linter_warnings': 'LightlineLinterWarnings',
