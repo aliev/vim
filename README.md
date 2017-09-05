@@ -22,6 +22,7 @@ Tools: Ag, exuberant ctags
 brew install the_silver_searcher
 brew install ctags-exuberant
 
+
 # Ubuntu
 sudo apt-get install exuberant-ctags
 sudo apt-get install silversearcher-ag

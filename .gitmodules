@@ -46,3 +46,6 @@
 [submodule "pack/plugins/start/base16-vim"]
 	path = pack/plugins/start/base16-vim
 	url = git@github.com:chriskempson/base16-vim.git
+[submodule "pack/plugins/start/gruvbox"]
+	path = pack/plugins/start/gruvbox
+	url = git@github.com:morhetz/gruvbox.git

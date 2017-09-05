@@ -5,8 +5,17 @@ let mapleaderlocal='\'
 set showtabline=2
 
 if has('gui')
+  colo gruvbox
   set guifont=Source\ Code\ Pro:h14
   set bg=light
+endif
+
+if exists('$TMUX')
+  let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+  let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+else
+  let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+  let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 endif
 
 if has("autocmd")
@@ -25,11 +34,6 @@ if has("autocmd")
 
     au User ALELint call lightline#update()
   augroup END
-endif
-
-if filereadable(expand("~/.vimrc_background"))
-  let base16colorspace=256
-  source ~/.vimrc_background
 endif
 
 " Clear highlighting
@@ -139,8 +143,8 @@ let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 let g:ale_set_signs = 1
 let g:ale_set_highlights = 0
-let g:ale_sign_warning = '▲'
-let g:ale_sign_error = '✗'
+let g:ale_sign_warning = '◆'
+let g:ale_sign_error = '◆'
 
 highlight link ALEWarningSign String
 highlight link ALEErrorSign Title
@@ -215,17 +219,6 @@ function! LightlineReadonly()
   return &readonly ? '' : ''
 endfunction
 
-function! NumberOfSplits(tn)
-  let numbers = ['⁰', '¹', '²', '³', '⁴', '⁵', '⁶', '⁷', '⁸', '⁹', 'ⁿ']
-  let number_of_windows = tabpagewinnr(a:tn, '$')
-
-  if number_of_windows > len(numbers) - 1
-    return numbers[10]
-  endif
-
-  return number_of_windows > 1 ? numbers[number_of_windows] : ''
-endfunction
-
 function! GetFileName(n) abort
   let buflist = tabpagebuflist(a:n)
   let winnr = tabpagewinnr(a:n)
@@ -238,14 +231,9 @@ let g:lightline = {}
 
 let g:lightline.enable = {
       \ 'statusline': 1,
-      \ 'tabline': 1
       \ }
 
 let g:lightline = {
-      \ 'tab': {
-      \ 'active': [ 'tabnum', 'filename', 'modified' ],
-      \ 'inactive': [ 'tabnum', 'number_of_splits', 'filename', 'modified' ]
-      \ },
       \ 'active': {
       \  'left': [ [ 'mode', 'paste' ],
       \             [ 'gitbranch', 'gitgutter', 'readonly', 'relativepath', 'modified' ] ],
@@ -272,13 +260,6 @@ let g:lightline = {
       \   'readonly': 'error',
       \   'linter_warnings': 'warning',
       \   'linter_errors': 'error'
-      \ },
-      \ 'tab_component_function' : {
-      \  'filename': 'GetFileName',
-      \  'modified': 'lightline#tab#modified',
-      \  'readonly': 'lightline#tab#readonly',
-      \  'number_of_splits': 'NumberOfSplits',
-      \  'tabnum': 'lightline#tab#tabnum'
       \ },
       \ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
       \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" }
