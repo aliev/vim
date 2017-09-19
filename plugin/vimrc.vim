@@ -10,14 +10,6 @@ if has('gui')
   set bg=light
 endif
 
-if exists('$TMUX')
-  let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
-  let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
-else
-  let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-  let &t_EI = "\<Esc>]50;CursorShape=0\x7"
-endif
-
 if has("autocmd")
   augroup local
     au!
@@ -33,6 +25,9 @@ if has("autocmd")
     au FileType gitrebase map s :2,$s/^pick/squash/<CR>
 
     au User ALELint call lightline#update()
+
+    " Automatically remove unwanted spaces
+    au BufWritePre * %s/\s\+$//e
   augroup END
 endif
 
@@ -225,7 +220,6 @@ function! GetFileName(n) abort
   let _ = expand('#'.buflist[winnr - 1].":~:.")
   return _ !=# '' ? _ : '[No Name]'
 endfunction
-
 
 let g:lightline = {}
 
