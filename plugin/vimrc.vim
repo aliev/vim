@@ -5,9 +5,9 @@ let mapleaderlocal='\'
 set showtabline=2
 
 if has('gui')
-  colo gruvbox
+  colo PaperColor
   set guifont=Source\ Code\ Pro:h14
-  set bg=light
+  set bg=dark
 endif
 
 if has("autocmd")
@@ -130,7 +130,7 @@ let g:ycm_key_invoke_completion = '<C-c>'
 let g:ale_linters = {
       \   'javascript': ['eslint'],
       \   'javascript.jsx': ['eslint'],
-      \   'python': ['pylint', 'flake8'],
+      \   'python': ['flake8'],
       \}
 let g:ale_statusline_format = ['E%d', 'W%d', '']
 let g:ale_echo_msg_error_str = 'E'
