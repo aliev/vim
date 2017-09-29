@@ -200,8 +200,6 @@ endfunction
 
 let g:Lf_CursorBlink = 0
 let g:Lf_PreviewResult = { 'BufTag': 0 }
-let g:Lf_RememberLastSearch = 1
-
 let g:lightline = {}
 
 let g:lightline.enable = {
