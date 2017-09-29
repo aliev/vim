@@ -28,9 +28,6 @@
 [submodule "pack/plugins/start/vim-gitgutter"]
 	path = pack/plugins/start/vim-gitgutter
 	url = git@github.com:airblade/vim-gitgutter
-[submodule "pack/plugins/start/ctrlp.vim"]
-	path = pack/plugins/start/ctrlp.vim
-	url = git@github.com:ctrlpvim/ctrlp.vim.git
 [submodule "pack/plugins/start/YouCompleteMe"]
 	path = pack/plugins/start/YouCompleteMe
 	url = git@github.com:Valloric/YouCompleteMe.git
@@ -49,3 +46,6 @@
 [submodule "pack/plugins/start/papercolor-theme"]
 	path = pack/plugins/start/papercolor-theme
 	url = git@github.com:NLKNguyen/papercolor-theme.git
+[submodule "pack/plugins/start/LeaderF"]
+	path = pack/plugins/start/LeaderF
+	url = git@github.com:Yggdroot/LeaderF.git

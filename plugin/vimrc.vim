@@ -65,13 +65,7 @@ nnoremap n nzz
 nnoremap N Nzz
 "
 " List of tags
-nnoremap <leader>s :CtrlPBufTag<CR>
-"
-" List of buffers
-nnoremap <leader>b :CtrlPBuffer<CR>
-"
-" Go to tag
-nnoremap <leader>t :CtrlPTag<CR>
+nnoremap <leader>s :LeaderfBufTag<CR>
 "
 " Go to definition
 nnoremap <leader>d :YcmCompleter GoTo<CR>
@@ -148,16 +142,6 @@ let g:buftabline_show = 2
 let g:buftabline_numbers = 1
 let g:buftabline_indicators = 1
 
-if isdirectory('.git') && executable('git')
-  let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
-else
-  let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
-endif
-
-let g:ctrlp_map = '<leader>f'
-let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_buftag_types = { 'javascript': '--language-force=javascript --javascript-types=fcmv' }
-
 function! Gitgutter()
   let symbols = ['+', '-', '~']
   let [added, modified, removed] = gitgutter#hunk#summary(winbufnr(0))
@@ -213,6 +197,10 @@ function! GetFileName(n) abort
   let _ = expand('#'.buflist[winnr - 1].":~:.")
   return _ !=# '' ? _ : '[No Name]'
 endfunction
+
+let g:Lf_CursorBlink = 0
+let g:Lf_PreviewResult = { 'BufTag': 0 }
+let g:Lf_RememberLastSearch = 1
 
 let g:lightline = {}
 
