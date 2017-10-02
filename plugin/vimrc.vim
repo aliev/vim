@@ -74,7 +74,24 @@ nnoremap <leader>d :YcmCompleter GoTo<CR>
 nnoremap <silent><LocalLeader>w :%s/\s\+$//<cr>:let @/=''<cr>
 "
 " Git find/grep
-map <silent><LocalLeader>g :silent grep! <C-R>=expand("<cword>")<CR><CR>:redraw!<CR><CR>:copen<CR>
+" for browsing the input history
+cnoremap <c-n> <down>
+cnoremap <c-p> <up>
+
+nmap gs <plug>(GrepperOperator)
+xmap gs <plug>(GrepperOperator)
+
+nnoremap <LocalLeader>g :Grepper -tool ag -cword -noprompt<cr>
+
+let g:grepper = {}
+let g:grepper.tools = ['git', 'ag', 'grep']
+let g:grepper.jump = 0
+let g:grepper.open = 1
+
+command! Todo :Grepper
+      \ -noprompt
+      \ -tool git
+      \ -grepprg git grep -nIi '\(TODO\|FIXME\)'
 "
 " Find merge conflicts
 map <LocalLeader>c /\v^[<\|=>]{7}( .*\|$)<CR>
@@ -200,6 +217,9 @@ endfunction
 
 let g:Lf_CursorBlink = 0
 let g:Lf_PreviewResult = { 'BufTag': 0 }
+let g:Lf_CommandMap = {'<C-C>': ['<Esc>']}
+let g:Lf_DefaultMode = 'FullPath'
+
 let g:lightline = {}
 
 let g:lightline.enable = {

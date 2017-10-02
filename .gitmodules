@@ -49,3 +49,6 @@
 [submodule "pack/plugins/start/LeaderF"]
 	path = pack/plugins/start/LeaderF
 	url = git@github.com:Yggdroot/LeaderF.git
+[submodule "pack/plugins/start/vim-grepper"]
+	path = pack/plugins/start/vim-grepper
+	url = git@github.com:mhinz/vim-grepper.git
