@@ -1,3 +1,0 @@
-[submodule "pack/plugins/start/completor.vim"]
-	path = pack/plugins/start/completor.vim
-	url = git@github.com:maralla/completor.vim.git
