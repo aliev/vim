@@ -24,16 +24,9 @@ Plug 'mhinz/vim-grepper'
 Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-surround'
 
-" JavaScript/JSX Indentation/Syntax support
 Plug 'othree/yajs.vim', { 'for': ['javascript', 'javascript.jsx'] }
-
-" JavaScript indentation for VIM
 Plug 'gavocanov/vim-js-indent', {'for': ['javascript', 'javascript.jsx']}
-
-" This syntax file is for ES7 and future syntax. Need to work with yajs.vim.
 Plug 'othree/es.next.syntax.vim'
-
-" React JSX syntax highlighting and indenting for vim.
 Plug 'mxw/vim-jsx'
 
 " Initialize plugin system
@@ -75,31 +68,29 @@ endif
 if maparg('<C-L>', 'n') ==# ''
   nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
 endif
-
+"
 " Visually select the text that was last edited/pasted
 noremap gV `[v`]
-
+"
 " Move visual block
 vnoremap K :m '<-2<CR>gv=gv
 vnoremap J :m '>+1<CR>gv=gv
-
-cnoremap <LocalLeader><LocalLeader> <C-R>=fugitive#head()<CR>
-
+"
 " Goto file with line number under cursor
 nnoremap gf gF
-
+"
 " Kill the current buffer and move to the previous one | "<leader>w"
 nnoremap <silent><leader>w :bp <BAR> bd #<CR>
-
+"
 " Buffers
 nnoremap <leader><leader> <C-^>
 nnoremap > :bn<CR>
 nnoremap < :bp<CR>
-
+"
 " Keep selection after in/outdent
 vnoremap < <gv
 vnoremap > >gv
-
+"
 " Keep search matches in the middle of the screen
 nnoremap n nzz
 nnoremap N Nzz
@@ -113,28 +104,16 @@ nnoremap <leader>d :YcmCompleter GoTo<CR>
 " Remove trailing whitespaces
 nnoremap <silent><LocalLeader>w :%s/\s\+$//<cr>:let @/=''<cr>
 "
-" Git find/grep
-" for browsing the input history
-cnoremap <c-n> <down>
-cnoremap <c-p> <up>
-
-nmap gs <plug>(GrepperOperator)
-xmap gs <plug>(GrepperOperator)
-
+" Find merge conflicts
+map <LocalLeader>c /\v^[<\|=>]{7}( .*\|$)<CR>
+"
+" Grepper
 nnoremap <LocalLeader>g :Grepper -tool ag -cword -noprompt<cr>
-
-let g:grepper = {}
-let g:grepper.tools = ['git', 'ag', 'grep']
-let g:grepper.jump = 0
-let g:grepper.open = 1
 
 command! Todo :Grepper
       \ -noprompt
       \ -tool git
       \ -grepprg git grep -nIi '\(TODO\|FIXME\)'
-"
-" Find merge conflicts
-map <LocalLeader>c /\v^[<\|=>]{7}( .*\|$)<CR>
 
 function! Nerdtree()
   let l:is_nerdtree = expand('%') =~# 'NERD_tree'
@@ -150,52 +129,6 @@ endfunction
 if empty(maparg('-', 'n'))
   nmap <silent>- :call Nerdtree()<CR>
 endif
-
-let g:html_indent_script1 = "inc"
-let g:html_indent_style1 = "inc"
-let g:html_indent_inctags = "html,body,head,tbody"
-let g:html_indent_autotags = "th,td,tr,tfoot,thead"
-
-" NERDTree
-let g:NERDTreeMinimalUI = 1
-let g:NERDTreeRespectWildIgnore = 1
-let g:NERDTreeDirArrows = 1
-let g:NERDTreeHijackNetrw = 1
-let g:NERDTreeAutoDeleteBuffer = 1
-let g:NERDTreeQuitOnOpen = 0
-
-let g:jsx_ext_required = 0 " Allow JSX in normal JS files
-
-let python_highlight_all = 1
-
-let g:tagbar_silent = 1
-
-let g:ycm_key_invoke_completion = '<C-c>'
-
-" npm install -g eslint
-" npm install -g babel-eslint
-" npm install -g eslint-plugin-react
-" https://jaxbot.me/articles/setting-up-vim-for-react-js-jsx-02-03-2015
-let g:ale_linters = {
-      \   'javascript': ['eslint'],
-      \   'javascript.jsx': ['eslint'],
-      \   'python': ['flake8'],
-      \}
-let g:ale_statusline_format = ['E%d', 'W%d', '']
-let g:ale_echo_msg_error_str = 'E'
-let g:ale_echo_msg_warning_str = 'W'
-let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
-let g:ale_set_signs = 1
-let g:ale_set_highlights = 0
-let g:ale_sign_warning = '◆'
-let g:ale_sign_error = '◆'
-
-highlight link ALEWarningSign String
-highlight link ALEErrorSign Title
-
-let g:buftabline_show = 2
-let g:buftabline_numbers = 1
-let g:buftabline_indicators = 1
 
 function! Gitgutter()
   let symbols = ['+', '-', '~']
@@ -253,6 +186,52 @@ function! GetFileName(n) abort
   return _ !=# '' ? _ : '[No Name]'
 endfunction
 
+let g:grepper = {}
+let g:grepper.tools = ['git', 'ag', 'grep']
+let g:grepper.jump = 0
+let g:grepper.open = 1
+
+let g:html_indent_script1 = "inc"
+let g:html_indent_style1 = "inc"
+let g:html_indent_inctags = "html,body,head,tbody"
+let g:html_indent_autotags = "th,td,tr,tfoot,thead"
+let g:jsx_ext_required = 0 " Allow JSX in normal JS files
+
+let g:NERDTreeMinimalUI = 1
+let g:NERDTreeRespectWildIgnore = 1
+let g:NERDTreeDirArrows = 1
+let g:NERDTreeHijackNetrw = 1
+let g:NERDTreeAutoDeleteBuffer = 1
+let g:NERDTreeQuitOnOpen = 0
+
+let python_highlight_all = 1
+
+let g:tagbar_silent = 1
+
+let g:ycm_key_invoke_completion = '<C-c>'
+
+" npm install -g eslint
+" npm install -g babel-eslint
+" npm install -g eslint-plugin-react
+" https://jaxbot.me/articles/setting-up-vim-for-react-js-jsx-02-03-2015
+let g:ale_linters = {
+      \   'javascript': ['eslint'],
+      \   'javascript.jsx': ['eslint'],
+      \   'python': ['flake8'],
+      \}
+let g:ale_statusline_format = ['E%d', 'W%d', '']
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+let g:ale_set_signs = 1
+let g:ale_set_highlights = 0
+let g:ale_sign_warning = '◆'
+let g:ale_sign_error = '◆'
+
+let g:buftabline_show = 2
+let g:buftabline_numbers = 1
+let g:buftabline_indicators = 1
+
 let g:Lf_CursorBlink = 0
 let g:Lf_PreviewResult = { 'BufTag': 0 }
 let g:Lf_CommandMap = {'<C-C>': ['<Esc>']}
@@ -295,5 +274,8 @@ let g:lightline.inactive = {
       \            [ 'percent' ] ] }
 
 let g:lightline.colorscheme = 'Tomorrow_Night_Eighties'
+
+highlight link ALEWarningSign String
+highlight link ALEErrorSign Title
 
 " vim:ft=vim:foldmethod=marker:foldlevel=0
