@@ -12,8 +12,8 @@ endif
 Plug 'aliev/vimrc'
 Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --tern-completer' }
-Plug 'w0rp/ale'
 Plug 'itchyny/lightline.vim'
+Plug 'w0rp/ale'
 Plug 'scrooloose/nerdtree'
 Plug 'majutsushi/tagbar'
 Plug 'tomtom/tcomment_vim'
@@ -23,11 +23,10 @@ Plug 'airblade/vim-gitgutter'
 Plug 'mhinz/vim-grepper'
 Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-surround'
+Plug 'Vimjas/vim-python-pep8-indent'
 
-Plug 'othree/yajs.vim', { 'for': ['javascript', 'javascript.jsx'] }
-Plug 'gavocanov/vim-js-indent', {'for': ['javascript', 'javascript.jsx']}
-Plug 'othree/es.next.syntax.vim'
-Plug 'mxw/vim-jsx'
+Plug 'neoclide/vim-jsx-improve'
+Plug 'MaxMEllon/vim-jsx-pretty'
 
 " Initialize plugin system
 call plug#end()
@@ -37,6 +36,10 @@ let mapleader=','
 let mapleaderlocal='\'
 
 set showtabline=2
+
+let &t_SI = "\<Esc>[6 q"
+let &t_SR = "\<Esc>[4 q"
+let &t_EI = "\<Esc>[0 q"
 
 if has('gui')
   set guifont=Source\ Code\ Pro:h14
@@ -48,6 +51,7 @@ if has("autocmd")
     au!
     " JavaScript indentation
     au FileType javascript setl expandtab shiftwidth=2 tabstop=2
+    au FileType javascript.jsx setl expandtab shiftwidth=2 tabstop=2
 
     " Vim indentation
     au FileType vim setl foldenable expandtab shiftwidth=2 tabstop=2
@@ -187,7 +191,7 @@ function! GetFileName(n) abort
 endfunction
 
 let g:grepper = {}
-let g:grepper.tools = ['git', 'ag', 'grep']
+let g:grepper.tools = ['git', 'ag']
 let g:grepper.jump = 0
 let g:grepper.open = 1
 
@@ -196,6 +200,7 @@ let g:html_indent_style1 = "inc"
 let g:html_indent_inctags = "html,body,head,tbody"
 let g:html_indent_autotags = "th,td,tr,tfoot,thead"
 let g:jsx_ext_required = 0 " Allow JSX in normal JS files
+let g:xml_syntax_folding = 0
 
 let g:NERDTreeMinimalUI = 1
 let g:NERDTreeRespectWildIgnore = 1
