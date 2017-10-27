@@ -26,7 +26,6 @@ Plug 'tpope/vim-surround'
 Plug 'Vimjas/vim-python-pep8-indent'
 
 Plug 'neoclide/vim-jsx-improve'
-Plug 'MaxMEllon/vim-jsx-pretty'
 
 " Initialize plugin system
 call plug#end()
@@ -42,8 +41,8 @@ let &t_SR = "\<Esc>[4 q"
 let &t_EI = "\<Esc>[0 q"
 
 if has('gui')
-  set guifont=Source\ Code\ Pro:h14
-  set bg=light
+  set guifont=Fira\ Code\ Light:h14
+  colo desert
 endif
 
 if has("autocmd")
