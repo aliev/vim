@@ -20,13 +20,12 @@ Plug 'tomtom/tcomment_vim'
 Plug 'ap/vim-buftabline'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
-Plug 'mhinz/vim-grepper'
 Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-surround'
 Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
-Plug 'mxw/vim-jsx'
+Plug 'neoclide/vim-jsx-improve'
 
 " Initialize plugin system
 call plug#end()
@@ -82,6 +81,9 @@ vnoremap J :m '>+1<CR>gv=gv
 " Goto file with line number under cursor
 nnoremap gf gF
 "
+" Let's remove this annoying :W
+cnoremap W w
+"
 " Kill the current buffer and move to the previous one | "<leader>w"
 nnoremap <silent><leader>w :bp <BAR> bd #<CR>
 "
@@ -104,19 +106,11 @@ nnoremap <leader>s :LeaderfBufTag<CR>
 " Go to definition
 nnoremap <leader>d :YcmCompleter GoTo<CR>
 "
-" Remove trailing whitespaces
-nnoremap <silent><LocalLeader>w :%s/\s\+$//<cr>:let @/=''<cr>
+" Grep helper
+nnoremap <LocalLeader>g :silent grep! <C-R>=expand("<cword>")<CR> \| copen<s-left><s-left><left>
 "
 " Find merge conflicts
 map <LocalLeader>c /\v^[<\|=>]{7}( .*\|$)<CR>
-"
-" Grepper
-nnoremap <LocalLeader>g :Grepper -tool ag -cword -noprompt<cr>
-
-command! Todo :Grepper
-      \ -noprompt
-      \ -tool git
-      \ -grepprg git grep -nIi '\(TODO\|FIXME\)'
 
 function! Nerdtree()
   let l:is_nerdtree = expand('%') =~# 'NERD_tree'
@@ -188,11 +182,6 @@ function! GetFileName(n) abort
   let _ = expand('#'.buflist[winnr - 1].":~:.")
   return _ !=# '' ? _ : '[No Name]'
 endfunction
-
-let g:grepper = {}
-let g:grepper.tools = ['git', 'ag']
-let g:grepper.jump = 0
-let g:grepper.open = 1
 
 let g:html_indent_script1 = "inc"
 let g:html_indent_style1 = "inc"
