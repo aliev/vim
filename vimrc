@@ -24,8 +24,9 @@ Plug 'mhinz/vim-grepper'
 Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-surround'
 Plug 'Vimjas/vim-python-pep8-indent'
-
-Plug 'neoclide/vim-jsx-improve'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'mxw/vim-jsx'
 
 " Initialize plugin system
 call plug#end()
@@ -42,7 +43,6 @@ let &t_EI = "\<Esc>[0 q"
 
 if has('gui')
   set guifont=Fira\ Code\ Light:h14
-  colo desert
 endif
 
 if has("autocmd")
@@ -168,14 +168,14 @@ function! LightlineLinterWarnings() abort
   let l:counts = ale#statusline#Count(bufnr(''))
   let l:all_errors = l:counts.error + l:counts.style_error
   let l:all_non_errors = l:counts.total - l:all_errors
-  return printf('%d ◆', all_non_errors)
+  return printf('%d', all_non_errors)
 endfunction
 
 function! LightlineLinterErrors() abort
   let l:counts = ale#statusline#Count(bufnr(''))
   let l:all_errors = l:counts.error + l:counts.style_error
   let l:all_non_errors = l:counts.total - l:all_errors
-  return printf('%d ✗', all_errors)
+  return printf('%d', all_errors)
 endfunction
 
 function! LightlineReadonly()
@@ -198,7 +198,6 @@ let g:html_indent_script1 = "inc"
 let g:html_indent_style1 = "inc"
 let g:html_indent_inctags = "html,body,head,tbody"
 let g:html_indent_autotags = "th,td,tr,tfoot,thead"
-let g:jsx_ext_required = 0 " Allow JSX in normal JS files
 let g:xml_syntax_folding = 0
 
 let g:NERDTreeMinimalUI = 1
@@ -208,16 +207,16 @@ let g:NERDTreeHijackNetrw = 1
 let g:NERDTreeAutoDeleteBuffer = 1
 let g:NERDTreeQuitOnOpen = 0
 
-let python_highlight_all = 1
-
-let g:tagbar_silent = 1
-
 let g:ycm_key_invoke_completion = '<C-c>'
+let g:ycm_python_binary_path = 'python'
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 
-" npm install -g eslint
-" npm install -g babel-eslint
-" npm install -g eslint-plugin-react
-" https://jaxbot.me/articles/setting-up-vim-for-react-js-jsx-02-03-2015
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+let g:UltiSnipsEditSplit="vertical"
+
 let g:ale_linters = {
       \   'javascript': ['eslint'],
       \   'javascript.jsx': ['eslint'],
@@ -241,35 +240,45 @@ let g:Lf_PreviewResult = { 'BufTag': 0 }
 let g:Lf_CommandMap = {'<C-C>': ['<Esc>']}
 let g:Lf_DefaultMode = 'FullPath'
 
-let g:lightline = {
-      \ 'active': {
+let g:jsx_ext_required = 0
+let python_highlight_all = 1
+let g:tagbar_silent = 1
+
+let g:lightline = {}
+
+let g:lightline.separator = { 'left': '►', 'right': '◄' }
+
+let g:lightline.subseparator = { 'left': "\ue0b1", 'right': "\ue0b3" }
+
+let g:lightline.component_type = {
+    \   'readonly': 'error',
+    \   'linter_warnings': 'warning',
+    \   'linter_errors': 'error'
+    \ }
+
+let g:lightline.component_function = {
+    \   'gitbranch': 'LightlineFugitive',
+    \   'gitgutter': 'Gitgutter',
+    \   'tagbar': 'Tagbar',
+    \   'readonly': 'LightlineReadonly',
+    \ }
+
+let g:lightline.component_expand = {
+    \   'linter_warnings': 'LightlineLinterWarnings',
+    \   'linter_errors': 'LightlineLinterErrors',
+    \ }
+
+let g:lightline.component = {
+      \   'lineinfo': ' %3l:%-2v'
+      \ }
+
+let g:lightline.active = {
       \  'left': [ [ 'mode', 'paste' ],
       \             [ 'gitbranch', 'gitgutter', 'readonly', 'relativepath', 'modified' ] ],
       \ 'right': [ [ 'lineinfo', 'syntastic' ],
       \            [ 'percent' ],
       \            [ 'readonly', 'linter_warnings', 'linter_errors', ],
       \            [ 'fileformat', 'fileencoding', 'filetype', 'tagbar' ] ]
-      \ },
-      \ 'component': {
-      \   'lineinfo': ' %3l:%-2v',
-      \ },
-      \ 'component_expand': {
-      \   'linter_warnings': 'LightlineLinterWarnings',
-      \   'linter_errors': 'LightlineLinterErrors',
-      \ },
-      \ 'component_function': {
-      \   'gitbranch': 'LightlineFugitive',
-      \   'gitgutter': 'Gitgutter',
-      \   'tagbar': 'Tagbar',
-      \   'readonly': 'LightlineReadonly',
-      \ },
-      \ 'component_type': {
-      \   'readonly': 'error',
-      \   'linter_warnings': 'warning',
-      \   'linter_errors': 'error'
-      \ },
-      \ 'separator': { 'left': '►', 'right': '◄' },
-      \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" }
       \ }
 
 let g:lightline.inactive = {
