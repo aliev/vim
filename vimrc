@@ -26,7 +26,6 @@ Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'neoclide/vim-jsx-improve'
-Plug 'junegunn/seoul256.vim'
 
 " Initialize plugin system
 call plug#end()
@@ -43,8 +42,6 @@ let &t_EI = "\<Esc>[0 q"
 
 if has('gui')
   set guifont=Fira\ Code\ Light:h14
-  let g:seoul256_background = 233
-  colo seoul256
 endif
 
 if has("autocmd")
@@ -279,12 +276,5 @@ let g:lightline.inactive = {
       \            [ 'percent' ] ] }
 
 let g:lightline.colorscheme = 'Tomorrow_Night_Eighties'
-
-highlight link ALEWarningSign String
-highlight link ALEErrorSign Title
-hi BufTabLineHidden guibg=#171717
-hi BufTabLineActive guibg=#171717
-hi BufTabLineFill guibg=#171717
-hi VertSplit gui=NONE
 
 " vim:ft=vim:foldmethod=marker:foldlevel=0
