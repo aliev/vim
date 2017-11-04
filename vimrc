@@ -10,22 +10,23 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 Plug 'aliev/vimrc'
-Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --tern-completer' }
 Plug 'itchyny/lightline.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
+Plug 'tpope/vim-surround'
 Plug 'w0rp/ale'
 Plug 'scrooloose/nerdtree'
 Plug 'majutsushi/tagbar'
 Plug 'tomtom/tcomment_vim'
 Plug 'ap/vim-buftabline'
-Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
-Plug 'tpope/vim-rhubarb'
-Plug 'tpope/vim-surround'
 Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'neoclide/vim-jsx-improve'
+Plug 'romainl/apprentice'
+Plug 'ctrlpvim/ctrlp.vim'
 
 " Initialize plugin system
 call plug#end()
@@ -100,14 +101,17 @@ vnoremap > >gv
 nnoremap n nzz
 nnoremap N Nzz
 "
-" List of tags
-nnoremap <leader>s :LeaderfBufTag<CR>
-"
 " Go to definition
 nnoremap <leader>d :YcmCompleter GoTo<CR>
 "
+" Buffers
+nnoremap <leader>b :CtrlPBuffer<CR>
+"
+" Tags
+nnoremap <leader>s :CtrlPBufTagAll<CR>
+"
 " Grep helper
-nnoremap <LocalLeader>g :silent grep! <C-R>=expand("<cword>")<CR> \| copen<s-left><s-left><left>
+nnoremap <LocalLeader>g :silent grep! '<C-R>=expand("<cword>")<CR>' \| copen<s-left><s-left><left><left>
 "
 " Find merge conflicts
 map <LocalLeader>c /\v^[<\|=>]{7}( .*\|$)<CR>
@@ -233,11 +237,10 @@ let g:jsx_ext_required = 0
 let python_highlight_all = 1
 let g:tagbar_silent = 1
 
+let g:ctrlp_map = '<leader>f'
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files']
+
 let g:lightline = {}
-
-let g:lightline.separator = { 'left': '►', 'right': '◄' }
-
-let g:lightline.subseparator = { 'left': "\ue0b1", 'right': "\ue0b3" }
 
 let g:lightline.component_type = {
     \   'readonly': 'error',
