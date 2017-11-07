@@ -42,12 +42,6 @@ let &t_SI = "\<Esc>[6 q"
 let &t_SR = "\<Esc>[4 q"
 let &t_EI = "\<Esc>[0 q"
 
-if has('gui')
-  let g:gruvbox_contrast_light = 'soft'
-  colo gruvbox
-  set guifont=Fira\ Code\ Light:h14
-endif
-
 if has("autocmd")
   augroup local
     au!
@@ -245,6 +239,13 @@ let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files']
 
 let g:lightline = {}
 
+if has('gui')
+  let g:lightline.colorscheme = 'gruvbox'
+  let g:gruvbox_contrast_light = 'soft'
+  colo gruvbox
+  set guifont=Fira\ Code\ Light:h14
+endif
+
 let g:lightline.component_type = {
     \   'readonly': 'error',
     \   'linter_warnings': 'warning',
@@ -280,7 +281,5 @@ let g:lightline.inactive = {
       \ 'left': [ [ 'absolutepath' ] ],
       \ 'right': [ [ 'lineinfo' ],
       \            [ 'percent' ] ] }
-
-let g:lightline.colorscheme = 'gruvbox'
 
 " vim:ft=vim:foldmethod=marker:foldlevel=0
