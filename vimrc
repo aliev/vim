@@ -27,6 +27,7 @@ Plug 'honza/vim-snippets'
 Plug 'neoclide/vim-jsx-improve'
 Plug 'romainl/apprentice'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'morhetz/gruvbox'
 
 " Initialize plugin system
 call plug#end()
@@ -42,6 +43,8 @@ let &t_SR = "\<Esc>[4 q"
 let &t_EI = "\<Esc>[0 q"
 
 if has('gui')
+  let g:gruvbox_contrast_light = 'soft'
+  colo gruvbox
   set guifont=Fira\ Code\ Light:h14
 endif
 
@@ -105,10 +108,10 @@ nnoremap N Nzz
 nnoremap <leader>d :YcmCompleter GoTo<CR>
 "
 " Buffers
-nnoremap <leader>b :CtrlPBuffer<CR>
+nnoremap <silent><leader>b :CtrlPBuffer<CR>
 "
 " Tags
-nnoremap <leader>s :CtrlPBufTagAll<CR>
+nnoremap <silent><leader>s :CtrlPBufTagAll<CR>
 "
 " Grep helper
 nnoremap <LocalLeader>g :silent grep! '<C-R>=expand("<cword>")<CR>' \| copen<s-left><s-left><left><left>
@@ -166,14 +169,14 @@ function! LightlineLinterWarnings() abort
   let l:counts = ale#statusline#Count(bufnr(''))
   let l:all_errors = l:counts.error + l:counts.style_error
   let l:all_non_errors = l:counts.total - l:all_errors
-  return printf('%d', all_non_errors)
+  return printf('w %d', all_non_errors)
 endfunction
 
 function! LightlineLinterErrors() abort
   let l:counts = ale#statusline#Count(bufnr(''))
   let l:all_errors = l:counts.error + l:counts.style_error
   let l:all_non_errors = l:counts.total - l:all_errors
-  return printf('%d', all_errors)
+  return printf('e %d', all_errors)
 endfunction
 
 function! LightlineReadonly()
@@ -221,8 +224,8 @@ let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 let g:ale_set_signs = 1
 let g:ale_set_highlights = 0
-let g:ale_sign_warning = '◆'
-let g:ale_sign_error = '◆'
+let g:ale_sign_warning = 'w'
+let g:ale_sign_error = 'e'
 
 let g:buftabline_show = 2
 let g:buftabline_numbers = 1
@@ -278,6 +281,6 @@ let g:lightline.inactive = {
       \ 'right': [ [ 'lineinfo' ],
       \            [ 'percent' ] ] }
 
-let g:lightline.colorscheme = 'Tomorrow_Night_Eighties'
+let g:lightline.colorscheme = 'gruvbox'
 
 " vim:ft=vim:foldmethod=marker:foldlevel=0
