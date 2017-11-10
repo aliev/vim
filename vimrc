@@ -27,7 +27,6 @@ Plug 'honza/vim-snippets'
 Plug 'neoclide/vim-jsx-improve'
 Plug 'romainl/apprentice'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'morhetz/gruvbox'
 
 " Initialize plugin system
 call plug#end()
@@ -41,6 +40,10 @@ set showtabline=2
 let &t_SI = "\<Esc>[6 q"
 let &t_SR = "\<Esc>[4 q"
 let &t_EI = "\<Esc>[0 q"
+
+if has('gui')
+  set guifont=Fira\ Code\ Light:h14
+endif
 
 if has("autocmd")
   augroup local
@@ -238,13 +241,6 @@ let g:ctrlp_map = '<leader>f'
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files']
 
 let g:lightline = {}
-
-if has('gui')
-  let g:lightline.colorscheme = 'gruvbox'
-  let g:gruvbox_contrast_light = 'soft'
-  colo gruvbox
-  set guifont=Fira\ Code\ Light:h14
-endif
 
 let g:lightline.component_type = {
     \   'readonly': 'error',
