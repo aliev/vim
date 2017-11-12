@@ -1,45 +1,12 @@
-" Specify a directory for plugins
-" - For Neovim: ~/.local/share/nvim/plugged
-" - Avoid using standard Vim directory names like 'plugin'
-call plug#begin('~/.vim/plugged')
-
-if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-endif
-
-Plug 'aliev/vimrc'
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --tern-completer' }
-Plug 'itchyny/lightline.vim'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-rhubarb'
-Plug 'tpope/vim-surround'
-Plug 'w0rp/ale'
-Plug 'scrooloose/nerdtree'
-Plug 'majutsushi/tagbar'
-Plug 'tomtom/tcomment_vim'
-Plug 'ap/vim-buftabline'
-Plug 'airblade/vim-gitgutter'
-Plug 'Vimjas/vim-python-pep8-indent'
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
-Plug 'neoclide/vim-jsx-improve'
-Plug 'romainl/apprentice'
-Plug 'ctrlpvim/ctrlp.vim'
-
-" Initialize plugin system
-call plug#end()
+execute pathogen#infect()
+syntax on
+filetype plugin indent on
 
 set wildignore+=env/**
 let mapleader=','
 let mapleaderlocal='\'
 
 set showtabline=2
-
-let &t_SI = "\<Esc>[6 q"
-let &t_SR = "\<Esc>[4 q"
-let &t_EI = "\<Esc>[0 q"
 
 if has('gui')
   set guifont=Fira\ Code\ Light:h14
@@ -242,6 +209,8 @@ let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files']
 
 let g:lightline = {}
 
+let g:lightline.colorscheme = 'PaperColor'
+
 let g:lightline.component_type = {
     \   'readonly': 'error',
     \   'linter_warnings': 'warning',
@@ -279,3 +248,4 @@ let g:lightline.inactive = {
       \            [ 'percent' ] ] }
 
 " vim:ft=vim:foldmethod=marker:foldlevel=0
+

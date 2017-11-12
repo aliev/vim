@@ -5,6 +5,8 @@ If you want only configuration file you should use [vimrc](http://github.com/ali
 ```
 git clone git@github.com:aliev/vim.git ~/.vim
 echo "source ~/.vim/vimrc" > ~/.vimrc
+cd ~/.vim
+git submodule update --init --recursive
 ```
 
 Tools: Ag, exuberant ctags

@@ -1,0 +1,51 @@
+[submodule "pack/plugins/start/vimrc"]
+	path = pack/plugins/start/vimrc
+	url = git@github.com:aliev/vimrc.git
+[submodule "pack/plugins/start/YouCompleteMe"]
+	path = pack/plugins/start/YouCompleteMe
+	url = git@github.com:Valloric/YouCompleteMe.git
+[submodule "pack/plugins/start/lightline.vim"]
+	path = pack/plugins/start/lightline.vim
+	url = git@github.com:itchyny/lightline.vim.git
+[submodule "pack/plugins/start/vim-fugitive"]
+	path = pack/plugins/start/vim-fugitive
+	url = git@github.com:tpope/vim-fugitive.git
+[submodule "pack/plugins/start/vim-rhubarb"]
+	path = pack/plugins/start/vim-rhubarb
+	url = git@github.com:tpope/vim-rhubarb.git
+[submodule "pack/plugins/start/vim-surround"]
+	path = pack/plugins/start/vim-surround
+	url = git@github.com:tpope/vim-surround.git
+[submodule "pack/plugins/start/ale"]
+	path = pack/plugins/start/ale
+	url = git@github.com:w0rp/ale.git
+[submodule "pack/plugins/start/nerdtree"]
+	path = pack/plugins/start/nerdtree
+	url = git@github.com:scrooloose/nerdtree.git
+[submodule "pack/plugins/start/tagbar"]
+	path = pack/plugins/start/tagbar
+	url = git@github.com:majutsushi/tagbar.git
+[submodule "pack/plugins/start/tcomment_vim"]
+	path = pack/plugins/start/tcomment_vim
+	url = git@github.com:tomtom/tcomment_vim.git
+[submodule "pack/plugins/start/vim-buftabline"]
+	path = pack/plugins/start/vim-buftabline
+	url = git@github.com:ap/vim-buftabline.git
+[submodule "pack/plugins/start/vim-gitgutter"]
+	path = pack/plugins/start/vim-gitgutter
+	url = git@github.com:airblade/vim-gitgutter.git
+[submodule "pack/plugins/start/vim-python-pep8-indent"]
+	path = pack/plugins/start/vim-python-pep8-indent
+	url = git@github.com:Vimjas/vim-python-pep8-indent.git
+[submodule "pack/plugins/start/ultisnips"]
+	path = pack/plugins/start/ultisnips
+	url = git@github.com:SirVer/ultisnips.git
+[submodule "pack/plugins/start/vim-snippets"]
+	path = pack/plugins/start/vim-snippets
+	url = git@github.com:honza/vim-snippets.git
+[submodule "pack/plugins/start/vim-jsx-improve"]
+	path = pack/plugins/start/vim-jsx-improve
+	url = git@github.com:neoclide/vim-jsx-improve.git
+[submodule "pack/plugins/start/ctrlp.vim"]
+	path = pack/plugins/start/ctrlp.vim
+	url = git@github.com:ctrlpvim/ctrlp.vim.git
