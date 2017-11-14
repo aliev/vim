@@ -133,14 +133,22 @@ function! LightlineLinterWarnings() abort
   let l:counts = ale#statusline#Count(bufnr(''))
   let l:all_errors = l:counts.error + l:counts.style_error
   let l:all_non_errors = l:counts.total - l:all_errors
-  return printf('w %d', all_non_errors)
+  if all_non_errors
+    return printf('w %d', all_non_errors)
+  endif
+
+  return ''
 endfunction
 
 function! LightlineLinterErrors() abort
   let l:counts = ale#statusline#Count(bufnr(''))
   let l:all_errors = l:counts.error + l:counts.style_error
   let l:all_non_errors = l:counts.total - l:all_errors
-  return printf('e %d', all_errors)
+  if all_errors
+    return printf('e %d', all_errors)
+  endif
+
+  return ''
 endfunction
 
 function! LightlineReadonly()
@@ -209,25 +217,30 @@ let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files']
 
 let g:lightline = {}
 
+let g:lightline = {
+      \ 'separator': { 'left': '', 'right': '' },
+      \ 'subseparator': { 'left': '', 'right': '' }
+      \ }
+
 let g:lightline.colorscheme = 'PaperColor'
 
 let g:lightline.component_type = {
-    \   'readonly': 'error',
-    \   'linter_warnings': 'warning',
-    \   'linter_errors': 'error'
-    \ }
+      \   'readonly': 'error',
+      \   'linter_warnings': 'warning',
+      \   'linter_errors': 'error'
+      \ }
 
 let g:lightline.component_function = {
-    \   'gitbranch': 'LightlineFugitive',
-    \   'gitgutter': 'Gitgutter',
-    \   'tagbar': 'Tagbar',
-    \   'readonly': 'LightlineReadonly',
-    \ }
+      \   'gitbranch': 'LightlineFugitive',
+      \   'gitgutter': 'Gitgutter',
+      \   'tagbar': 'Tagbar',
+      \   'readonly': 'LightlineReadonly',
+      \ }
 
 let g:lightline.component_expand = {
-    \   'linter_warnings': 'LightlineLinterWarnings',
-    \   'linter_errors': 'LightlineLinterErrors',
-    \ }
+      \   'linter_warnings': 'LightlineLinterWarnings',
+      \   'linter_errors': 'LightlineLinterErrors',
+      \ }
 
 let g:lightline.component = {
       \   'lineinfo': ' %3l:%-2v'
