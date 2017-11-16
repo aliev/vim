@@ -10,6 +10,9 @@ set showtabline=2
 
 if has('gui')
   set guifont=Fira\ Code\ Light:h14
+  set bg=dark
+  let g:gruvbox_contrast_dark="hard"
+  colo gruvbox
 endif
 
 if has("autocmd")
@@ -222,7 +225,7 @@ let g:lightline = {
       \ 'subseparator': { 'left': '', 'right': '' }
       \ }
 
-let g:lightline.colorscheme = 'PaperColor'
+let g:lightline.colorscheme = 'gruvbox'
 
 let g:lightline.component_type = {
       \   'readonly': 'error',
