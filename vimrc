@@ -10,9 +10,6 @@ set showtabline=2
 
 if has('gui')
   set guifont=Fira\ Code\ Light:h14
-  set bg=dark
-  let g:gruvbox_contrast_dark="hard"
-  colo gruvbox
 endif
 
 if has("autocmd")
@@ -183,6 +180,10 @@ let g:ycm_python_binary_path = 'python'
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 
+if executable(getcwd() . '/env/bin/python')
+  let g:ycm_python_binary_path = getcwd() . '/env/bin/python'
+endif
+
 let g:UltiSnipsExpandTrigger = "<tab>"
 let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
@@ -191,7 +192,7 @@ let g:UltiSnipsEditSplit="vertical"
 let g:ale_linters = {
       \   'javascript': ['eslint'],
       \   'javascript.jsx': ['eslint'],
-      \   'python': ['flake8'],
+      \   'python': ['pylint'],
       \}
 let g:ale_statusline_format = ['E%d', 'W%d', '']
 let g:ale_echo_msg_error_str = 'E'
@@ -225,7 +226,6 @@ let g:lightline = {
       \ 'subseparator': { 'left': '', 'right': '' }
       \ }
 
-let g:lightline.colorscheme = 'gruvbox'
 
 let g:lightline.component_type = {
       \   'readonly': 'error',
