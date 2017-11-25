@@ -10,6 +10,8 @@ set showtabline=2
 
 if has('gui')
   set guifont=Fira\ Code\ Light:h14
+  set bg=dark
+  colo PaperColor
 endif
 
 if has("autocmd")
@@ -26,8 +28,6 @@ if has("autocmd")
     au FileType qf setl nonumber
 
     au FileType gitrebase map s :2,$s/^pick/squash/<CR>
-
-    au User ALELint call lightline#update()
 
     " Automatically remove unwanted spaces
     au BufWritePre * %s/\s\+$//e
@@ -98,70 +98,6 @@ if empty(maparg('-', 'n'))
   nmap <silent>- :call Nerdtree()<CR>
 endif
 
-function! Gitgutter()
-  let symbols = ['+', '-', '~']
-  let [added, modified, removed] = gitgutter#hunk#summary(winbufnr(0))
-  let stats = [added, removed, modified]  " reorder
-  let hunkline = ''
-
-  for i in range(3)
-    if stats[i] > 0
-      let hunkline .= printf('%s%s ', symbols[i], stats[i])
-    endif
-  endfor
-
-  if !empty(hunkline)
-    let hunkline = printf('%s', hunkline[:-2])
-  endif
-
-  return hunkline
-endfunction
-
-function! Tagbar()
-  return tagbar#currenttag('%s','','f')
-endfunction
-
-function! LightlineFugitive()
-  if exists('*fugitive#head')
-    let branch = fugitive#head()
-    return branch !=# '' ? ' '.branch : ''
-  endif
-  return ''
-endfunction
-
-function! LightlineLinterWarnings() abort
-  let l:counts = ale#statusline#Count(bufnr(''))
-  let l:all_errors = l:counts.error + l:counts.style_error
-  let l:all_non_errors = l:counts.total - l:all_errors
-  if all_non_errors
-    return printf('w %d', all_non_errors)
-  endif
-
-  return ''
-endfunction
-
-function! LightlineLinterErrors() abort
-  let l:counts = ale#statusline#Count(bufnr(''))
-  let l:all_errors = l:counts.error + l:counts.style_error
-  let l:all_non_errors = l:counts.total - l:all_errors
-  if all_errors
-    return printf('e %d', all_errors)
-  endif
-
-  return ''
-endfunction
-
-function! LightlineReadonly()
-  return &readonly ? '' : ''
-endfunction
-
-function! GetFileName(n) abort
-  let buflist = tabpagebuflist(a:n)
-  let winnr = tabpagewinnr(a:n)
-  let _ = expand('#'.buflist[winnr - 1].":~:.")
-  return _ !=# '' ? _ : '[No Name]'
-endfunction
-
 let g:html_indent_script1 = "inc"
 let g:html_indent_style1 = "inc"
 let g:html_indent_inctags = "html,body,head,tbody"
@@ -207,61 +143,50 @@ let g:buftabline_show = 2
 let g:buftabline_numbers = 1
 let g:buftabline_indicators = 1
 
-let g:Lf_CursorBlink = 0
-let g:Lf_PreviewResult = { 'BufTag': 0 }
-let g:Lf_CommandMap = {'<C-C>': ['<Esc>']}
-let g:Lf_DefaultMode = 'FullPath'
-
-let g:jsx_ext_required = 0
-let python_highlight_all = 1
 let g:tagbar_silent = 1
 
 let g:ctrlp_map = '<leader>f'
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files']
 
-let g:lightline = {}
+function! Gitgutter()
+  let symbols = ['+', '-', '~']
+  let [added, modified, removed] = gitgutter#hunk#summary(winbufnr(0))
+  let stats = [added, removed, modified]  " reorder
+  let hunkline = ''
 
-let g:lightline = {
-      \ 'separator': { 'left': '', 'right': '' },
-      \ 'subseparator': { 'left': '', 'right': '' }
-      \ }
+  for i in range(3)
+    if stats[i] > 0
+      let hunkline .= printf('%s%s ', symbols[i], stats[i])
+    endif
+  endfor
 
+  if !empty(hunkline)
+    let hunkline = printf('%s', hunkline[:-2])
+  endif
 
-let g:lightline.component_type = {
-      \   'readonly': 'error',
-      \   'linter_warnings': 'warning',
-      \   'linter_errors': 'error'
-      \ }
+  return hunkline
+endfunction
 
-let g:lightline.component_function = {
-      \   'gitbranch': 'LightlineFugitive',
-      \   'gitgutter': 'Gitgutter',
-      \   'tagbar': 'Tagbar',
-      \   'readonly': 'LightlineReadonly',
-      \ }
+function! Fugitive()
+  if exists('*fugitive#head')
+    let branch = fugitive#head()
+    return branch !=# '' ? ' '.branch : ''
+  endif
+  return ''
+endfunction
 
-let g:lightline.component_expand = {
-      \   'linter_warnings': 'LightlineLinterWarnings',
-      \   'linter_errors': 'LightlineLinterErrors',
-      \ }
+function! s:statusline_expr()
+  let mod = "%{&modified ? '[+] ' : !&modifiable ? '[x] ' : ''}"
+  let ro  = "%{&readonly ? '' : ''}"
+  let fn  = " %f "
+  let fug = "%{exists('g:loaded_fugitive') ? Fugitive() : ''}"
+  let git = " %{Gitgutter()}"
+  let sep = ' %= '
+  let tag = "%{tagbar#currenttag('%s','','f')}"
+  let pos = ' %-12(%l : %c%V%) '
+  let pct = ' %P'
 
-let g:lightline.component = {
-      \   'lineinfo': ' %3l:%-2v'
-      \ }
+  return '[%n] %<'.fug.git.fn.mod.ro.sep.tag.pos.'%*'.pct
+endfunction
 
-let g:lightline.active = {
-      \  'left': [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch', 'gitgutter', 'readonly', 'relativepath', 'modified' ] ],
-      \ 'right': [ [ 'lineinfo', 'syntastic' ],
-      \            [ 'percent' ],
-      \            [ 'readonly', 'linter_warnings', 'linter_errors', ],
-      \            [ 'fileformat', 'fileencoding', 'filetype', 'tagbar' ] ]
-      \ }
-
-let g:lightline.inactive = {
-      \ 'left': [ [ 'absolutepath' ] ],
-      \ 'right': [ [ 'lineinfo' ],
-      \            [ 'percent' ] ] }
-
-" vim:ft=vim:foldmethod=marker:foldlevel=0
-
+let &statusline = s:statusline_expr()

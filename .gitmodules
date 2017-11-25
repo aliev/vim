@@ -4,9 +4,6 @@
 [submodule "pack/plugins/start/YouCompleteMe"]
 	path = pack/plugins/start/YouCompleteMe
 	url = git@github.com:Valloric/YouCompleteMe.git
-[submodule "pack/plugins/start/lightline.vim"]
-	path = pack/plugins/start/lightline.vim
-	url = git@github.com:itchyny/lightline.vim.git
 [submodule "pack/plugins/start/vim-fugitive"]
 	path = pack/plugins/start/vim-fugitive
 	url = git@github.com:tpope/vim-fugitive.git
@@ -49,3 +46,6 @@
 [submodule "pack/plugins/start/ctrlp.vim"]
 	path = pack/plugins/start/ctrlp.vim
 	url = git@github.com:ctrlpvim/ctrlp.vim.git
+[submodule "pack/plugins/start/papercolor-theme"]
+	path = pack/plugins/start/papercolor-theme
+	url = git@github.com:NLKNguyen/papercolor-theme.git
