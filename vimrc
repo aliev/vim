@@ -7,6 +7,7 @@ let mapleader=','
 let mapleaderlocal='\'
 
 set showtabline=2
+set nonu
 
 if has('gui')
   set guifont=Fira\ Code\ Light:h14
@@ -176,17 +177,15 @@ function! Fugitive()
 endfunction
 
 function! s:statusline_expr()
-  let mod = "%{&modified ? '[+] ' : !&modifiable ? '[x] ' : ''}"
-  let ro  = "%{&readonly ? '' : ''}"
-  let fn  = " %f "
   let fug = "%{exists('g:loaded_fugitive') ? Fugitive() : ''}"
-  let git = " %{Gitgutter()}"
+  let git = " %{Gitgutter()} "
+  let fn  = "%f%{tagbar#currenttag(':%s','','f')}"
+  let mod = "%{&modified ? '[+] ' : ''}"
+  let ro  = "%{&readonly ? '' : ''}"
   let sep = ' %= '
-  let tag = "%{tagbar#currenttag('%s','','f')}"
   let pos = ' %-12(%l : %c%V%) '
-  let pct = ' %P'
 
-  return '[%n] %<'.fug.git.fn.mod.ro.sep.tag.pos.'%*'.pct
+  return '[%n] %<'.fug.git.fn.mod.ro.sep.pos
 endfunction
 
 let &statusline = s:statusline_expr()
