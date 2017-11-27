@@ -6,12 +6,27 @@ set wildignore+=env/**
 let mapleader=','
 let mapleaderlocal='\'
 
-set showtabline=2
-set nonu
-
 if has('gui')
   set guifont=Fira\ Code\ Light:h14
   set bg=dark
+  let g:PaperColor_Theme_Options = {
+        \   'theme': {
+        \     'default.dark': {
+        \       'override' : {
+        \         'color00' : ['#080808', '232'],
+        \         'color05' : ['Grey'],
+        \         'linenumber_bg' : ['#080808', '232'],
+        \         'buftabline_bg':          ['#5f8787', '24'],
+        \         'buftabline_current_fg':  ['#eeeeee', '238'],
+        \         'buftabline_current_bg':  ['#080808', '254'],
+        \         'buftabline_active_fg': ['#1c1c1c', '255'],
+        \         'buftabline_active_bg': ['#5f8787', '25'],
+        \         'buftabline_inactive_fg': ['#1c1c1c', '255'],
+        \         'buftabline_inactive_bg': ['#5f8787', '31']
+        \       }
+        \     }
+        \   }
+        \ }
   colo PaperColor
 endif
 
