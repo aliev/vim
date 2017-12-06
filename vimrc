@@ -10,11 +10,14 @@ if has('gui')
   set guifont=Fira\ Code\ Light:h14
   set bg=dark
   let g:PaperColor_Theme_Options = {
+        \   'language': {
+        \     'python': {
+        \       'highlight_builtins' : 1
+        \     }
+        \   },
         \   'theme': {
         \     'default.dark': {
         \       'override' : {
-        \         'color00' : ['#080808', '232'],
-        \         'color05' : ['Grey'],
         \         'linenumber_bg' : ['#080808', '232'],
         \         'buftabline_bg':          ['#5f8787', '24'],
         \         'buftabline_current_fg':  ['#eeeeee', '238'],
@@ -144,7 +147,7 @@ let g:UltiSnipsEditSplit="vertical"
 let g:ale_linters = {
       \   'javascript': ['eslint'],
       \   'javascript.jsx': ['eslint'],
-      \   'python': ['pylint'],
+      \   'python': ['pylint', 'flake8'],
       \}
 let g:ale_statusline_format = ['E%d', 'W%d', '']
 let g:ale_echo_msg_error_str = 'E'
