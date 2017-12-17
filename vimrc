@@ -139,11 +139,6 @@ if executable(getcwd() . '/env/bin/python')
   let g:ycm_python_binary_path = getcwd() . '/env/bin/python'
 endif
 
-let g:UltiSnipsExpandTrigger = "<tab>"
-let g:UltiSnipsJumpForwardTrigger = "<tab>"
-let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
-let g:UltiSnipsEditSplit="vertical"
-
 let g:ale_linters = {
       \   'javascript': ['eslint'],
       \   'javascript.jsx': ['eslint'],

@@ -34,12 +34,6 @@
 [submodule "pack/plugins/start/vim-python-pep8-indent"]
 	path = pack/plugins/start/vim-python-pep8-indent
 	url = git@github.com:Vimjas/vim-python-pep8-indent.git
-[submodule "pack/plugins/start/ultisnips"]
-	path = pack/plugins/start/ultisnips
-	url = git@github.com:SirVer/ultisnips.git
-[submodule "pack/plugins/start/vim-snippets"]
-	path = pack/plugins/start/vim-snippets
-	url = git@github.com:honza/vim-snippets.git
 [submodule "pack/plugins/start/vim-jsx-improve"]
 	path = pack/plugins/start/vim-jsx-improve
 	url = git@github.com:neoclide/vim-jsx-improve.git
