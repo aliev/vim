@@ -37,6 +37,3 @@
 [submodule "pack/plugins/start/ctrlp.vim"]
 	path = pack/plugins/start/ctrlp.vim
 	url = git@github.com:ctrlpvim/ctrlp.vim.git
-[submodule "pack/plugins/start/papercolor-theme"]
-	path = pack/plugins/start/papercolor-theme
-	url = git@github.com:NLKNguyen/papercolor-theme.git
