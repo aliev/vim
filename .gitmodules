@@ -1,9 +1,6 @@
 [submodule "pack/plugins/start/vimrc"]
 	path = pack/plugins/start/vimrc
 	url = git@github.com:aliev/vimrc.git
-[submodule "pack/plugins/start/YouCompleteMe"]
-	path = pack/plugins/start/YouCompleteMe
-	url = git@github.com:Valloric/YouCompleteMe.git
 [submodule "pack/plugins/start/vim-fugitive"]
 	path = pack/plugins/start/vim-fugitive
 	url = git@github.com:tpope/vim-fugitive.git

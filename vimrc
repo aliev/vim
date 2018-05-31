@@ -6,33 +6,6 @@ set wildignore+=env/**
 let mapleader=','
 let mapleaderlocal='\'
 
-if has('gui')
-  set guifont=Fira\ Code\ Light:h14
-  set bg=dark
-  let g:PaperColor_Theme_Options = {
-        \   'language': {
-        \     'python': {
-        \       'highlight_builtins' : 1
-        \     }
-        \   },
-        \   'theme': {
-        \     'default.dark': {
-        \       'override' : {
-        \         'linenumber_bg' : ['#080808', '232'],
-        \         'buftabline_bg':          ['#5f8787', '24'],
-        \         'buftabline_current_fg':  ['#eeeeee', '238'],
-        \         'buftabline_current_bg':  ['#080808', '254'],
-        \         'buftabline_active_fg': ['#1c1c1c', '255'],
-        \         'buftabline_active_bg': ['#5f8787', '25'],
-        \         'buftabline_inactive_fg': ['#1c1c1c', '255'],
-        \         'buftabline_inactive_bg': ['#5f8787', '31']
-        \       }
-        \     }
-        \   }
-        \ }
-  colo PaperColor
-endif
-
 if has("autocmd")
   augroup local
     au!
@@ -184,7 +157,7 @@ endfunction
 function! Fugitive()
   if exists('*fugitive#head')
     let branch = fugitive#head()
-    return branch !=# '' ? ' '.branch : ''
+    return branch !=# '' ? branch : ''
   endif
   return ''
 endfunction
@@ -194,7 +167,7 @@ function! s:statusline_expr()
   let git = " %{Gitgutter()} "
   let fn  = "%f%{tagbar#currenttag(':%s','','f')}"
   let mod = "%{&modified ? '[+] ' : ''}"
-  let ro  = "%{&readonly ? '' : ''}"
+  let ro  = "%{&readonly ? 'RO' : ''}"
   let sep = ' %= '
   let pos = ' %-12(%l : %c%V%) '
 
