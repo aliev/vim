@@ -5,6 +5,8 @@ filetype plugin indent on
 set wildignore+=env/**
 let mapleader=','
 let mapleaderlocal='\'
+set guifont=Fira\ Code\ Retina:h14
+colo peachpuff
 
 if has("autocmd")
   augroup local
@@ -117,6 +119,11 @@ let g:ale_linters = {
       \   'javascript.jsx': ['eslint'],
       \   'python': ['pylint', 'flake8'],
       \}
+let g:ale_fixers = {
+      \ 'javascript': ['eslint'],
+      \  'python': ['yapf'],
+      \}
+let g:ale_fix_on_save = 1
 let g:ale_statusline_format = ['E%d', 'W%d', '']
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
