@@ -121,7 +121,6 @@ let g:ale_linters = {
       \}
 let g:ale_fixers = {
       \ 'javascript': ['eslint'],
-      \  'python': ['yapf'],
       \}
 let g:ale_fix_on_save = 1
 let g:ale_statusline_format = ['E%d', 'W%d', '']
@@ -130,8 +129,8 @@ let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 let g:ale_set_signs = 1
 let g:ale_set_highlights = 0
-let g:ale_sign_warning = 'w'
-let g:ale_sign_error = 'e'
+let g:ale_sign_error = '•'
+let g:ale_sign_warning = '•'
 
 let g:buftabline_show = 2
 let g:buftabline_numbers = 1
@@ -141,6 +140,7 @@ let g:tagbar_silent = 1
 
 let g:ctrlp_map = '<leader>f'
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files']
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|env'
 
 function! Gitgutter()
   let symbols = ['+', '-', '~']
@@ -182,3 +182,6 @@ function! s:statusline_expr()
 endfunction
 
 let &statusline = s:statusline_expr()
+
+hi ALEErrorSign guibg=NONE
+hi ALEWarningSign guibg=NONE
