@@ -25,6 +25,8 @@ if has("autocmd")
 
     " Automatically remove unwanted spaces
     au BufWritePre * %s/\s\+$//e
+
+    au BufWritePost * GitGutter
   augroup END
 endif
 
@@ -61,9 +63,6 @@ vnoremap > >gv
 " Keep search matches in the middle of the screen
 nnoremap n nzz
 nnoremap N Nzz
-"
-" Go to definition
-nnoremap <leader>d :YcmCompleter GoTo<CR>
 "
 " Buffers
 nnoremap <silent><leader>b :CtrlPBuffer<CR>
@@ -104,11 +103,6 @@ let g:NERDTreeDirArrows = 1
 let g:NERDTreeHijackNetrw = 1
 let g:NERDTreeAutoDeleteBuffer = 1
 let g:NERDTreeQuitOnOpen = 0
-
-let g:ycm_key_invoke_completion = '<C-c>'
-let g:ycm_python_binary_path = 'python'
-let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 
 if executable(getcwd() . '/env/bin/python')
   let g:ycm_python_binary_path = getcwd() . '/env/bin/python'

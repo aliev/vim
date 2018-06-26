@@ -37,6 +37,9 @@
 [submodule "pack/plugins/start/ctrlp.vim"]
 	path = pack/plugins/start/ctrlp.vim
 	url = git@github.com:ctrlpvim/ctrlp.vim.git
-[submodule "pack/plugins/start/completor.vim"]
-	path = pack/plugins/start/completor.vim
-	url = git@github.com:maralla/completor.vim.git
+[submodule "pack/plugins/start/vim-togglecursor"]
+	path = pack/plugins/start/vim-togglecursor
+	url = git@github.com:jszakmeister/vim-togglecursor.git
+[submodule "pack/plugins/start/base16-vim"]
+	path = pack/plugins/start/base16-vim
+	url = git@github.com:chriskempson/base16-vim.git
