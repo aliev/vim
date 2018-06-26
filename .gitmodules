@@ -37,3 +37,6 @@
 [submodule "pack/plugins/start/vim-togglecursor"]
 	path = pack/plugins/start/vim-togglecursor
 	url = git@github.com:jszakmeister/vim-togglecursor.git
+[submodule "pack/plugins/start/vim-jsx-improve"]
+	path = pack/plugins/start/vim-jsx-improve
+	url = git@github.com:neoclide/vim-jsx-improve.git
