@@ -175,3 +175,4 @@ let &statusline = s:statusline_expr()
 
 hi ALEErrorSign guibg=NONE
 hi ALEWarningSign guibg=NONE
+hi VertSplit cterm=NONE
