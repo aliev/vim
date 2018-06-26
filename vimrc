@@ -104,10 +104,6 @@ let g:NERDTreeHijackNetrw = 1
 let g:NERDTreeAutoDeleteBuffer = 1
 let g:NERDTreeQuitOnOpen = 0
 
-if executable(getcwd() . '/env/bin/python')
-  let g:ycm_python_binary_path = getcwd() . '/env/bin/python'
-endif
-
 let g:ale_linters = {
       \   'javascript': ['eslint'],
       \   'javascript.jsx': ['eslint'],
