@@ -5,8 +5,11 @@ filetype plugin indent on
 set wildignore+=env/**
 let mapleader=','
 let mapleaderlocal='\'
-set guifont=Fira\ Code\ Retina:h14
-colo peachpuff
+
+if has('gui')
+  set bg=light
+  set guifont=Monaco:h14
+endif
 
 if has("autocmd")
   augroup local
