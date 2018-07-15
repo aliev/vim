@@ -6,9 +6,13 @@ set wildignore+=env/**
 let mapleader=','
 let mapleaderlocal='\'
 
+if filereadable(expand("~/.vimrc_background"))
+  let base16colorspace=256
+  source ~/.vimrc_background
+endif
+
 if has('gui')
-  set bg=light
-  set guifont=Monaco:h14
+  set guifont=Fira\ Code\ Retina:h14
 endif
 
 if has("autocmd")
@@ -162,20 +166,21 @@ function! Fugitive()
   return ''
 endfunction
 
-function! s:statusline_expr()
-  let fug = "%{exists('g:loaded_fugitive') ? Fugitive() : ''}"
-  let git = " %{Gitgutter()} "
-  let fn  = "%f%{tagbar#currenttag(':%s','','f')}"
-  let mod = "%{&modified ? '[+] ' : ''}"
-  let ro  = "%{&readonly ? 'RO' : ''}"
-  let sep = ' %= '
-  let pos = ' %-12(%l : %c%V%) '
-
-  return '[%n] %<'.fug.git.fn.mod.ro.sep.pos
-endfunction
-
-let &statusline = s:statusline_expr()
-
-hi ALEErrorSign guibg=NONE
-hi ALEWarningSign guibg=NONE
-hi VertSplit cterm=NONE
+set statusline=
+set statusline+=%(%{&buflisted?bufnr('%'):''}\ \ %)
+set statusline+=%< " Truncate line here
+set statusline+=%f\  " File path, as typed or relative to current directory
+set statusline+=%{&modified?'+\ \':''}
+set statusline+=%{&readonly?'\ \':''}
+set statusline+=%(%{exists('g:loaded_fugitive')?Fugitive():''}\ \ \%)
+set statusline+=%(%{Gitgutter()}\ \%)
+set statusline+=%(%{tagbar#currenttag(':%s','','f')}%)
+set statusline+=%= " Separation point between left and right aligned items
+set statusline+=\ %{&filetype!=#''?&filetype:'none'}
+set statusline+=%(\ %{(&bomb\|\|&fileencoding!~#'^$\\\|utf-8'?'\ '.&fileencoding.(&bomb?'-bom':''):'')
+  \.(&fileformat!=#(has('win32')?'dos':'unix')?'\ '.&fileformat:'')}%)
+set statusline+=%(\ \ %{&modifiable?(&expandtab?'et\ ':'noet\ ').&shiftwidth:''}%)
+set statusline+=\ 
+set statusline+=\ %{&number?'':printf('%2d,',line('.'))} " Line number
+set statusline+=%-2v " Virtual column number
+set statusline+=\ %2p%% " Percentage through file in lines as in |CTRL-G|
