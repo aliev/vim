@@ -1,4 +1,33 @@
-execute pathogen#infect()
+" Specify a directory for plugins
+" - For Neovim: ~/.local/share/nvim/plugged
+" - Avoid using standard Vim directory names like 'plugin'
+call plug#begin('~/.vim/plugged')
+
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+Plug 'aliev/vimrc'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+Plug '/w0rp/ale'
+Plug 'chriskempson/base16-vim'
+Plug 'scrooloose/nerdtree'
+Plug 'majutsushi/tagbar'
+Plug 'tomtom/tcomment_vim'
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+Plug 'neoclide/vim-jsx-improve'
+Plug 'Vimjas/vim-python-pep8-indent'
+Plug 'tpope/vim-rhubarb'
+Plug 'tpope/vim-surround'
+Plug 'jszakmeister/vim-togglecursor'
+
+" Initialize plugin system
+call plug#end()
+
 syntax on
 filetype plugin indent on
 
@@ -9,10 +38,6 @@ let mapleaderlocal='\'
 if filereadable(expand("~/.vimrc_background"))
   let base16colorspace=256
   source ~/.vimrc_background
-endif
-
-if has('gui')
-  set guifont=Fira\ Code\ Retina:h14
 endif
 
 if has("autocmd")
@@ -72,13 +97,13 @@ nnoremap n nzz
 nnoremap N Nzz
 "
 " Buffers
-nnoremap <silent><leader>b :CtrlPBuffer<CR>
+nnoremap <silent><leader>b :Buffers<CR>
 "
 " Tags
-nnoremap <silent><leader>s :CtrlPBufTagAll<CR>
+nnoremap <silent><leader>s :BTags<CR>
 "
 " Grep helper
-nnoremap <LocalLeader>g :silent grep! '<C-R>=expand("<cword>")<CR>' \| copen<s-left><s-left><left><left>
+nnoremap <LocalLeader>g :Ag '<C-R>=expand("<cword>")<CR>'<CR>
 "
 " Find merge conflicts
 map <LocalLeader>c /\v^[<\|=>]{7}( .*\|$)<CR>
@@ -134,10 +159,6 @@ let g:buftabline_numbers = 1
 let g:buftabline_indicators = 1
 
 let g:tagbar_silent = 1
-
-let g:ctrlp_map = '<leader>f'
-let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files']
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|env'
 
 function! Gitgutter()
   let symbols = ['+', '-', '~']
