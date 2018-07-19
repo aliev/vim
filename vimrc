@@ -12,7 +12,7 @@ endif
 Plug 'aliev/vimrc'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug '/w0rp/ale'
+Plug 'w0rp/ale'
 Plug 'chriskempson/base16-vim'
 Plug 'scrooloose/nerdtree'
 Plug 'majutsushi/tagbar'
@@ -23,7 +23,8 @@ Plug 'neoclide/vim-jsx-improve'
 Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-surround'
-Plug 'jszakmeister/vim-togglecursor'
+" Plug 'jszakmeister/vim-togglecursor'
+Plug 'ap/vim-buftabline'
 
 " Initialize plugin system
 call plug#end()
@@ -39,6 +40,11 @@ if filereadable(expand("~/.vimrc_background"))
   let base16colorspace=256
   source ~/.vimrc_background
 endif
+
+if has('gui')
+  set guifont=Fira\ Code\ Retina:h15
+endif
+
 
 if has("autocmd")
   augroup local
@@ -98,6 +104,8 @@ nnoremap N Nzz
 "
 " Buffers
 nnoremap <silent><leader>b :Buffers<CR>
+" Files
+nnoremap <silent><leader>f :Files<CR>
 "
 " Tags
 nnoremap <silent><leader>s :BTags<CR>
@@ -122,6 +130,8 @@ endfunction
 if empty(maparg('-', 'n'))
   nmap <silent>- :call Nerdtree()<CR>
 endif
+
+let $FZF_DEFAULT_COMMAND = 'ag -l -g ""'
 
 let g:html_indent_script1 = "inc"
 let g:html_indent_style1 = "inc"
@@ -182,7 +192,7 @@ endfunction
 function! Fugitive()
   if exists('*fugitive#head')
     let branch = fugitive#head()
-    return branch !=# '' ? branch : ''
+    return branch !=# '' ? branch . '  ' : ''
   endif
   return ''
 endfunction
@@ -193,7 +203,7 @@ set statusline+=%< " Truncate line here
 set statusline+=%f\  " File path, as typed or relative to current directory
 set statusline+=%{&modified?'+\ \':''}
 set statusline+=%{&readonly?'\ \':''}
-set statusline+=%(%{exists('g:loaded_fugitive')?Fugitive():''}\ \ \%)
+set statusline+=%(%{exists('g:loaded_fugitive')?Fugitive():''}\ %)
 set statusline+=%(%{Gitgutter()}\ \%)
 set statusline+=%(%{tagbar#currenttag(':%s','','f')}%)
 set statusline+=%= " Separation point between left and right aligned items
