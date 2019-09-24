@@ -29,7 +29,7 @@ if empty(glob('~/.vim/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-Plug 'aliev/vimrc'
+Plug 'aliev/vim'
 
 " Initialize plugin system
 call plug#end()
