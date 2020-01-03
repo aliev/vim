@@ -128,7 +128,6 @@ set ttyfast " Optimize for fast terminal connections
 set lazyredraw
 set noshowcmd
 set foldmethod=marker
-set synmaxcol=128
 
 set completeopt=menuone,noselect " Completion do not select the first candidate
 
@@ -229,14 +228,3 @@ let g:netrw_sort_sequence = '[\/]$,*'
 
 " use the same window to open file
 let g:netrw_browse_split = 0
-"
-" Visually select the text that was last edited/pasted
-noremap gV `[v`]
-"
-" Let's remove this annoying :W and :Q
-cnoremap W w
-cnoremap Q q
-"
-" Keep selection after in/outdent
-vnoremap < <gv
-vnoremap > >gv
