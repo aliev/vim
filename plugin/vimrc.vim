@@ -122,7 +122,7 @@ set undodir=/var/tmp//,/tmp//,.
 set path=.,,**
 
 " Performance fixes
-set regexpengine=1
+set regexpengine=0
 set ttimeout ttimeoutlen=0 notimeout " Disable timeout for Esc key
 set ttyfast " Optimize for fast terminal connections
 set lazyredraw
